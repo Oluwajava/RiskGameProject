@@ -1,0 +1,10 @@
+[command]
+editcontinent
+editcountry
+editneighbor
+continentname
+countryname
+
+[action]
+-add
+-remove
