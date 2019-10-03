@@ -50,5 +50,12 @@ public class Map {
         gameFile = builder.gameFile;
     }
 
+    private MapData processMapData(Map map) {
+        MapData data = new MapData();
+        data.setContinents(processContinents());
+        data.setCountries(processCountries(data.getContinents()));
+        addCountriesToContinents(data);
+        return data;
+    }
 
 }
