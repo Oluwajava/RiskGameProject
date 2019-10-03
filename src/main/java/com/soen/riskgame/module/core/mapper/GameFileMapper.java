@@ -7,6 +7,6 @@ public class GameFileMapper {
     }
     protected GameFile mapToGameFile(String str)
     {
-
+    rerurn null;
     }
 }

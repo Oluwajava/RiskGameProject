@@ -7,5 +7,6 @@ public class BorderMapper {
     }
     protected BorderDTO mapToBorder(String str){
 
+        return null ;
     }
 }

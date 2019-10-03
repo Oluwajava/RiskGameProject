@@ -8,5 +8,6 @@ public class ContinentMapper {
 
     protected ContinentDTO mapToContinent(String str){
 
+        return null;
     }
 }

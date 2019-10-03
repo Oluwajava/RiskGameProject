@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Country {
-    public String name;
-    public long id;
-    //Continent continent;
-    //Player player;
-    String XCoordinate;
-    String YCoordinate;
-    int noOfArmies;
-    ArrayList<Country> adjacentCountries= new ArrayList<Country>();
-    String continentId;
+    private String name;
+    private long id;
+    private Continent continent;
+    private Player player;
+    private String XCoordinate;
+    private String YCoordinate;
+    private int noOfArmies;
+    private ArrayList<Country> adjacentCountries= new ArrayList<Country>();
+    private String continentId;
     public Country(){
 
     }
@@ -28,11 +28,13 @@ public class Country {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Country [name=" + name + ", id=" + id + ", color=" + color + ", controlValue=" + controlValue + "]";
+        //return super.toString();
     }
 
     @Override
     public int hashCode() {
+
         return super.hashCode();
     }
 }

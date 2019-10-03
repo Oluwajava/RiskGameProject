@@ -1,12 +1,12 @@
 package com.soen.riskgame.module.core.model;
 
 public class CountryDTO {
-    protected String name;
-    protected long id;
-    String XCoordinate;
-    String YCoordinate;
-    //ContinentDTO continentDTO;
-    String continentId;
+    private String name;
+    private long id;
+    private String XCoordinate;
+    private String YCoordinate;
+    private ContinentDTO continentDTO;
+    private String continentId;
 
     public CountryDTO() {
 
