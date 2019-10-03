@@ -5,8 +5,9 @@ public class FileReader {
 
     FileReader(String data) {
     }
-    public String readData(){
-        String returnData="";
+
+    public String readData() {
+        String returnData = "";
         return returnData;
     }
 }
