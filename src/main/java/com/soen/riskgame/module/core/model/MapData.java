@@ -7,14 +7,11 @@ import com.soen.riskgame.module.core.interfaces.CountryAction;
 
 public class MapData implements ContinentAction,CountryAction {
 	
-	
 	String fileName;
 	
 	HashMap<String, Continent> continents=new HashMap<String, Continent>();
 	
 	HashMap<String, Country> countries=new HashMap<String, Country>();
-	
-	
 
 	public MapData() {
 		super();

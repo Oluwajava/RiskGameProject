@@ -2,6 +2,7 @@ package com.soen.riskgame.module.core.model;
 
 import lombok.Getter;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Map {
@@ -51,11 +52,20 @@ public class Map {
     }
 
     private MapData processMapData(Map map) {
-        MapData data = new MapData();
-        data.setContinents(processContinents());
-        data.setCountries(processCountries(data.getContinents()));
-        addCountriesToContinents(data);
-        return data;
+
+        return null;
+    }
+
+    private void addCountriesToContinents(MapData data) {
+
+    }
+
+    private HashMap<String, Continent> processContinents() {
+        return null;
+    }
+
+    private List<Country> buildAdjacentCountries(HashMap<String, Country> countryHashMap, List<Long> key) {
+       return null;
     }
 
 }

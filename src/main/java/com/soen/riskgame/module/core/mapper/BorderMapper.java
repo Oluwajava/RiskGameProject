@@ -2,10 +2,12 @@ package com.soen.riskgame.module.core.mapper
 
 
 public class BorderMapper {
-    public BorderMapper(){
+
+    public BorderMapper() {
 
     }
-    protected BorderDTO mapToBorder(String str){
+
+    protected BorderDTO mapToBorder(String str) {
 
     }
 }
