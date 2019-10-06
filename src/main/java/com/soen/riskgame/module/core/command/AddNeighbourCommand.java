@@ -5,9 +5,9 @@ import com.soen.riskgame.module.core.model.MapData;
 
 public class AddNeighbourCommand implements Command {
 
-    MapData mapData;
-    String countryName;
-    String neighbourCountryName;
+    private MapData mapData;
+    private String countryName;
+    private String neighbourCountryName;
 
 
     public AddNeighbourCommand(MapData mapData, String countryName, String neighbourCountryName) {

@@ -1,12 +1,12 @@
-package com.soen.riskgame.module.core.mapper
-
+package com.soen.riskgame.module.core.mapper;
+import com.soen.riskgame.module.core.model.GameFile;
 
 public class GameFileMapper {
     public GameFileMapper(){
 
     }
-    protected GameFile mapToGameFile(String str)
-    {
-    rerurn null;
+    public static GameFile mapToGameFile(String str) {
+
+        return null;
     }
 }

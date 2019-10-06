@@ -7,14 +7,18 @@ import com.soen.riskgame.module.core.model.MapData;
  * Class uses command pattern to abstract Add Country
  * to Map Data. This class can be called by either the GUI or the command line to perform
  * AddCountry to MapData
+ *  *   <pre>
+ *  *   AddCountryCommand command
+ *  *     = new AddCountryCommand(new MapData(), new String("nigeria"), new String("africa"));
+ *  *   </pre>
  * @see com.soen.riskgame.module.core.interfaces.Command
- * @see <a href="https://refactoring.guru/design-patterns/command">HERO-402</a>
+ * @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
  */
 
 public class AddCountryCommand implements Command {
 
     /**
-     * Contiains the Map Data
+     * Contains the Map Data
      */
     private MapData mapData;
 
@@ -36,7 +40,6 @@ public class AddCountryCommand implements Command {
      * @param continentName The name of the continent that should be added
      *
      */
-
     public AddCountryCommand(MapData mapData, String countryName, String continentName) {
         this.mapData = mapData;
         this.countryName = countryName;
