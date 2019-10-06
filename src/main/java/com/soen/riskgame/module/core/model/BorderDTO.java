@@ -1,37 +1,26 @@
 package com.soen.riskgame.module.core.model;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Data;
 import java.util.List;
 
+/**
+ * Data transfer object that holds the border data
+ * obtained from the map file
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BorderDTO {
+
+    /**
+     * Stores country's Id
+     */
     private Long countryId;
+
+    /**
+     * Holds a list of adjacent countries
+     */
     private List<Long> adjacentCountries;
-
-    public BorderDTO(Long countryId, List<Long> adjacentCountries) {
-        this.countryId = countryId;
-        this.adjacentCountries = adjacentCountries;
-    }
-
-    public BorderDTO() {
-        //TODO
-    }
-
-    public boolean equals(Object object) {
-        //TODO
-        return false; //to modify
-    }
-
-    public boolean canEqual(Object object) {
-        //TODO
-        return false; //to modify
-    }
-
-    public int hashCode() {
-        //TODO
-        return 0; //to modify
-    }
-
-    public String toString() {
-        //TODO
-        return null; //to modify
-    }
 }
