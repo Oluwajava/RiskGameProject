@@ -13,7 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RemoveContinent {
-
+    /**
+     * Stores name of continent
+     */
     private String continentName;
 
 }
