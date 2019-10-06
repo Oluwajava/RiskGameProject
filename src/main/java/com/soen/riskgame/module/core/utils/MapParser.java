@@ -106,7 +106,7 @@ public class MapParser {
         return currentDelimeter;
     }
     /**
-     * This process the continent information and set the delimeter to the continent
+     * This process the file information and set the delimeter to the file delimeter
      * @param currentDelimeter
      * @param line
      * @return
@@ -118,12 +118,24 @@ public class MapParser {
         }return currentDelimeter;
     }
 
+    /**
+     *
+     * @param currentDelimiter
+     * @param files
+     * @param line
+     */
     private void addDataToList(String currentDelimiter, List<String> files, String line) {
         if (isSectionContent(line, currentDelimiter) && StringUtils.isNotBlank(line)) {
             files.add(line.trim());
         }
     }
 
+    /**
+     *Checking the currentDelimenter and borderDelimeter
+     * @param line
+     * @param currentDelimeter
+     * @return boolean on the basis of the check whether currentDelimeter ==borderDelimeter
+     */
     private boolean isSectionContent(String line, String currentDelimeter) {
         return !(line.trim().equals(MapDelimiters.BORDER_DELIMETER)) && !(line.trim().equals(MapDelimiters.CONTINENT_DELIMETER)) &&
                 !(line.trim().equals(MapDelimiters.COUNTRY_DELIMETER)) && !(line.trim().equals(MapDelimiters.NEXT_LINE_DELIMETER)) &&
