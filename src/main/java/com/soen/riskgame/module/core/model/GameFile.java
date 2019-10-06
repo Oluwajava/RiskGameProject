@@ -1,39 +1,33 @@
 package com.soen.riskgame.module.core.model;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Data;
+
+/**
+ * Holds information about the game resource files
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class GameFile {
+    /**
+     * Stores information about the map preview file
+     */
     private String preview;
+
+    /**
+     * Stores map file information
+     */
     private String map;
+
+    /**
+     * Stores the picture names
+     */
     private String pic;
+
+    /**
+     * Stores the card file information
+     */
     private String card;
-
-    public GameFile(String preview, String map, String pic, String card) {
-        this.preview = preview;
-        this.map = map;
-        this.pic = pic;
-        this.card = card;
-    }
-
-    public GameFile(){
-       //TODO
-    }
-
-    public boolean equals(Object object) {
-        //TODO
-        return false; //to modify
-    }
-
-    public boolean canEqual(Object object) {
-        //TODO
-        return false; //to modify
-    }
-
-    public int hashCode(){
-        //TODO
-        return 0; //to modify
-    }
-
-    public String toString() {
-        //TODO
-        return null; //to modify
-    }
 }
