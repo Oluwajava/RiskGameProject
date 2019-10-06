@@ -26,7 +26,8 @@ public class MapParser {
         String returnValue=null;
         return returnValue;
     }
-    public static String processContinentInformation(String value1,String value2){
+    public static String processContinentInformation(String currentDelimeter,String line){
+        if (currentDelimeter)
         String returnValue=null;
         return returnValue;
     }

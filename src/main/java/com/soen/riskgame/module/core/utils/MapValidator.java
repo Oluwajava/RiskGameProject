@@ -1,5 +1,7 @@
 package com.soen.riskgame.module.core.utils;
 
+import com.soen.riskgame.module.core.model.MapData;
+
 public class MapValidator {
     String mapData;
 
