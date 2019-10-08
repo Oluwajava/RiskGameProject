@@ -4,7 +4,9 @@ import java.util.HashMap;
 
 import com.soen.riskgame.module.core.interfaces.ContinentAction;
 import com.soen.riskgame.module.core.interfaces.CountryAction;
+import lombok.Data;
 
+@Data
 public class MapData implements ContinentAction,CountryAction {
 	
 	String fileName;
@@ -18,7 +20,7 @@ public class MapData implements ContinentAction,CountryAction {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void addCountrytoContinent(Country country)
+	public void addCountryToContinent(Country country)
 	{
 		
 	}

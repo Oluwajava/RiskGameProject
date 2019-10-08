@@ -1,75 +1,44 @@
 package com.soen.riskgame.module.core.model;
 
-import java.util.List;
+import lombok.Data;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Data
 public class Continent {
 
-    String name;
+    private Long id;
 
-    long id;
+    private String name;
 
-    String color;
+    private int controlValue;
 
-    int controlValue;
+    private String color;
 
-    List<Country> countries;
+    private List<Country> countries;
 
-    public Continent(String str1, int n, String str2) {
-
+    public Continent(String name, int controlValue, String color) {
+        this.name = name;
+        this.controlValue = controlValue;
+        this.color = color;
     }
 
     public void addCountry(Country country) {
-
+        countries.add(country);
     }
 
-    public void removeCountry(String str1) {
-
-    }
-
-    public boolean canEqual() {
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((color == null) ? 0 : color.hashCode());
-        result = prime * result + controlValue;
-        result = prime * result + (int) (id ^ (id >>> 32));
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Continent other = (Continent) obj;
-        if (color == null) {
-            if (other.color != null)
-                return false;
-        } else if (!color.equals(other.color))
-            return false;
-        if (controlValue != other.controlValue)
-            return false;
-        if (id != other.id)
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        return true;
+    public void removeCountry(String name) {
+        this.countries = countries.stream().filter(v -> !(v.getName().equalsIgnoreCase(name))).collect(Collectors.toList());
     }
 
     @Override
     public String toString() {
-        return "Continent [name=" + name + ", id=" + id + ", color=" + color + ", controlValue=" + controlValue + "]";
+        return "Continent{" +
+                "name='" + name + '\'' +
+                ", controlValue=" + controlValue +
+                ", color='" + color + '\'' +
+                '}';
     }
 
 

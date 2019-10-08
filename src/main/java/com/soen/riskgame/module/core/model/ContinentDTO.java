@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ContinentDTO {
 
-    private String name;
-
     private Long id;
 
-    private String color;
+    private String name;
 
     private Integer controlValue;
+
+    private String color;
 
 }
