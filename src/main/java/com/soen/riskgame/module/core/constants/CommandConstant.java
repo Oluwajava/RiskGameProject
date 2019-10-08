@@ -1,10 +1,12 @@
 package com.soen.riskgame.module.core.constants;
 
+/**
+ * Interface that holds constants for the game commands
+ */
 public interface CommandConstant {
-    //TODO Confirm
-    String EDIT_CONTINENT = "edit_continent";
-    String EDIT_COUNTRY = "edit_country";
-    String EDIT_NEIGHBOR = "edit_neighbor";
-    String CONTINENT_NAME = "continent_name";
-    String COUNTRY_NAME = "country_name";
+    String EDIT_CONTINENT = "editcontinent";
+    String EDIT_COUNTRY = "editcountry";
+    String EDIT_NEIGHBOR = "editneighbor";
+    String CONTINENT_NAME = "continentname";
+    String COUNTRY_NAME = "countryname";
 }

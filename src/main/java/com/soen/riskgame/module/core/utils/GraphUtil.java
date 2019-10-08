@@ -1,20 +1,28 @@
 package com.soen.riskgame.module.core.utils;
 
-public class GraphUtil {
-    HashMap<Country, Boolean> visitedCountries;
-    Set<Country> countries;
-    boolean isConnectedGraph;
+import com.soen.riskgame.module.core.model.Country;
 
-    public boolean isGraphConnected(Set<Country> countrySet) {
+import java.util.HashMap;
+import java.util.Set;
+
+public class GraphUtil {
+
+    private static HashMap<Country, Boolean> visitedCountries;
+
+    private static Set<Country> countries;
+
+    private boolean isConnectedGraph;
+
+    public static boolean isGraphConnected(Set<Country> countrySet) {
         boolean returnValue = false;
         return returnValue;
     }
 
-    public void validateGraoh() {
+    private static void validateGraoh() {
 
     }
 
-    public boolean isConnectedGraph() {
+    private static boolean isConnectedGraph() {
         boolean returnValue = false;
         return returnValue;
     }

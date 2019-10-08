@@ -1,125 +1,95 @@
 package com.soen.riskgame.module.core.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.soen.riskgame.module.core.interfaces.ContinentAction;
 import com.soen.riskgame.module.core.interfaces.CountryAction;
+import com.soen.riskgame.module.core.utils.MapDataUtil;
 import lombok.Data;
 
 @Data
-public class MapData implements ContinentAction,CountryAction {
-	
-	String fileName;
-	
-	HashMap<String, Continent> continents=new HashMap<String, Continent>();
-	
-	HashMap<String, Country> countries=new HashMap<String, Country>();
+public class MapData implements ContinentAction, CountryAction {
 
-	public MapData() {
-		super();
-		// TODO Auto-generated constructor stub
+	private String fileName;
+
+	private HashMap<String, Country> countries;
+
+	private HashMap<String, Continent> continents;
+
+	public void addCountryToContinent(Country country) {
+		Continent continent = continents.get(country.getContinentId());
+		List<Country> countries = continent.getCountries();
+		if (countries == null) {
+			countries = new ArrayList<>();
+		}
+		countries.add(country);
+		continent.setCountries(countries);
+		continents.put(continent.getName(), continent);
 	}
-	
-	public void addCountryToContinent(Country country)
-	{
-		
+
+
+	@Override
+	public void addContinent(String name, int controlValue) {
+		Continent continent = new Continent(name, controlValue, null);
+		continents.put(String.valueOf(continents.size() + 1), continent);
 	}
 
 	@Override
-	public void addContinent(String str1, int n) {
-		// TODO Auto-generated method stub
-		
+	public void removeContinent(String name) {
+		continents.forEach((key, continent) -> {
+			if (continent.getName().equalsIgnoreCase(name)) {
+				continents.remove(continent);
+			}
+		});
 	}
 
 	@Override
-	public void removeContinent(String str1) {
-		// TODO Auto-generated method stub
-		
+	public void editContinent(String name, int controlValue) {
+		continents.forEach((key, continent) -> {
+			if (continent.getName().equalsIgnoreCase(name)) {
+				continent.setName(name);
+				continent.setControlValue(controlValue);
+				continents.put(key, continent);
+			}
+		});
 	}
 
 	@Override
-	public void editContinent(String str1, int n) {
-		// TODO Auto-generated method stub
-		
+	public void addCountry(String countryName, String continentName) {
+		Country country = new Country();
+		country.setId(Long.valueOf(countries.size()+1));
+		country.setName(countryName);
+		Continent continent = MapDataUtil.findContinentByName(continentName, continents);
+		country.setContinent(continent);
+		country.setContinentId(String.valueOf(continent.getId()));
+		continent.addCountry(country);
+		countries.put(String.valueOf(country.getId()), country);
+		continents.put(String.valueOf(continent.getId()), continent);
 	}
 
 	@Override
-	public void addCountry(String str1, String str2) {
-		// TODO Auto-generated method stub
-		
+	public void removeCountry(String countryName) {
+		Country country = MapDataUtil.findCountryByName(countryName, countries);
+		countries.remove(countryName);
+		Continent continent = country.getContinent();
+		continent.removeCountry(countryName);
+		continents.put(String.valueOf(continent.getId()), continent);
 	}
 
 	@Override
-	public void removeCountry(String str1) {
-		// TODO Auto-generated method stub
-		
+	public void addNeighbour(String countryName, String neighborCountryName) {
+
 	}
 
 	@Override
-	public void addNeighbour(String str1, String str2) {
-		// TODO Auto-generated method stub
-		
+	public void removeNeighbour(String countryName, String neighbourCountryName) {
+
 	}
 
-	@Override
-	public void removeNeighbour(String str1, String str2) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public String toFile()
-	{
+
+	public String toFile() {
 		return null;
 	}
-	
-	
-	
-	public boolean canEqual(Object obj)
-	{
-		return true;
-	}
-	
-
-	
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((continents == null) ? 0 : continents.hashCode());
-		result = prime * result + ((fileName == null) ? 0 : fileName.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MapData other = (MapData) obj;
-		if (continents == null) {
-			if (other.continents != null)
-				return false;
-		} else if (!continents.equals(other.continents))
-			return false;
-		if (fileName == null) {
-			if (other.fileName != null)
-				return false;
-		} else if (!fileName.equals(other.fileName))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "MapData []";
-	}
-	
-	
-	
-
-	
 }
