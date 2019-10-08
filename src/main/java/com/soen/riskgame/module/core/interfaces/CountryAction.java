@@ -1,13 +1,13 @@
 package com.soen.riskgame.module.core.interfaces;
 
 public interface CountryAction {
-	
-	 public void addCountry(String str1,String str2);
-	 
-	 public void removeCountry(String str1);
-	 
-	 public void addNeighbour(String str1,String str2);
-	 
-	 public void removeNeighbour(String str1,String str2);
+
+    void addCountry(String countryName, String continentName);
+
+    void removeCountry(String country);
+
+    void addNeighbour(String countryName, String neighborCountryName);
+
+    void removeNeighbour(String countryName, String neighbourCountryName);
 
 }

@@ -3,7 +3,6 @@ package com.soen.riskgame.module.core.utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -14,15 +13,15 @@ public class FileReader {
     String fileLocation;
 
     /**
-     *
      * @param fileLocation is passed from the called function
      */
     FileReader(String fileLocation) {
-        this.fileLocation=fileLocation;
+        this.fileLocation = fileLocation;
     }
 
     /**
-     *This function is used to read the file and pass the data as String
+     * This function is used to read the file and pass the data as String
+     *
      * @return fileData as String
      * @throws IOException
      */

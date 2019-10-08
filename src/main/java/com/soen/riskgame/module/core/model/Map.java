@@ -4,6 +4,7 @@ import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Map {
 
@@ -51,21 +52,55 @@ public class Map {
         gameFile = builder.gameFile;
     }
 
-    private MapData processMapData(Map map) {
 
-        return null;
+    private MapData processMapData(Map map) {
+        MapData data = new MapData();
+        data.setContinents(processContinents());
+        data.setCountries(processCountries(data.getContinents()));
+        addCountriesToContinents(data);
+        return data;
     }
 
     private void addCountriesToContinents(MapData data) {
-
+        data.getCountries().entrySet().forEach(entry -> data.addCountryToContinent(entry.getValue()));
     }
 
     private HashMap<String, Continent> processContinents() {
-        return null;
+        HashMap<String, Continent> continents = new HashMap<>();
+        for (int i = 0; i < continentDTOList.size(); i++) {
+            Continent continent = new Continent(continentDTOList.get(i).getName(), continentDTOList.get(i).getControlValue(), continentDTOList.get(i).getColor());
+            continent.setId(continentDTOList.get(i).getId());
+            continents.put(String.valueOf(i + 1), continent);
+        }
+        return continents;
     }
 
-    private List<Country> buildAdjacentCountries(HashMap<String, Country> countryHashMap, List<Long> key) {
-       return null;
+    private HashMap<String, Country> processCountries(HashMap<String, Continent> continentHashMap) {
+        HashMap<String, Country> countryHashMap = new HashMap<>();
+        countryDTOList.forEach(v -> {
+            Country country = new Country(v.getId(), v.getName(), v.getXCoordinate(), v.getYCoordinate());
+            country.setContinent(continentHashMap.get(v.getContinentId()));
+            country.setContinentId(v.getContinentId());
+            countryHashMap.put(String.valueOf(v.getId()), country);
+        });
+
+        countryHashMap.forEach((key, country) -> {
+            List<Country> adjacentCountries = buildAdjacentCountries(countryHashMap, borderDTOList.get(Integer.parseInt(key) - 1).getAdjacentCountries());
+            country.setAdjacentCountries(adjacentCountries);
+            countryHashMap.put(key, country);
+        });
+
+        return countryHashMap;
     }
+
+
+    private List<Country> buildAdjacentCountries(HashMap<String, Country> countryHashMap, List<Long> key) {
+        List<Country> countries = key.stream().map(v -> {
+            Country country = countryHashMap.get(String.valueOf(v));
+            return country;
+        }).collect(Collectors.toList());
+        return countries;
+    }
+
 
 }
