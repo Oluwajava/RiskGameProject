@@ -2,20 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3330c908-d33d-432c-9515-abe5b680e170" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/base/BaseView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/MapPicker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/View.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/create-map.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/edit-map.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/info.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/join.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/load-game.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/new-file.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/base/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/Test.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_editor/MapEditorView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/map_editor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/soen/riskgame/ControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/soen/riskgame/module/core/utils/FileReaderTest.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/soen/riskgame/module/core/utils/FileWriterTest.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/RiskGameApplication.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/ActionConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/AddContinent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/AddContinentCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/AddCountryCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/AddNeighborCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/CommandConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/CommandProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/CommandTokenizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/Lexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/RemoveContinent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/RemoveContinentCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/RemoveCountryCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/Token.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/command_processor/TokenType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/BorderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/BorderMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/ContinentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/ContinentMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/CountryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/CountryMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/GameFileMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/GameFileMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/BorderDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/BorderDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/ContinentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/ContinentDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Country.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Country.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/CountryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/CountryDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Dice.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/GameFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/GameFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Map.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/MapData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/MapData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/MapDataVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/RoundRobin$Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/RoundRobin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/dashboard/DashboardView$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/dashboard/DashboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/dashboard/DashboardView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/game_play/GamePlayView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/load_game/LoadGameView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/load_game/interfaces/GameLoaded.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_selector/MapInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_selector/MapListView$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_selector/MapListView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/new_game/NewGameView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/utils/FileReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/utils/FileWriter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/utils/GraphUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/utils/MapEditor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/utils/MapParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/utils/MapValidator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/commands/commands.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/game-play.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/map_selector.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/new-game.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/soen/riskgame/ControllerTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,26 +81,32 @@
     <session id="-114174731">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="131" />
+          <entry key="fxml" value="62" />
+          <entry key="java" value="206" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="131" />
+          <entry key="JAVA" value="206" />
+          <entry key="XML" value="62" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="1" />
-          <entry key="fxml" value="1" />
-          <entry key="java" value="68" />
+          <entry key="fxml" value="4" />
+          <entry key="groovy" value="1" />
+          <entry key="java" value="71" />
+          <entry key="map" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="JAVA" value="68" />
-          <entry key="XML" value="1" />
+          <entry key="Groovy" value="1" />
+          <entry key="JAVA" value="71" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="XML" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -67,31 +121,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="679">
-              <caret line="108" column="84" selection-start-line="108" selection-start-column="84" selection-end-line="108" selection-end-column="84" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+            <state relative-caret-position="421">
+              <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -103,7 +136,26 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_editor/MapEditorView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/view/map_editor.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="42" column="55" lean-forward="true" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -111,49 +163,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/view/dashboard.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/css/style.css">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="48" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/base/BaseView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/MapPicker.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/View.java">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Load M</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -172,7 +194,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/ContinentAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/CountryAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/GraphUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/view/map_editor.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_editor/MapEditorView.java" />
       </list>
     </option>
   </component>
@@ -189,10 +214,26 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="RiskGameApplication" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="RiskGameApplication" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="25" />
     <option name="width" value="1440" />
-    <option name="height" value="826" />
+    <option name="height" value="824" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -250,38 +291,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="riskgame" type="462c0819:PsiDirectoryNode" />
               <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="riskgame" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="riskgame" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="riskgame" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
               <item name="dashboard" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -289,7 +298,48 @@
               <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="riskgame" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+              <item name="map_editor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="riskgame" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+              <item name="map_selector" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
@@ -307,19 +357,20 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570578215213" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570588081205" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.soen.riskgame.module.map_editor" />
       <recent name="com.soen.riskgame.module.core.base" />
       <recent name="com.soen.riskgame.module.dashboard" />
       <recent name="com.soen.riskgame.module.core.utils" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/view" />
       <recent name="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces" />
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
       <recent name="$PROJECT_DIR$/src/main/resources/css" />
-      <recent name="$PROJECT_DIR$/src/main/resources/view" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -353,6 +404,19 @@
       <module name="" />
       <method v="2" />
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.soen.riskgame.Main" />
+      <module name="RiskGameApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.soen.riskgame.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -364,36 +428,37 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570390015400</updated>
-      <workItem from="1570577446101" duration="768000" />
+      <workItem from="1570577446101" duration="3803000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1503000" />
+    <option name="totallyTimeSpent" value="4538000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="826" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26752505" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26752505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.3287858" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.09277108" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.14305177" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.14305177" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="right" id="Maven Projects" weight="0.3297568" />
       <window_info anchor="right" id="Database" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -414,13 +479,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/maps/ameroki.map">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/maps/lotr.map">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -669,23 +727,12 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
-          <caret line="13" column="9" lean-forward="true" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/view/dashboard.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/css/style.css">
       <provider selected="true" editor-type-id="text-editor" />
@@ -697,29 +744,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/base/BaseView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/MapPicker.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/View.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/soen/riskgame/module/core/utils/FileReaderTest.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+        <state relative-caret-position="30">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/base/BaseView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/maps/ameroki.map">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/view/dashboard.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/view/map_editor.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="55" lean-forward="true" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_editor/MapEditorView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
         </state>
       </provider>
     </entry>
