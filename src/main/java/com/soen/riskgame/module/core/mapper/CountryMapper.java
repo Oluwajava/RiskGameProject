@@ -1,6 +1,9 @@
 package com.soen.riskgame.module.core.mapper;
 
 import com.soen.riskgame.module.core.model.CountryDTO;
+import com.soen.riskgame.module.core.constants.MapDelimiters;
+import lombok.Data;
+
 
 /**
  * class CountryMapper uses pattern to countryDTO class and contains the methods 
@@ -12,12 +15,20 @@ public class CountryMapper {
     }
     /**
      * mapToCountry method is used to split the map file based on country and these method uses ContientDTO has call type
-     * @param str
+     * @param data
      * @return
      */
-    public static CountryDTO mapToCountry(String str){
 
-        return null;
+    public static CountryDTO mapToCountry(String data){
+        String[] countryData = data.split(MapDelimiters.SPACE_DELIMITER);
+        CountryDTO countryDTO = new CountryDTO();
+        countryDTO.setId(Long.valueOf(countryData[0]));
+        countryDTO.setName(countryData[1]);
+        countryDTO.setContinentId(countryData[2]);
+        countryDTO.setXCoordinate(countryData[3]);
+        countryDTO.setYCoordinate(countryData[4]);
+        return countryDTO;
+
     }
 
 }
