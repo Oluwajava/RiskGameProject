@@ -59,4 +59,11 @@ public class CountryDTO {
 
 
     }
+    @Override
+    public String toString() {
+        return "Country{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
