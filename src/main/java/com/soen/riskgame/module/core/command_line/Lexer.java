@@ -23,7 +23,7 @@ public class Lexer {
                         result.add(new Token(TokenType.EDIT_CONTINENT, CommandConstant.EDIT_CONTINENT));
                         break;
                     case CommandConstant.EDIT_COUNTRY:
-                        result.add(new Token(TokenType.EDIT_COUNTRY, CommandConstant.EDIT_CONTINENT));
+                        result.add(new Token(TokenType.EDIT_COUNTRY, CommandConstant.EDIT_COUNTRY));
                         break;
                     case CommandConstant.EDIT_NEIGHBOR:
                         result.add(new Token(TokenType.EDIT_NEIGHBOUR, CommandConstant.EDIT_NEIGHBOR));
