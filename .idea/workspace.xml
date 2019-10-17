@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e68a4107-ebd2-437f-b5cd-3b2038c8b87c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/ColorGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/FileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/FileWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/GraphUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/RoundRobin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,20 +72,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="106" column="7" selection-start-line="106" selection-start-column="7" selection-end-line="106" selection-end-column="7" />
+            <state relative-caret-position="314">
+              <caret line="106" column="6" selection-start-line="106" selection-start-column="6" selection-end-line="106" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-289">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="192">
+              <caret line="64" column="78" selection-start-line="64" selection-start-column="78" selection-end-line="64" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -136,6 +128,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/GraphUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapParser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java" />
       </list>
     </option>
   </component>
@@ -381,7 +374,7 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" sideWeight="0.49924356" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" sideWeight="0.49924356" visible="true" weight="0.2651391" />
+      <window_info anchor="bottom" id="Terminal" sideWeight="0.49924356" visible="true" weight="0.22913256" />
       <window_info anchor="bottom" id="Event Log" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -464,13 +457,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/RoundRobin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -508,8 +494,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="106" column="7" selection-start-line="106" selection-start-column="7" selection-end-line="106" selection-end-column="7" />
+        <state relative-caret-position="314">
+          <caret line="106" column="6" selection-start-line="106" selection-start-column="6" selection-end-line="106" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="64" column="78" selection-start-line="64" selection-start-column="78" selection-end-line="64" selection-end-column="78" />
         </state>
       </provider>
     </entry>
