@@ -1,89 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3330c908-d33d-432c-9515-abe5b680e170" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddPlayerCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/EditMapCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/FortifyCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/FortifyNoneCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/LoadMapCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/PlaceAllArmyCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/PlaceArmyCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/PopulateCountriesCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/ReinforceCountryCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveNeigbourCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemovePlayerCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/SaveFileCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/ShowMapCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/ValidateCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Lexer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Token.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/TokenCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/TokenType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/ActionConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/ArmyAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/FortificationAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/PlayerAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/PlayerCommandListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/ReinforceAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Army.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/ColorGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/RoundRobin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/game_play/GamePlayController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_selector/MapInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_selector/MapListController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/game-play.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/map_selector.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/new-game.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddContinentCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddContinentCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddCountryCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddCountryCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddNeighbourCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddNeighbourCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveContinentCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveContinentCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveCountryCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveCountryCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/CommandConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/CommandConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/MapDelimiters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/MapDelimiters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/CountryAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/CountryAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/MapPicker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/MapPicker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/BorderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/BorderMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/ContinentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/ContinentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/CountryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/CountryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Continent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Continent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/RemoveContinent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/FileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/FileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/FileWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/GraphUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/GraphUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/load_game/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_editor/MapEditorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_editor/MapEditorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_selector/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maps/ameroki.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maps/ameroki.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/map_editor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/map_editor.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/constants/MapDelimiters.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/constants/MapDelimiters.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/CountryAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/CountryAction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/MapPicker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/MapPicker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/BorderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/BorderMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/ContinentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/ContinentMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/CountryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/CountryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Continent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Continent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Country.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Country.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/MapData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/MapData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/MapDataUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/MapDataUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/dashboard/DashboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/dashboard/DashboardView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/maps/ameroki.map" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/maps/ameroki.map" afterDir="false" />
-    </list>
+    <list default="true" id="3330c908-d33d-432c-9515-abe5b680e170" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -122,6 +40,7 @@
           <entry key="css" value="1" />
           <entry key="fxml" value="21" />
           <entry key="gif" value="1" />
+          <entry key="gitignore" value="1" />
           <entry key="groovy" value="1" />
           <entry key="java" value="429" />
           <entry key="map" value="12" />
@@ -137,7 +56,7 @@
           <entry key="Groovy" value="1" />
           <entry key="Image" value="2" />
           <entry key="JAVA" value="429" />
-          <entry key="PLAIN_TEXT" value="15" />
+          <entry key="PLAIN_TEXT" value="16" />
           <entry key="XML" value="21" />
         </counts>
       </usages-collector>
@@ -184,12 +103,19 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Lexer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-265" />
           </provider>
         </entry>
       </file>
@@ -460,7 +386,7 @@
     <property name="SearchEverywhereHistoryKey" value="newcreate&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/newcreatedmap.map&#10;MapDA&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java&#10;Map&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/Map.java&#10;MapPar&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/utils/MapParser.java&#10;tes&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/testing222&#10;MapDa&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/MapData.java&#10;testing2&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/testing222&#10;testinm&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/testinmapfile222&#10;SaveF&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/command/SaveFileCommand.java&#10;testing&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/testingfilename&#10;MapEdi&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/map_editor/MapEditorController.java&#10;MapU&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java&#10;MapEd&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/map_editor/MapEditorController.java&#10;Load&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/command/LoadMapCommand.java&#10;REin&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/command/ReinforceCountryCommand.java&#10;MapData&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/MapData.java&#10;Round&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/utils/RoundRobin.java&#10;MapLIs&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/map_selector/MapListController.java&#10;M&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/MapData.java&#10;Playe&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/command/RemovePlayerCommand.java&#10;Command&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java&#10;MapList&#9;PSI&#9;JAVA://com.soen.riskgame.module.map_selector.MapListController&#10;CommandSy&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java&#10;MapEdit&#9;PSI&#9;JAVA://com.soen.riskgame.module.map_editor.MapEditorController&#10;GraphUtil&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/utils/GraphUtil.java&#10;Country&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/Country.java&#10;MapDel&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/constants/MapDelimiters.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571329113431" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571329464621" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -594,7 +520,7 @@
       <workItem from="1571143840603" duration="441000" />
       <workItem from="1571182230327" duration="1106000" />
       <workItem from="1571196572105" duration="9675000" />
-      <workItem from="1571243867575" duration="27981000" />
+      <workItem from="1571243867575" duration="28232000" />
     </task>
     <servers />
   </component>
@@ -610,13 +536,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85372000" />
+    <option name="totallyTimeSpent" value="85623000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19313304" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19313304" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -625,13 +550,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.36144578" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.14216867" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49928468" visible="true" weight="0.56626505" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5007153" side_tool="true" weight="0.56626505" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32771084" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
@@ -819,17 +744,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddCountryCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
-          <folding>
-            <element signature="e#2116#2117#0" expanded="true" />
-            <element signature="e#2204#2205#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/CountryMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1225,6 +1139,11 @@
         <state relative-caret-position="75">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-265" />
       </provider>
     </entry>
   </component>
