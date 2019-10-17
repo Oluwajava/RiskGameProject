@@ -83,6 +83,10 @@ public class MapParser {
         }
     }
 
+    /**
+     * This function set the currentDelimeter
+     * @param line
+     */
     private void setCurrentDelimeter(String line) {
         if (line.equalsIgnoreCase(MapDelimiters.COUNTRY_DELIMETER)) {
             this.currentDelimeter = MapDelimiters.COUNTRY_DELIMETER;
@@ -100,7 +104,7 @@ public class MapParser {
      *
      * @param currentDelimeter
      * @param line
-     * @return
+     *
      */
     private void processContinentInformation(String currentDelimeter, String line) {
         if (this.currentDelimeter.equals(MapDelimiters.CONTINENT_DELIMETER)) {
@@ -116,7 +120,7 @@ public class MapParser {
      *
      * @param currentDelimeter
      * @param line
-     * @return
+     * @return currentDelimeter
      */
     private String processBorderInformation(String currentDelimeter, String line) {
         if (this.currentDelimeter.equals(MapDelimiters.BORDER_DELIMETER)) {
