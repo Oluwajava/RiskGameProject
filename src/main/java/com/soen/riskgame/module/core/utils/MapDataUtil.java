@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * This class loads the map data from the file
+ */
 public class MapDataUtil {
 
     public static MapData loadMapFromFile(String fileName) {
@@ -48,6 +51,12 @@ public class MapDataUtil {
         return data;
     }
 
+    /**
+     * this function finds the continenent by name
+     * @param continentName
+     * @param continents
+     * @return
+     */
     public static Continent findContinentByName(String continentName, HashMap<String, Continent> continents) {
         Optional<Map.Entry<String, Continent>> entries = continents.entrySet()
                 .stream()
