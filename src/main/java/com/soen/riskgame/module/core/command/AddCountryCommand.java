@@ -32,6 +32,10 @@ public class AddCountryCommand implements Command {
      */
     private String continentName;
 
+    private String xCoordinate;
+
+    private String yCoordinate;
+
     /**
      * Constructor for the MapEditor class Initializes mapIO object.
      *
@@ -46,6 +50,14 @@ public class AddCountryCommand implements Command {
         this.continentName = continentName;
     }
 
+    public AddCountryCommand(MapData mapData, String countryName, String continentName, String xCoordinate, String yCoordinate) {
+        this.mapData = mapData;
+        this.countryName = countryName;
+        this.continentName = continentName;
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+    }
+
     /**
      * Method is inherited from the @see Command Interface
      * which is used to abstract the execution of
@@ -53,6 +65,6 @@ public class AddCountryCommand implements Command {
      */
     @Override
     public void execute() {
-
+        mapData.addCountry(countryName, continentName, xCoordinate, yCoordinate);
     }
 }

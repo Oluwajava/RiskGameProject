@@ -2,6 +2,7 @@ package com.soen.riskgame.module.core.model;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,6 +23,7 @@ public class Continent {
         this.name = name;
         this.controlValue = controlValue;
         this.color = color;
+        countries = new ArrayList<>();
     }
 
     public void addCountry(Country country) {

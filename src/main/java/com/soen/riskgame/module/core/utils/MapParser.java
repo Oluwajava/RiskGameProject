@@ -6,10 +6,13 @@ import com.soen.riskgame.module.core.mapper.ContinentMapper;
 import com.soen.riskgame.module.core.mapper.CountryMapper;
 import com.soen.riskgame.module.core.model.*;
 import lombok.Data;
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.soen.riskgame.module.core.mapper.CountryMapper.mapToCountry;
 
 /**
  * @author Sibil
@@ -17,23 +20,26 @@ import java.util.List;
  * of the section in the file.
  * The sections are divided into four continents,borders, countries and gameFile
  */
-@Data
+@Getter
 public class MapParser {
-
-    private List<ContinentDTO> continentDTOS;
-
-    private List<BorderDTO> borderDTOS;
 
     private GameFile gameFile;
 
+    private List<ContinentDTO> continentDTOS;
+
     private List<CountryDTO> countries;
+
+    private List<BorderDTO> borderDTOS;
+
+    private String currentDelimeter = "";
 
     /**
      * Constructor intialize the variables
+     *
      * @param mapData
      * @throws Exception
      */
-    MapParser(String mapData) throws Exception {
+    public MapParser(String mapData) throws Exception {
         if (mapData == null || mapData.length() == 0) {
             throw new Exception("Invalid data size");
         }
@@ -46,12 +52,13 @@ public class MapParser {
 
     /**
      * This function process the data and reads the string line by line.
+     *
      * @param mapData
      */
     private void processData(String mapData) {
         String[] lines = mapData.split(MapDelimiters.NEXT_LINE_DELIMETER);
-        String currentDelimeter = "";
         for (String line : lines) {
+            setCurrentDelimeter(line);
             processFileInformation(currentDelimeter, line);
             processBorderInformation(currentDelimeter, line);
             processContinentInformation(currentDelimeter, line);
@@ -62,64 +69,81 @@ public class MapParser {
 
     /**
      * This process the country information and set the delimeter to the country
+     *
      * @param currentDelimeter
      * @param line
      * @return
      */
-    private String processCountryInformation(String currentDelimeter, String line) {
-        if (line.trim().equals(MapDelimiters.COUNTRY_DELIMETER) || currentDelimeter.equals(MapDelimiters.COUNTRY_DELIMETER)) {
-            currentDelimeter = MapDelimiters.COUNTRY_DELIMETER;
+    private void processCountryInformation(String currentDelimeter, String line) {
+        if (this.currentDelimeter.equals(MapDelimiters.COUNTRY_DELIMETER)) {
+            this.currentDelimeter = MapDelimiters.COUNTRY_DELIMETER;
             if (isSectionContent(line, currentDelimeter) && StringUtils.isNotBlank(line)) {
-                countries.add(CountryMapper.mapToCountry(line));
+                countries.add(mapToCountry(line));
             }
         }
-        return currentDelimeter;
     }
+
+    private void setCurrentDelimeter(String line) {
+        if (line.equalsIgnoreCase(MapDelimiters.COUNTRY_DELIMETER)) {
+            this.currentDelimeter = MapDelimiters.COUNTRY_DELIMETER;
+        } else if (line.equalsIgnoreCase(MapDelimiters.CONTINENT_DELIMETER)) {
+            this.currentDelimeter = MapDelimiters.CONTINENT_DELIMETER;
+        } else if (line.equalsIgnoreCase(MapDelimiters.BORDER_DELIMETER)) {
+            this.currentDelimeter = MapDelimiters.BORDER_DELIMETER;
+        } else if (line.equalsIgnoreCase(MapDelimiters.FILE_DELIMITER)) {
+            this.currentDelimeter = MapDelimiters.FILE_DELIMITER;
+        }
+    }
+
     /**
      * This process the continent information and set the delimeter to the continent
+     *
      * @param currentDelimeter
      * @param line
      * @return
      */
-    private String processContinentInformation(String currentDelimeter, String line) {
-        if (line.trim().equals(MapDelimiters.CONTINENT_DELIMETER) || currentDelimeter.equals(MapDelimiters.CONTINENT_DELIMETER)) {
-            currentDelimeter = MapDelimiters.CONTINENT_DELIMETER;
+    private void processContinentInformation(String currentDelimeter, String line) {
+        if (this.currentDelimeter.equals(MapDelimiters.CONTINENT_DELIMETER)) {
             if (isSectionContent(line, currentDelimeter) && StringUtils.isNotBlank(line)) {
                 continentDTOS.add(ContinentMapper.mapToContinent(line));
             }
         }
-        return currentDelimeter;
+
     }
+
     /**
      * This process the border information and set the delimeter to the boreder
+     *
      * @param currentDelimeter
      * @param line
      * @return
      */
     private String processBorderInformation(String currentDelimeter, String line) {
-        if (line.trim().equals(MapDelimiters.BORDER_DELIMETER) || currentDelimeter.equals(MapDelimiters.BORDER_DELIMETER)) {
-            currentDelimeter = MapDelimiters.CONTINENT_DELIMETER;
+        if (this.currentDelimeter.equals(MapDelimiters.BORDER_DELIMETER)) {
+            this.currentDelimeter = MapDelimiters.BORDER_DELIMETER;
             if (isSectionContent(line, currentDelimeter) && StringUtils.isNotBlank(line)) {
                 borderDTOS.add(BorderMapper.mapToBorder(line));
             }
         }
         return currentDelimeter;
     }
+
     /**
      * This process the file information and set the delimeter to the file delimeter
+     *
      * @param currentDelimeter
      * @param line
      * @return
      */
-    private static String processFileInformation(String currentDelimeter, String line) {
-        if (line.trim().equals(MapDelimiters.FILE_DELIMITER) || currentDelimeter.equals(MapDelimiters.FILE_DELIMITER)) {
-            currentDelimeter = MapDelimiters.FILE_DELIMITER;
+    private String processFileInformation(String currentDelimeter, String line) {
+        if (line.trim().equals(MapDelimiters.FILE_DELIMITER) || this.currentDelimeter.equals(MapDelimiters.FILE_DELIMITER)) {
+            this.currentDelimeter = MapDelimiters.FILE_DELIMITER;
 
-        }return currentDelimeter;
+        }
+        return currentDelimeter;
     }
 
     /**
-     *
      * @param currentDelimiter
      * @param files
      * @param line
@@ -131,7 +155,8 @@ public class MapParser {
     }
 
     /**
-     *Checking the currentDelimenter and borderDelimeter
+     * Checking the currentDelimenter and borderDelimeter
+     *
      * @param line
      * @param currentDelimeter
      * @return boolean on the basis of the check whether currentDelimeter ==borderDelimeter

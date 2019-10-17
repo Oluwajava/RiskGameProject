@@ -1,7 +1,8 @@
 package com.soen.riskgame.module.dashboard;
 
 import com.soen.riskgame.module.core.base.BaseView;
-import com.soen.riskgame.module.map_editor.MapEditorView;
+import com.soen.riskgame.module.map_editor.MapEditorController;
+import com.soen.riskgame.module.new_game.NewGameController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,20 +27,34 @@ public class DashboardView extends BaseView {
 
         scene.getWindow();
 
-        createMapButton.setOnAction(event -> {
-        });
-        editMapButton.setOnAction(event -> {
-
+        newGameButton.setOnAction(event -> {
             try {
-                MapEditorView mapEditorView = new MapEditorView();
+                NewGameController newGameController = new NewGameController();
                 Stage stage = new Stage();
                 stage.setTitle("My New Stage Title");
-                stage.setScene(mapEditorView.getView());
+                try {
+                    stage.setScene(newGameController.getView());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        });
 
+        createMapButton.setOnAction(event -> {
+        });
+        editMapButton.setOnAction(event -> {
+            try {
+                MapEditorController mapEditorController = new MapEditorController();
+                Stage stage = new Stage();
+                stage.setTitle("My New Stage Title");
+                stage.setScene(mapEditorController.getView());
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
 

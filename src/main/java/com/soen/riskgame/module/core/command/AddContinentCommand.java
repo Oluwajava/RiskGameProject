@@ -51,5 +51,7 @@ public class AddContinentCommand implements Command {
      * the AddContinentCommand
      */
     @Override
-    public void execute() {}
+    public void execute() {
+        mapData.addContinent(continentName, controlValue);
+    }
 }

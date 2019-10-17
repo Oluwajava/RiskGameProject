@@ -62,7 +62,7 @@ public class Map {
     }
 
     private void addCountriesToContinents(MapData data) {
-        data.getCountries().entrySet().forEach(entry -> data.addCountryToContinent(entry.getValue()));
+        data.getCountries().forEach((key, value) -> data.addCountryToContinent(value));
     }
 
     private HashMap<String, Continent> processContinents() {

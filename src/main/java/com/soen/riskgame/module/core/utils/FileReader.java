@@ -15,7 +15,7 @@ public class FileReader {
     /**
      * @param fileLocation is passed from the called function
      */
-    FileReader(String fileLocation) {
+    public FileReader(String fileLocation) {
         this.fileLocation = fileLocation;
     }
 

@@ -17,7 +17,7 @@ public class FileWriter {
      * @param data
      * @param fileLocation
      */
-    FileWriter(String data, String fileLocation) {
+    public FileWriter(String data, String fileLocation) {
         this.data = data;
         this.fileLocation = fileLocation;
     }
@@ -30,5 +30,6 @@ public class FileWriter {
         File file = new File(fileLocation);
         PrintWriter printWriter = new PrintWriter(file);
         printWriter.println(data);
+        printWriter.close();
     }
 }

@@ -16,5 +16,6 @@ public class RemoveContinentCommand implements Command {
 
     @Override
     public void execute() {
+        mapData.removeContinent(continentName);
     }
 }

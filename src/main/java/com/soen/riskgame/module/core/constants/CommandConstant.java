@@ -9,4 +9,15 @@ public interface CommandConstant {
     String EDIT_NEIGHBOR = "editneighbor";
     String CONTINENT_NAME = "continentname";
     String COUNTRY_NAME = "countryname";
+    String SHOW_MAP = "showmap";
+    String SAVE_MAP = "savemap";
+    String EDIT_MAP = "editmap";
+    String VALIDATE_MAP = "validatemap";
+    String LOAD_MAP = "loadmap";
+    String GAME_PLAYER = "gameplayer";
+    String POPULATE_COUNTRIES = "populatecountries";
+    String PLACE_ARMY = "placearmy";
+    String PLACE_ALL = "placeall";
+    String REINFORCE = "reinforce";
+    String FORTIFY = "fortify";
 }

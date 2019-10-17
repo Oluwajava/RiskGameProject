@@ -1,14 +1,16 @@
 package com.soen.riskgame.module.core.utils;
 
 import com.soen.riskgame.module.core.constants.MapDelimiters;
+import com.soen.riskgame.module.core.model.Continent;
 import com.soen.riskgame.module.core.model.MapData;
 
 import java.util.HashSet;
 
 public class MapValidator {
-    String mapData;
 
-    public MapValidator(String data) throws Exception {
+    private String mapData;
+
+    public MapValidator(String mapData) throws Exception {
         if (mapData == null || mapData.length() == 0) {
             throw new Exception("Invalid data size");
         }
@@ -37,13 +39,16 @@ public class MapValidator {
         }
     }
 
-    public boolean isGraphConnected(MapData data) {
-       boolean connected = false;
+    public static boolean isGraphConnected(MapData data) {
+        boolean connected = GraphUtil.isGraphConnected(new HashSet<>(data.getCountries().values()));
+        connected = isCountriesInContinentsConnected(data, connected);
         return connected;
     }
 
-    public boolean isCountriesInContinentsConnected(MapData data, boolean connected) {
-
+    public static boolean isCountriesInContinentsConnected(MapData data, boolean connected) {
+        for (java.util.Map.Entry<String, Continent> continent : data.getContinents().entrySet()) {
+            connected = GraphUtil.isGraphConnected(new HashSet<>(continent.getValue().getCountries()));
+        }
         return connected;
     }
 

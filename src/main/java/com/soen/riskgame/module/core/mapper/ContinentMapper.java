@@ -1,5 +1,6 @@
 package com.soen.riskgame.module.core.mapper;
 
+import com.soen.riskgame.module.core.constants.MapDelimiters;
 import com.soen.riskgame.module.core.model.ContinentDTO;
 
 /**
@@ -14,11 +15,15 @@ public class ContinentMapper {
 
     /**
      * mapToContienet method is used to split the map file based on Continent and these method uses ContientDTO has call type
-     * @param str
+     * @param data
      * @return
      */
-    public static ContinentDTO mapToContinent(String str) {
-
-        return null ;
+    public static ContinentDTO mapToContinent(String data) {
+        String[] continentData = data.split(MapDelimiters.SPACE_DELIMITER);
+        ContinentDTO continentDTO = new ContinentDTO();
+        continentDTO.setName(continentData[0]);
+        continentDTO.setControlValue(Integer.valueOf(continentData[1]));
+        continentDTO.setColor(continentData[2]);
+        return continentDTO;
     }
 }

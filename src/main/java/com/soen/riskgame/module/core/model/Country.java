@@ -3,8 +3,10 @@ package com.soen.riskgame.module.core.model;
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Class Country is the final stage of the data that is parsed  from the map files.
@@ -16,6 +18,7 @@ import lombok.Data;
  * @see com.soen.riskgame.module.core.mapper
  */
 @Data
+@EqualsAndHashCode(exclude = {"continent", "adjacentCountries"})
 public class Country {
 
     /**
@@ -34,7 +37,7 @@ public class Country {
     /**
      * contains details of the player who is holding the country
      */
-    //private Player player;
+    private Player player;
     /**
      * contains country X coordinate data while using the GUI
      */
@@ -47,7 +50,7 @@ public class Country {
     /**
      * contains noOfArmies that are present in the country
      */
-    private int noOfArmies;
+    private int noOfArmies = 0;
 
     /**
      * contains list of adjacent countries
@@ -62,7 +65,7 @@ public class Country {
      * default constructor of the country class
      */
     public Country() {
-
+        adjacentCountries = new ArrayList<>();
     }
 
     /**
@@ -89,6 +92,43 @@ public class Country {
         this.name = name;
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
+        this.adjacentCountries = new ArrayList<>();
     }
 
+    @Override
+    public String toString() {
+        return "Country{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    public void addArmy() {
+        noOfArmies++;
+    }
+
+    public void addArmy(int num) {
+        noOfArmies += num;
+    }
+
+    public void removeArmy(int num) {
+        noOfArmies -= num;
+    }
+
+    public void addNeighbour(Country country) {
+        this.adjacentCountries.add(country);
+    }
+
+    public void removeNeighbour(Country country) {
+        this.adjacentCountries = adjacentCountries.stream().filter(v -> !(v.equals(country))).collect(Collectors.toList());
+    }
+
+    public boolean isCountryAdjacent(String countryName) {
+        for (Country country: adjacentCountries) {
+            if (country.getName().equalsIgnoreCase(countryName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

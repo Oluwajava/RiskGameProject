@@ -16,4 +16,5 @@ public interface MapDelimiters {
 
     String CARRIAGE_DELIMITER = "\r";
 
+    String MAP_FILE_EXTENSION = ".map";
 }

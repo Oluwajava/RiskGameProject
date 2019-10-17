@@ -20,8 +20,7 @@ public class AddNeighbourCommand implements Command {
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
-
+        mapData.addNeighbour(countryName, neighbourCountryName);
     }
 
 }
