@@ -1,6 +1,7 @@
 package com.soen.riskgame.module.core.mapper;
 
 import com.soen.riskgame.module.core.model.GameFile;
+import com.soen.riskgame.module.core.constants.MapDelimiters;
 
 /**
  * class GameFileMapper parses the GameFileDTO class and contains the methods 
@@ -16,11 +17,13 @@ public class GameFileMapper {
     }
     /**
      * mapToGamefile method  is used to split the map file based  on GameFile and these method uses GameFileDTO has call type
-     * @param str 
-     * @return
+     * @param data
+     *
      */
-    public static GameFile mapToGameFile(String str)
+    public static GameFile mapToGameFile(String data)
     {
-    return null;
+        String[] gameFileData = data.split(MapDelimiters.SPACE_DELIMITER);
+//        GameFile gameFile = new GameFile(gameFileData)
+        return null;
     }
 }
