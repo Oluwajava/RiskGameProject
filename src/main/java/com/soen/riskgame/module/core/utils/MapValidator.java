@@ -6,6 +6,9 @@ import com.soen.riskgame.module.core.model.MapData;
 
 import java.util.HashSet;
 
+/**
+ * This class
+ */
 public class MapValidator {
 
     private String mapData;

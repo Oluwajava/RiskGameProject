@@ -8,7 +8,6 @@ import com.soen.riskgame.module.core.utils.FileReader;
 import com.soen.riskgame.module.core.utils.MapDataUtil;
 import com.soen.riskgame.module.core.utils.MapParser;
 import com.soen.riskgame.module.core.utils.MapValidator;
-import sun.jvm.hotspot.debugger.MappedByteBufferDataSource;
 
 import java.io.IOException;
 
