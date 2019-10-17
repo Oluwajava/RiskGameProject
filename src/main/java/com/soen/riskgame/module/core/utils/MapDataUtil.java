@@ -68,7 +68,12 @@ public class MapDataUtil {
         return null;
     }
 
-
+    /**
+     * This function will find the country by name
+     * @param countryName
+     * @param countries
+     * @return the country name
+     */
     public static Country findCountryByName(String countryName, HashMap<String, Country> countries) {
         Optional<Map.Entry<String, Country>> entries = countries.entrySet()
                 .stream()
@@ -80,6 +85,11 @@ public class MapDataUtil {
         return null;
     }
 
+    /**
+     * this function will check all country is assigned or not
+     * @param coutries
+     * @return boolean on the basis of the check
+     */
     public static boolean isAllCountryAssigned(HashMap<String, Country> coutries) {
         for(Country country: coutries.values()) {
             if (country.getPlayer() == null) {
