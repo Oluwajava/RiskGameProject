@@ -26,7 +26,7 @@ public class RemoveNeigbourCommand implements Command {
     private String countryNeigbourName;
 
     /**
-     * Method RemoveNeighbourCommand is to to remove a particular neighbor country
+     * Parameterized constructor RemoveNeighbourCommand 
      * @param mapData data in the map
      * @param countryName name of the country
      * @param countryNeigbourName name of the country's neigbor
@@ -39,7 +39,7 @@ public class RemoveNeigbourCommand implements Command {
 
     /**
      * Method execute()
-     * implementation of the method execute to execute the commands.
+     * implementation  to execute the commands.
      * Calls the method of the class MapData to remove a neighbor
      */
     @Override

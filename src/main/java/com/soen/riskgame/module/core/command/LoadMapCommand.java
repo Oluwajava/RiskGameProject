@@ -19,7 +19,7 @@ public class LoadMapCommand implements Command {
     private ShowMapListener showMapListener;
 
     /**
-     * Method loadMapCommand provides the functionlity of loading the command
+     * Parameterized constructor loadMapCommand 
      * @param mapData object of class mapData
      * @param showMapListener object of ShowMapListener
      */
