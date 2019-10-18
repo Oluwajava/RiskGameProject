@@ -6,6 +6,14 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
+/**
+ *This class will take care of the validation of the graph 
+ *
+ * @author Sibil
+ *
+ */
+
+
 public class GraphUtil {
 
     private static HashMap<Country, Boolean> visitedCountries;
@@ -13,7 +21,11 @@ public class GraphUtil {
     private static Set<Country> countries;
 
     private boolean isConnectedGraph;
-
+/**
+ * This will return a boolean whether depending upon the graph is connected or not
+ * @param countrySet
+ * @return
+ */
     public static boolean isGraphConnected(Set<Country> countrySet) {
         countries = countrySet;
         visitedCountries = new HashMap<>();
@@ -21,7 +33,9 @@ public class GraphUtil {
         validateGraph();
         return isConnectedGraph();
     }
-
+/**
+ * 
+ */
     private static void validateGraph() {
         for (Country country : countries) {
             for (Country adjacentCountry : country.getAdjacentCountries()) {

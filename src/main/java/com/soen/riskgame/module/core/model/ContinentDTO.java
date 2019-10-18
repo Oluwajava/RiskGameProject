@@ -9,13 +9,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ContinentDTO {
-
+    /**
+     * contains Continent id value
+     */
     private Long id;
-
+    /**
+     * contains Continent name
+     */
     private String name;
-
+    /**
+     * contains the control value of the each continent
+     */
     private Integer controlValue;
-
+    /**
+     * contains the color of the each continent
+     */
     private String color;
 
 }

@@ -62,7 +62,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
             try {
                 MapListController mapListController = new MapListController(name -> {
                     System.out.println(name);
-                    FileReader fileReader = new FileReader("/Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/resources/maps/" + name + ".map");
+                    FileReader fileReader = new FileReader("C:\\Users\\Admin\\APP\\RiskGameProject\\src\\main\\resources\\maps\\0" + name + ".map");
                     String mapData = fileReader.readData().replaceAll(MapDelimiters.CARRIAGE_DELIMITER, "");
                     MapValidator mapValidator = new MapValidator(mapData);
                     mapValidator.validate();
