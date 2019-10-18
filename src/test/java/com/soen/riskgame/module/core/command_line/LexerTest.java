@@ -19,7 +19,6 @@ class LexerTest {
         Lexer lexer = new Lexer();
         String tested = "editcountry -add Finland 3 -remove Japan";
         List<Token> expected = new ArrayList<>();
-
         expected.add(new Token(TokenType.EDIT_COUNTRY, CommandConstant.EDIT_COUNTRY));
         expected.add(new Token(TokenType.ADD, ActionConstant.ADD));
         expected.add(new Token(TokenType.ATOM, "Finland"));
