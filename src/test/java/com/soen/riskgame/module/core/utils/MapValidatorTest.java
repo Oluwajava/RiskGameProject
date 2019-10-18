@@ -139,35 +139,6 @@ public class MapValidatorTest {
     }
 
 
-    @Test
-    public void testIsGraphConnectedFalse()
-    {
-        MapData data=new MapData();
-        HashMap<String, Country> countries=new HashMap<String, Country>();
-        Country country=new Country();
-        Country country2=new  Country();
-        Country country1=new Country();
-        List<Country> adjacentCountries=new ArrayList<Country>();
-        adjacentCountries.add(country1);
-        List<Country> adjacentCountries2=new ArrayList<Country>();
-        adjacentCountries2.add(country);
-        country.setAdjacentCountries(adjacentCountries2);
-        countries.put("Country1", country);
-        countries.put("Country 2", country1);
-        countries.put("Country 3",country2);
-        data.setCountries(countries);
-        HashMap<String, Continent> continents=new HashMap<String, Continent>();
-        Continent continent=new Continent("Asia", 1, "blue");
-        List<Country> countriesList=new ArrayList<Country>();
-        countriesList.add(country);
-        countriesList.add(country1);
-        countriesList.add(country2);
-        continent.setCountries(countriesList);
-        continents.put("Continent 1", continent);
-        data.setContinents(continents);
-        mapValidator.isGraphConnected(data);
-    }
-
 
 
 
