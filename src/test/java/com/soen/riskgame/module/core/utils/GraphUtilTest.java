@@ -49,8 +49,8 @@ public class GraphUtilTest {
 		adjacentCountries.add(country1);
 		List<Country> adjacentCountries2=new ArrayList<Country>();
 		adjacentCountries.add(country);
-		country.setAdjacentCountries(adjacentCountries);
 		country.setAdjacentCountries(adjacentCountries2);
+		//country1.setAdjacentCountries(adjacentCountries2);
 		countries.add(country);
 		countries.add(country1);
 		countries.add(country2);

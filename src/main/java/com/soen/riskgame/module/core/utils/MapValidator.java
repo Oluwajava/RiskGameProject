@@ -67,7 +67,7 @@ public class MapValidator {
      * @param connected
      * @return
      */
-    public static boolean isCountriesInContinentsConnected(MapData data, boolean connected) {
+    private static boolean isCountriesInContinentsConnected(MapData data, boolean connected) {
         for (java.util.Map.Entry<String, Continent> continent : data.getContinents().entrySet()) {
             connected = GraphUtil.isGraphConnected(new HashSet<>(continent.getValue().getCountries()));
         }
