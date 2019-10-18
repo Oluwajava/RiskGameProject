@@ -1,7 +1,7 @@
 package com.soen.riskgame.module.core.constants;
 
 /**
- * Interface that holds constants for the game commands
+ * Interface that holds the command constants
  */
 public interface CommandConstant {
     String EDIT_CONTINENT = "editcontinent";
