@@ -41,7 +41,11 @@ public class RemovePlayerCommand implements Command {
         this.playerName = playerName;
     }
 
-
+    /**
+     * Method is inherited from the @see Command Interface
+     * which is used to abstract the execution of
+     * the RemovePlayerCommand
+     */
     @Override
     public void execute() {
         mapData.removePlayer(playerName);

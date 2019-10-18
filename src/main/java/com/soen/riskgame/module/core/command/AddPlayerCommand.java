@@ -16,7 +16,6 @@ import com.soen.riskgame.module.core.model.Player;
  * @see Command
  * @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
  */
-
 public class AddPlayerCommand implements Command {
 
     /**
@@ -42,7 +41,11 @@ public class AddPlayerCommand implements Command {
         this.playerName = playerName;
     }
 
-
+    /**
+     * Method is inherited from the @see Command Interface
+     * which is used to abstract the execution of
+     * the AddPlayerCommand
+     */
     @Override
     public void execute() {
         listener.addPlayer(playerName);
