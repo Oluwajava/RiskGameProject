@@ -11,9 +11,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * class Lexer for getting the list of tokens
+ * @author hitan
+ *
+ */
 @Data
 public class Lexer {
 
+	/**
+	 * Method lex is used to return the list of tokens form the input
+	 * @param input data in the file
+	 * @return list of Tokens
+	 */
     public static List<Token> lex(String input) {
         List<Token> result = new ArrayList<>();
         Arrays.asList(input.split(MapDelimiters.SPACE_DELIMITER)).forEach(s -> {
