@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * This class loads the map data from the file
+ */
 public class MapDataUtil {
 
     public static MapData loadMapFromFile(String fileName) {
@@ -48,6 +51,12 @@ public class MapDataUtil {
         return data;
     }
 
+    /**
+     * this function finds the continenent by name
+     * @param continentName
+     * @param continents
+     * @return
+     */
     public static Continent findContinentByName(String continentName, HashMap<String, Continent> continents) {
         Optional<Map.Entry<String, Continent>> entries = continents.entrySet()
                 .stream()
@@ -59,7 +68,12 @@ public class MapDataUtil {
         return null;
     }
 
-
+    /**
+     * This function will find the country by name
+     * @param countryName
+     * @param countries
+     * @return the country name
+     */
     public static Country findCountryByName(String countryName, HashMap<String, Country> countries) {
         Optional<Map.Entry<String, Country>> entries = countries.entrySet()
                 .stream()
@@ -71,6 +85,11 @@ public class MapDataUtil {
         return null;
     }
 
+    /**
+     * this function will check all country is assigned or not
+     * @param coutries
+     * @return boolean on the basis of the check
+     */
     public static boolean isAllCountryAssigned(HashMap<String, Country> coutries) {
         for(Country country: coutries.values()) {
             if (country.getPlayer() == null) {

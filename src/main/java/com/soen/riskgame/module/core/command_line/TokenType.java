@@ -2,6 +2,11 @@ package com.soen.riskgame.module.core.command_line;
 
 import lombok.Getter;
 
+/**
+ * Enum TokenType defining all the values of Token Type
+ * @author hitan
+ *
+ */
 public enum TokenType {
 
     ATOM(1, CommandType.PARAM), EDIT_CONTINENT(1, CommandType.COMMAND),
@@ -12,12 +17,23 @@ public enum TokenType {
     PLACE_ALL(0, CommandType.COMMAND), REINFORCE(2, CommandType.COMMAND), FORTIFY(3, CommandType.COMMAND),
     NONE(0, CommandType.COMMAND);
 
+	/**
+	 * number of arguments
+	 */
     @Getter
     private int numberOfArugments;
 
+    /**
+     * Object of the type CommandType
+     */
     @Getter
     private CommandType commandType;
 
+    /**
+     * parameterized constructor
+     * @param numberOfArugments number of arguments
+     * @param commandType type of command
+     */
     TokenType(int numberOfArugments, CommandType commandType) {
         this.numberOfArugments = numberOfArugments;
         this.commandType = commandType;

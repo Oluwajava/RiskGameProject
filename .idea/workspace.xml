@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a330f1f3-7c48-4226-8fa7-711f96bef8b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/GraphUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/GraphUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/soen/riskgame/module/core/command_line/LexerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/soen/riskgame/module/core/command_line/LexerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/base/BaseView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/base/BaseView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/AddContinentCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/AddContinentCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/AddCountryCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/AddCountryCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/AddNeighbourCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/AddNeighbourCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/AddPlayerCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/AddPlayerCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/EditMapCommand$EditMapListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/EditMapCommand$EditMapListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/EditMapCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/EditMapCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/FortifyCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/FortifyCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/FortifyNoneCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/FortifyNoneCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/LoadMapCommand$LoadMapListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/LoadMapCommand$LoadMapListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/LoadMapCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/LoadMapCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/PlaceAllArmyCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/PlaceAllArmyCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/PlaceArmyCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/PlaceArmyCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/PopulateCountriesCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/PopulateCountriesCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/ReinforceCountryCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/ReinforceCountryCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/RemoveContinentCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/RemoveContinentCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/RemoveCountryCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/RemoveCountryCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/RemoveNeigbourCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/RemoveNeigbourCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/RemovePlayerCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/RemovePlayerCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/SaveFileCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/SaveFileCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/ShowMapCommand$ShowMapListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/ShowMapCommand$ShowMapListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/ShowMapCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/ShowMapCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/ValidateCommand$ValidateMapListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/ValidateCommand$ValidateMapListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/ValidateCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command/ValidateCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/CommandSytanxTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/CommandSytanxTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/CommandType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/CommandType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/Lexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/Lexer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/Token.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/TokenCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/TokenCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/TokenType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/command_line/TokenType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/constants/ActionConstant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/constants/ActionConstant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/constants/CommandConstant.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/constants/CommandConstant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/constants/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/constants/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/constants/MapDelimiters.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/constants/MapDelimiters.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/ArmyAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/ArmyAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/ContinentAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/ContinentAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/CountryAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/CountryAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/FortificationAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/FortificationAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/MapPicker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/MapPicker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/PlayerAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/PlayerAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/PlayerCommandListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/PlayerCommandListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/ReinforceAction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/ReinforceAction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/interfaces/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/BorderMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/BorderMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/ContinentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/ContinentMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/CountryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/CountryMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/GameFileMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/mapper/GameFileMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/AddContinent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/AddContinent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Army.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Army.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/BorderDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/BorderDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Continent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Continent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/ContinentDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/ContinentDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Country.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Country.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/CountryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/CountryDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/GameFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/GameFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Map$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Map$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Map.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Map.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/MapData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/MapData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Player$PlayerColor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Player$PlayerColor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/model/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/ColorGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/ColorGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/FileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/FileReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/FileWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/FileWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/GraphUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/GraphUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/MapDataUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/MapDataUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/MapParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/MapParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/MapValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/MapValidator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/RoundRobin$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/RoundRobin$Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/RoundRobin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/core/utils/RoundRobin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/dashboard/DashboardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/dashboard/DashboardView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/game_play/GamePlayController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/game_play/GamePlayController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/game_play/GamePlayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/game_play/GamePlayController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_editor/MapEditorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_editor/MapEditorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_selector/MapInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_selector/MapInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_selector/MapListController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_selector/MapListController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_selector/MapListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/map_selector/MapListController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/new_game/NewGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/soen/riskgame/module/new_game/NewGameController.class" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1SMPITulcbL9n1iNRdyMdad8nLt" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.GraphUtilTest.testIsGraphConnected2">
+    <configuration name="GraphUtilTest.testIsGraphConnected2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RiskGameApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.soen.riskgame.module.core.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.soen.riskgame.module.core.utils" />
+      <option name="MAIN_CLASS_NAME" value="com.soen.riskgame.module.core.utils.GraphUtilTest" />
+      <option name="METHOD_NAME" value="testIsGraphConnected2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LexerTest.testLex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="RiskGameApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.soen.riskgame.module.core.command_line.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.soen.riskgame.module.core.command_line" />
+      <option name="MAIN_CLASS_NAME" value="com.soen.riskgame.module.core.command_line.LexerTest" />
+      <option name="METHOD_NAME" value="testLex" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.GraphUtilTest.testIsGraphConnected2" />
+        <item itemvalue="JUnit.LexerTest.testLex" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a330f1f3-7c48-4226-8fa7-711f96bef8b8" name="Default Changelist" comment="" />
+      <created>1571370412389</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571370412389</updated>
+      <workItem from="1571370416441" duration="370000" />
+      <workItem from="1571370806249" duration="297000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/soen/riskgame/module/core/utils/GraphUtilTest.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

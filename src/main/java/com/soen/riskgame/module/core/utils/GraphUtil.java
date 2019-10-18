@@ -25,7 +25,7 @@ public class GraphUtil {
  * This will return a boolean whether depending upon the graph is connected or not
  * @param countrySet
  * @return
- */
+ */ 
     public static boolean isGraphConnected(Set<Country> countrySet) {
         countries = countrySet;
         visitedCountries = new HashMap<>();
@@ -34,7 +34,7 @@ public class GraphUtil {
         return isConnectedGraph();
     }
 /**
- * 
+ * this method will validate graph
  */
     private static void validateGraph() {
         for (Country country : countries) {
@@ -44,6 +44,10 @@ public class GraphUtil {
         }
     }
 
+    /**
+     * this method will check the graph is connected or not
+     * @return
+     */
     private static boolean isConnectedGraph() {
         Iterator<Country> it = countries.iterator();
         while (it.hasNext()) {
