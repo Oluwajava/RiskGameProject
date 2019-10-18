@@ -26,7 +26,6 @@ class LexerTest {
         expected.add(new Token(TokenType.ATOM, "3"));
         expected.add(new Token(TokenType.REMOVE, ActionConstant.REMOVE));
         expected.add(new Token(TokenType.ATOM, "Japan"));
-
-        assertEquals(expected, Lexer.lex(tested));
+        assertEquals(expected.toString(),  Lexer.lex(tested).toString());
     }
 }
