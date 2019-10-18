@@ -39,6 +39,9 @@ public class RoundRobin<E> {
             tail = tail.getNext();
     }
 
+    public void setElement(E e) {
+        tail.element = e;
+    }
     public void addFirst(E e) {
         if (size == 0) {
             tail = new Node<>(e, null);

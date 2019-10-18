@@ -27,6 +27,7 @@ public class Lexer {
                         break;
                     case CommandConstant.EDIT_NEIGHBOR:
                         result.add(new Token(TokenType.EDIT_NEIGHBOUR, CommandConstant.EDIT_NEIGHBOR));
+                        break;
                     case ActionConstant.ADD:
                         result.add(new Token(TokenType.ADD, ActionConstant.ADD));
                         break;

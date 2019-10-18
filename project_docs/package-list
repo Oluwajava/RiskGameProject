@@ -1,0 +1,14 @@
+com.soen.riskgame
+com.soen.riskgame.module.core.base
+com.soen.riskgame.module.core.command
+com.soen.riskgame.module.core.command_line
+com.soen.riskgame.module.core.constants
+com.soen.riskgame.module.core.interfaces
+com.soen.riskgame.module.core.mapper
+com.soen.riskgame.module.core.model
+com.soen.riskgame.module.core.utils
+com.soen.riskgame.module.dashboard
+com.soen.riskgame.module.game_play
+com.soen.riskgame.module.map_editor
+com.soen.riskgame.module.map_selector
+com.soen.riskgame.module.new_game

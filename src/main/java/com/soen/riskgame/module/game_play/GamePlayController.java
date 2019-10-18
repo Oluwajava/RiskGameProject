@@ -44,6 +44,9 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     private Text turnText;
     private TextArea commandLine;
     private ListView playerListView;
+    private Text reinforceArmyText;
+    private Text initialArmyText;
+    private Text phaseText;
 
     public GamePlayController(MapData mapData) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NEW_GAME));
@@ -97,6 +100,9 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         turnText = (Text) scene.lookup("#turnText");
         commandLine = (TextArea) scene.lookup("#comandLine");
         playerListView = (ListView) scene.lookup("#playerListView");
+        reinforceArmyText = (Text) scene.lookup("#reinforceArmyText");
+        initialArmyText = (Text) scene.lookup("#initialArmyText");
+        phaseText = (Text) scene.lookup("#phaseText");
     }
 
     private void updateImage(String name) {
@@ -121,7 +127,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
                     setGraphic(null);
                 } else {
                     Circle circle = new Circle();
-                    Player.PlayerColor playerColor =item.getPlayerColor();
+                    Player.PlayerColor playerColor = item.getPlayerColor();
                     circle.setFill(javafx.scene.paint.Color.rgb(playerColor.getRed(), playerColor.getGreen(), playerColor.getBlue()));
                     circle.setRadius(10.0f);
                     setText(item.getPlayerName());
@@ -143,7 +149,24 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         System.out.println(mapData);
         Player player = mapTest.getPlayers().last();
         turnText.setText("" + player.getPlayerName() + " Turn!!!");
+        initialArmyText.setText("Initial Army: " + player.getPlaceArmiesNo());
+        reinforceArmyText.setText("Reinforcement Army: " + player.getNumOfArmies());
         updateCountriesLocation();
+        setPhase(player);
+    }
+
+    private void setPhase(Player player) {
+        if (player.getPlaceArmiesNo() > 0) {
+            phaseText.setText("Startup Phase");
+        }
+
+        if (player.getPlaceArmiesNo() == 0 && player.getNumOfArmies() > 0) {
+            phaseText.setText("Reinforcement Phase");
+        }
+
+        if (player.getPlaceArmiesNo() == 0 && player.getNumOfArmies() == 0) {
+            phaseText.setText("Fortification Phase");
+        }
     }
 
     @Override

@@ -53,6 +53,7 @@ public class Continent {
         this.name = name;
         this.controlValue = controlValue;
         this.color = color;
+        countries = new ArrayList<>();
     }
 
     /**

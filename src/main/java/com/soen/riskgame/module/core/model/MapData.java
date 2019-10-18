@@ -46,7 +46,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     @Override
     public void addContinent(String name, int controlValue) {
         Continent continent = new Continent(name, controlValue, null);
-        continents.put(String.valueOf(continents.size() + 1), continent);
+        Long continentId = Long.valueOf(continents.size() + 1);
+        continent.setId(continentId);
+        continents.put(String.valueOf(continentId), continent);
         updateView();
     }
 
@@ -244,6 +246,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         do {
             Country country = countryStack.pop();
             temp.addCountry(country);
+            temp.setPlaceArmiesNo(reinforcementArmy(players.size()));
             country.setPlayer(temp);
             countries.put(String.valueOf(country.getId()), country);
             players.rotate();
@@ -252,13 +255,32 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         updateView();
     }
 
+    private int reinforcementArmy(int size) {
+        if (size == 2) {
+            return 40;
+        } else if (size == 3) {
+            return 35;
+        } else if (size == 4) {
+            return 30;
+        } else if (size == 5) {
+            return 25;
+        } else if (size == 20) {
+            return 20;
+        } else {
+            return 20;
+        }
+
+    }
+
     @Override
     public void placeArmy(String countryName) {
         Player player = players.last();
         if (player.doesCountryBelongToPlayer(countryName)) {
-            if (player.getNumOfArmies() > 0) {
+            if (player.getPlaceArmiesNo() > 0) {
                 Country country = MapDataUtil.findCountryByName(countryName, countries);
                 country.addArmy();
+                player.decreasePlaceArmmiesNo();
+                players.setElement(player);
                 countries.put(String.valueOf(country.getId()), country);
             }
             players.rotate();
@@ -271,12 +293,15 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         Player firstPlayer = players.last();
         Player temp = firstPlayer;
         do {
-            for (int i = 0; i < temp.getNumOfArmies(); i++) {
-                if (temp.getNumOfArmies() > 0) {
+            int noOfArimes = temp.getPlaceArmiesNo();
+            for (int i = 0; i < noOfArimes; i++) {
+                if (temp.getPlaceArmiesNo() > 0) {
                     int randomCountry = new Random().nextInt(temp.getCountries().size());
                     Country country = temp.getCountries().get(randomCountry);
                     country.addArmy();
+                    temp.decreasePlaceArmmiesNo();
                     countries.put(String.valueOf(country.getId()), country);
+                    players.setElement(temp);
                 }
             }
             players.rotate();

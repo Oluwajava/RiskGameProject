@@ -18,6 +18,8 @@ public class Player {
 
     private PlayerColor playerColor;
 
+    private int placeArmiesNo;
+
     private int numOfArmies;
 
     public Player(String playerName) {
@@ -27,7 +29,11 @@ public class Player {
 
     public void addCountry(Country country) {
         countries.add(country);
-        numOfArmies = (int) Math.floor(countries.size()/3);
+        numOfArmies = getNumberOfReinforcementArmy();
+    }
+
+    public int getNumberOfReinforcementArmy() {
+        return (int) Math.floor(countries.size() / 3);
     }
 
     public void decreaseNumOfArmies() {
@@ -35,16 +41,21 @@ public class Player {
     }
 
     public void decreaseNumOfArmies(int num) {
-        numOfArmies -=  num;
+        numOfArmies -= num;
     }
 
     public void resetNumOfArmies() {
         numOfArmies = 0;
     }
 
+    public void decreasePlaceArmmiesNo() {
+        placeArmiesNo--;
+
+    }
+
     public boolean doesCountryBelongToPlayer(String countryName) {
-        for (Country country:
-             countries) {
+        for (Country country :
+                countries) {
             if (country.getName().equalsIgnoreCase(countryName)) return true;
         }
         return false;

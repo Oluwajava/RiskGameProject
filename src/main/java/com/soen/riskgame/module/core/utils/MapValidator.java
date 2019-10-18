@@ -40,14 +40,15 @@ public class MapValidator {
     }
 
     public static boolean isGraphConnected(MapData data) {
-        boolean connected = GraphUtil.isGraphConnected(new HashSet<>(data.getCountries().values()));
+        boolean connected = new GraphUtil(new HashSet<>(data.getCountries().values())).isConnected();
+        if (!connected) return connected;
         connected = isCountriesInContinentsConnected(data, connected);
         return connected;
     }
 
     public static boolean isCountriesInContinentsConnected(MapData data, boolean connected) {
         for (java.util.Map.Entry<String, Continent> continent : data.getContinents().entrySet()) {
-            connected = GraphUtil.isGraphConnected(new HashSet<>(continent.getValue().getCountries()));
+            connected = new GraphUtil(new HashSet<>(continent.getValue().getCountries())).isConnectedSubGraph();
         }
         return connected;
     }

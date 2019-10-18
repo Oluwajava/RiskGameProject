@@ -226,13 +226,13 @@ public class CommandSytanxTree {
 
     private AddNeighbourCommand processTokenToAddNeigbourCommand(int i) {
         String countryName = tokens.get(i + 1).getContent();
-        String countryNeigbourName = tokens.get(i + 1).getContent();
+        String countryNeigbourName = tokens.get(i + 2).getContent();
         return new AddNeighbourCommand(mapData, countryName, countryNeigbourName);
     }
 
     private RemoveNeigbourCommand processTokenToRemoveNeigbourCommand(int i) {
         String countryName = tokens.get(i + 1).getContent();
-        String countryNeigbourName = tokens.get(i + 1).getContent();
+        String countryNeigbourName = tokens.get(i + 2).getContent();
         return new RemoveNeigbourCommand(mapData, countryName, countryNeigbourName);
     }
 
