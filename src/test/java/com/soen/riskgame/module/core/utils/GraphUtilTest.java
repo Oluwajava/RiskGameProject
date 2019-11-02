@@ -44,13 +44,19 @@ public class GraphUtilTest {
         ghana.setId(2);
         Country uk = new Country("UK");
         uk.setId(3);
+        Country sweden = new Country("Sweeden");
+        sweden.setId(4);
 
         nigeria.addNeighbour(ghana);
         ghana.addNeighbour(nigeria);
 
+        uk.addNeighbour(sweden);
+
         countries.add(nigeria);
         countries.add(ghana);
         countries.add(uk);
+        countries.add(sweden);
+
         GraphUtil graphUtil = new GraphUtil(countries);
         Assertions.assertFalse(graphUtil.isConnected());
     }
