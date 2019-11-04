@@ -13,7 +13,7 @@ import java.util.Optional;
 public class MapDataUtil {
 
     public static MapData loadMapFromFile(String fileName) {
-        FileReader fileReader = new FileReader("/Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/resources/maps/" + fileName + ".map");
+        FileReader fileReader = new FileReader("C:\\Users\\Admin\\APP\\RiskGameProject\\src\\main\\resources\\maps\\" + fileName + ".map");
         String mapData = null;
         try {
             mapData = fileReader.readData().replaceAll(MapDelimiters.CARRIAGE_DELIMITER, "");

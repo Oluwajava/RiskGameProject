@@ -242,11 +242,13 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         Stack<Country> countryStack = new Stack<>();
         countryStack.addAll(newCountries);
         Player firstPlayer = players.first();
+
         Player temp = firstPlayer;
-        do {
+                do {
             Country country = countryStack.pop();
             temp.addCountry(country);
-            temp.setPlaceArmiesNo(reinforcementArmy(players.size()));
+            country.addArmy();
+            temp.setPlaceArmiesNo(reinforcementArmy((int) (players.size()-Math.ceil(countries.size()))));
             country.setPlayer(temp);
             countries.put(String.valueOf(country.getId()), country);
             players.rotate();
@@ -326,9 +328,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     public void fortifyCountry(String fromCountry, String toCountry, int num) {
         Country country = MapDataUtil.findCountryByName(fromCountry, countries);
         Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
-        if (country.isCountryAdjacent(toCountry) && (country.getNoOfArmies() - num >= 1)) {
-            country.removeArmy(num);
-            countryTo.addArmy(num);
+        Player player = players.last();
+        if (player.doesCountryBelongToPlayer(fromCountry)&&player.doesCountryBelongToPlayer(toCountry)&&num>0) {
+            if (country.isCountryAdjacent(toCountry) && (country.getNoOfArmies() - num >= 1)) {
+                country.removeArmy(num);
+                countryTo.addArmy(num);
+            }
         }
         updateView();
     }
@@ -342,17 +347,19 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     @Override
     public void reinforceCountry(String countryName, int number) {
         Player player = players.last();
-        if (player.getNumOfArmies() > 0) {
-            player.decreaseNumOfArmies(number);
-            Country country = MapDataUtil.findCountryByName(countryName, countries);
-            country.addArmy(number);
-            if (player.getNumOfArmies() <= 0) {
+
+        if (player.doesCountryBelongToPlayer(countryName)&&number>0&&number<=player.getNumOfArmies()) {
+            if (player.getNumOfArmies() > 0) {
+                player.decreaseNumOfArmies(number);
+                Country country = MapDataUtil.findCountryByName(countryName, countries);
+                country.addArmy(number);
+                if (player.getNumOfArmies() <= 0) {
+                    players.rotate();
+                }
+            } else {
                 players.rotate();
             }
-        } else {
-            players.rotate();
         }
-
         updateView();
     }
 }
