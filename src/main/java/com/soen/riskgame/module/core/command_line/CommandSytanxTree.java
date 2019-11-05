@@ -136,6 +136,18 @@ public class CommandSytanxTree {
                         commands.add(fortifyNoneCommand);
                         i += 2;
                     }
+                } else if (currentCommand == TokenType.DEFEND) {
+                    int num = Integer.parseInt(tokens.get(i).getContent());
+                    DefendCommand defendCommand = new DefendCommand(mapData, num);
+                    commands.add(defendCommand);
+                } else if (currentCommand == TokenType.ATTACK_MOVE) {
+                    int num = Integer.parseInt(tokens.get(i).getContent());
+                    AttackMoveCommand attackMoveCommand = new AttackMoveCommand(mapData, num);
+                    commands.add(attackMoveCommand);
+                } else if (currentCommand == TokenType.ATTACK) {
+                    AttackCommand processAttackCommmand = processAttackCommmand(i);
+                    commands.add(processAttackCommmand);
+                    i = tokens.size();
                 }
             }
 
@@ -149,6 +161,19 @@ public class CommandSytanxTree {
 
     private void execute() {
         commands.forEach(Command::execute);
+    }
+
+    private AttackCommand processAttackCommmand(int i) {
+        String countryFromName = tokens.get(i).getContent();
+        String countryToName = tokens.get(i+1).getContent();
+        int numOfDice = Integer.parseInt(tokens.get(i+2).getContent());
+        String extendedAction = null;
+        AttackCommand attackCommand = new AttackCommand(mapData, countryFromName, countryToName, numOfDice);
+        if (tokens.size() > i+3) {
+            extendedAction = tokens.get(i+3).getContent();
+            attackCommand.setExtendedAction(extendedAction);
+        }
+        return attackCommand;
     }
 
     private FortifyCommand processTokenFortifyCommand(int i) {

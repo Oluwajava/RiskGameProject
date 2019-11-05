@@ -20,4 +20,7 @@ public interface CommandConstant {
     String PLACE_ALL = "placeall";
     String REINFORCE = "reinforce";
     String FORTIFY = "fortify";
+    String ATTACK = "attack";
+    String DEFEND = "defend";
+    String ATTACK_MOVE = "attackmove";
 }

@@ -1,5 +1,6 @@
 package com.soen.riskgame.module.core.model;
 
+import com.soen.riskgame.module.core.enums.Phase;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,10 @@ public class Player {
     private int placeArmiesNo;
 
     private int numOfArmies;
+
+    private boolean countriesPopulated;
+
+    private Phase phase;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -51,6 +56,10 @@ public class Player {
     public void decreasePlaceArmmiesNo() {
         placeArmiesNo--;
 
+    }
+
+    public void decreasePlaceArmiesNo(int num) {
+        placeArmiesNo -= num;
     }
 
     public boolean doesCountryBelongToPlayer(String countryName) {

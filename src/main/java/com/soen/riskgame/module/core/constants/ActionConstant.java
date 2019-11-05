@@ -7,4 +7,9 @@ public interface ActionConstant {
     String REMOVE = "-remove";
 
     String NONE = "none";
+
+    String ALL_OUT = "–allout";
+
+    String NO_ATTACK = "–noattack";
+
 }

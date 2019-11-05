@@ -4,7 +4,9 @@ import com.soen.riskgame.module.core.command.ShowMapCommand;
 import com.soen.riskgame.module.core.command_line.CommandSytanxTree;
 import com.soen.riskgame.module.core.command_line.Lexer;
 import com.soen.riskgame.module.core.command_line.Token;
+import com.soen.riskgame.module.core.enums.Phase;
 import com.soen.riskgame.module.core.interfaces.View;
+import com.soen.riskgame.module.core.model.Country;
 import com.soen.riskgame.module.core.model.MapData;
 import com.soen.riskgame.module.core.model.Player;
 import javafx.collections.FXCollections;
@@ -46,6 +48,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     private ListView playerListView;
     private Text reinforceArmyText;
     private Text initialArmyText;
+    private Text totalArmyText;
     private Text phaseText;
 
     public GamePlayController(MapData mapData) throws IOException {
@@ -56,7 +59,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         mapData.addObserver(this);
         mapData.setGameStarted(true);
         setupGameView();
-        setPlayerList();
+        setPlayerList(mapData);
 
         processCommandButton.setOnAction(event -> {
             String command = commandLine.getText();
@@ -102,6 +105,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         playerListView = (ListView) scene.lookup("#playerListView");
         reinforceArmyText = (Text) scene.lookup("#reinforceArmyText");
         initialArmyText = (Text) scene.lookup("#initialArmyText");
+        totalArmyText = (Text) scene.lookup("#totalArmyText");
         phaseText = (Text) scene.lookup("#phaseText");
     }
 
@@ -114,7 +118,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         this.mapImage.setImage(mapImage);
     }
 
-    private void setPlayerList() {
+    private void setPlayerList(MapData mapData) {
         ObservableList<Player> items = FXCollections.observableArrayList(
                 mapData.toList());
         playerListView.setItems(items);
@@ -130,7 +134,10 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
                     Player.PlayerColor playerColor = item.getPlayerColor();
                     circle.setFill(javafx.scene.paint.Color.rgb(playerColor.getRed(), playerColor.getGreen(), playerColor.getBlue()));
                     circle.setRadius(10.0f);
-                    setText(item.getPlayerName());
+                    double mapSize = mapData.getCountries().size();
+                    double countries = item.getCountries().size();
+                    double result = countries / mapSize;
+                    setText(item.getPlayerName() + "\t\t\t" + String.valueOf(result * 100)+"%");
                     setGraphic(circle);
                 }
             }
@@ -151,8 +158,11 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         turnText.setText("" + player.getPlayerName() + " Turn!!!");
         initialArmyText.setText("Initial Army: " + player.getPlaceArmiesNo());
         reinforceArmyText.setText("Reinforcement Army: " + player.getNumOfArmies());
+        Long totalArmyCount = player.getCountries().stream().mapToLong(Country::getNoOfArmies).sum();
+        totalArmyText.setText("Total Army: " + totalArmyCount);
         updateCountriesLocation();
         setPhase(player);
+        setPlayerList(mapTest);
     }
 
     private void setPhase(Player player) {
@@ -160,11 +170,15 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
             phaseText.setText("Startup Phase");
         }
 
-        if (player.getPlaceArmiesNo() == 0 && player.getNumOfArmies() > 0) {
+        if (player.getPhase() == Phase.REINFORCEMENT) {
             phaseText.setText("Reinforcement Phase");
         }
 
-        if (player.getPlaceArmiesNo() == 0 && player.getNumOfArmies() == 0) {
+        if (player.getPhase() == Phase.ATTACK) {
+            phaseText.setText("Attack Phase");
+        }
+
+        if (player.getPhase() == Phase.FORTIFICATION) {
             phaseText.setText("Fortification Phase");
         }
     }

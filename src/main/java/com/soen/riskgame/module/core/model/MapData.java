@@ -1,7 +1,9 @@
 package com.soen.riskgame.module.core.model;
 
 import com.soen.riskgame.module.core.constants.MapDelimiters;
+import com.soen.riskgame.module.core.enums.Phase;
 import com.soen.riskgame.module.core.interfaces.*;
+import com.soen.riskgame.module.core.utils.Dice;
 import com.soen.riskgame.module.core.utils.MapDataUtil;
 import com.soen.riskgame.module.core.utils.RoundRobin;
 import lombok.Data;
@@ -9,7 +11,7 @@ import lombok.Data;
 import java.util.*;
 
 @Data
-public class MapData extends Observable implements ContinentAction, CountryAction, PlayerAction, ArmyAction, ReinforceAction, FortificationAction {
+public class MapData extends Observable implements ContinentAction, CountryAction, PlayerAction, ArmyAction, ReinforceAction, FortificationAction, AttackAction {
 
     private boolean gameStarted;
 
@@ -20,6 +22,15 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     private HashMap<String, Country> countries;
 
     private HashMap<String, Continent> continents;
+
+    private Country attackFromCountry;
+
+    private Country attackToCountry;
+
+    private int attackNumOfDice;
+
+    private int defendNumDice;
+
 
     public MapData() {
         countries = new HashMap<>();
@@ -241,17 +252,28 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         List<Country> newCountries = new ArrayList<>(countries.values());
         Stack<Country> countryStack = new Stack<>();
         countryStack.addAll(newCountries);
-        Player firstPlayer = players.first();
-        Player temp = firstPlayer;
+        Player temp = players.last();
         do {
             Country country = countryStack.pop();
-            temp.addCountry(country);
-            temp.setPlaceArmiesNo(reinforcementArmy(players.size()));
-            country.setPlayer(temp);
-            countries.put(String.valueOf(country.getId()), country);
+            if (!temp.isCountriesPopulated()) {
+                temp.addCountry(country);
+                temp.setPlaceArmiesNo(reinforcementArmy(players.size()));
+                country.setPlayer(temp);
+                country.addArmy();
+                countries.put(String.valueOf(country.getId()), country);
+            }
             players.rotate();
             temp = players.getTail().getElement();
         } while (!countryStack.isEmpty());
+        for (int i = 0; i < players.size(); i++) {
+            Player p = players.last();
+            if (!p.isCountriesPopulated()) {
+                p.decreasePlaceArmiesNo(p.getCountries().size());
+                p.setCountriesPopulated(true);
+                players.setElement(p);
+            }
+            players.rotate();
+        }
         updateView();
     }
 
@@ -282,6 +304,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 player.decreasePlaceArmmiesNo();
                 players.setElement(player);
                 countries.put(String.valueOf(country.getId()), country);
+            } else {
+                player.setPhase(Phase.REINFORCEMENT);
+                players.setElement(player);
             }
             players.rotate();
         }
@@ -307,6 +332,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             players.rotate();
             temp = players.last();
         } while (temp != firstPlayer);
+        for (int i = 0; i < players.size(); i++) {
+            Player p = players.last();
+            p.setPhase(Phase.REINFORCEMENT);
+            players.setElement(p);
+            players.rotate();
+        }
         updateView();
     }
 
@@ -324,35 +355,131 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     @Override
     public void fortifyCountry(String fromCountry, String toCountry, int num) {
-        Country country = MapDataUtil.findCountryByName(fromCountry, countries);
-        Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
-        if (country.isCountryAdjacent(toCountry) && (country.getNoOfArmies() - num >= 1)) {
-            country.removeArmy(num);
-            countryTo.addArmy(num);
+        if (isInPhase(Phase.FORTIFICATION)) {
+            Country country = MapDataUtil.findCountryByName(fromCountry, countries);
+            Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
+            if (country.isCountryAdjacent(toCountry) && (country.getNoOfArmies() - num >= 1)) {
+                country.removeArmy(num);
+                countryTo.addArmy(num);
+            }
+            updateView();
         }
-        updateView();
     }
 
     @Override
     public void fortifyNone() {
-        players.rotate();
-        updateView();
+        if (isInPhase(Phase.FORTIFICATION)) {
+            Player temp = players.last();
+            temp.setPhase(Phase.REINFORCEMENT);
+            players.rotate();
+            updateView();
+        }
     }
 
     @Override
     public void reinforceCountry(String countryName, int number) {
-        Player player = players.last();
-        if (player.getNumOfArmies() > 0) {
-            player.decreaseNumOfArmies(number);
-            Country country = MapDataUtil.findCountryByName(countryName, countries);
-            country.addArmy(number);
-            if (player.getNumOfArmies() <= 0) {
+        if (isInPhase(Phase.REINFORCEMENT)) {
+            Player player = players.last();
+            if (player.getNumOfArmies() > 0) {
+                player.decreaseNumOfArmies(number);
+                Country country = MapDataUtil.findCountryByName(countryName, countries);
+                country.addArmy(number);
+                if (player.getNumOfArmies() <= 0) {
+                    player.setPhase(Phase.ATTACK);
+                    players.setElement(player);
+                    players.rotate();
+                }
+            } else {
+                player.setPhase(Phase.ATTACK);
+                players.setElement(player);
                 players.rotate();
             }
-        } else {
+
+            updateView();
+        }
+    }
+
+    @Override
+    public void attack(String fromCountry, String toCountry, int numOfDice) {
+        if (isInPhase(Phase.ATTACK)) {
+            Country country = MapDataUtil.findCountryByName(fromCountry, countries);
+            Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
+            if (country.isCountryAdjacent(toCountry) && (country.getNoOfArmies() > numOfDice)) {
+                this.attackFromCountry = country;
+                this.attackToCountry = countryTo;
+                this.attackNumOfDice = numOfDice;
+            }
+        }
+    }
+
+    private boolean isInPhase(Phase phase) {
+        Player player = players.last();
+        return player.getPhase() == phase;
+    }
+
+    @Override
+    public void attackMove(int num) {
+        if (isInPhase(Phase.ATTACK)) {
+            if (attackFromCountry.isCountryAdjacent(attackToCountry.getName()) && (attackFromCountry.getNoOfArmies() - num) > num) {
+                attackFromCountry.removeArmy(num);
+                attackToCountry.addArmy(num);
+            }
+            updateView();
+        }
+    }
+
+    @Override
+    public void attackNone() {
+        if (isInPhase(Phase.ATTACK)) {
+            Player player = players.last();
+            player.setPhase(Phase.REINFORCEMENT);
+            players.setElement(player);
             players.rotate();
+            updateView();
+        }
+    }
+
+    @Override
+    public void defend(int num) {
+        this.defendNumDice = num;
+        simulateAttack();
+    }
+
+    private void simulateAttack() {
+        StringBuilder sim = new StringBuilder();
+        List<Integer> attackDice = new ArrayList<>();
+        List<Integer> defendDice = new ArrayList<>();
+        for (int i = 0; i < attackNumOfDice; i++) {
+            int no = Dice.roll();
+            attackDice.add(no);
+            sim.append(attackFromCountry.getPlayer().getPlayerName() + " rolled: " + no + "\n");
         }
 
-        updateView();
+        for (int i = 0; i < defendNumDice; i++) {
+            int no = Dice.roll();
+            defendDice.add(no);
+            sim.append(attackToCountry.getPlayer().getPlayerName() + " rolled: " + no + "\n");
+        }
+
+
+        Collections.sort(attackDice, Collections.reverseOrder());
+        Collections.sort(defendDice, Collections.reverseOrder());
+
+        attackResult(sim, attackDice, defendDice, 0);
+
+        if (defendDice.size() > 1 & attackDice.size() > 1) {
+            attackResult(sim, attackDice, defendDice, 1);
+        }
+
+    }
+
+    private void attackResult(StringBuilder sim, List<Integer> attackDice, List<Integer> defendDice, int index) {
+        if (attackDice.get(index) <= defendDice.get(index)) {
+            attackFromCountry.removeArmy(1);
+            sim.append(attackFromCountry.getPlayer().getPlayerName() + " lost an army" + "\n");
+        } else if (attackDice.get(index) > defendDice.get(index)) {
+            attackToCountry.removeArmy(1);
+            sim.append(attackToCountry.getPlayer().getPlayerName() + " lost an army" + "\n");
+        }
     }
 }

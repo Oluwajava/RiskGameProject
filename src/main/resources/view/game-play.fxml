@@ -24,6 +24,7 @@
             <Text fx:id="reinforceArmyText" layoutX="14.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reinforce Army" />
             <Text fx:id="initialArmyText" layoutX="14.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intitial Army" />
             <Text fx:id="phaseText" layoutX="14.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phase" />
+            <Text fx:id="totalArmyText" layoutX="14.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Army" />
          </children>
       </Pane>
    </children>

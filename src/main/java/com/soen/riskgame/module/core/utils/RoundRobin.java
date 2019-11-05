@@ -1,10 +1,8 @@
 package com.soen.riskgame.module.core.utils;
 
-import com.soen.riskgame.module.core.model.Player;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.xml.bind.Element;
 
 public class RoundRobin<E> {
 

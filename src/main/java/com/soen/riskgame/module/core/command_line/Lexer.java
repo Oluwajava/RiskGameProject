@@ -70,6 +70,21 @@ public class Lexer {
                     case ActionConstant.NONE:
                         result.add(new Token(TokenType.NONE, ActionConstant.NONE));
                         break;
+                    case CommandConstant.ATTACK:
+                        result.add(new Token(TokenType.ATTACK, CommandConstant.ATTACK));
+                        break;
+                    case CommandConstant.DEFEND:
+                        result.add(new Token(TokenType.DEFEND, CommandConstant.DEFEND));
+                        break;
+                    case CommandConstant.ATTACK_MOVE:
+                        result.add(new Token(TokenType.ATTACK_MOVE, CommandConstant.ATTACK_MOVE));
+                        break;
+                    case ActionConstant.ALL_OUT:
+                        result.add(new Token(TokenType.ALL_OUT, ActionConstant.ALL_OUT));
+                        break;
+                    case ActionConstant.NO_ATTACK:
+                        result.add(new Token(TokenType.NO_ATTACK, ActionConstant.NO_ATTACK));
+                        break;
                     default:
                         result.add(new Token(TokenType.ATOM, s));
                         break;
