@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+/**
+ * Class to implement the output of DTO from mapper
+ * @author Mayokun
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

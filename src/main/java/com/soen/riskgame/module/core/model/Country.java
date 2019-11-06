@@ -16,6 +16,7 @@ import lombok.EqualsAndHashCode;
  * list of the adjacent countries
  *
  * @see com.soen.riskgame.module.core.mapper
+ * @author Sai Sukruth
  */
 @Data
 @EqualsAndHashCode(exclude = {"continent", "adjacentCountries"})
@@ -103,26 +104,50 @@ public class Country {
                 '}';
     }
 
+    /**
+     * Method to add army
+     */
     public void addArmy() {
         noOfArmies++;
     }
 
+    /**
+     * Method to add army
+     * @param num number of armies
+     */
     public void addArmy(int num) {
         noOfArmies += num;
     }
 
+    /**
+     * Method to remove army
+     * @param num number of armies
+     */
     public void removeArmy(int num) {
         noOfArmies -= num;
     }
 
+    /**
+     * Method to add neighbour
+     * @param country name of the country
+     */
     public void addNeighbour(Country country) {
         this.adjacentCountries.add(country);
     }
 
+    /**
+     * method to remove neighbour
+     * @param country name of the country
+     */
     public void removeNeighbour(Country country) {
         this.adjacentCountries = adjacentCountries.stream().filter(v -> !(v.equals(country))).collect(Collectors.toList());
     }
 
+    /**
+     * Methid to chcek if the Country is Adjacent
+     * @param countryName
+     * @return boolean value either True or False
+     */
     public boolean isCountryAdjacent(String countryName) {
         for (Country country: adjacentCountries) {
             if (country.getName().equalsIgnoreCase(countryName)) {

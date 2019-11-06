@@ -2,6 +2,10 @@ package com.soen.riskgame.module.core.model;
 
 import lombok.Data;
 
+/**
+ * Class to implement the output of DTO from mapper
+ * @author Sai Sukruth
+ */
 @Data
 public class CountryDTO {
     /**

@@ -8,24 +8,43 @@ import lombok.Data;
 
 import java.util.*;
 
+/**
+ * Map data class contains details of countries,players,army,reinforce and continent
+ * @author Sai Sukruth
+ */
 @Data
 public class MapData extends Observable implements ContinentAction, CountryAction, PlayerAction, ArmyAction, ReinforceAction, FortificationAction {
-
+    /**
+     * to check of the game has started
+     */
     private boolean gameStarted;
-
+    /**
+     * map file name
+     */
     private String fileName;
-
+    /**
+     * round robin implmentation of players
+     */
     private RoundRobin<Player> players;
-
+    /**
+     * list of countries
+     */
     private HashMap<String, Country> countries;
-
+    /**
+     * list of continents
+     */
     private HashMap<String, Continent> continents;
-
+    /**
+     * Constructor for the class
+     */
     public MapData() {
         countries = new HashMap<>();
         continents = new HashMap<>();
     }
-
+    /**
+     * method to addCountries to Continents
+     * @param country
+     */
     public void addCountryToContinent(Country country) {
         Continent continent = continents.get(country.getContinentId());
         List<Country> countries = continent.getCountries();
@@ -37,12 +56,18 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         continents.put(String.valueOf(continent.getId()), continent);
         updateView();
     }
-
+    /**
+     * method to update the map view
+     */
     private void updateView() {
         setChanged();
         notifyObservers(this);
     }
-
+    /**
+     * method to add continent
+     * @param name name of the country
+     * @param controlValue value of the country
+     */
     @Override
     public void addContinent(String name, int controlValue) {
         Continent continent = new Continent(name, controlValue, null);
@@ -51,7 +76,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         continents.put(String.valueOf(continentId), continent);
         updateView();
     }
-
+    /**
+     * method to remove continent
+     * @param name name of the country
+     */
     @Override
     public void removeContinent(String name) {
         HashMap<String, Continent> newData = new HashMap<>(continents);
@@ -63,7 +91,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         continents = newData;
         updateView();
     }
-
+    /**
+     * method to edit continent
+     * @param name name of the country
+     * @param controlValue value of the country
+     */
     @Override
     public void editContinent(String name, int controlValue) {
         continents.forEach((key, continent) -> {
@@ -76,6 +108,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         updateView();
     }
 
+    /**
+     * method to add country
+     * @param countryName name of the Country to be added
+     * @param continentName name of the continent in which the country would be added.
+     */
     @Override
     public void addCountry(String countryName, String continentName) {
         Country country = new Country();
@@ -86,6 +123,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     }
 
+    /**
+     * method to add country to continent
+     * @param country name of the Country to be added
+     * @param continent name of the continent in which the country would be added.
+     */
     private void addCountry(Country country, Continent continent) {
         if (continent != null) {
             country.setContinent(continent);
@@ -97,6 +139,13 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
     }
 
+    /**
+     * method to add country to continent with coordinates on map
+     * @param countryName name of the country
+     * @param continentName name of the continent
+     * @param xCoordinate coordinate of x plane
+     * @param yCoordinate coordinate of y plane
+     */
     @Override
     public void addCountry(String countryName, String continentName, String xCoordinate, String yCoordinate) {
         Country country = new Country();
@@ -108,6 +157,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         addCountry(country, continent);
     }
 
+    /**
+     * method to remove country
+     * @param countryName name of the country
+     */
     @Override
     public void removeCountry(String countryName) {
         Country country = MapDataUtil.findCountryByName(countryName, countries);
@@ -119,7 +172,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             updateView();
         }
     }
-
+    /**
+     * method to add neighbour
+     * @param countryName name of the country
+     * @param neighborCountryName name of the neighbour country
+     */
     @Override
     public void addNeighbour(String countryName, String neighborCountryName) {
         Country country = MapDataUtil.findCountryByName(countryName, countries);
@@ -131,12 +188,20 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         updateView();
     }
 
+    /**
+     * method to remove neighbour
+     * @param countryName name of the country
+     * @param neighbourCountryName name of the neighbor country
+     */
     @Override
     public void removeNeighbour(String countryName, String neighbourCountryName) {
         updateView();
     }
 
-
+    /**
+     * method to update the Map file
+     * @return String value mapFileBuilder
+     */
     public String toFile() {
         StringBuilder mapFileBuilder = new StringBuilder();
         mapFileBuilder.append("name " + fileName + MapDelimiters.NEXT_LINE_DELIMETER + MapDelimiters.NEXT_LINE_DELIMETER);
@@ -179,7 +244,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 ", continents=" + continents +
                 '}';
     }
-
+    /**
+     * method to build String of data
+     * @return String value of stringBuilder object
+     */
     public String buildStringData() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("==============================\n");
@@ -212,6 +280,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         return stringBuilder.toString();
     }
 
+    /**
+     * method to add player
+     * @param playerName name of the player
+     */
     @Override
     public void addPlayer(String playerName) {
         if (players == null) {
@@ -230,12 +302,19 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         players.addFirst(player);
     }
 
+    /**
+     * method to remove player
+     * @param playerName name of the player to be removed
+     */
     @Override
     public void removePlayer(String playerName) {
         Player player = new Player(playerName);
         players.deleteNode(player);
     }
 
+    /**
+     * method to populate countries using command
+     */
     @Override
     public void populateCountries() {
         List<Country> newCountries = new ArrayList<>(countries.values());
@@ -257,6 +336,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         updateView();
     }
 
+    /**
+     * method that return the size of reinforced armies
+     * @param size numbers of players
+     * @return <b>size of reinforcements</b> armies
+     */
     private int reinforcementArmy(int size) {
         if (size == 2) {
             return 40;
@@ -274,6 +358,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     }
 
+    /**
+     * method to place army using command for each player
+     * @param countryName name of the country
+     */
     @Override
     public void placeArmy(String countryName) {
         Player player = players.last();
@@ -289,7 +377,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
         updateView();
     }
-
+    /**
+     * method to place all armies
+     */
     @Override
     public void placeAll() {
         Player firstPlayer = players.last();
@@ -312,6 +402,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         updateView();
     }
 
+    /**
+     * method to list the map
+     * @return list of players
+     */
     public List<Player> toList() {
         List<Player> playersList = new ArrayList<>();
         Player firstPlayer = players.last();
@@ -324,6 +418,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         return playersList;
     }
 
+    /**
+     * method to fortify country for ech player
+     * @param fromCountry name of Country
+     * @param toCountry name of New Country
+     * @param num number of armies
+     */
     @Override
     public void fortifyCountry(String fromCountry, String toCountry, int num) {
         Country country = MapDataUtil.findCountryByName(fromCountry, countries);
@@ -337,13 +437,20 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
         updateView();
     }
-
+    /**
+     * method to fortify none of teh player countries
+     */
     @Override
     public void fortifyNone() {
         players.rotate();
         updateView();
     }
 
+    /**
+     * method to reinforce country
+     * @param countryName name of the country
+     * @param number number of armies
+     */
     @Override
     public void reinforceCountry(String countryName, int number) {
         Player player = players.last();

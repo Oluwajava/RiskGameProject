@@ -6,10 +6,10 @@ import java.util.Random;
 
 import com.soen.riskgame.module.core.constants.Cards;
 /**
- * 
- * @author Hitansh
  * This class supports the functionality of providing the player with cards of certain type which can be
- * exchanged to get the armies in return. 
+ *  exchanged to get the armies in return.
+ * @author Hitansh
+ *
  *
  */
 public class Card {
