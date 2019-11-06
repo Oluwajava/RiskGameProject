@@ -3,26 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="83f5b688-7f2c-4c09-9077-dd9d44a46413" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/base/BaseView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/base/BaseView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddContinentCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddContinentCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddCountryCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddCountryCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddNeighbourCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddNeighbourCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddPlayerCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AddPlayerCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/EditMapCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/EditMapCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/FortifyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/FortifyCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/FortifyNoneCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/FortifyNoneCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/LoadMapCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/LoadMapCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/PlaceAllArmyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/PlaceAllArmyCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/PlaceArmyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/PlaceArmyCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/PopulateCountriesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/PopulateCountriesCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/ReinforceCountryCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/ReinforceCountryCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveContinentCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveContinentCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveCountryCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveCountryCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveNeigbourCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemoveNeigbourCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemovePlayerCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/RemovePlayerCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/SaveFileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/SaveFileCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/ShowMapCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/ShowMapCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/ValidateCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/ValidateCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/TokenCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/TokenCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/TokenType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/ActionConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/ActionConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/CommandConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/CommandConstant.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +49,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573056393011</updated>
-      <workItem from="1573056397910" duration="2461000" />
+      <workItem from="1573056397910" duration="3000000" />
     </task>
     <servers />
   </component>
