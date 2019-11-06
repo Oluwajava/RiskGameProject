@@ -31,6 +31,8 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     private int defendNumDice;
 
+    private String attackLog;
+
 
     public MapData() {
         countries = new HashMap<>();
@@ -356,13 +358,16 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     @Override
     public void fortifyCountry(String fromCountry, String toCountry, int num) {
         if (isInPhase(Phase.FORTIFICATION)) {
-            Country country = MapDataUtil.findCountryByName(fromCountry, countries);
-            Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
+        Country country = MapDataUtil.findCountryByName(fromCountry, countries);
+        Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
+        Player player = players.last();
+        if (player.doesCountryBelongToPlayer(fromCountry)&&player.doesCountryBelongToPlayer(toCountry)&&num>0) {
             if (country.isCountryAdjacent(toCountry) && (country.getNoOfArmies() - num >= 1)) {
                 country.removeArmy(num);
                 countryTo.addArmy(num);
             }
-            updateView();
+        }
+        updateView();
         }
     }
 
@@ -379,7 +384,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     @Override
     public void reinforceCountry(String countryName, int number) {
         if (isInPhase(Phase.REINFORCEMENT)) {
-            Player player = players.last();
+        Player player = players.last();
+
+        if (player.doesCountryBelongToPlayer(countryName)&&number>0&&number<=player.getNumOfArmies()) {
             if (player.getNumOfArmies() > 0) {
                 player.decreaseNumOfArmies(number);
                 Country country = MapDataUtil.findCountryByName(countryName, countries);
@@ -394,13 +401,15 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 players.setElement(player);
                 players.rotate();
             }
-
-            updateView();
+        }
+        updateView();
         }
     }
 
     @Override
     public void attack(String fromCountry, String toCountry, int numOfDice) {
+        updateView();
+        attackLog = null;
         if (isInPhase(Phase.ATTACK)) {
             Country country = MapDataUtil.findCountryByName(fromCountry, countries);
             Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
@@ -471,6 +480,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             attackResult(sim, attackDice, defendDice, 1);
         }
 
+        attackLog = sim.toString();
+        updateView();
+
     }
 
     private void attackResult(StringBuilder sim, List<Integer> attackDice, List<Integer> defendDice, int index) {
@@ -480,6 +492,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         } else if (attackDice.get(index) > defendDice.get(index)) {
             attackToCountry.removeArmy(1);
             sim.append(attackToCountry.getPlayer().getPlayerName() + " lost an army" + "\n");
+            if (attackToCountry.getNoOfArmies() == 0) {
+                Player player = players.last();
+                player.getCards().getCard();
+            }
         }
+
     }
 }

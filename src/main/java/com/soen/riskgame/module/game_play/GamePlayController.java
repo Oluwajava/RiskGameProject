@@ -50,6 +50,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     private Text initialArmyText;
     private Text totalArmyText;
     private Text phaseText;
+    private Text attackLog;
 
     public GamePlayController(MapData mapData) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NEW_GAME));
@@ -107,6 +108,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         initialArmyText = (Text) scene.lookup("#initialArmyText");
         totalArmyText = (Text) scene.lookup("#totalArmyText");
         phaseText = (Text) scene.lookup("#phaseText");
+        attackLog = (Text) scene.lookup("#attackLog");
     }
 
     private void updateImage(String name) {
@@ -160,6 +162,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         reinforceArmyText.setText("Reinforcement Army: " + player.getNumOfArmies());
         Long totalArmyCount = player.getCountries().stream().mapToLong(Country::getNoOfArmies).sum();
         totalArmyText.setText("Total Army: " + totalArmyCount);
+        attackLog.setText(mapTest.getAttackLog());
         updateCountriesLocation();
         setPhase(player);
         setPlayerList(mapTest);

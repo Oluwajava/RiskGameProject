@@ -12,6 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Player {
+	
+	private int exchangeCount=0;
 
     private String playerName;
 
@@ -22,6 +24,8 @@ public class Player {
     private int placeArmiesNo;
 
     private int numOfArmies;
+    
+    private Card cards;
 
     private boolean countriesPopulated;
 
@@ -30,6 +34,7 @@ public class Player {
     public Player(String playerName) {
         this.playerName = playerName;
         this.countries = new ArrayList<>();
+        this.cards = new Card();
     }
 
     public void addCountry(Country country) {
@@ -70,6 +75,16 @@ public class Player {
         return false;
     }
 
+    public int  exchangeTheCards(int x,int y,int z) {
+    	int res=this.getCards().reduceCard(x, y, z);
+    	if(res==0)
+    		return 0;
+    	else
+    		this.exchangeCount++;
+    		int numberOfArmies=this.getNumOfArmies()+(this.exchangeCount+1)*5;
+    		this.setNumOfArmies(numberOfArmies);
+    		return 1;
+    }
     @Data
     public static class PlayerColor {
 
