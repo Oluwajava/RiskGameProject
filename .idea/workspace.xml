@@ -3,14 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="83f5b688-7f2c-4c09-9077-dd9d44a46413" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/TokenCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/TokenCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/TokenType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/ActionConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/ActionConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/CommandConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/CommandConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/ArmyAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/ArmyAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/ContinentAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/ContinentAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/CountryAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/CountryAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/FortificationAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/FortificationAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/MapPicker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/MapPicker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/PlayerAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/PlayerAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/PlayerCommandListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/PlayerCommandListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/ReinforceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/ReinforceAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/BorderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/BorderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/ContinentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/ContinentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/CountryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/CountryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/GameFileMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/mapper/GameFileMapper.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1573056393011</updated>
-      <workItem from="1573056397910" duration="3000000" />
+      <workItem from="1573056397910" duration="3858000" />
     </task>
     <servers />
   </component>

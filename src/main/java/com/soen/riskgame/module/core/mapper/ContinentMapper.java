@@ -6,6 +6,7 @@ import com.soen.riskgame.module.core.model.ContinentDTO;
 /**
  * class ContinentMapper uses pattern to continentDTO class and contains the methods 
  * mapToContinent ,which pass continent name in String
+ * @author Sai Sukruth
  *
  */
 public class ContinentMapper {
@@ -15,8 +16,8 @@ public class ContinentMapper {
 
     /**
      * mapToContienet method is used to split the map file based on Continent and these method uses ContientDTO has call type
-     * @param data
-     * @return
+     * @param data String input data from map
+     * @return <b>continentDTO</b> output of data
      */
     public static ContinentDTO mapToContinent(String data) {
         String[] continentData = data.split(MapDelimiters.SPACE_DELIMITER);

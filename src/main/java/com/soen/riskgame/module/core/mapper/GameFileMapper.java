@@ -5,7 +5,7 @@ import com.soen.riskgame.module.core.model.GameFile;
 /**
  * class GameFileMapper parses the GameFileDTO class and contains the methods 
  * mapToGameFile ,which pass a String 
- *
+ * @author Sai Sukruth
  */
 public class GameFileMapper {
     /**
@@ -16,8 +16,8 @@ public class GameFileMapper {
     }
     /**
      * mapToGamefile method  is used to split the map file based  on GameFile and these method uses GameFileDTO has call type
-     * @param str 
-     * @return
+     * @param str  String input data from map
+     * @return <b>GameFile</b> output of data
      */
     public static GameFile mapToGameFile(String str)
     {
