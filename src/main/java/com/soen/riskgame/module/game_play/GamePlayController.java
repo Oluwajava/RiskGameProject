@@ -31,23 +31,71 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
-
+/**
+ * Class that represent the game play and controls the same. GUI representation
+ * class implements view ,observer and show map command
+ * this class decide the flow of the game
+ * @author Mayokun
+ */
 public class GamePlayController implements View, Observer, ShowMapCommand.ShowMapListener {
 
+    /**
+     * name of the gameplay
+     */
     private final String NEW_GAME = "/view/game-play.fxml";
+    /**
+     * variable of scene view
+     */
     private final Scene scene;
+    /**
+     * variable of image view
+     */
     private ImageView mapImage;
+    /**
+     * GUI variable of Anchor pane
+     */
     private AnchorPane anchorPane;
+    /**
+     * variable of list view
+     */
     private ListView listView;
+    /**
+     * variable of Mpa data
+     */
     private MapData mapData;
+    /**
+     * variable for processCommand button
+     */
     private Button processCommandButton;
+    /**
+     * variable for text line
+     */
     private Text turnText;
+    /**
+     * variable for test area
+     */
     private TextArea commandLine;
+    /**
+     * variable for players list view
+     */
     private ListView playerListView;
+    /**
+     * variable for reinforcement army
+     */
     private Text reinforceArmyText;
+    /**
+     * variable for initial  army
+     */
     private Text initialArmyText;
+    /**
+     * variable for which phase
+     */
     private Text phaseText;
-
+    /**
+     * Constructor of the class
+     * @param mapData map data
+     * @throws IOException
+     */
     public GamePlayController(MapData mapData) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NEW_GAME));
         scene = new Scene(root, 800, 760);
@@ -67,11 +115,16 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
             System.out.println();
         });
     }
-
+    /**
+     * method for setup game view
+     */
     private void setupGameView() {
         updateImage(mapData.getFileName());
     }
 
+    /**
+     * method to update country location
+     */
     private void updateCountriesLocation() {
         List<Node> nodes = mapData.getCountries().values().stream().map(country -> {
             Circle circle = new Circle();
@@ -92,7 +145,9 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
 
         anchorPane.getChildren().addAll(nodes);
     }
-
+    /**
+     * binder method of the view to load and view scene
+     */
     private void bindView() {
         mapImage = (ImageView) scene.lookup("#mapImage");
         anchorPane = (AnchorPane) scene.lookup("#anchorPane");
@@ -104,7 +159,10 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         initialArmyText = (Text) scene.lookup("#initialArmyText");
         phaseText = (Text) scene.lookup("#phaseText");
     }
-
+    /**
+     * method to update image
+     * @param name input string
+     */
     private void updateImage(String name) {
         InputStream inputStream = (getClass().getResourceAsStream("/maps/" + name + "_pic.jpg"));
         if (inputStream == null) {
@@ -113,7 +171,9 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         Image mapImage = new Image(inputStream);
         this.mapImage.setImage(mapImage);
     }
-
+    /**
+     * method to set players list
+     */
     private void setPlayerList() {
         ObservableList<Player> items = FXCollections.observableArrayList(
                 mapData.toList());
@@ -137,12 +197,20 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         });
 
     }
-
+    /**
+     * getter method of the view
+     * @return scene
+     * @throws IOException
+     */
     @Override
     public Scene getView() throws IOException {
         return scene;
     }
-
+    /**
+     * method to update the view
+     * @param o oberseravble
+     * @param arg object
+     */
     @Override
     public void update(Observable o, Object arg) {
         MapData mapTest = (MapData) arg;
@@ -155,6 +223,10 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         setPhase(player);
     }
 
+    /**
+     * method to indicate the phase
+     * @param player name of the player
+     */
     private void setPhase(Player player) {
         if (player.getPlaceArmiesNo() > 0) {
             phaseText.setText("Startup Phase");
@@ -168,7 +240,10 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
             phaseText.setText("Fortification Phase");
         }
     }
-
+    /**
+     * method implementing show map in GUI
+     * @param mapData
+     */
     @Override
     public void showMap(String mapData) {
         commandLine.setText(mapData);
