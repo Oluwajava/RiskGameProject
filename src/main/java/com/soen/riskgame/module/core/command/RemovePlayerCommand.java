@@ -14,6 +14,7 @@ import com.soen.riskgame.module.core.model.MapData;
  *  *   </pre>
  * @see Command
  * @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
+ * @author Sai Sukruth
  */
 
 public class RemovePlayerCommand implements Command {
@@ -41,7 +42,11 @@ public class RemovePlayerCommand implements Command {
         this.playerName = playerName;
     }
 
-
+    /**
+     * Method is inherited from the @see Command Interface
+     * which is used to abstract the execution of
+     * the Command
+     */
     @Override
     public void execute() {
         mapData.removePlayer(playerName);
