@@ -34,25 +34,79 @@ import java.util.stream.Collectors;
 
 //import com.soen.riskgame.module.map_selector.MapListController;
 
+/**
+ * Class represents the start of the new game. Calss implements methods of View(GUI)
+ * and command(player command and load map command) amd also the observer
+ * new start start by calling this class, which selects the players(add and remove) , updates and binds the view
+ * @author Mayokun
+ */
 public class NewGameController implements View, PlayerCommandListener, LoadMapCommand.LoadMapListener, Observer {
 
+    /**
+     * name of the new game
+     */
     private final String NEW_GAME = "/view/new-game.fxml";
+    /**
+     * variable of scene view
+     */
     private final Scene scene;
+    /**
+     * variable for choose map button
+     */
     private Button chooseMap;
+    /**
+     * variable for Start Game button
+     */
     private Button startGame;
-
+    /**
+     * list of the players in the game
+     */
     private List<String> playersList = new ArrayList<>();
+    /**
+     * variable for map preview image
+     */
     private ImageView mapPreviewImage;
+    /**
+     * variable of players list view
+     */
     private ListView playerListView;
+    /**
+     * variable for remove player button
+     */
     private Button removePlayerButton;
+    /**
+     * variable for text field view player name
+     */
     private TextField playerName;
+    /**
+     * ariable for text area for the command line
+     */
     private TextArea commandLine;
+    /**
+     * variable to chose color
+     */
     private ColorPicker playerColor;
+    /**
+     * variable for add player button
+     */
     private Button addPlayerButton;
+    /**
+     * variable for processCommand button
+     */
     private Button processCommandButton;
+    /**
+     * variable to select player
+     */
     private String selectedPlayer;
+    /**
+     * variable for the map data
+     */
     private MapData mapData;
 
+    /**
+     * Constructor of the class that initializes objects
+     * @throws IOException
+     */
     public NewGameController() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NEW_GAME));
         scene = new Scene(root, 980, 740);
@@ -124,7 +178,10 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         });
 
     }
-
+    /**
+     * method to update the image
+     * @param name String name of image
+     */
     private void updateImage(String name) {
         InputStream inputStream = (getClass().getResourceAsStream("/maps/" + name + "_pic.jpg"));
         if(inputStream == null) {
@@ -133,25 +190,33 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         Image mapImage = new Image(inputStream);
         mapPreviewImage.setImage(mapImage);
     }
-
+    /**
+     * method to setup players list
+     */
     private void setupPlayerList() {
         ObservableList<String> items = FXCollections.observableArrayList(
                 playersList);
         playerListView.setItems(items);
     }
 
-
+    /**
+     * method to add player to the list
+     */
     public void addPlayer(String playerName) {
         playersList.add(playerName);
         setupPlayerList();
     }
-
+    /**
+     * method to remove player to the list
+     */
     public void removePlayer(String playerName) {
         List<String> newList = playersList.stream().filter(s -> !(s.equalsIgnoreCase(playerName))).collect(Collectors.toList());
         this.playersList = newList;
         setupPlayerList();
     }
-
+    /**
+     * binder method of the view to load and view scene
+     */
     private void bindView() {
         chooseMap = (Button) scene.lookup("#chooseMap");
         startGame = (Button) scene.lookup("#startGame");
@@ -164,17 +229,28 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         addPlayerButton = (Button) scene.lookup("#addPlayer");
         processCommandButton = (Button) scene.lookup("#processCommandButton");
     }
-
+    /**
+     * getter method of the view
+     * @return scene
+     * @throws IOException
+     */
     @Override
     public Scene getView() throws IOException {
         return scene;
     }
-
+    /**
+     * obseravle class method
+     * @param o Observable
+     * @param arg Object
+     */
     @Override
     public void update(Observable o, Object arg) {
 
     }
-
+    /**
+     * method to load map
+     * @param mapData mapdata
+     */
     @Override
     public void loadMap(MapData mapData) {
         this.mapData = mapData;

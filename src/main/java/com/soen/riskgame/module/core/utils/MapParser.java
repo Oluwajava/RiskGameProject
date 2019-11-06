@@ -15,28 +15,38 @@ import java.util.List;
 import static com.soen.riskgame.module.core.mapper.CountryMapper.mapToCountry;
 
 /**
- * @author Sibil
  * This class parse the data from file. In this class the data is parsed on the basis
  * of the section in the file.
  * The sections are divided into four continents,borders, countries and gameFile
+ *  @author Sibil
  */
 @Getter
 public class MapParser {
-
+    /**
+     * game file data
+     */
     private GameFile gameFile;
-
+    /**
+     * list of continents
+     */
     private List<ContinentDTO> continentDTOS;
-
+    /**
+     * list of countries
+     */
     private List<CountryDTO> countries;
-
+    /**
+     * list of borders
+     */
     private List<BorderDTO> borderDTOS;
-
+    /**
+     * delimeter of the string
+     */
     private String currentDelimeter = "";
 
     /**
      * Constructor intialize the variables
      *
-     * @param mapData
+     * @param mapData map data values
      * @throws Exception
      */
     public MapParser(String mapData) throws Exception {
@@ -53,7 +63,7 @@ public class MapParser {
     /**
      * This function process the data and reads the string line by line.
      *
-     * @param mapData
+     * @param mapData map data values
      */
     private void processData(String mapData) {
         String[] lines = mapData.split(MapDelimiters.NEXT_LINE_DELIMETER);
@@ -98,9 +108,8 @@ public class MapParser {
     /**
      * This process the continent information and set the delimeter to the continent
      *
-     * @param currentDelimeter
-     * @param line
-     * @return
+     * @param currentDelimeter delimeter of the string
+     * @param line String value
      */
     private void processContinentInformation(String currentDelimeter, String line) {
         if (this.currentDelimeter.equals(MapDelimiters.CONTINENT_DELIMETER)) {
@@ -114,9 +123,9 @@ public class MapParser {
     /**
      * This process the border information and set the delimeter to the boreder
      *
-     * @param currentDelimeter
-     * @param line
-     * @return
+     * @param currentDelimeter delimeter of the string
+     * @param line String value
+     * @return String value delimeter
      */
     private String processBorderInformation(String currentDelimeter, String line) {
         if (this.currentDelimeter.equals(MapDelimiters.BORDER_DELIMETER)) {
@@ -131,9 +140,9 @@ public class MapParser {
     /**
      * This process the file information and set the delimeter to the file delimeter
      *
-     * @param currentDelimeter
-     * @param line
-     * @return
+     * @param currentDelimeter delimeter of the string
+     * @param line String value
+     * @return String value delimeter
      */
     private String processFileInformation(String currentDelimeter, String line) {
         if (line.trim().equals(MapDelimiters.FILE_DELIMITER) || this.currentDelimeter.equals(MapDelimiters.FILE_DELIMITER)) {
@@ -144,9 +153,10 @@ public class MapParser {
     }
 
     /**
-     * @param currentDelimiter
-     * @param files
-     * @param line
+     *
+     * @param currentDelimiter String value delimeter
+     * @param files list of files
+     * @param line delimeter string value
      */
     private void addDataToList(String currentDelimiter, List<String> files, String line) {
         if (isSectionContent(line, currentDelimiter) && StringUtils.isNotBlank(line)) {
@@ -157,8 +167,8 @@ public class MapParser {
     /**
      * Checking the currentDelimenter and borderDelimeter
      *
-     * @param line
-     * @param currentDelimeter
+     * @param line String value
+     * @param currentDelimeter String value delimeter
      * @return boolean on the basis of the check whether currentDelimeter ==borderDelimeter
      */
     private boolean isSectionContent(String line, String currentDelimeter) {

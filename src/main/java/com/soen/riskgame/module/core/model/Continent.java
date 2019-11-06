@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
  * which will send the data to Continent class
  * Continent class will contains all the information from DTO class and also additional details like
  * list of the countries
- *
  * @see com.soen.riskgame.module.core.mapper
+ * @author Mayokun,Hitansh
  */
 @Data
 public class Continent {

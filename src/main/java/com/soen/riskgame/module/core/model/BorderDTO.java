@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Data transfer object that holds the border data
  * obtained from the map file
+ * @author Sai Sukruth
  */
 @Data
 @AllArgsConstructor

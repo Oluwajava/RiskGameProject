@@ -14,8 +14,8 @@ import com.soen.riskgame.module.core.model.MapData;
  * @see com.soen.riskgame.module.core.interfaces.Command
  * @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
  * @since       RiskGameProject1.0
+ * @author John
  */
-
 public class AddContinentCommand implements Command {
 
     /**
@@ -34,10 +34,10 @@ public class AddContinentCommand implements Command {
     private int controlValue;
 
     /**
-     *
-     * @param mapData
-     * @param continentName
-     * @param controlValue
+     *  Constructor for the calls with parameters
+     * @param mapData   data from the map
+     * @param continentName continent name in parsed data
+     * @param controlValue control value of the continent
      */
     public AddContinentCommand(MapData mapData, String continentName, int controlValue) {
         this.mapData = mapData;

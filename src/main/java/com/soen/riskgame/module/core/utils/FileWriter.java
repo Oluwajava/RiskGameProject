@@ -9,13 +9,19 @@ import java.io.PrintWriter;
  * @author Sibil
  */
 public class FileWriter {
+    /**
+     * location of file
+     */
     private String fileLocation;
+    /**
+     * data of the file
+     */
     private String data;
 
     /**
      * Consturctor- Intializing the data and fileLocation variables
-     * @param data
-     * @param fileLocation
+     * @param data file data
+     * @param fileLocation fiel location
      */
     public FileWriter(String data, String fileLocation) {
         this.data = data;

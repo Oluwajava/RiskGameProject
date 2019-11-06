@@ -5,7 +5,8 @@ import com.soen.riskgame.module.core.model.CountryDTO;
 
 /**
  * class CountryMapper uses pattern to countryDTO class and contains the methods 
- * mapToCountry ,which pass country name in String 
+ * mapToCountry ,which pass country name in String
+ * @author Sai Sukruth
  */
 public class CountryMapper {
     public CountryMapper(){
@@ -13,8 +14,8 @@ public class CountryMapper {
     }
     /**
      * mapToCountry method is used to split the map file based on country and these method uses ContientDTO has call type
-     * @param data
-     * @return
+     * @param data String input data from map
+     * @return <b>countryDTO</b> output of data
      */
     public static CountryDTO mapToCountry(String data){
         String[] countryData = data.split(MapDelimiters.SPACE_DELIMITER);

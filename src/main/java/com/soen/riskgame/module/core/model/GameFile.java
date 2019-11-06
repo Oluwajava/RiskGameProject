@@ -6,6 +6,7 @@ import lombok.Data;
 
 /**
  * Holds information about the game resource files
+ * @author John
  */
 @Data
 @AllArgsConstructor

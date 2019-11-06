@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 /**
  * class BorderMapper uses pattern to BorderDTO class and contains the methods 
  * mapToBorder
- *
+ * @author Sai Sukruth
  */
 public class BorderMapper {
 
@@ -20,12 +20,10 @@ public class BorderMapper {
     public BorderMapper() {
 
     }
-    
-
     /**
      * mapToborder method is used to split the map file based on border and these method uses BorderDTO has call type
-     * @param data
-     * @return null
+     * @param data String input data from map
+     * @return <b>borderDTO</b> output of data
      */
     public static BorderDTO mapToBorder(String data) {
         String[] borderData = data.split(MapDelimiters.SPACE_DELIMITER);

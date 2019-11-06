@@ -8,11 +8,16 @@ import java.nio.file.Paths;
 
 /**
  * This class is used for reading the file
+ * @author Sibil
  */
 public class FileReader {
+    /**
+     * location of file
+     */
     String fileLocation;
 
     /**
+     * constructor of teh class
      * @param fileLocation is passed from the called function
      */
     public FileReader(String fileLocation) {

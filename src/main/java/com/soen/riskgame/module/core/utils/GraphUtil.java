@@ -7,25 +7,26 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * This class will take care of the validation of the graph
- *
- *
+ * this class will take care of the validation of the graph
+ * @author Sibi
  */
-
-
 public class GraphUtil {
-
+    /**
+     * list fo visited countries
+     */
     private HashMap<Country, Boolean> visitedCountries;
-
+    /**
+     * set of the countries
+     */
     private Set<Country> countrySet;
-
+    /**
+     * Boolean to check if graph is connected
+     */
     private boolean isConnectedGraph;
 
     /**
      * This will return a boolean whether depending upon the graph is connected or not
-     *
-     * @param countrySet
-     * @return
+     * @param countrySet set of the countries
      */
     public GraphUtil(Set<Country> countrySet) {
         this.countrySet = countrySet;

@@ -42,7 +42,11 @@ public class AddPlayerCommand implements Command {
         this.playerName = playerName;
     }
 
-
+    /**
+     * Method is inherited from the @see Command Interface
+     * which is used to abstract the execution of
+     * the Command
+     */
     @Override
     public void execute() {
         listener.addPlayer(playerName);

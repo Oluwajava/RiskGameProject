@@ -1,6 +1,5 @@
 package com.soen.riskgame.module.map_selector;
 
-import com.soen.riskgame.module.core.constants.Constants;
 import com.soen.riskgame.module.core.interfaces.MapPicker;
 import com.soen.riskgame.module.core.interfaces.View;
 import javafx.collections.FXCollections;
@@ -21,18 +20,51 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Class MapListController implements view,
+ * class controls list of map data on the GUI
+ * @author Mayokun
+ */
 public class MapListController implements View {
 
+    /**
+     * name of the map view
+     */
     private final String MAP_VIEW = "/view/map_selector.fxml";
+    /**
+     * variable of MapPicker class
+     */
     private final MapPicker mapPicker;
+    /**
+     * variable of ;list of map data
+     */
     private final List<MapInfo> mapData;
+    /**
+     * variable of scene view
+     */
     private final Scene scene;
+    /**
+     * variable of list view
+     */
     private ListView listView;
+    /**
+     * variable for cancel button
+     */
     private Button cancelButton;
+    /**
+     * variable for ok button
+     */
     private Button okButton;
+    /**
+     * variable to store name of selected map
+     */
     private String selectedMap;
 
+    /**
+     * Constructor of the class Initializes mapIO object
+     * @param mapPicker
+     * @throws IOException
+     */
     public MapListController(MapPicker mapPicker) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(MAP_VIEW));
         scene = new Scene(root, 600, 500);
@@ -58,14 +90,20 @@ public class MapListController implements View {
             this.selectedMap = ((MapInfo)newValue).getMapName();
         });
     }
-
+    /**
+     * method that sets the map data to the list
+     */
     private void setMapDataToList() {
         ObservableList<MapInfo> items = FXCollections.observableArrayList(
                 mapData);
         listView.setItems(items);
         listView.setCellFactory(param -> new ListCell<MapInfo>() {
             private ImageView imageView = new ImageView();
-
+            /**
+             * method to update the map item
+             * @param item map item
+             * @param empty boolean
+             */
             @Override
             protected void updateItem(MapInfo item, boolean empty) {
                 super.updateItem(item, empty);
@@ -86,13 +124,19 @@ public class MapListController implements View {
         });
 
     }
-
+    /**
+     * binder method of the view to load and view scene
+     */
     private void bindView() {
         listView = (ListView) scene.lookup("#mapListView");
         okButton = (Button) scene.lookup("#okButton");
         cancelButton = (Button) scene.lookup("#cancelButton");
     }
 
+    /**
+     * getter method of the map data
+     * @return mapData
+     */
     private List<MapInfo> getMapData() {
         File folder = new File("C:\\Users\\Admin\\APP\\RiskGameProject\\src\\main\\resources\\maps\\preview");
         File[] listOfFiles = folder.listFiles();
@@ -106,7 +150,11 @@ public class MapListController implements View {
         }
         return mapData;
     }
-
+    /**
+     * method to get the view
+     * @return scene
+     * @throws IOException
+     */
     @Override
     public Scene getView() throws IOException {
         return scene;

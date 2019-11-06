@@ -31,35 +31,121 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Class MapEditorController is a subclass of base view and implements Observer, ShowMapCommand, ValidateCommand, EditMapCommand
+ * @author Mayokun
+ */
 public class MapEditorController extends BaseView implements Observer, ShowMapCommand.ShowMapListener, ValidateCommand.ValidateMapListener, EditMapCommand.EditMapListener {
 
+    /**
+     * name of the Dash board
+     */
     private final String DASHBOARD = "/view/map_editor.fxml";
+    /**
+     * variable of scene view
+     */
     private final Scene scene;
+    /**
+     * variable for loadmap button
+     */
     private Button loadMap;
+    /**
+     * variable for removeContinent button
+     */
     private Button removeContinent;
+    /**
+     * variable for removeCountry button
+     */
     private Button removeCountry;
+    /**
+     * variable for removeneighbour button
+     */
     private Button removeNeigbour;
+    /**
+     * variable for processCommand button
+     */
     private Button processCommand;
+    /**
+     * variable for save country button
+     */
     private Button saveCountry;
+    /**
+     * variable for add neighbour button
+     */
     private Button addNeigbour;
+    /**
+     * variable for save continent button
+     */
     private Button saveContinent;
+    /**
+     * variable for country list view
+     */
     private ListView countriesListView;
+    /**
+     * variable for continent list view
+     */
     private ListView continentListView;
+    /**
+     * variable for neighbour list view
+     */
     private ListView neigbhoursListView;
+    /**
+     * variable for text area in command line
+     */
     private TextArea commandLine;
+    /**
+     * variable for text field to add country
+     */
     private TextField addCountryName;
+    /**
+     * variable for text field to add country and continent
+     */
     private TextField addCountryContinentName;
+    /**
+     * variable for text field to add country coordintes
+     */
     private TextField addCountryXCoordinate;
+    /**
+     * variable for text field to add country coordintes
+     */
     private TextField addCountryYCoordinate;
+    /**
+     * variable for text field to add neighbour country
+     */
     private TextField addNeigbourCountryName;
+    /**
+     * variable for text field to add neighbour country name
+     */
     private TextField addNeigbourCountryNeigbourName;
+    /**
+     * variable for text field to add continent
+     */
     private TextField addContinentName;
+    /**
+     * variable for text field to add continent color
+     */
     private TextField addContinentColor;
+    /**
+     * variable to display currentSelectedCountry
+     */
     private String currentSelectedCountry;
+    /**
+     * variable to display currentSelectedContinent
+     */
     private String currentSelectedContinent;
+    /**
+     * variable to display currentSelectedneighbour
+     */
     private String currentSelectedNeighbour;
+    /**
+     * variable of Map data
+     */
     private MapData mapData;
 
+    /**
+     * Constructor of the class
+     * @throws IOException
+     */
     public MapEditorController() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(DASHBOARD));
         scene = new Scene(root, 1290, 765);
@@ -139,7 +225,9 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
             addContinentCommand.execute();
         });
     }
-
+    /**
+     * method to setup countries list
+     */
     private void setupCountriesList() {
         List<String> countriesList = new ArrayList<>();
         mapData.getCountries().entrySet().forEach(v -> countriesList.add(v.getValue().getName()));
@@ -147,7 +235,9 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
                 countriesList);
         countriesListView.setItems(items);
     }
-
+    /**
+     * method to setup continents list
+     */
     private void setupContinentList() {
         List<String> continentList = new ArrayList<>();
         mapData.getContinents().entrySet().forEach(v -> continentList.add(v.getValue().getName()));
@@ -157,6 +247,10 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
 
     }
 
+    /**
+     * method to setup neighbours to country
+     * @param country country
+     */
     private void setupNeighbours(Country country) {
         List<String> continentList = new ArrayList<>();
         country.getAdjacentCountries().forEach(v -> continentList.add(v.getName()));
@@ -164,7 +258,11 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
                 continentList);
         neigbhoursListView.setItems(items);
     }
-
+    /**
+     * method to load the map data
+     * @param file input file
+     * @throws Exception
+     */
     private void loadMapData(File file) throws Exception {
         FileReader fileReader = new FileReader(file.getAbsolutePath());
         String mapData = fileReader.readData().replaceAll(MapDelimiters.CARRIAGE_DELIMITER, "");
@@ -174,12 +272,18 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
         this.mapData = new Map.Builder(mapParser.getGameFile(), mapParser.getCountries(), mapParser.getContinentDTOS(), mapParser.getBorderDTOS()).build();
         this.mapData.addObserver(this);
     }
-
+    /**
+     * getter method of the view
+     * @return scene
+     */
     @Override
     public Scene getView() {
         return scene;
     }
 
+    /**
+     * binder method of the view to load and view scene
+     */
     private void bindView() {
         loadMap = (Button) scene.lookup("#loadMap");
         countriesListView = (ListView) scene.lookup("#countriesListView");
@@ -202,29 +306,46 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
         addContinentName = (TextField) scene.lookup("#addContinentName");
         addContinentColor = (TextField) scene.lookup("#addContinentColor");
     }
-
+    /**
+     * method to update map data
+     * @param o  Observable
+     * @param arg Object
+     */
     @Override
     public void update(Observable o, Object arg) {
         this.mapData = (MapData) arg;
         updateView();
     }
-
+    /**
+     * method to update the view
+     */
     private void updateView() {
         setupContinentList();
         setupCountriesList();
     }
 
+    /**
+     * method to show map
+     * @param mapData mapdata
+     */
     @Override
     public void showMap(String mapData) {
         commandLine.setText(mapData);
         System.out.println();
     }
-
+    /**
+     * boolean method to print once th map is validated
+     * @param isMapValid boolean varaible
+     */
     @Override
     public void onMapValidated(Boolean isMapValid) {
         commandLine.setText("Map Valid: " + isMapValid);
     }
 
+    /**
+     * method to edit the map
+     * @param mapData mapdata
+     */
     @Override
     public void editMap(MapData mapData) {
         this.mapData = mapData;
