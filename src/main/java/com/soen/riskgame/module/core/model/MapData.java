@@ -428,6 +428,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      */
     @Override
     public void fortifyCountry(String fromCountry, String toCountry, int num) {
+        if (isInPhase(Phase.FORTIFICATION)) {
         Country country = MapDataUtil.findCountryByName(fromCountry, countries);
         Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
         Player player = players.last();
@@ -438,14 +439,19 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             }
         }
         updateView();
+        }
     }
     /**
      * method to fortify none of teh player countries
      */
     @Override
     public void fortifyNone() {
-        players.rotate();
-        updateView();
+        if (isInPhase(Phase.FORTIFICATION)) {
+            Player temp = players.last();
+            temp.setPhase(Phase.REINFORCEMENT);
+            players.rotate();
+            updateView();
+        }
     }
 
     /**
@@ -455,6 +461,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      */
     @Override
     public void reinforceCountry(String countryName, int number) {
+        if (isInPhase(Phase.REINFORCEMENT)) {
         Player player = players.last();
 
         if (player.doesCountryBelongToPlayer(countryName)&&number>0&&number<=player.getNumOfArmies()) {
@@ -463,6 +470,8 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 Country country = MapDataUtil.findCountryByName(countryName, countries);
                 country.addArmy(number);
                 if (player.getNumOfArmies() <= 0) {
+                    player.setPhase(Phase.ATTACK);
+                    players.setElement(player);
                     players.rotate();
                 }
             } else {
@@ -470,6 +479,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             }
         }
         updateView();
+        }
     }
 
     @Override
