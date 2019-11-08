@@ -191,8 +191,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     public void addNeighbour(String countryName, String neighborCountryName) {
         Country country = MapDataUtil.findCountryByName(countryName, countries);
         Country neighbourCountry = MapDataUtil.findCountryByName(neighborCountryName, countries);
-        country.addNeighbour(neighbourCountry);
-        neighbourCountry.addNeighbour(country);
+        country.addNeighbour(neighbourCountry); //adds both ways
         countries.put(String.valueOf(country.getId()), country);
         countries.put(String.valueOf(neighbourCountry.getId()), neighbourCountry);
         updateView();

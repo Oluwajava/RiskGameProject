@@ -133,6 +133,7 @@ public class Country {
      */
     public void addNeighbour(Country country) {
         this.adjacentCountries.add(country);
+        country.adjacentCountries.add(this); //add both ways
     }
 
     /**
