@@ -26,6 +26,6 @@ public class Main extends Application {
         DashboardView dashboardView = new DashboardView();
         primaryStage.setTitle("Risk Game");
         primaryStage.setScene(dashboardView.getView());
-        primaryStage.show();
-    }
+		primaryStage.show();
+	}
 }

@@ -12,12 +12,12 @@ import java.nio.file.Paths;
  */
 public class FileReader {
     /**
-     * location of file
+     * file location
      */
     String fileLocation;
 
     /**
-     * constructor of teh class
+     * constructor of the class
      * @param fileLocation is passed from the called function
      */
     public FileReader(String fileLocation) {
