@@ -16,7 +16,8 @@ public enum TokenType {
     GAME_PLAYER(1, CommandType.COMMAND), POPULATE_COUNTRIES(0, CommandType.COMMAND), PLACE_ARMY(1, CommandType.COMMAND),
     PLACE_ALL(0, CommandType.COMMAND), REINFORCE(2, CommandType.COMMAND), FORTIFY(3, CommandType.COMMAND),
     NONE(0, CommandType.COMMAND), ATTACK(4, CommandType.COMMAND), DEFEND(1, CommandType.COMMAND),
-    ATTACK_MOVE(1, CommandType.COMMAND), ALL_OUT(0, CommandType.ACTION), NO_ATTACK(0, CommandType.ACTION);
+    ATTACK_MOVE(1, CommandType.COMMAND), ALL_OUT(0, CommandType.ACTION), NO_ATTACK(0, CommandType.ACTION),
+    EXCHANGE_CARDS(1, CommandType.COMMAND);
 
     /**
      * number of arguments

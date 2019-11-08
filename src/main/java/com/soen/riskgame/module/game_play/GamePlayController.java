@@ -5,6 +5,7 @@ import com.soen.riskgame.module.core.command_line.CommandSytanxTree;
 import com.soen.riskgame.module.core.command_line.Lexer;
 import com.soen.riskgame.module.core.command_line.Token;
 import com.soen.riskgame.module.core.enums.Phase;
+import com.soen.riskgame.module.core.interfaces.CommandSytanxProcessor;
 import com.soen.riskgame.module.core.interfaces.View;
 import com.soen.riskgame.module.core.model.Country;
 import com.soen.riskgame.module.core.model.MapData;
@@ -34,7 +35,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
 
-public class GamePlayController implements View, Observer, ShowMapCommand.ShowMapListener {
+public class GamePlayController implements View, Observer, ShowMapCommand.ShowMapListener, CommandSytanxProcessor {
 
     private final String NEW_GAME = "/view/game-play.fxml";
     private final Scene scene;
@@ -67,6 +68,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
             List<Token> tokens = Lexer.lex(command);
             CommandSytanxTree commandSytanxTree = new CommandSytanxTree(mapData, tokens);
             commandSytanxTree.setShowMapListener(this);
+            commandSytanxTree.setCommandSytanxProcessor(this);
             commandSytanxTree.processCommand();
             System.out.println();
         });
@@ -189,5 +191,10 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     @Override
     public void showMap(String mapData) {
         commandLine.setText(mapData);
+    }
+
+    @Override
+    public void onError(String message) {
+        commandLine.setText(message);
     }
 }

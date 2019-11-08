@@ -16,4 +16,7 @@ public interface ActionConstant {
 
     String NO_ATTACK = "–noattack";
 
+    String EXCHANGE_NONE = "–none";
+
+
 }

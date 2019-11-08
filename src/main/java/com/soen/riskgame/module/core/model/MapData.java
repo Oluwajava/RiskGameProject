@@ -15,7 +15,7 @@ import java.util.*;
  * @author Sai Sukruth
  */
 @Data
-public class MapData extends Observable implements ContinentAction, CountryAction, PlayerAction, ArmyAction, ReinforceAction, FortificationAction, AttackAction {
+public class MapData extends Observable implements ContinentAction, CountryAction, PlayerAction, ArmyAction, ReinforceAction, FortificationAction, AttackAction, CardAction {
     /**
      * to check of the game has started
      */
@@ -571,8 +571,20 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             if (attackToCountry.getNoOfArmies() == 0) {
                 Player player = players.last();
                 player.getCards().getCard();
+                attackToCountry.setPlayer(player);
+                countries.put(String.valueOf(attackToCountry.getId()), attackToCountry);
             }
         }
+
+    }
+
+    @Override
+    public void exchange(int num1, int num2, int num3) {
+
+    }
+
+    @Override
+    public void exchangeNone() {
 
     }
 }

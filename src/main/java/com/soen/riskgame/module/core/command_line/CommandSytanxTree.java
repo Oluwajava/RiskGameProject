@@ -1,9 +1,14 @@
 package com.soen.riskgame.module.core.command_line;
 
 import com.soen.riskgame.module.core.command.*;
+import com.soen.riskgame.module.core.enums.Phase;
 import com.soen.riskgame.module.core.interfaces.Command;
+import com.soen.riskgame.module.core.interfaces.CommandSytanxProcessor;
 import com.soen.riskgame.module.core.interfaces.PlayerCommandListener;
+import com.soen.riskgame.module.core.model.Country;
 import com.soen.riskgame.module.core.model.MapData;
+import com.soen.riskgame.module.core.model.Player;
+import com.soen.riskgame.module.core.utils.MapDataUtil;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -27,6 +32,8 @@ public class CommandSytanxTree {
     private EditMapCommand.EditMapListener editMapListener;
 
     private PlayerCommandListener playerCommandListener;
+
+    private CommandSytanxProcessor commandSytanxProcessor;
 
     public CommandSytanxTree(MapData mapData, List<Token> tokens) {
         this.tokens = tokens;
@@ -147,7 +154,11 @@ public class CommandSytanxTree {
                 } else if (currentCommand == TokenType.ATTACK) {
                     AttackCommand processAttackCommmand = processAttackCommmand(i);
                     commands.add(processAttackCommmand);
-                    i = tokens.size();
+                    i = tokens.size() - 1;
+                } else if (currentCommand == TokenType.EXCHANGE_CARDS) {
+                    ExchangeCardCommand exchangeCardCommand = processExchanceCardCommand(i);
+                    commands.add(exchangeCardCommand);
+                    i = tokens.size() - 1;
                 }
             }
 
@@ -160,27 +171,75 @@ public class CommandSytanxTree {
     }
 
     private void execute() {
-        commands.forEach(Command::execute);
+        commands.forEach(v -> {
+            if (v != null) v.execute();
+        });
     }
 
     private AttackCommand processAttackCommmand(int i) {
-        String countryFromName = tokens.get(i).getContent();
-        String countryToName = tokens.get(i+1).getContent();
-        int numOfDice = Integer.parseInt(tokens.get(i+2).getContent());
-        String extendedAction = null;
-        AttackCommand attackCommand = new AttackCommand(mapData, countryFromName, countryToName, numOfDice);
-        if (tokens.size() > i+3) {
-            extendedAction = tokens.get(i+3).getContent();
-            attackCommand.setExtendedAction(extendedAction);
+        Player player = mapData.getPlayers().last();
+        if (player.getPhase() == Phase.ATTACK) {
+            String countryFromName = tokens.get(i).getContent();
+            Country countryFrom = MapDataUtil.findCountryByName(countryFromName, mapData.getCountries());
+            String countryToName = tokens.get(i + 1).getContent();
+            int numOfDice = Integer.parseInt(tokens.get(i + 2).getContent());
+            if (countryFrom.getNoOfArmies() >= numOfDice) {
+                String extendedAction = null;
+                AttackCommand attackCommand = new AttackCommand(mapData, countryFromName, countryToName, numOfDice);
+                if (tokens.size() > i + 3) {
+                    extendedAction = tokens.get(i + 3).getContent();
+                    attackCommand.setExtendedAction(extendedAction);
+                }
+                return attackCommand;
+            } else {
+                commandSytanxProcessor.onError("You don't have enough army to attack country");
+
+            }
+        } else {
+            commandSytanxProcessor.onError("You're not in attack Phase");
         }
-        return attackCommand;
+
+        return null;
     }
 
+    private ExchangeCardCommand processExchanceCardCommand(int i) {
+        Player player = mapData.getPlayers().last();
+        if (player.getPhase() == Phase.REINFORCEMENT) {
+            if ( player.getCards().getNumberOfCards() >= 3) {
+                int num1 = Integer.parseInt(tokens.get(i).getContent());
+                int num2 = Integer.parseInt(tokens.get(i + 1).getContent());
+                int num3 = Integer.parseInt(tokens.get(i + 2).getContent());
+                String extendedAction = null;
+                ExchangeCardCommand exchangeCardCommand = new ExchangeCardCommand(mapData, num1, num2, num3);
+                if (tokens.size() > i + 3) {
+                    extendedAction = tokens.get(i + 3).getContent();
+                    exchangeCardCommand.setExtendedAction(extendedAction);
+                }
+                return exchangeCardCommand;
+            } else {
+                commandSytanxProcessor.onError("You do not have enough cards to exchange");
+            }
+        }else {
+            commandSytanxProcessor.onError("You're not in Reinforcement Phase");
+        }
+
+
+        return null;
+
+    }
+
+
     private FortifyCommand processTokenFortifyCommand(int i) {
-        String fromCountry = tokens.get(i).getContent();
-        String toCountry = tokens.get(i + 1).getContent();
-        int num = Integer.parseInt(tokens.get(i + 2).getContent());
-        return new FortifyCommand(mapData, fromCountry, toCountry, num);
+        Player player = mapData.getPlayers().last();
+        if (player.getPhase() == Phase.FORTIFICATION) {
+            String fromCountry = tokens.get(i).getContent();
+            String toCountry = tokens.get(i + 1).getContent();
+            int num = Integer.parseInt(tokens.get(i + 2).getContent());
+            return new FortifyCommand(mapData, fromCountry, toCountry, num);
+        }   else {
+            commandSytanxProcessor.onError("You're not in Fortification Phase");
+        }
+        return null;
     }
 
     private ReinforceCountryCommand processTokenReinforceCountryCommand(int i) {

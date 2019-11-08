@@ -95,6 +95,9 @@ public class Lexer {
                     case ActionConstant.NO_ATTACK:
                         result.add(new Token(TokenType.NO_ATTACK, ActionConstant.NO_ATTACK));
                         break;
+                    case CommandConstant.EXCHANGE_CARDS:
+                        result.add(new Token(TokenType.EXCHANGE_CARDS, CommandConstant.EXCHANGE_CARDS));
+                        break;
                     default:
                         result.add(new Token(TokenType.ATOM, s));
                         break;
