@@ -15,7 +15,7 @@ import java.io.IOException;
  * it is first face of user interaction.
  * @author Mayokun
  */
-public class DashboardView extends BaseView {
+public class DashboardController extends BaseView {
 
     /**
      * name of the dashboard
@@ -46,7 +46,7 @@ public class DashboardView extends BaseView {
      * method to implement dashboard view
      * @throws IOException
      */
-    public DashboardView() throws IOException {
+    public DashboardController() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(DASHBOARD));
         scene = new Scene(root, 1100, 600);
         bindView();
