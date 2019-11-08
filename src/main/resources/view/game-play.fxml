@@ -25,8 +25,8 @@
             <Text fx:id="initialArmyText" layoutX="14.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Intitial Army" />
             <Text fx:id="phaseText" layoutX="14.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phase" />
             <Text fx:id="totalArmyText" layoutX="14.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Army" />
-            <Text fx:id="attackLog" layoutX="226.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fx:id="cardView" layoutX="388.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <TextArea fx:id="gameLog" editable="false" layoutX="178.0" layoutY="131.0" prefHeight="140.0" prefWidth="220.0" />
          </children>
       </Pane>
    </children>

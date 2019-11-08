@@ -48,6 +48,8 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     private String attackLog;
 
+    private boolean conqueredCountry;
+
     /**
      * Constructor for the class
      */
@@ -510,7 +512,6 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     @Override
     public void attack(String fromCountry, String toCountry, int numOfDice) {
         updateView();
-        attackLog = null;
         if (isInPhase(Phase.ATTACK)) {
             Country country = MapDataUtil.findCountryByName(fromCountry, countries);
             Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
@@ -525,7 +526,6 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     @Override
     public void attack(String fromCountry, String toCountry) {
         updateView();
-        attackLog = "";
         if (isInPhase(Phase.ATTACK)) {
             Country country = MapDataUtil.findCountryByName(fromCountry, countries);
             Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
@@ -572,9 +572,14 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     public void attackNone() {
         if (isInPhase(Phase.ATTACK)) {
             Player player = players.last();
+            if (conqueredCountry) {
+                player.getCards().getCard();
+            }
             player.setPhase(Phase.REINFORCEMENT);
+            player.resetReinforcementCalculation();
             players.setElement(player);
             players.rotate();
+            conqueredCountry = false;
             updateView();
         }
     }
@@ -587,6 +592,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     private void simulateAttack() {
         StringBuilder sim = new StringBuilder();
+        sim.append("=====================\n");
+        sim.append("Attack Simulationn\n");
+        sim.append("=====================\n");
         List<Integer> attackDice = new ArrayList<>();
         List<Integer> defendDice = new ArrayList<>();
         for (int i = 0; i < attackNumOfDice; i++) {
@@ -611,7 +619,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             attackResult(sim, attackDice, defendDice, 1);
         }
 
-        attackLog = attackLog +"\n"+sim.toString();
+        attackLog = attackLog == null ? "" : attackLog + "\n" + sim.toString();
         updateView();
 
     }
@@ -625,19 +633,13 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             sim.append(attackToCountry.getPlayer().getPlayerName() + " lost an army" + "\n");
 
         }
-
         if (attackToCountry.getNoOfArmies() == 0) {
+            conqueredCountry = true;
             Player player = players.last();
-            player.getCards().getCard();
             attackToCountry.setPlayer(player);
             countries.put(String.valueOf(attackToCountry.getId()), attackToCountry);
-            if (player.getCards().getNumberOfCards() == 5) {
-                player.setPhase(Phase.EXCHANGE_CARD);
-                players.setElement(player);
-            }
+            attackMove(1);
         }
-
-
     }
 
     @Override

@@ -1,15 +1,15 @@
 package com.soen.riskgame.module.core.model;
 
-import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 
 import com.soen.riskgame.module.core.constants.Cards;
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class CardTest {
 	

@@ -173,7 +173,7 @@ public class CommandSytanxTree {
 
     private AttackMoveCommand processAttackMove(int i) {
         int num = Integer.parseInt(tokens.get(i).getContent());
-        if (num < mapData.getAttackFromCountry().getNoOfArmies()) {
+        if (num < mapData.getAttackFromCountry().getNoOfArmies() && num >= 1) {
             return new AttackMoveCommand(mapData, num);
         } else {
             commandSytanxProcessor.onError("Invalid number of army");
@@ -205,7 +205,7 @@ public class CommandSytanxTree {
             String countryToName = tokens.get(i + 1).getContent();
             int numOfDice = Integer.parseInt(tokens.get(i + 2).getContent());
             if (numOfDice >= 1 && numOfDice <= 3) {
-                if (countryFrom.getNoOfArmies() >= numOfDice) {
+                if (countryFrom.getNoOfArmies() >= numOfDice && countryFrom.getNoOfArmies() > 1) {
                     String extendedAction = null;
                     AttackCommand attackCommand = new AttackCommand(mapData, countryFromName, countryToName, numOfDice);
                     if (tokens.size() > i + 3) {
@@ -230,7 +230,7 @@ public class CommandSytanxTree {
 
     private ExchangeCardCommand processExchanceCardCommand(int i) {
         Player player = mapData.getPlayers().last();
-        if (player.getPhase() == Phase.REINFORCEMENT || player.getPhase() == Phase.EXCHANGE_CARD) {
+        if (player.getPhase() == Phase.REINFORCEMENT) {
             if (player.getCards().getNumberOfCards() >= 3) {
                 int num1 = Integer.parseInt(tokens.get(i).getContent());
                 int num2 = Integer.parseInt(tokens.get(i + 1).getContent());
@@ -310,9 +310,14 @@ public class CommandSytanxTree {
     }
 
     private AddPlayerCommand processTokenAddPlayerCommand(int i) {
-        String playerName = tokens.get(i + 1).getContent();
-        AddPlayerCommand addPlayerCommand = new AddPlayerCommand(playerCommandListener, playerName);
-        return addPlayerCommand;
+        if (!(mapData.getPlayers().size() >= mapData.getCountries().size())) {
+            String playerName = tokens.get(i + 1).getContent();
+            AddPlayerCommand addPlayerCommand = new AddPlayerCommand(playerCommandListener, playerName);
+            return addPlayerCommand;
+        } else {
+            commandSytanxProcessor.onError("You can no longer add players. Number of players can't be greater than countries");
+        }
+        return null;
     }
 
     private LoadMapCommand processTokenLoadMapCommand(int i) {

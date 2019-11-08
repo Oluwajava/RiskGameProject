@@ -46,12 +46,12 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     private Button processCommandButton;
     private Text turnText;
     private TextArea commandLine;
+    private TextArea gameLog;
     private ListView playerListView;
     private Text reinforceArmyText;
     private Text initialArmyText;
     private Text totalArmyText;
     private Text phaseText;
-    private Text attackLog;
     private Text cardView;
 
     public GamePlayController(MapData mapData) throws IOException {
@@ -111,8 +111,8 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         initialArmyText = (Text) scene.lookup("#initialArmyText");
         totalArmyText = (Text) scene.lookup("#totalArmyText");
         phaseText = (Text) scene.lookup("#phaseText");
-        attackLog = (Text) scene.lookup("#attackLog");
         cardView = (Text) scene.lookup("#cardView");
+        gameLog = (TextArea) scene.lookup("#gameLog");
     }
 
     private void updateImage(String name) {
@@ -166,7 +166,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         reinforceArmyText.setText("Reinforcement Army: " + player.getNumOfArmies());
         Long totalArmyCount = player.getCountries().stream().mapToLong(Country::getNoOfArmies).sum();
         totalArmyText.setText("Total Army: " + totalArmyCount);
-        attackLog.setText(mapTest.getAttackLog());
+        gameLog.setText(mapTest.getAttackLog());
         updateCountriesLocation();
         setPhase(player);
         setPlayerList(mapTest);
@@ -174,13 +174,14 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     }
 
     private void setCardView(Player player) {
-        if(player.getPhase() == Phase.REINFORCEMENT || player.getPhase() == Phase.EXCHANGE_CARD) {
+        if(player.getPhase() == Phase.REINFORCEMENT) {
             cardView.setVisible(true);
             StringBuilder cardViewBuilder = new StringBuilder();
             List<String> cards = player.getCards().getPlayerCards();
             for(int i = 0; i < cards.size(); i++) {
                 cardViewBuilder.append("Index: "+i+"\tCard Type: "+cards.get(i)+"\n");
             }
+            cardView.setText(cardViewBuilder.toString());
         } else {
             cardView.setVisible(false);
         }
