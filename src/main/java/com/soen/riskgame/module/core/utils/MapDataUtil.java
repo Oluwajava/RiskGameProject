@@ -20,7 +20,7 @@ public class MapDataUtil {
      * @return map parsed data
      */
     public static MapData loadMapFromFile(String fileName) {
-        FileReader fileReader = new FileReader("/Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/resources/maps/" + fileName + ".map");
+        FileReader fileReader = new FileReader("C:\\Users\\Sibil\\Risk\\RiskGameProject\\src\\main\\resources\\maps\\" + fileName + ".map");
         String mapData = null;
         try {
             mapData = fileReader.readData().replaceAll(MapDelimiters.CARRIAGE_DELIMITER, "");
