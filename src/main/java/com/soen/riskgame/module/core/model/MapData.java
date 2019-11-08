@@ -314,17 +314,20 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         if (players == null) {
             players = new RoundRobin<>();
         }
-        Player player = new Player(playerName);
-        Random rand = new Random();
-        int r = rand.nextInt(255);
-        int g = rand.nextInt(255);
-        int b = rand.nextInt(255);
-        Player.PlayerColor playerColor = new Player.PlayerColor();
-        playerColor.setRed(r);
-        playerColor.setGreen(g);
-        playerColor.setBlue(b);
-        player.setPlayerColor(playerColor);
-        players.addFirst(player);
+        if (players.size() < countries.size()) {
+            Player player = new Player(playerName);
+            Random rand = new Random();
+            int r = rand.nextInt(255);
+            int g = rand.nextInt(255);
+            int b = rand.nextInt(255);
+            Player.PlayerColor playerColor = new Player.PlayerColor();
+            playerColor.setRed(r);
+            playerColor.setGreen(g);
+            playerColor.setBlue(b);
+            player.setPlayerColor(playerColor);
+            players.addFirst(player);
+        }
+
     }
 
     @Override
@@ -336,6 +339,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     @Override
     public void populateCountries() {
         List<Country> newCountries = new ArrayList<>(countries.values());
+        Collections.shuffle(newCountries);
         Stack<Country> countryStack = new Stack<>();
         countryStack.addAll(newCountries);
         Player temp = players.last();
@@ -559,10 +563,13 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     @Override
     public void attackMove(int num) {
-        if (isInPhase(Phase.ATTACK)) {
+        if (isInPhase(Phase.ATTACK_MOVE)) {
             if (attackFromCountry.isCountryAdjacent(attackToCountry.getName()) && (attackFromCountry.getNoOfArmies() - num) >= 1) {
                 attackFromCountry.removeArmy(num);
                 attackToCountry.addArmy(num);
+                Player player = players.last();
+                player.setPhase(Phase.ATTACK);
+                players.setElement(player);
             }
             updateView();
         }
@@ -636,9 +643,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         if (attackToCountry.getNoOfArmies() == 0) {
             conqueredCountry = true;
             Player player = players.last();
+            player.setPhase(Phase.ATTACK_MOVE);
+            players.setElement(player);
             attackToCountry.setPlayer(player);
             countries.put(String.valueOf(attackToCountry.getId()), attackToCountry);
-            attackMove(1);
+
         }
     }
 
@@ -646,6 +655,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     public void exchange(int num1, int num2, int num3) {
         Player player = players.last();
         player.exchangeTheCards(num1, num2, num3);
+        updateView();
     }
 
     @Override

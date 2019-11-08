@@ -206,13 +206,25 @@ public class CommandSytanxTree {
             int numOfDice = Integer.parseInt(tokens.get(i + 2).getContent());
             if (numOfDice >= 1 && numOfDice <= 3) {
                 if (countryFrom.getNoOfArmies() >= numOfDice && countryFrom.getNoOfArmies() > 1) {
-                    String extendedAction = null;
-                    AttackCommand attackCommand = new AttackCommand(mapData, countryFromName, countryToName, numOfDice);
-                    if (tokens.size() > i + 3) {
-                        extendedAction = tokens.get(i + 3).getContent();
-                        attackCommand.setExtendedAction(extendedAction);
+                    if (player.doesCountryBelongToPlayer(countryToName)) {
+                        commandSytanxProcessor.onError("You can't attack your own country");
+                    } else if (!player.doesCountryBelongToPlayer(countryFromName)) {
+                        commandSytanxProcessor.onError("You can't attack with another player's country");
+                    } else {
+                        if (countryFrom.isCountryAdjacent(countryToName)) {
+                            String extendedAction = null;
+                            AttackCommand attackCommand = new AttackCommand(mapData, countryFromName, countryToName, numOfDice);
+                            if (tokens.size() > i + 3) {
+                                extendedAction = tokens.get(i + 3).getContent();
+                                attackCommand.setExtendedAction(extendedAction);
+                            }
+                            return attackCommand;
+                        } else {
+                            commandSytanxProcessor.onError("You can't attack this country. Check neigbouring countries to attack");
+
+                        }
                     }
-                    return attackCommand;
+
                 } else {
                     commandSytanxProcessor.onError("You don't have enough army to attack country");
 
@@ -220,6 +232,8 @@ public class CommandSytanxTree {
             } else {
                 commandSytanxProcessor.onError("Invalid dice number");
             }
+        } else if (player.getPhase() == Phase.ATTACK_MOVE) {
+            commandSytanxProcessor.onError("You have to move armies to the conquered country");
         } else {
             commandSytanxProcessor.onError("You're not in attack Phase");
         }
@@ -264,11 +278,16 @@ public class CommandSytanxTree {
             String fromCountry = tokens.get(i).getContent();
             String toCountry = tokens.get(i + 1).getContent();
             Country countryFromm = MapDataUtil.findCountryByName(fromCountry, mapData.getCountries());
-            if (countryFromm.isCountryAdjacent(toCountry)) {
-                int num = Integer.parseInt(tokens.get(i + 2).getContent());
-                return new FortifyCommand(mapData, fromCountry, toCountry, num);
+            if (player.doesCountryBelongToPlayer(fromCountry) && player.doesCountryBelongToPlayer(toCountry)) {
+                if (countryFromm.isCountryAdjacent(toCountry)) {
+                    int num = Integer.parseInt(tokens.get(i + 2).getContent());
+                    return new FortifyCommand(mapData, fromCountry, toCountry, num);
+                } else {
+                    commandSytanxProcessor.onError("Countries aren't adjacent");
+                }
             } else {
-                commandSytanxProcessor.onError("Countries aren't adjacent");
+                commandSytanxProcessor.onError("You can't fortify Country that doesn't belong to you");
+
             }
         } else {
             commandSytanxProcessor.onError("You're not in Fortification Phase");
@@ -281,8 +300,13 @@ public class CommandSytanxTree {
         if (player.getPhase() == Phase.REINFORCEMENT) {
             String countryName = tokens.get(i).getContent();
             int num = Integer.parseInt(tokens.get(i + 1).getContent());
-            ReinforceCountryCommand reinforceCountryCommand = new ReinforceCountryCommand(mapData, countryName, num);
-            return reinforceCountryCommand;
+            if (player.doesCountryBelongToPlayer(countryName)) {
+                ReinforceCountryCommand reinforceCountryCommand = new ReinforceCountryCommand(mapData, countryName, num);
+                return reinforceCountryCommand;
+            } else {
+                commandSytanxProcessor.onError("Country doesn't belong to you");
+            }
+
         } else {
             commandSytanxProcessor.onError("You're not in Reinforcement Phase");
         }
@@ -310,14 +334,9 @@ public class CommandSytanxTree {
     }
 
     private AddPlayerCommand processTokenAddPlayerCommand(int i) {
-        if (!(mapData.getPlayers().size() >= mapData.getCountries().size())) {
-            String playerName = tokens.get(i + 1).getContent();
-            AddPlayerCommand addPlayerCommand = new AddPlayerCommand(playerCommandListener, playerName);
-            return addPlayerCommand;
-        } else {
-            commandSytanxProcessor.onError("You can no longer add players. Number of players can't be greater than countries");
-        }
-        return null;
+        String playerName = tokens.get(i + 1).getContent();
+        AddPlayerCommand addPlayerCommand = new AddPlayerCommand(playerCommandListener, playerName);
+        return addPlayerCommand;
     }
 
     private LoadMapCommand processTokenLoadMapCommand(int i) {

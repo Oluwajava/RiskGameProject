@@ -89,8 +89,8 @@ public class Player {
             return 0;
         else
             this.exchangeCount++;
-        int numberOfArmies = this.getPlaceArmiesNo() + (this.exchangeCount + 1) * 5;
-        this.setPlaceArmiesNo(numberOfArmies);
+        int numberOfArmies = this.getPlaceArmiesNo() + this.exchangeCount * 5;
+        this.numOfArmies += numberOfArmies;
         return 1;
     }
 

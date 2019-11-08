@@ -170,7 +170,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         processCommandButton.setOnAction(event -> {
             String command = commandLine.getText();
             List<Token> tokens = Lexer.lex(command);
-            CommandSytanxTree commandSytanxTree = new CommandSytanxTree(null, tokens);
+            CommandSytanxTree commandSytanxTree= new CommandSytanxTree(mapData, tokens);
             commandSytanxTree.setPlayerCommandListener(this);
             commandSytanxTree.setLoadMapListener(this);
             commandSytanxTree.processCommand();
@@ -203,8 +203,12 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
      * method to add player to the list
      */
     public void addPlayer(String playerName) {
-        playersList.add(playerName);
-        setupPlayerList();
+        if (playersList.size() < mapData.getCountries().size()) {
+            playersList.add(playerName);
+            setupPlayerList();
+        } else {
+            commandLine.setText("You can't add more players that number of countries available");
+        }
     }
     /**
      * method to remove player to the list
