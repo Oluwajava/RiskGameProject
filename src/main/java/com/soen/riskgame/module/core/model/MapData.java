@@ -37,17 +37,29 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      * list of continents
      */
     private HashMap<String, Continent> continents;
-
+    /**
+     * attack FromCountry
+     */
     private Country attackFromCountry;
-
+    /**
+     * attack tocountry
+     */
     private Country attackToCountry;
-
+    /**
+     * number of dice to attack
+     */
     private int attackNumOfDice;
-
+    /**
+     * number of dice to defend
+     */
     private int defendNumDice;
-
+    /**
+     * log string
+     */
     private String attackLog;
-
+    /**
+     * conqured country
+     */
     private boolean conqueredCountry;
 
     /**
@@ -276,7 +288,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 ", continents=" + continents +
                 '}';
     }
-
+    /**
+     * method to build String of data
+     * @return String value of stringBuilder object
+     */
     public String buildStringData() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("==============================\n");
@@ -308,7 +323,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         });
         return stringBuilder.toString();
     }
-
+    /**
+     * method to add player
+     * @param playerName name of the player
+     */
     @Override
     public void addPlayer(String playerName) {
         if (players == null) {
@@ -329,13 +347,18 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
 
     }
-
+    /**
+     * method to remove player
+     * @param playerName name of the player to be removed
+     */
     @Override
     public void removePlayer(String playerName) {
         Player player = new Player(playerName);
         players.deleteNode(player);
     }
-
+    /**
+     * method to populate countries using command
+     */
     @Override
     public void populateCountries() {
         List<Country> newCountries = new ArrayList<>(countries.values());
@@ -366,7 +389,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
         updateView();
     }
-
+    /**
+     * method that return the size of reinforced armies
+     * @param size numbers of players
+     * @return <b>size of reinforcements</b> armies
+     */
     private int reinforcementArmy(int size) {
         if (size == 2) {
             return 40;
@@ -383,7 +410,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
 
     }
-
+    /**
+     * method to place army using command for each player
+     * @param countryName name of the country
+     */
     @Override
     public void placeArmy(String countryName) {
         Player player = players.last();
@@ -402,7 +432,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
         updateView();
     }
-
+    /**
+     * method to place all armies
+     */
     @Override
     public void placeAll() {
         Player firstPlayer = players.last();
@@ -513,6 +545,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
     }
 
+    /**
+     * Method to implement attack
+     * @param fromCountry from country
+     * @param toCountry to country
+     * @param numOfDice numbet of dice rolled
+     */
     @Override
     public void attack(String fromCountry, String toCountry, int numOfDice) {
         updateView();
@@ -527,6 +565,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
     }
 
+    /**
+     * Method to implement attcak
+     * @param fromCountry from country
+     * @param toCountry to country
+     */
     @Override
     public void attack(String fromCountry, String toCountry) {
         updateView();
@@ -556,11 +599,20 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     }
 
+    /**
+     * method to chck phase
+     * @param phase game phase
+     * @return phase of the game
+     */
     private boolean isInPhase(Phase phase) {
         Player player = players.last();
         return player.getPhase() == phase;
     }
 
+    /**
+     * method for attack move\
+     * @param num number of armies
+     */
     @Override
     public void attackMove(int num) {
         if (isInPhase(Phase.ATTACK_MOVE)) {
@@ -575,6 +627,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
     }
 
+    /**
+     * method to attack none extension
+     */
     @Override
     public void attackNone() {
         if (isInPhase(Phase.ATTACK)) {
@@ -591,12 +646,19 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
     }
 
+    /**
+     * method for defend
+     * @param num no fo dice
+     */
     @Override
     public void defend(int num) {
         this.defendNumDice = num;
         simulateAttack();
     }
 
+    /**
+     * method for attack stimulation
+     */
     private void simulateAttack() {
         StringBuilder sim = new StringBuilder();
         sim.append("=====================\n");
@@ -631,6 +693,13 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     }
 
+    /**
+     * method to show attack result in view
+     * @param sim
+     * @param attackDice
+     * @param defendDice
+     * @param index
+     */
     private void attackResult(StringBuilder sim, List<Integer> attackDice, List<Integer> defendDice, int index) {
         if (attackDice.get(index) <= defendDice.get(index)) {
             attackFromCountry.removeArmy(1);
@@ -651,6 +720,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
     }
 
+    /**
+     * method for exchange cards
+     * @param num1 type of card
+     * @param num2 type of card
+     * @param num3 type of card
+     */
     @Override
     public void exchange(int num1, int num2, int num3) {
         Player player = players.last();
@@ -658,6 +733,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         updateView();
     }
 
+    /**
+     * method for none
+     */
     @Override
     public void exchangeNone() {
 

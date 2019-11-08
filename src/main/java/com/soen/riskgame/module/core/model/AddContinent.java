@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
  * RemoveContinentCommand
  * @quthor Sai Sukruth
  */
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

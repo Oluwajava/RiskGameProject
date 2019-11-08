@@ -16,38 +16,77 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-
+/**
+ * Class CommandSyntaxTree is a class which provides the functionality of processing various commands.
+ * @author hitansh
+ *
+ */
 @Data
 public class CommandSytanxTree {
-
+    /**
+     * list of tokens
+     */
     private List<Token> tokens;
 
+    /**
+     * List of commands
+     */
     private List<Command> commands;
 
+    /**
+     * object of MapData
+     */
     private MapData mapData;
 
+    /**
+     * Listener for ShowMapCommand
+     */
     private ShowMapCommand.ShowMapListener showMapListener;
 
+    /**
+     * Listener for validate Command
+     */
     private ValidateCommand.ValidateMapListener validateMapListener;
 
+    /**
+     * listener for load map command
+     */
     private LoadMapCommand.LoadMapListener loadMapListener;
 
+    /**
+     * listener for edit map commmand
+     */
     private EditMapCommand.EditMapListener editMapListener;
 
+    /**
+     * Listener for player command
+     */
     private PlayerCommandListener playerCommandListener;
-
+    /**
+     * Listener for Syntax processing
+     */
     private CommandSytanxProcessor commandSytanxProcessor;
-
+    /**
+     * parameterized constructor
+     * @param mapData mapdata
+     * @param tokens list of tokens
+     */
     public CommandSytanxTree(MapData mapData, List<Token> tokens) {
         this.tokens = tokens;
         this.mapData = mapData;
         commands = new ArrayList<>();
     }
-
+    /**
+     * Setter for ShowMapListener
+     * @param showMapListener showMapListener
+     */
     public void setShowMapListener(ShowMapCommand.ShowMapListener showMapListener) {
         this.showMapListener = showMapListener;
     }
 
+    /**
+     * Method to process various commands
+     */
     public void processCommand() {
         TokenType currentCommand = null;
         boolean checkNext = true;
@@ -171,6 +210,11 @@ public class CommandSytanxTree {
         execute();
     }
 
+    /**
+     * method were attack move execution is done
+     * @param i number of army
+     * @return if condition doesnt satisfy invalid number error or execute command
+     */
     private AttackMoveCommand processAttackMove(int i) {
         int num = Integer.parseInt(tokens.get(i).getContent());
         if (num < mapData.getAttackFromCountry().getNoOfArmies() && num >= 1) {
@@ -180,7 +224,11 @@ public class CommandSytanxTree {
         }
         return null;
     }
-
+    /**
+     * method were defend execution is done
+     * @param i number of dice
+     * @return if condition doesnt satisfy invalid number error or execute command
+     */
     private DefendCommand processDefendCommand(int i) {
         int num = Integer.parseInt(tokens.get(i).getContent());
         if (num >= 1 && num <= 2) {
@@ -191,12 +239,19 @@ public class CommandSytanxTree {
         return null;
     }
 
+    /**
+     * method to execute various commands
+     */
     private void execute() {
         commands.forEach(v -> {
             if (v != null) v.execute();
         });
     }
-
+    /**
+     * method for token attack command
+     * @param i number of dice
+     * @return object of the class attackCommand
+     */
     private AttackCommand processAttackCommmand(int i) {
         Player player = mapData.getPlayers().last();
         if (player.getPhase() == Phase.ATTACK) {
@@ -241,7 +296,11 @@ public class CommandSytanxTree {
         return null;
     }
 
-
+    /**
+     * method for token Exchange card command
+     * @param i number of cards
+     * @return object of the class ExchangeCommand or throw invalid error
+     */
     private ExchangeCardCommand processExchanceCardCommand(int i) {
         Player player = mapData.getPlayers().last();
         if (player.getPhase() == Phase.REINFORCEMENT) {
@@ -271,7 +330,11 @@ public class CommandSytanxTree {
 
     }
 
-
+    /**
+     * method for token fortify command
+     * @param i integer value
+     * @return object of the class FortifyCommand
+     */
     private FortifyCommand processTokenFortifyCommand(int i) {
         Player player = mapData.getPlayers().last();
         if (player.getPhase() == Phase.FORTIFICATION) {
@@ -294,7 +357,11 @@ public class CommandSytanxTree {
         }
         return null;
     }
-
+    /**
+     * Method for processing token reinforce country command
+     * @param i integer value
+     * @return object of ReinforceCountryCommand
+     */
     private ReinforceCountryCommand processTokenReinforceCountryCommand(int i) {
         Player player = mapData.getPlayers().last();
         if (player.getPhase() == Phase.REINFORCEMENT) {
@@ -313,7 +380,11 @@ public class CommandSytanxTree {
 
         return null;
     }
-
+    /**
+     * method to process place army command
+     * @param i integer value
+     * @return object of PlaceArmyCommmand
+     */
     private PlaceArmyCommand processTokenPlaceArmyCommand(int i) {
         Player player = mapData.getPlayers().last();
         String countryName = tokens.get(i).getContent();
@@ -326,31 +397,53 @@ public class CommandSytanxTree {
         return null;
     }
 
-
+    /**
+     * Method to process remove player command
+     * @param i an integer value
+     * @return object of RemovePlayerCommand
+     */
     private RemovePlayerCommand processTokenRemovePlayerCommand(int i) {
         String playerName = tokens.get(i + 1).getContent();
         RemovePlayerCommand removePlayerCommand = new RemovePlayerCommand(playerCommandListener, playerName);
         return removePlayerCommand;
     }
-
+    /**
+     * method to process add player command
+     * @param i an integer value
+     * @return object of AddPlayerCommand
+     */
     private AddPlayerCommand processTokenAddPlayerCommand(int i) {
         String playerName = tokens.get(i + 1).getContent();
         AddPlayerCommand addPlayerCommand = new AddPlayerCommand(playerCommandListener, playerName);
         return addPlayerCommand;
     }
 
+    /**
+     * method to process LoadMap Command
+     * @param i an integer value
+     * @return object of LoadMapCommand
+     */
     private LoadMapCommand processTokenLoadMapCommand(int i) {
         String fileName = tokens.get(i).getContent();
         LoadMapCommand loadMapCommand = new LoadMapCommand(fileName, loadMapListener);
         return loadMapCommand;
     }
-
+    /**
+     * Method to process EditMap Command
+     * @param i an integer Value
+     * @return object of EditMapCommand
+     */
     private EditMapCommand processTokenEditMapCommand(int i) {
         String fileName = tokens.get(i).getContent();
         EditMapCommand editMapCommand = new EditMapCommand(editMapListener, fileName);
         return editMapCommand;
     }
 
+    /**
+     * method to process Save File Command
+     * @param i an integer value
+     * @return object of SaveFileCommand
+     */
     private SaveFileCommand processTokenToSaveFileCommand(int i) {
         boolean connected = new GraphUtil(new HashSet<>(mapData.getCountries().values())).isConnected();
         if (connected) {
@@ -362,35 +455,63 @@ public class CommandSytanxTree {
         }
         return null;
     }
-
+    /**
+     * method to process add Continent Command
+     * @param i an integer value
+     * @return AddContinentCommand Object
+     */
     private AddContinentCommand processTokenToAddContinentCommand(int i) {
         String continentName = tokens.get(i + 1).getContent();
         String continentControlValue = tokens.get(i + 2).getContent();
         return new AddContinentCommand(mapData, continentName, Integer.parseInt(continentControlValue));
     }
 
+    /**
+     * method to process remove Continent command
+     * @param i an integer value
+     * @return object of RemoveContinentCommand
+     */
     private RemoveContinentCommand processTokenToRemoveContinentCommand(int i) {
         String continentName = tokens.get(i + 1).getContent();
         return new RemoveContinentCommand(mapData, continentName);
     }
 
+    /**
+     * Method to process add country command
+     * @param i an integer value
+     * @return object of AddCountryCommand
+     */
     private AddCountryCommand processTokenToAddCountryCommand(int i) {
         String countryName = tokens.get(i + 1).getContent();
         String continentName = tokens.get(i + 2).getContent();
         return new AddCountryCommand(mapData, countryName, continentName);
     }
-
+    /**
+     * Method to process RemoveCountry command
+     * @param i an integer value
+     * @return object of RemoveCountryCommand
+     */
     private RemoveCountryCommand processTokenToRemoveCountryCommand(int i) {
         String countryName = tokens.get(i + 1).getContent();
         return new RemoveCountryCommand(mapData, countryName);
     }
 
+    /**
+     * Method to process add neighbor command
+     * @param i an integer value
+     * @return object of AddNeighborCommand
+     */
     private AddNeighbourCommand processTokenToAddNeigbourCommand(int i) {
         String countryName = tokens.get(i + 1).getContent();
         String countryNeigbourName = tokens.get(i + 2).getContent();
         return new AddNeighbourCommand(mapData, countryName, countryNeigbourName);
     }
 
+    /**
+     * Method to process Remove Neighbor command
+     * @param i an integer value
+     * @return object of RemoveNeigbourCommand
+     */
     private RemoveNeigbourCommand processTokenToRemoveNeigbourCommand(int i) {
         String countryName = tokens.get(i + 1).getContent();
         String countryNeigbourName = tokens.get(i + 2).getContent();

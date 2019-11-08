@@ -13,7 +13,7 @@ public class Token {
     public final TokenType tokenType;
 
     /**
-     * content
+     * content of token
      */
     public final String content;
 
@@ -38,7 +38,7 @@ public class Token {
 
     /**
      * Getter for Content
-     * @return
+     * @return content
      */
     public String getContent() {
         return content;
