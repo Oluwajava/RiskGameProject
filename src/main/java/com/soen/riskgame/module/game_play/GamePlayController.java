@@ -52,6 +52,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     private Text totalArmyText;
     private Text phaseText;
     private Text attackLog;
+    private Text cardView;
 
     public GamePlayController(MapData mapData) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NEW_GAME));
@@ -111,6 +112,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         totalArmyText = (Text) scene.lookup("#totalArmyText");
         phaseText = (Text) scene.lookup("#phaseText");
         attackLog = (Text) scene.lookup("#attackLog");
+        cardView = (Text) scene.lookup("#cardView");
     }
 
     private void updateImage(String name) {
@@ -168,8 +170,21 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         updateCountriesLocation();
         setPhase(player);
         setPlayerList(mapTest);
+        setCardView(player);
     }
 
+    private void setCardView(Player player) {
+        if(player.getPhase() == Phase.REINFORCEMENT || player.getPhase() == Phase.EXCHANGE_CARD) {
+            cardView.setVisible(true);
+            StringBuilder cardViewBuilder = new StringBuilder();
+            List<String> cards = player.getCards().getPlayerCards();
+            for(int i = 0; i < cards.size(); i++) {
+                cardViewBuilder.append("Index: "+i+"\tCard Type: "+cards.get(i)+"\n");
+            }
+        } else {
+            cardView.setVisible(false);
+        }
+    }
     private void setPhase(Player player) {
         if (player.getPlaceArmiesNo() > 0) {
             phaseText.setText("Startup Phase");

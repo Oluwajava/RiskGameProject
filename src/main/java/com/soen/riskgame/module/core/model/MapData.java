@@ -12,6 +12,7 @@ import java.util.*;
 
 /**
  * Map data class contains details of countries,players,army,reinforce and continent
+ *
  * @author Sai Sukruth
  */
 @Data
@@ -54,8 +55,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         countries = new HashMap<>();
         continents = new HashMap<>();
     }
+
     /**
      * method to addCountries to Continents
+     *
      * @param country
      */
     public void addCountryToContinent(Country country) {
@@ -69,6 +72,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         continents.put(String.valueOf(continent.getId()), continent);
         updateView();
     }
+
     /**
      * method to update the map view
      */
@@ -76,9 +80,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         setChanged();
         notifyObservers(this);
     }
+
     /**
      * method to add continent
-     * @param name name of the country
+     *
+     * @param name         name of the country
      * @param controlValue value of the country
      */
     @Override
@@ -89,8 +95,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         continents.put(String.valueOf(continentId), continent);
         updateView();
     }
+
     /**
      * method to remove continent
+     *
      * @param name name of the country
      */
     @Override
@@ -104,9 +112,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         continents = newData;
         updateView();
     }
+
     /**
      * method to edit continent
-     * @param name name of the country
+     *
+     * @param name         name of the country
      * @param controlValue value of the country
      */
     @Override
@@ -120,9 +130,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         });
         updateView();
     }
+
     /**
      * method to add country
-     * @param countryName name of the Country to be added
+     *
+     * @param countryName   name of the Country to be added
      * @param continentName name of the continent in which the country would be added.
      */
     @Override
@@ -134,9 +146,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         addCountry(country, continent);
 
     }
+
     /**
      * method to add country to continent
-     * @param country name of the Country to be added
+     *
+     * @param country   name of the Country to be added
      * @param continent name of the continent in which the country would be added.
      */
     private void addCountry(Country country, Continent continent) {
@@ -149,12 +163,14 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             updateView();
         }
     }
+
     /**
      * method to add country to continent with coordinates on map
-     * @param countryName name of the country
+     *
+     * @param countryName   name of the country
      * @param continentName name of the continent
-     * @param xCoordinate coordinate of x plane
-     * @param yCoordinate coordinate of y plane
+     * @param xCoordinate   coordinate of x plane
+     * @param yCoordinate   coordinate of y plane
      */
     @Override
     public void addCountry(String countryName, String continentName, String xCoordinate, String yCoordinate) {
@@ -169,6 +185,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     /**
      * method to remove country
+     *
      * @param countryName name of the country
      */
     @Override
@@ -182,9 +199,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             updateView();
         }
     }
+
     /**
      * method to add neighbour
-     * @param countryName name of the country
+     *
+     * @param countryName         name of the country
      * @param neighborCountryName name of the neighbour country
      */
     @Override
@@ -200,7 +219,8 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     /**
      * method to remove neighbour
-     * @param countryName name of the country
+     *
+     * @param countryName          name of the country
      * @param neighbourCountryName name of the neighbor country
      */
     @Override
@@ -210,6 +230,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     /**
      * method to update the Map file
+     *
      * @return String value mapFileBuilder
      */
     public String toFile() {
@@ -404,8 +425,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
         updateView();
     }
+
     /**
      * method to list the map
+     *
      * @return list of players
      */
     public List<Player> toList() {
@@ -422,25 +445,27 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     /**
      * method to fortify country for ech player
+     *
      * @param fromCountry name of Country
-     * @param toCountry name of New Country
-     * @param num number of armies
+     * @param toCountry   name of New Country
+     * @param num         number of armies
      */
     @Override
     public void fortifyCountry(String fromCountry, String toCountry, int num) {
         if (isInPhase(Phase.FORTIFICATION)) {
-        Country country = MapDataUtil.findCountryByName(fromCountry, countries);
-        Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
-        Player player = players.last();
-        if (player.doesCountryBelongToPlayer(fromCountry)&&player.doesCountryBelongToPlayer(toCountry)&&num>0) {
-            if (country.isCountryAdjacent(toCountry) && (country.getNoOfArmies() - num >= 1)) {
-                country.removeArmy(num);
-                countryTo.addArmy(num);
+            Country country = MapDataUtil.findCountryByName(fromCountry, countries);
+            Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
+            Player player = players.last();
+            if (player.doesCountryBelongToPlayer(fromCountry) && player.doesCountryBelongToPlayer(toCountry) && num > 0) {
+                if (country.isCountryAdjacent(toCountry) && (country.getNoOfArmies() - num >= 1)) {
+                    country.removeArmy(num);
+                    countryTo.addArmy(num);
+                }
             }
-        }
-        updateView();
+            updateView();
         }
     }
+
     /**
      * method to fortify none of teh player countries
      */
@@ -456,29 +481,30 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     /**
      * method to reinforce country
+     *
      * @param countryName name of the country
-     * @param number number of armies
+     * @param number      number of armies
      */
     @Override
     public void reinforceCountry(String countryName, int number) {
         if (isInPhase(Phase.REINFORCEMENT)) {
-        Player player = players.last();
+            Player player = players.last();
 
-        if (player.doesCountryBelongToPlayer(countryName)&&number>0&&number<=player.getNumOfArmies()) {
-            if (player.getNumOfArmies() > 0) {
-                player.decreaseNumOfArmies(number);
-                Country country = MapDataUtil.findCountryByName(countryName, countries);
-                country.addArmy(number);
-                if (player.getNumOfArmies() <= 0) {
-                    player.setPhase(Phase.ATTACK);
-                    players.setElement(player);
+            if (player.doesCountryBelongToPlayer(countryName) && number > 0 && number <= player.getNumOfArmies()) {
+                if (player.getNumOfArmies() > 0) {
+                    player.decreaseNumOfArmies(number);
+                    Country country = MapDataUtil.findCountryByName(countryName, countries);
+                    country.addArmy(number);
+                    if (player.getNumOfArmies() <= 0) {
+                        player.setPhase(Phase.ATTACK);
+                        players.setElement(player);
+                        players.rotate();
+                    }
+                } else {
                     players.rotate();
                 }
-            } else {
-                players.rotate();
             }
-        }
-        updateView();
+            updateView();
         }
     }
 
@@ -497,6 +523,36 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
     }
 
+    @Override
+    public void attack(String fromCountry, String toCountry) {
+        updateView();
+        attackLog = "";
+        if (isInPhase(Phase.ATTACK)) {
+            Country country = MapDataUtil.findCountryByName(fromCountry, countries);
+            Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
+            if (country.isCountryAdjacent(toCountry) && (country.getNoOfArmies() > 1)) {
+                while (country.getNoOfArmies() > 1 && countryTo.getNoOfArmies() >= 1) {
+                    this.attackFromCountry = country;
+                    this.attackToCountry = countryTo;
+                    if (country.getNoOfArmies() >= 3) {
+                        this.attackNumOfDice = 3;
+                    } else {
+                        this.attackNumOfDice = 1;
+
+                    }
+                    if (countryTo.getNoOfArmies() >= 2) {
+                        this.defendNumDice = 2;
+                    } else {
+                        this.defendNumDice = 1;
+                    }
+                    simulateAttack();
+                }
+
+            }
+        }
+
+    }
+
     private boolean isInPhase(Phase phase) {
         Player player = players.last();
         return player.getPhase() == phase;
@@ -505,7 +561,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     @Override
     public void attackMove(int num) {
         if (isInPhase(Phase.ATTACK)) {
-            if (attackFromCountry.isCountryAdjacent(attackToCountry.getName()) && (attackFromCountry.getNoOfArmies() - num) > num) {
+            if (attackFromCountry.isCountryAdjacent(attackToCountry.getName()) && (attackFromCountry.getNoOfArmies() - num) >= 1) {
                 attackFromCountry.removeArmy(num);
                 attackToCountry.addArmy(num);
             }
@@ -556,7 +612,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             attackResult(sim, attackDice, defendDice, 1);
         }
 
-        attackLog = sim.toString();
+        attackLog = attackLog +"\n"+sim.toString();
         updateView();
 
     }
@@ -568,19 +624,27 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         } else if (attackDice.get(index) > defendDice.get(index)) {
             attackToCountry.removeArmy(1);
             sim.append(attackToCountry.getPlayer().getPlayerName() + " lost an army" + "\n");
-            if (attackToCountry.getNoOfArmies() == 0) {
-                Player player = players.last();
-                player.getCards().getCard();
-                attackToCountry.setPlayer(player);
-                countries.put(String.valueOf(attackToCountry.getId()), attackToCountry);
+
+        }
+
+        if (attackToCountry.getNoOfArmies() == 0) {
+            Player player = players.last();
+            player.getCards().getCard();
+            attackToCountry.setPlayer(player);
+            countries.put(String.valueOf(attackToCountry.getId()), attackToCountry);
+            if (player.getCards().getNumberOfCards() == 5) {
+                player.setPhase(Phase.EXCHANGE_CARD);
+                players.setElement(player);
             }
         }
+
 
     }
 
     @Override
     public void exchange(int num1, int num2, int num3) {
-
+        Player player = players.last();
+        player.exchangeTheCards(num1, num2, num3);
     }
 
     @Override

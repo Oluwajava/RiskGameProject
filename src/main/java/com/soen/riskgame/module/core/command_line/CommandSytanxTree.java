@@ -8,10 +8,13 @@ import com.soen.riskgame.module.core.interfaces.PlayerCommandListener;
 import com.soen.riskgame.module.core.model.Country;
 import com.soen.riskgame.module.core.model.MapData;
 import com.soen.riskgame.module.core.model.Player;
+import com.soen.riskgame.module.core.utils.GraphUtil;
 import com.soen.riskgame.module.core.utils.MapDataUtil;
+import com.sun.tools.javac.util.GraphUtils;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Data
@@ -144,12 +147,10 @@ public class CommandSytanxTree {
                         i += 2;
                     }
                 } else if (currentCommand == TokenType.DEFEND) {
-                    int num = Integer.parseInt(tokens.get(i).getContent());
-                    DefendCommand defendCommand = new DefendCommand(mapData, num);
+                    DefendCommand defendCommand = processDefendCommand(i);
                     commands.add(defendCommand);
                 } else if (currentCommand == TokenType.ATTACK_MOVE) {
-                    int num = Integer.parseInt(tokens.get(i).getContent());
-                    AttackMoveCommand attackMoveCommand = new AttackMoveCommand(mapData, num);
+                    AttackMoveCommand attackMoveCommand = processAttackMove(i);
                     commands.add(attackMoveCommand);
                 } else if (currentCommand == TokenType.ATTACK) {
                     AttackCommand processAttackCommmand = processAttackCommmand(i);
@@ -170,6 +171,26 @@ public class CommandSytanxTree {
         execute();
     }
 
+    private AttackMoveCommand processAttackMove(int i) {
+        int num = Integer.parseInt(tokens.get(i).getContent());
+        if (num < mapData.getAttackFromCountry().getNoOfArmies()) {
+            return new AttackMoveCommand(mapData, num);
+        } else {
+            commandSytanxProcessor.onError("Invalid number of army");
+        }
+        return null;
+    }
+
+    private DefendCommand processDefendCommand(int i) {
+        int num = Integer.parseInt(tokens.get(i).getContent());
+        if (num >= 1 && num <= 2) {
+            return new DefendCommand(mapData, num);
+        } else {
+            commandSytanxProcessor.onError("Invalid number of dice");
+        }
+        return null;
+    }
+
     private void execute() {
         commands.forEach(v -> {
             if (v != null) v.execute();
@@ -183,17 +204,21 @@ public class CommandSytanxTree {
             Country countryFrom = MapDataUtil.findCountryByName(countryFromName, mapData.getCountries());
             String countryToName = tokens.get(i + 1).getContent();
             int numOfDice = Integer.parseInt(tokens.get(i + 2).getContent());
-            if (countryFrom.getNoOfArmies() >= numOfDice) {
-                String extendedAction = null;
-                AttackCommand attackCommand = new AttackCommand(mapData, countryFromName, countryToName, numOfDice);
-                if (tokens.size() > i + 3) {
-                    extendedAction = tokens.get(i + 3).getContent();
-                    attackCommand.setExtendedAction(extendedAction);
-                }
-                return attackCommand;
-            } else {
-                commandSytanxProcessor.onError("You don't have enough army to attack country");
+            if (numOfDice >= 1 && numOfDice <= 3) {
+                if (countryFrom.getNoOfArmies() >= numOfDice) {
+                    String extendedAction = null;
+                    AttackCommand attackCommand = new AttackCommand(mapData, countryFromName, countryToName, numOfDice);
+                    if (tokens.size() > i + 3) {
+                        extendedAction = tokens.get(i + 3).getContent();
+                        attackCommand.setExtendedAction(extendedAction);
+                    }
+                    return attackCommand;
+                } else {
+                    commandSytanxProcessor.onError("You don't have enough army to attack country");
 
+                }
+            } else {
+                commandSytanxProcessor.onError("Invalid dice number");
             }
         } else {
             commandSytanxProcessor.onError("You're not in attack Phase");
@@ -202,28 +227,32 @@ public class CommandSytanxTree {
         return null;
     }
 
+
     private ExchangeCardCommand processExchanceCardCommand(int i) {
         Player player = mapData.getPlayers().last();
-        if (player.getPhase() == Phase.REINFORCEMENT) {
-            if ( player.getCards().getNumberOfCards() >= 3) {
+        if (player.getPhase() == Phase.REINFORCEMENT || player.getPhase() == Phase.EXCHANGE_CARD) {
+            if (player.getCards().getNumberOfCards() >= 3) {
                 int num1 = Integer.parseInt(tokens.get(i).getContent());
                 int num2 = Integer.parseInt(tokens.get(i + 1).getContent());
                 int num3 = Integer.parseInt(tokens.get(i + 2).getContent());
-                String extendedAction = null;
-                ExchangeCardCommand exchangeCardCommand = new ExchangeCardCommand(mapData, num1, num2, num3);
-                if (tokens.size() > i + 3) {
-                    extendedAction = tokens.get(i + 3).getContent();
-                    exchangeCardCommand.setExtendedAction(extendedAction);
+                if (num1 < player.getCards().getNumberOfCards() && num2 < player.getCards().getNumberOfCards() &&
+                        num3 < player.getCards().getNumberOfCards()) {
+                    String extendedAction = null;
+                    ExchangeCardCommand exchangeCardCommand = new ExchangeCardCommand(mapData, num1, num2, num3);
+                    if (tokens.size() > i + 3) {
+                        extendedAction = tokens.get(i + 3).getContent();
+                        exchangeCardCommand.setExtendedAction(extendedAction);
+                    }
+                    return exchangeCardCommand;
+                } else {
+                    commandSytanxProcessor.onError("Invalid Card for exchange");
                 }
-                return exchangeCardCommand;
             } else {
                 commandSytanxProcessor.onError("You do not have enough cards to exchange");
             }
-        }else {
-            commandSytanxProcessor.onError("You're not in Reinforcement Phase");
+        } else {
+            commandSytanxProcessor.onError("You cannot exchange cards in this phase");
         }
-
-
         return null;
 
     }
@@ -234,25 +263,43 @@ public class CommandSytanxTree {
         if (player.getPhase() == Phase.FORTIFICATION) {
             String fromCountry = tokens.get(i).getContent();
             String toCountry = tokens.get(i + 1).getContent();
-            int num = Integer.parseInt(tokens.get(i + 2).getContent());
-            return new FortifyCommand(mapData, fromCountry, toCountry, num);
-        }   else {
+            Country countryFromm = MapDataUtil.findCountryByName(fromCountry, mapData.getCountries());
+            if (countryFromm.isCountryAdjacent(toCountry)) {
+                int num = Integer.parseInt(tokens.get(i + 2).getContent());
+                return new FortifyCommand(mapData, fromCountry, toCountry, num);
+            } else {
+                commandSytanxProcessor.onError("Countries aren't adjacent");
+            }
+        } else {
             commandSytanxProcessor.onError("You're not in Fortification Phase");
         }
         return null;
     }
 
     private ReinforceCountryCommand processTokenReinforceCountryCommand(int i) {
-        String countryName = tokens.get(i).getContent();
-        int num = Integer.parseInt(tokens.get(i + 1).getContent());
-        ReinforceCountryCommand reinforceCountryCommand = new ReinforceCountryCommand(mapData, countryName, num);
-        return reinforceCountryCommand;
+        Player player = mapData.getPlayers().last();
+        if (player.getPhase() == Phase.REINFORCEMENT) {
+            String countryName = tokens.get(i).getContent();
+            int num = Integer.parseInt(tokens.get(i + 1).getContent());
+            ReinforceCountryCommand reinforceCountryCommand = new ReinforceCountryCommand(mapData, countryName, num);
+            return reinforceCountryCommand;
+        } else {
+            commandSytanxProcessor.onError("You're not in Reinforcement Phase");
+        }
+
+        return null;
     }
 
     private PlaceArmyCommand processTokenPlaceArmyCommand(int i) {
+        Player player = mapData.getPlayers().last();
         String countryName = tokens.get(i).getContent();
-        PlaceArmyCommand placeArmyCommand = new PlaceArmyCommand(mapData, countryName);
-        return placeArmyCommand;
+        if (player.doesCountryBelongToPlayer(countryName)) {
+            PlaceArmyCommand placeArmyCommand = new PlaceArmyCommand(mapData, countryName);
+            return placeArmyCommand;
+        } else {
+            commandSytanxProcessor.onError("Country doesn't belong to you!!!");
+        }
+        return null;
     }
 
 
@@ -281,9 +328,15 @@ public class CommandSytanxTree {
     }
 
     private SaveFileCommand processTokenToSaveFileCommand(int i) {
-        String fileName = tokens.get(i).getContent();
-        SaveFileCommand saveFileCommand = new SaveFileCommand(mapData, fileName);
-        return saveFileCommand;
+        boolean connected = new GraphUtil(new HashSet<>(mapData.getCountries().values())).isConnected();
+        if (connected) {
+            String fileName = tokens.get(i).getContent();
+            SaveFileCommand saveFileCommand = new SaveFileCommand(mapData, fileName);
+            return saveFileCommand;
+        } else {
+            commandSytanxProcessor.onError("Map isn't valid. Countries aren't connected");
+        }
+        return null;
     }
 
     private AddContinentCommand processTokenToAddContinentCommand(int i) {
