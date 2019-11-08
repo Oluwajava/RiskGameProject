@@ -14,6 +14,8 @@ import com.soen.riskgame.module.core.constants.Cards;
  */
 public class Card {
 	
+	
+
 	/**
 	 * List of cards obtained by a particular player
 	 */
@@ -24,6 +26,16 @@ public class Card {
 	 */
 	public Card() {
 		cards=new ArrayList<String>();
+	}
+	
+
+
+	/**
+	 * Setter Method for cards
+	 * @param cards List of cards of type string
+	 */
+	public void setCards(List<String> cards) {
+		this.cards = cards;
 	}
 	
 	/**
@@ -62,9 +74,14 @@ public class Card {
 	public int reduceCard(int x,int y,int z) {
 		int size=this.cards.size();
 		if(x<size && y<size && z<size) {
-			this.cards.remove(x);
-			this.cards.remove(y);
-			this.cards.remove(z);
+//			this.cards.remove(x);
+//			this.cards.remove(y);
+//			this.cards.remove(z);
+			for(int i=this.cards.size();i>0;i--) {
+				if(i==x||i==y||i==z) {
+					this.cards.remove(i);
+				}
+			}
 			return 1;
 		}
 		else 
