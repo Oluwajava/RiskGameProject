@@ -25,7 +25,7 @@ public class FileReader {
     }
 
     /**
-     * This function is used to read the file and pass the data as String
+     * This file is used to read the data from a file
      *
      * @return fileData as String
      * @throws IOException
