@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c81619b1-c01f-4465-9f94-b2abea0fa99b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/enums/Phase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/enums/Phase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/maps/ameroki.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/maps/ameroki.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,69 +26,40 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="24" />
-          <entry key="map" value="1" />
+          <entry key="java" value="47" />
+          <entry key="map" value="2" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="24" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="JAVA" value="47" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="1727" />
+          <entry key="dummy" value="10" />
+          <entry key="java" value="2145" />
           <entry key="map" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1727" />
-          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="JAVA" value="2145" />
+          <entry key="PLAIN_TEXT" value="16" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="649" lean-forward="true" selection-start-line="649" selection-end-line="649" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/game_play/GamePlayController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="153" column="13" lean-forward="true" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Card.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-              <folding>
-                <element signature="e#548#549#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-963">
-              <caret line="200" selection-start-line="200" selection-end-line="200" />
+            <state relative-caret-position="229">
+              <caret line="583" column="43" lean-forward="true" selection-start-line="583" selection-start-column="43" selection-end-line="583" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -97,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="86" selection-start-line="86" selection-end-line="86" />
+            <state relative-caret-position="255">
+              <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
               <folding>
                 <element signature="e#801#802#0" expanded="true" />
                 <element signature="e#835#836#0" expanded="true" />
@@ -110,26 +80,23 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AttackMoveCommand.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+            <state relative-caret-position="315">
+              <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
               <folding>
-                <element signature="e#1137#1138#0" expanded="true" />
-                <element signature="e#1176#1177#0" expanded="true" />
+                <element signature="e#548#549#0" expanded="true" />
+                <element signature="e#595#596#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="226" column="71" lean-forward="true" selection-start-line="226" selection-start-column="71" selection-end-line="226" selection-end-column="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="4065">
+              <caret line="286" column="68" selection-start-line="286" selection-start-column="68" selection-end-line="286" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -139,19 +106,28 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>EXCHANGE_CARD</find>
-      <find>reinforce</find>
       <find>addPla</find>
-      <find>player</find>
       <find>populate</find>
-      <find>attack</find>
       <find>fortify</find>
       <find>attackMove</find>
       <find>attackLog</find>
+      <find>addPlay</find>
+      <find>player</find>
+      <find>reinforce</find>
+      <find>exchangeCar</find>
+      <find>exchange</find>
+      <find>reinforcement</find>
       <find>reinfor</find>
+      <find>attack</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="alternate_branch_2" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -160,11 +136,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/game_play/GamePlayController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/maps/ameroki.map" />
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/enums/Phase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/enums/Phase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Card.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java" />
       </list>
     </option>
   </component>
@@ -472,6 +450,26 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="riskgame" type="462c0819:PsiDirectoryNode" />
               <item name="module" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="riskgame" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RiskGameApplication" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RiskGameProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="riskgame" type="462c0819:PsiDirectoryNode" />
+              <item name="module" type="462c0819:PsiDirectoryNode" />
               <item name="game_play" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -527,10 +525,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="Card&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/Card.java&#10;CArd&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/Card.java&#10;Player&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/Player.java&#10;MapDa&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/MapData.java&#10;Game&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/game_play/GamePlayController.java&#10;MapDA&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/MapData.java&#10;Phase&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/enums/Phase.java&#10;Command&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java&#10;AddPla&#9;PSI&#9;JAVA://com.soen.riskgame.module.core.command.AddPlayerCommand&#10;LoadMap&#9;PSI&#9;JAVA://com.soen.riskgame.module.core.command.LoadMapCommand&#10;NewGa&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java&#10;MapData&#9;PSI&#9;JAVA://com.soen.riskgame.module.core.model.MapData&#10;Play&#9;PSI&#9;JAVA://com.soen.riskgame.module.core.model.Player&#10;GameCo&#9;PSI&#9;JAVA://com.soen.riskgame.module.game_play.GamePlayController" />
+    <property name="SearchEverywhereHistoryKey" value="Command&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java&#10;map&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/MapData.java&#10;Card&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/Card.java&#10;Player&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/Player.java&#10;Car&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/Card.java&#10;CommandS&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java&#10;Phas&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/enums/Phase.java&#10;MapDa&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/MapData.java&#10;Map&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java&#10;dash&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java&#10;CArd&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/Card.java&#10;Game&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/game_play/GamePlayController.java&#10;MapDA&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/model/MapData.java&#10;Phase&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/core/enums/Phase.java&#10;AddPla&#9;PSI&#9;JAVA://com.soen.riskgame.module.core.command.AddPlayerCommand&#10;LoadMap&#9;PSI&#9;JAVA://com.soen.riskgame.module.core.command.LoadMapCommand&#10;NewGa&#9;FILE&#9;file:///Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java&#10;MapData&#9;PSI&#9;JAVA://com.soen.riskgame.module.core.model.MapData&#10;Play&#9;PSI&#9;JAVA://com.soen.riskgame.module.core.model.Player&#10;GameCo&#9;PSI&#9;JAVA://com.soen.riskgame.module.game_play.GamePlayController" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573252285143" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573262350694" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -567,6 +565,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -585,40 +584,40 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9185000" />
+    <option name="totallyTimeSpent" value="12742000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.18884121" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18884121" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" weight="0.32891566" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32891566" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3325301" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4120482" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Maven Projects" weight="0.3297568" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32891566" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32891566" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32891566" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" weight="0.3297568" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -632,12 +631,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java</url>
-          <line>200</line>
-          <properties />
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java</url>
           <line>208</line>
           <properties />
           <option name="timeStamp" value="10" />
@@ -649,16 +642,22 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java</url>
-          <line>655</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Player.java</url>
           <line>86</line>
           <properties />
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java</url>
+          <line>205</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/game_play/GamePlayController.java</url>
+          <line>160</line>
+          <properties />
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -676,20 +675,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -721,23 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/enums/Phase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="226" column="71" lean-forward="true" selection-start-line="226" selection-start-column="71" selection-end-line="226" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AttackMoveCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -749,24 +717,89 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/maps/luca.map">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-963">
-          <caret line="200" selection-start-line="200" selection-end-line="200" />
+        <state relative-caret-position="345">
+          <caret line="27" column="60" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3060">
+          <caret line="204" column="16" selection-start-line="204" selection-start-column="16" selection-end-line="204" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/dashboard/DashboardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/game_play/GamePlayController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="153" column="13" lean-forward="true" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
+        <state relative-caret-position="159">
+          <caret line="160" selection-start-line="160" selection-end-line="160" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/AttackCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="61" column="20" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_editor/MapEditorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="189" column="37" selection-start-line="189" selection-start-column="37" selection-end-line="189" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="22" column="188" selection-start-line="22" selection-start-column="188" selection-end-line="22" selection-end-column="188" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/enums/Phase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="68" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/ExchangeCardCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        <state relative-caret-position="255">
+          <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
           <folding>
             <element signature="e#801#802#0" expanded="true" />
             <element signature="e#835#836#0" expanded="true" />
@@ -776,20 +809,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="649" lean-forward="true" selection-start-line="649" selection-end-line="649" />
+        <state relative-caret-position="315">
+          <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding>
+            <element signature="e#548#549#0" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Card.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-          <folding>
-            <element signature="e#548#549#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="229">
+          <caret line="583" column="43" lean-forward="true" selection-start-line="583" selection-start-column="43" selection-end-line="583" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command_line/CommandSytanxTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4065">
+          <caret line="286" column="68" selection-start-line="286" selection-start-column="68" selection-end-line="286" selection-end-column="68" />
         </state>
       </provider>
     </entry>

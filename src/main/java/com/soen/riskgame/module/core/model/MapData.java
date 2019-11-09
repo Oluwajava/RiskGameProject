@@ -492,8 +492,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      */
     @Override
     public void reinforceCountry(String countryName, int number) {
+        Player player = players.last();
         if (isInPhase(Phase.REINFORCEMENT)) {
-            Player player = players.last();
+
 
             if (player.doesCountryBelongToPlayer(countryName) && number > 0 && number <= player.getNumOfArmies()) {
                 if (player.getNumOfArmies() > 0) {
@@ -523,8 +524,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 this.attackFromCountry = country;
                 this.attackToCountry = countryTo;
                 this.attackNumOfDice = numOfDice;
+                attackLog += "\n==========================\nDefender Move\n==========================\n";
             }
         }
+        updateView();
     }
 
     @Override
@@ -582,7 +585,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             if (conqueredCountry) {
                 player.getCards().getCard();
             }
-            player.setPhase(Phase.REINFORCEMENT);
+            player.setPhase(Phase.FORTIFICATION);
             player.resetReinforcementCalculation();
             players.setElement(player);
             players.rotate();
@@ -653,9 +656,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     @Override
     public void exchange(int num1, int num2, int num3) {
-        Player player = players.last();
-        player.exchangeTheCards(num1, num2, num3);
-        updateView();
+        if(isInPhase(Phase.REINFORCEMENT)) {
+            Player player = players.last();
+            player.exchangeTheCards(num1, num2, num3);
+            updateView();
+        }
     }
 
     @Override

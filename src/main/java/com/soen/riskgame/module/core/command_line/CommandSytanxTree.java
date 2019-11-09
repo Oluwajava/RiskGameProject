@@ -281,7 +281,11 @@ public class CommandSytanxTree {
             if (player.doesCountryBelongToPlayer(fromCountry) && player.doesCountryBelongToPlayer(toCountry)) {
                 if (countryFromm.isCountryAdjacent(toCountry)) {
                     int num = Integer.parseInt(tokens.get(i + 2).getContent());
-                    return new FortifyCommand(mapData, fromCountry, toCountry, num);
+                    if (num > 0 && num < countryFromm.getNoOfArmies()) {
+                        return new FortifyCommand(mapData, fromCountry, toCountry, num);
+                    } else {
+                        commandSytanxProcessor.onError("Invalid move");
+                    }
                 } else {
                     commandSytanxProcessor.onError("Countries aren't adjacent");
                 }
@@ -297,14 +301,24 @@ public class CommandSytanxTree {
 
     private ReinforceCountryCommand processTokenReinforceCountryCommand(int i) {
         Player player = mapData.getPlayers().last();
+
         if (player.getPhase() == Phase.REINFORCEMENT) {
-            String countryName = tokens.get(i).getContent();
-            int num = Integer.parseInt(tokens.get(i + 1).getContent());
-            if (player.doesCountryBelongToPlayer(countryName)) {
-                ReinforceCountryCommand reinforceCountryCommand = new ReinforceCountryCommand(mapData, countryName, num);
-                return reinforceCountryCommand;
-            } else {
-                commandSytanxProcessor.onError("Country doesn't belong to you");
+            if (player.getCards().getNumberOfCards() == 5) {
+                commandSytanxProcessor.onError("You have 5 cards and you have to exchange before you proceed!");
+            }else {
+                String countryName = tokens.get(i).getContent();
+                int num = Integer.parseInt(tokens.get(i + 1).getContent());
+                if (player.doesCountryBelongToPlayer(countryName)) {
+                    if (num > 0 && num <= player.getNumOfArmies()) {
+                        ReinforceCountryCommand reinforceCountryCommand = new ReinforceCountryCommand(mapData, countryName, num);
+                        return reinforceCountryCommand;
+                    } else {
+                        commandSytanxProcessor.onError("Invalid number");
+
+                    }
+                } else {
+                    commandSytanxProcessor.onError("Country doesn't belong to you");
+                }
             }
 
         } else {
