@@ -1,18 +1,32 @@
 package com.soen.riskgame.module.core.model;
 
 import com.soen.riskgame.module.core.constants.MapDelimiters;
+import com.soen.riskgame.module.core.enums.Phase;
 import com.soen.riskgame.module.core.utils.FileReader;
 import com.soen.riskgame.module.core.utils.MapParser;
+import com.soen.riskgame.module.core.utils.RoundRobin;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class MapDataTest {
+/**
+ * Test class for class MapData
+ */
+public class MapDataTest {
 
+    /**
+     * Holds map data
+     */
     private MapData mapData;
+
+    /**
+     * Holds map data
+     */
     private MapData mapData2;
 
+    /**
+     * This method sets the map and game context
+     */
     @BeforeEach
     public void setupContext() {
         mapData = new MapData();
@@ -29,6 +43,9 @@ class MapDataTest {
         mapData2.addPlayer("Jide");
     }
 
+    /**
+     * test AddCountryToContinent
+     */
     @Test
     void shouldAddCountryToContinent() {
         mapData.addContinent("Africa", 10);
@@ -38,12 +55,18 @@ class MapDataTest {
         assertEquals(mapData.getContinents().get("1").getCountries().size(), 1);
     }
 
+    /**
+     * test AddContinentToMapData
+     */
     @Test
     void shouldAddContinentToMapData() {
         mapData.addContinent("Africa", 10);
         assertEquals(mapData.getContinents().size(), 1);
     }
 
+    /**
+     * test CorrectStartUpPhase Before PlaceAll
+     */
     @Test
     void testCorrectStartUpPhaseBeforePlaceAll() {
         mapData2.populateCountries();
@@ -55,6 +78,9 @@ class MapDataTest {
         assertTrue(valid);
     }
 
+    /**
+     * test CorrectStartUpPhase After PlaceAll
+     */
     @Test
     void testCorrectStartUpPhaseAfterPlaceAll() {
         mapData2.populateCountries();
@@ -67,5 +93,179 @@ class MapDataTest {
         assertTrue(valid);
     }
 
+    /**
+     * test Attack With Correct Conditions
+     */
+    @Test
+    void testAttackWithCorrectConditions() {
+        boolean valid;
+        Country country17 = mapData2.getCountries().get("17");
+        Country country18 = mapData2.getCountries().get("18");
+        String country17Owner;
+        String country18Owner;
 
+        do {
+            mapData2.populateCountries();
+            mapData2.placeAll();
+            country17Owner = country17.getPlayer().getPlayerName();
+            country18Owner = country18.getPlayer().getPlayerName();
+        } while (country17Owner.equalsIgnoreCase("John") && country18Owner.equalsIgnoreCase("Jide"));
+
+        country17.setNoOfArmies(5);
+        country18.setNoOfArmies(5);
+        RoundRobin<Player> players = mapData2.getPlayers();
+        Player currentPlayer = players.last();
+        currentPlayer.setPhase(Phase.ATTACK);
+        players.setElement(currentPlayer);
+        mapData2.setPlayers(players);
+        mapData2.attack(country17.getName(), country18.getName());
+        if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
+            country17.setNoOfArmies(3);
+            country18.setNoOfArmies(0);
+            currentPlayer.setPhase(Phase.ATTACK_MOVE);
+            mapData2.attackMove(2);
+            if (country17.getNoOfArmies() == 1 && country18.getNoOfArmies() == 2) {
+                valid = true;
+            }
+            else {
+                valid = false;
+            }
+        }
+        else {
+            valid = false;
+        }
+        assertTrue(valid);
+    }
+
+    /**
+     * test Attack in the wrong phase
+     */
+    @Test
+    void testAttackWrongPhase() {
+        boolean valid;
+        Country country17 = mapData2.getCountries().get("17");
+        Country country18 = mapData2.getCountries().get("18");
+        String country17Owner;
+        String country18Owner;
+
+        do {
+            mapData2.populateCountries();
+            mapData2.placeAll();
+            country17Owner = country17.getPlayer().getPlayerName();
+            country18Owner = country18.getPlayer().getPlayerName();
+        } while (country17Owner.equalsIgnoreCase("John") && country18Owner.equalsIgnoreCase("Jide"));
+
+        country17.setNoOfArmies(5);
+        country18.setNoOfArmies(5);
+        RoundRobin<Player> players = mapData2.getPlayers();
+        Player currentPlayer = players.last();
+        currentPlayer.setPhase(Phase.REINFORCEMENT);
+        players.setElement(currentPlayer);
+        mapData2.setPlayers(players);
+        mapData2.attack(country17.getName(), country18.getName());
+        if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
+            country17.setNoOfArmies(3);
+            country18.setNoOfArmies(0);
+            currentPlayer.setPhase(Phase.REINFORCEMENT);
+            mapData2.attackMove(2);
+            if (country17.getNoOfArmies() == 1 && country18.getNoOfArmies() == 2) {
+                valid = false;
+            }
+            else {
+                valid = true;
+            }
+        }
+        else {
+            valid = true;
+        }
+        assertTrue(valid);
+    }
+
+    /**
+     * test Attack with non adjacent countries
+     */
+    @Test
+    void testAttackingNotAdjacentCountries() {
+        boolean valid;
+        Country country17 = mapData2.getCountries().get("17");
+        Country country35 = mapData2.getCountries().get("35");
+        String country17Owner;
+        String country18Owner;
+
+        do {
+            mapData2.populateCountries();
+            mapData2.placeAll();
+            country17Owner = country17.getPlayer().getPlayerName();
+            country18Owner = country35.getPlayer().getPlayerName();
+        } while (country17Owner.equalsIgnoreCase("John") && country18Owner.equalsIgnoreCase("Jide"));
+
+        country17.setNoOfArmies(5);
+        country35.setNoOfArmies(5);
+        RoundRobin<Player> players = mapData2.getPlayers();
+        Player currentPlayer = players.last();
+        currentPlayer.setPhase(Phase.ATTACK);
+        players.setElement(currentPlayer);
+        mapData2.setPlayers(players);
+        mapData2.attack(country17.getName(), country35.getName());
+        if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
+            country17.setNoOfArmies(3);
+            country35.setNoOfArmies(0);
+            currentPlayer.setPhase(Phase.ATTACK_MOVE);
+            mapData2.attackMove(2);
+            if (country17.getNoOfArmies() == 1 && country35.getNoOfArmies() == 2) {
+                valid = false;
+            }
+            else {
+                valid = true;
+            }
+        }
+        else {
+            valid = true;
+        }
+        assertTrue(valid);
+    }
+
+    /**
+     * test Attack With Correct Conditions using second attack method
+     */
+    @Test
+    void testAttackWithCorrectConditions2() {
+        boolean valid;
+        Country country17 = mapData2.getCountries().get("17");
+        Country country18 = mapData2.getCountries().get("18");
+        String country17Owner;
+        String country18Owner;
+
+        do {
+            mapData2.populateCountries();
+            mapData2.placeAll();
+            country17Owner = country17.getPlayer().getPlayerName();
+            country18Owner = country18.getPlayer().getPlayerName();
+        } while (country17Owner.equalsIgnoreCase("John") && country18Owner.equalsIgnoreCase("Jide"));
+
+        country17.setNoOfArmies(5);
+        country18.setNoOfArmies(5);
+        RoundRobin<Player> players = mapData2.getPlayers();
+        Player currentPlayer = players.last();
+        currentPlayer.setPhase(Phase.ATTACK);
+        players.setElement(currentPlayer);
+        mapData2.setPlayers(players);
+        mapData2.attack(country17.getName(), country18.getName(), 3);
+        if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
+            country17.setNoOfArmies(3);
+            country18.setNoOfArmies(0);
+            currentPlayer.setPhase(Phase.ATTACK_MOVE);
+            mapData2.attackMove(2);
+            if (country17.getNoOfArmies() == 1 && country18.getNoOfArmies() == 2) {
+                valid = true;
+            }
+            else {
+                valid = false;
+            }
+        }
+        else {
+            valid = false;
+        }
+        assertTrue(valid);
+    }
 }
