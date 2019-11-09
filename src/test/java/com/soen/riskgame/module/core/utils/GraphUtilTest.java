@@ -3,8 +3,10 @@ package com.soen.riskgame.module.core.utils;
 import java.util.HashSet;
 import java.util.Set;
 import com.soen.riskgame.module.core.model.Country;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class GraphUtilTest {
 
@@ -30,7 +32,7 @@ public class GraphUtilTest {
         countries.add(sweden);
 
         GraphUtil graphUtil = new GraphUtil(countries);
-        Assertions.assertTrue(graphUtil.isConnected());
+        assertTrue(graphUtil.isConnected());
     }
 
     @Test
@@ -54,7 +56,7 @@ public class GraphUtilTest {
         countries.add(sweden);
 
         GraphUtil graphUtil = new GraphUtil(countries);
-        Assertions.assertFalse(graphUtil.isConnected());
+        assertFalse(graphUtil.isConnected());
         System.out.println(nigeria.getAdjacentCountries());
     }
 

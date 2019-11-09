@@ -1,6 +1,5 @@
 package com.soen.riskgame.module.core.utils;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 
 import java.util.ArrayList;
@@ -12,14 +11,14 @@ import org.junit.*;
 import com.soen.riskgame.module.core.model.Continent;
 import com.soen.riskgame.module.core.model.Country;
 import com.soen.riskgame.module.core.model.MapData;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import static junit.framework.Assert.assertTrue;
 
 public class MapValidatorTest {
 
     private MapValidator mapValidator,mapValidator2,mapValidator3,mapValidator4,mapValidator5,mapValidator6;
 
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         mapValidator=new MapValidator("[borders] [continents] [countries] [files] ");
         mapValidator2=new MapValidator("[continents] [countries] [files]");

@@ -3,15 +3,17 @@ package com.soen.riskgame.module.core.command_line;
 
 import com.soen.riskgame.module.core.constants.ActionConstant;
 import com.soen.riskgame.module.core.constants.CommandConstant;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.*;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test class for class Lexer
  */
-class LexerTest {
+public class LexerTest {
 
     /**
      * lexer object intantiation
@@ -31,7 +33,7 @@ class LexerTest {
     /**
      * This method clears expected before each test case
      */
-    @BeforeEach
+    @Before
     public void beforeEach() {
         expected.clear();
     }

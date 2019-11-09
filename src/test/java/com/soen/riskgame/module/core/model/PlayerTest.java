@@ -1,19 +1,19 @@
 package com.soen.riskgame.module.core.model;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
-class PlayerTest {
+
+public class PlayerTest {
 
     private Player player;
 
-    @BeforeEach
+    @Before
     public void setupContext() {
         player = new Player();
         List<Country> countries = new ArrayList<>();
@@ -27,7 +27,7 @@ class PlayerTest {
     }
 
     @Test
-    void getNumberOfReinforcementArmy() {
-        Assertions.assertEquals(player.getNumberOfReinforcementArmy(), 2);
+    public void getNumberOfReinforcementArmy() {
+        assertEquals(player.getNumberOfReinforcementArmy(), 2);
     }
 }
