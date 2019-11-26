@@ -14,9 +14,6 @@ import java.util.stream.Collectors;
  * There are five player behaviours 
  * i.e. Human, aggressive, benevolent, random and cheater
  * 
- * @author Karandeep Singh
- * @author Palash Jain
- * 
  */
 public abstract class PlayerBehaviour implements Serializable {
 
