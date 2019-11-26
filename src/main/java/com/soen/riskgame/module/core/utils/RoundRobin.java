@@ -5,17 +5,29 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.xml.bind.Element;
-
+/**
+ * Round Robin class in to implement round robin function in the game
+ *To Automatically assign the Armies on "PlaceAlL" command this function is used
+ * @param <E>
+ * @author John
+ */
 public class RoundRobin<E> {
 
     @Getter
     private Node<E> tail = null;
-
+    /**
+     * size variable
+     */
     private int size = 0;
-
+    /**
+     * Default Constructor
+     */
     public RoundRobin() {
     }
-
+    /**
+     * Method to return size
+     * @return size
+     */
     public int size() {
         return size;
     }
