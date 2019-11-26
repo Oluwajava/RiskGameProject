@@ -31,8 +31,47 @@ public class MapValidator {
      * @throws Exception
      */
     public void validate() throws Exception {
-        checkAllTags();
+        if (isRiskMap()) {
+            checkAllTags();
+        } else{
+            checkAllConquestTags();
+        }
     }
+
+    public boolean isRiskMap() {
+        try {
+            checkAllTags();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isConquestMap() {
+        try {
+            checkAllConquestTags();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void checkAllConquestTags() throws Exception {
+
+        if (!mapData.contains(MapDelimiters.CONTINENT_DELIMETER_2)) {
+            throw new Exception("Cannot find ContinentDTO for Map");
+        }
+
+        if (!mapData.contains(MapDelimiters.MAP_DELIMETER)) {
+            throw new Exception("Cannot find for Map");
+        }
+
+        if (!mapData.contains(MapDelimiters.TERRITORIES_DELIMETER)) {
+            throw new Exception("Canont find Territories Data for Map");
+        }
+
+    }
+
     /**
      * method to chcek all tags
      * @throws Exception

@@ -21,7 +21,7 @@ import static com.soen.riskgame.module.core.mapper.CountryMapper.mapToCountry;
  *  @author Sibil
  */
 @Getter
-public class MapParser {
+public class MapParser implements MapParserAdapter{
     /**
      * game file data
      */

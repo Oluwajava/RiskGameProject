@@ -12,7 +12,7 @@ public interface ActionConstant {
 
     String NONE = "none";
 
-    String ALL_OUT = "–allout";
+    String ALL_OUT = "-allout";
 
     String NO_ATTACK = "–noattack";
 

@@ -58,9 +58,9 @@ public class AttackCommand implements Command {
      */
     @Override
     public void execute() {
-        if (extendedAction != null && extendedAction.equals(ActionConstant.ALL_OUT)) {
+        if (extendedAction != null && extendedAction.equals("-allout")) {
             mapData.attack(fromCountry, toCountry);
-        } else if (extendedAction != null && extendedAction.equals(ActionConstant.NO_ATTACK)) {
+        } else if (extendedAction != null && extendedAction.equals("-noattack")) {
             mapData.attackNone();
         } else {
             mapData.attack(fromCountry, toCountry, num);

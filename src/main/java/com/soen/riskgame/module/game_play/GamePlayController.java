@@ -10,6 +10,7 @@ import com.soen.riskgame.module.core.interfaces.View;
 import com.soen.riskgame.module.core.model.Country;
 import com.soen.riskgame.module.core.model.MapData;
 import com.soen.riskgame.module.core.model.Player;
+import com.soen.riskgame.module.core.utils.MapDataUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,7 @@ import javafx.scene.text.TextBoundsType;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -49,6 +51,14 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
      * variable of image view
      */
     private ImageView mapImage;
+    /**
+     * variable for country list view
+     */
+    private ListView countriesListView;
+    /**
+     * variable for neighbour list view
+     */
+    private ListView neigbhoursListView;
     /**
      * GUI variable of Anchor pane
      */
@@ -103,20 +113,26 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
      */
     private Text cardView;
     /**
+     * variable to display currentSelectedCountry
+     */
+    private String currentSelectedCountry;
+
+    /**
      * Constructor of the class
+     *
      * @param mapData map data
      * @throws IOException
      */
     public GamePlayController(MapData mapData) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NEW_GAME));
-        scene = new Scene(root, 800, 760);
+        scene = new Scene(root, 1300, 760);
         bindView();
         this.mapData = mapData;
         mapData.addObserver(this);
         mapData.setGameStarted(true);
         setupGameView();
         setPlayerList(mapData);
-
+        setupCountriesList();
         processCommandButton.setOnAction(event -> {
             String command = commandLine.getText();
             List<Token> tokens = Lexer.lex(command);
@@ -126,13 +142,18 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
             commandSytanxTree.processCommand();
             System.out.println();
         });
+        countriesListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            setupNeighbours((Country) newValue);
+        });
     }
+
     /**
      * method for setup game view
      */
     private void setupGameView() {
         updateImage(mapData.getFileName());
     }
+
     /**
      * method to update country location
      */
@@ -140,8 +161,8 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         List<Node> nodes = mapData.getCountries().values().stream().map(country -> {
             Circle circle = new Circle();
             StackPane stack = new StackPane();
-            stack.setLayoutX(Double.parseDouble(country.getXCoordinate()) + 10);
-            stack.setLayoutY(Double.parseDouble(country.getYCoordinate()) + 10);
+            stack.setLayoutX(Double.parseDouble(country.getXCoordinate()) - 40);
+            stack.setLayoutY(Double.parseDouble(country.getYCoordinate()) - 30);
             if (country.getPlayer() != null) {
                 Player.PlayerColor playerColor = country.getPlayer().getPlayerColor();
                 circle.setFill(javafx.scene.paint.Color.rgb(playerColor.getRed(), playerColor.getGreen(), playerColor.getBlue()));
@@ -156,6 +177,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
 
         anchorPane.getChildren().addAll(nodes);
     }
+
     /**
      * binder method of the view to load and view scene
      */
@@ -172,9 +194,59 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         phaseText = (Text) scene.lookup("#phaseText");
         cardView = (Text) scene.lookup("#cardView");
         gameLog = (TextArea) scene.lookup("#gameLog");
+        countriesListView = (ListView) scene.lookup("#countriesListView");
+        neigbhoursListView = (ListView) scene.lookup("#neigbhoursListView");
     }
+
+    /**
+     * method to setup countries list
+     */
+    private void setupCountriesList() {
+        List<Country> countries = mapData.getCountries().entrySet().stream().map(stringCountryEntry -> stringCountryEntry.getValue()).collect(Collectors.toList());
+        ObservableList<Country> items = FXCollections.observableArrayList(
+                countries);
+        countriesListView.setItems(items);
+        setCountryTableView(countriesListView);
+
+    }
+
+    /**
+     * method to setup neighbours to country
+     *
+     * @param country country
+     */
+    private void setupNeighbours(Country country) {
+        ObservableList<Country> items = FXCollections.observableArrayList(
+                country.getAdjacentCountries());
+        neigbhoursListView.setItems(items);
+        setCountryTableView(neigbhoursListView);
+    }
+
+    private void setCountryTableView(ListView listView) {
+        listView.setCellFactory(param -> new ListCell<Country>() {
+            @Override
+            protected void updateItem(Country item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    Circle circle = new Circle();
+                    if (item.getPlayer() != null) {
+                        Player.PlayerColor playerColor = item.getPlayer().getPlayerColor();
+                        circle.setFill(javafx.scene.paint.Color.rgb(playerColor.getRed(), playerColor.getGreen(), playerColor.getBlue()));
+                        circle.setRadius(10.0f);
+                        setText(item.getName() + "; Armies: " + item.getNoOfArmies());
+                        setGraphic(circle);
+                    }
+                }
+            }
+        });
+    }
+
     /**
      * method to update image
+     *
      * @param name input string
      */
     private void updateImage(String name) {
@@ -185,6 +257,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         Image mapImage = new Image(inputStream);
         this.mapImage.setImage(mapImage);
     }
+
     /**
      * method to set players list
      */
@@ -207,15 +280,17 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
                     double mapSize = mapData.getCountries().size();
                     double countries = item.getCountries().size();
                     double result = countries / mapSize;
-                    setText(item.getPlayerName() + "\t\t\t" + String.valueOf(result * 100)+"%");
+                    setText(item.getPlayerName() + "\t\t\t" + String.valueOf(result * 100) + "%");
                     setGraphic(circle);
                 }
             }
         });
 
     }
+
     /**
      * getter method of the view
+     *
      * @return scene
      * @throws IOException
      */
@@ -223,9 +298,11 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     public Scene getView() throws IOException {
         return scene;
     }
+
     /**
      * method to update the view
-     * @param o oberseravble
+     *
+     * @param o   oberseravble
      * @param arg object
      */
     @Override
@@ -243,19 +320,21 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         setPhase(player);
         setPlayerList(mapTest);
         setCardView(player);
+        setupCountriesList();
     }
 
     /**
      * Setter method for card view
+     *
      * @param player game player
      */
     private void setCardView(Player player) {
-        if(player.getPhase() == Phase.REINFORCEMENT) {
+        if (player.getPhase() == Phase.REINFORCEMENT) {
             cardView.setVisible(true);
             StringBuilder cardViewBuilder = new StringBuilder();
             List<String> cards = player.getCards().getPlayerCards();
-            for(int i = 0; i < cards.size(); i++) {
-                cardViewBuilder.append("Index: "+i+"\tCard Type: "+cards.get(i)+"\n");
+            for (int i = 0; i < cards.size(); i++) {
+                cardViewBuilder.append("Index: " + i + "\tCard Type: " + cards.get(i) + "\n");
             }
             cardView.setText(cardViewBuilder.toString());
         } else {
@@ -265,6 +344,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
 
     /**
      * Setter method for phase view
+     *
      * @param player game player
      */
     private void setPhase(Player player) {
@@ -287,6 +367,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
 
     /**
      * method implementing show map in GUI
+     *
      * @param mapData
      */
     @Override
@@ -296,6 +377,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
 
     /**
      * method if any error
+     *
      * @param message error message
      */
     @Override

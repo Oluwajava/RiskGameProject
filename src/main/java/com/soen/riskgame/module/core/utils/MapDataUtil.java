@@ -38,9 +38,13 @@ public class MapDataUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        MapParser mapParser = null;
+        MapParserAdapter mapParser = null;
         try {
-            mapParser = new MapParser(mapData);
+            if (mapValidator.isRiskMap()) {
+                mapParser = new MapParser(mapData);
+            } else {
+                mapParser = new ConquestMapParser(mapData);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

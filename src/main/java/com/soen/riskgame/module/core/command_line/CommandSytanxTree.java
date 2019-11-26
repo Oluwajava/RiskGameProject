@@ -16,10 +16,11 @@ import lombok.Data;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
 /**
  * Class CommandSyntaxTree is a class which provides the functionality of processing various commands.
- * @author hitansh
  *
+ * @author hitansh
  */
 @Data
 public class CommandSytanxTree {
@@ -66,18 +67,22 @@ public class CommandSytanxTree {
      * Listener for Syntax processing
      */
     private CommandSytanxProcessor commandSytanxProcessor;
+
     /**
      * parameterized constructor
+     *
      * @param mapData mapdata
-     * @param tokens list of tokens
+     * @param tokens  list of tokens
      */
     public CommandSytanxTree(MapData mapData, List<Token> tokens) {
         this.tokens = tokens;
         this.mapData = mapData;
         commands = new ArrayList<>();
     }
+
     /**
      * Setter for ShowMapListener
+     *
      * @param showMapListener showMapListener
      */
     public void setShowMapListener(ShowMapCommand.ShowMapListener showMapListener) {
@@ -212,6 +217,7 @@ public class CommandSytanxTree {
 
     /**
      * method were attack move execution is done
+     *
      * @param i number of army
      * @return if condition doesnt satisfy invalid number error or execute command
      */
@@ -224,8 +230,10 @@ public class CommandSytanxTree {
         }
         return null;
     }
+
     /**
      * method were defend execution is done
+     *
      * @param i number of dice
      * @return if condition doesnt satisfy invalid number error or execute command
      */
@@ -247,8 +255,10 @@ public class CommandSytanxTree {
             if (v != null) v.execute();
         });
     }
+
     /**
      * method for token attack command
+     *
      * @param i number of dice
      * @return object of the class attackCommand
      */
@@ -259,34 +269,37 @@ public class CommandSytanxTree {
             Country countryFrom = MapDataUtil.findCountryByName(countryFromName, mapData.getCountries());
             String countryToName = tokens.get(i + 1).getContent();
             int numOfDice = Integer.parseInt(tokens.get(i + 2).getContent());
-            if (numOfDice >= 1 && numOfDice <= 3) {
-                if (countryFrom.getNoOfArmies() >= numOfDice && countryFrom.getNoOfArmies() > 1) {
-                    if (player.doesCountryBelongToPlayer(countryToName)) {
-                        commandSytanxProcessor.onError("You can't attack your own country");
-                    } else if (!player.doesCountryBelongToPlayer(countryFromName)) {
-                        commandSytanxProcessor.onError("You can't attack with another player's country");
-                    } else {
-                        if (countryFrom.isCountryAdjacent(countryToName)) {
-                            String extendedAction = null;
-                            AttackCommand attackCommand = new AttackCommand(mapData, countryFromName, countryToName, numOfDice);
-                            if (tokens.size() > i + 3) {
-                                extendedAction = tokens.get(i + 3).getContent();
-                                attackCommand.setExtendedAction(extendedAction);
-                            }
+            if (player.doesCountryBelongToPlayer(countryToName)) {
+                commandSytanxProcessor.onError("You can't attack your own country");
+            } else if (!player.doesCountryBelongToPlayer(countryFromName)) {
+                commandSytanxProcessor.onError("You can't attack with another player's country");
+            } else {
+                if (countryFrom.isCountryAdjacent(countryToName)) {
+                    String extendedAction = null;
+                    AttackCommand attackCommand = new AttackCommand(mapData, countryFromName, countryToName, numOfDice);
+                    if (tokens.size() > i + 3) {
+                        extendedAction = tokens.get(i + 3).getContent();
+                        attackCommand.setExtendedAction(extendedAction);
+                    }
+                    if (extendedAction != null) {
+                        return attackCommand;
+                    } else if (extendedAction == null && numOfDice >= 1 && numOfDice <= 3) {
+                        if (countryFrom.getNoOfArmies() >= numOfDice && countryFrom.getNoOfArmies() > 1) {
                             return attackCommand;
                         } else {
-                            commandSytanxProcessor.onError("You can't attack this country. Check neigbouring countries to attack");
-
+                            commandSytanxProcessor.onError("You don't have enough army to attack country");
                         }
+                    } else {
+                        commandSytanxProcessor.onError("Invalid dice number");
                     }
 
                 } else {
-                    commandSytanxProcessor.onError("You don't have enough army to attack country");
+                    commandSytanxProcessor.onError("You can't attack this country. Check neigbouring countries to attack");
 
                 }
-            } else {
-                commandSytanxProcessor.onError("Invalid dice number");
             }
+
+
         } else if (player.getPhase() == Phase.ATTACK_MOVE) {
             commandSytanxProcessor.onError("You have to move armies to the conquered country");
         } else {
@@ -298,6 +311,7 @@ public class CommandSytanxTree {
 
     /**
      * method for token Exchange card command
+     *
      * @param i number of cards
      * @return object of the class ExchangeCommand or throw invalid error
      */
@@ -332,6 +346,7 @@ public class CommandSytanxTree {
 
     /**
      * method for token fortify command
+     *
      * @param i integer value
      * @return object of the class FortifyCommand
      */
@@ -361,8 +376,10 @@ public class CommandSytanxTree {
         }
         return null;
     }
+
     /**
      * Method for processing token reinforce country command
+     *
      * @param i integer value
      * @return object of ReinforceCountryCommand
      */
@@ -372,7 +389,7 @@ public class CommandSytanxTree {
         if (player.getPhase() == Phase.REINFORCEMENT) {
             if (player.getCards().getNumberOfCards() == 5) {
                 commandSytanxProcessor.onError("You have 5 cards and you have to exchange before you proceed!");
-            }else {
+            } else {
                 String countryName = tokens.get(i).getContent();
                 int num = Integer.parseInt(tokens.get(i + 1).getContent());
                 if (player.doesCountryBelongToPlayer(countryName)) {
@@ -394,8 +411,10 @@ public class CommandSytanxTree {
 
         return null;
     }
+
     /**
      * method to process place army command
+     *
      * @param i integer value
      * @return object of PlaceArmyCommmand
      */
@@ -413,6 +432,7 @@ public class CommandSytanxTree {
 
     /**
      * Method to process remove player command
+     *
      * @param i an integer value
      * @return object of RemovePlayerCommand
      */
@@ -421,8 +441,10 @@ public class CommandSytanxTree {
         RemovePlayerCommand removePlayerCommand = new RemovePlayerCommand(playerCommandListener, playerName);
         return removePlayerCommand;
     }
+
     /**
      * method to process add player command
+     *
      * @param i an integer value
      * @return object of AddPlayerCommand
      */
@@ -434,6 +456,7 @@ public class CommandSytanxTree {
 
     /**
      * method to process LoadMap Command
+     *
      * @param i an integer value
      * @return object of LoadMapCommand
      */
@@ -442,8 +465,10 @@ public class CommandSytanxTree {
         LoadMapCommand loadMapCommand = new LoadMapCommand(fileName, loadMapListener);
         return loadMapCommand;
     }
+
     /**
      * Method to process EditMap Command
+     *
      * @param i an integer Value
      * @return object of EditMapCommand
      */
@@ -455,6 +480,7 @@ public class CommandSytanxTree {
 
     /**
      * method to process Save File Command
+     *
      * @param i an integer value
      * @return object of SaveFileCommand
      */
@@ -469,8 +495,10 @@ public class CommandSytanxTree {
         }
         return null;
     }
+
     /**
      * method to process add Continent Command
+     *
      * @param i an integer value
      * @return AddContinentCommand Object
      */
@@ -482,6 +510,7 @@ public class CommandSytanxTree {
 
     /**
      * method to process remove Continent command
+     *
      * @param i an integer value
      * @return object of RemoveContinentCommand
      */
@@ -492,6 +521,7 @@ public class CommandSytanxTree {
 
     /**
      * Method to process add country command
+     *
      * @param i an integer value
      * @return object of AddCountryCommand
      */
@@ -500,8 +530,10 @@ public class CommandSytanxTree {
         String continentName = tokens.get(i + 2).getContent();
         return new AddCountryCommand(mapData, countryName, continentName);
     }
+
     /**
      * Method to process RemoveCountry command
+     *
      * @param i an integer value
      * @return object of RemoveCountryCommand
      */
@@ -512,6 +544,7 @@ public class CommandSytanxTree {
 
     /**
      * Method to process add neighbor command
+     *
      * @param i an integer value
      * @return object of AddNeighborCommand
      */
@@ -523,6 +556,7 @@ public class CommandSytanxTree {
 
     /**
      * Method to process Remove Neighbor command
+     *
      * @param i an integer value
      * @return object of RemoveNeigbourCommand
      */

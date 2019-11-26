@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="799.0" prefWidth="831.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="803.0" prefWidth="1272.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="523.0" prefWidth="831.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane prefHeight="523.0" prefWidth="1077.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="mapImage" fitHeight="523.0" fitWidth="831.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
          </children>
@@ -26,8 +26,10 @@
             <Text fx:id="phaseText" layoutX="14.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phase" />
             <Text fx:id="totalArmyText" layoutX="14.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Army" />
             <Text fx:id="cardView" layoutX="388.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <TextArea fx:id="gameLog" editable="false" layoutX="178.0" layoutY="131.0" prefHeight="140.0" prefWidth="220.0" />
          </children>
       </Pane>
+      <TextArea fx:id="gameLog" editable="false" layoutX="831.0" layoutY="-1.0" prefHeight="526.0" prefWidth="442.0" />
+      <ListView fx:id="countriesListView" layoutX="831.0" layoutY="523.0" prefHeight="281.0" prefWidth="232.0" />
+      <ListView fx:id="neigbhoursListView" layoutX="1061.0" layoutY="524.0" prefHeight="280.0" prefWidth="213.0" />
    </children>
 </AnchorPane>

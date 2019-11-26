@@ -56,7 +56,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     /**
      * log string
      */
-    private String attackLog;
+    private String attackLog = "";
     /**
      * conqured country
      */
@@ -497,8 +497,15 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 if (country.isCountryAdjacent(toCountry) && (country.getNoOfArmies() - num >= 1)) {
                     country.removeArmy(num);
                     countryTo.addArmy(num);
+                    StringBuilder sim = new StringBuilder();
+                    sim.append("\n=====================\n");
+                    sim.append("Fortification\n");
+                    sim.append("=====================\n");
+                    sim.append(player.getPlayerName()+" fortify from "+country.getName()+" ["+num+"] to"+countryTo.getName());
+                    attackLog += sim.toString();
                 }
             }
+
             updateView();
         }
     }
@@ -533,13 +540,21 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                     player.decreaseNumOfArmies(number);
                     Country country = MapDataUtil.findCountryByName(countryName, countries);
                     country.addArmy(number);
+                    StringBuilder sim = new StringBuilder();
+                    sim.append("\n=====================\n");
+                    sim.append("Reinforcement\n");
+                    sim.append("=====================\n");
+                    sim.append(player.getPlayerName()+" reinforce  "+country.getName()+" with ["+number+"]");
+                    attackLog += sim.toString();
                     if (player.getNumOfArmies() <= 0) {
                         player.setPhase(Phase.ATTACK);
                         players.setElement(player);
-                        players.rotate();
+//                        players.rotate();
                     }
                 } else {
-                    players.rotate();
+                    player.setPhase(Phase.ATTACK);
+                    players.setElement(player);
+//                    players.rotate();
                 }
             }
             updateView();
@@ -625,6 +640,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 Player player = players.last();
                 player.setPhase(Phase.ATTACK);
                 players.setElement(player);
+                StringBuilder sim = new StringBuilder();
+                sim.append("\n=====================\n");
+                sim.append("Attack Move\n");
+                sim.append("=====================\n");
+                sim.append(player.getPlayerName()+" moved army("+num+") from "+attackFromCountry.getName()+" to "+attackToCountry.getName());
+                attackLog += sim.toString();
             }
             updateView();
         }
@@ -643,7 +664,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             player.setPhase(Phase.FORTIFICATION);
             player.resetReinforcementCalculation();
             players.setElement(player);
-            players.rotate();
+//            players.rotate();
             conqueredCountry = false;
             updateView();
         }
@@ -715,11 +736,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         if (attackToCountry.getNoOfArmies() == 0) {
             conqueredCountry = true;
             Player player = players.last();
+            player.getCountries().add(attackToCountry);
             player.setPhase(Phase.ATTACK_MOVE);
             players.setElement(player);
             attackToCountry.setPlayer(player);
             countries.put(String.valueOf(attackToCountry.getId()), attackToCountry);
-
         }
     }
 
