@@ -5,9 +5,14 @@ import com.soen.riskgame.module.core.model.Continent;
 import com.soen.riskgame.module.core.model.MapData;
 
 import java.util.HashSet;
-
+/**
+ * class to validate the map
+ * @author Sibil
+ */
 public class MapValidator {
-
+    /**
+     * map data as string
+     */
     private String mapData;
 
     public MapValidator(String mapData) throws Exception {
