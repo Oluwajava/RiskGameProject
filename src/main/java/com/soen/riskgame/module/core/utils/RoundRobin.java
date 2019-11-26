@@ -62,7 +62,10 @@ public class RoundRobin<E> {
         if (tail != null)
             tail = tail.getNext();
     }
-
+    /**
+     * Method to add first element
+     * @param e
+     */
     public void addFirst(E e) {
         if (size == 0) {
             tail = new Node<>(e, null);
