@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 
 /**
  * This class is used for reading the file
+ * @author sibil
  */
 public class FileReader {
     String fileLocation;
