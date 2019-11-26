@@ -22,6 +22,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class MapListController implements view,
+ * class controls list of map data on the GUI
+ * @author Mayokun
+ */
 public class MapListController implements View {
 
     private final String MAP_VIEW = "/view/map_selector.fxml";
