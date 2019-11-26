@@ -39,12 +39,18 @@ public class RoundRobin<E> {
     public boolean isEmpty() {
         return size == 0;
     }
-
+    /**
+     *Method to check first element
+     * @return first element in list
+     */
     public E first() {
         if (isEmpty()) return null;
         return tail.getNext().getElement();
     }
-
+    /**
+     * Method to return the last element
+     * @return last element in the list
+     */
     public E last() {
         if (isEmpty()) return null;
         return tail.getElement();
