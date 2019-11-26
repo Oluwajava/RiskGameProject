@@ -83,6 +83,10 @@ public class MapParser {
         }
     }
 
+    /**
+     * Setting the delimeter function
+     * @param line
+     */
     private void setCurrentDelimeter(String line) {
         if (line.equalsIgnoreCase(MapDelimiters.COUNTRY_DELIMETER)) {
             this.currentDelimeter = MapDelimiters.COUNTRY_DELIMETER;
