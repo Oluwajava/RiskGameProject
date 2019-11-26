@@ -27,6 +27,16 @@ public class MapDataTest {
     private MapData mapData2;
 
     /**
+     * Holds player data for John
+     */
+    Player john;
+
+    /**
+     * Holds player data for Jide
+     */
+    Player jide;
+
+    /**
      * This method sets the map and game context
      */
     @Before
@@ -41,8 +51,8 @@ public class MapDataTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        mapData2.addPlayer("John");
-        mapData2.addPlayer("Jide");
+        john = mapData2.addPlayer("John");
+        jide = mapData2.addPlayer("Jide");
     }
 
     /**
@@ -103,16 +113,10 @@ public class MapDataTest {
         boolean valid;
         Country country17 = mapData2.getCountries().get("17");
         Country country18 = mapData2.getCountries().get("18");
-        String country17Owner;
-        String country18Owner;
-
-        do {
-            mapData2.populateCountries();
-            mapData2.placeAll();
-            country17Owner = country17.getPlayer().getPlayerName();
-            country18Owner = country18.getPlayer().getPlayerName();
-        } while (country17Owner.equalsIgnoreCase("John") && country18Owner.equalsIgnoreCase("Jide"));
-
+        mapData2.populateCountries();
+        mapData2.placeAll();
+        country17.setPlayer(john);
+        country18.setPlayer(jide);
         country17.setNoOfArmies(5);
         country18.setNoOfArmies(5);
         RoundRobin<Player> players = mapData2.getPlayers();
