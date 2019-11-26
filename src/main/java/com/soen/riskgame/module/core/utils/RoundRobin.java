@@ -32,6 +32,10 @@ public class RoundRobin<E> {
         return size;
     }
 
+    /**
+     * Method to chcek if the size is empty
+     * @return size as Zero
+     */
     public boolean isEmpty() {
         return size == 0;
     }
