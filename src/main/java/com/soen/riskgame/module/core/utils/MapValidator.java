@@ -14,7 +14,11 @@ public class MapValidator {
      * map data as string
      */
     private String mapData;
-
+    /**
+     * constructor for the class
+     * @param mapData map data as string
+     * @throws Exception
+     */
     public MapValidator(String mapData) throws Exception {
         if (mapData == null || mapData.length() == 0) {
             throw new Exception("Invalid data size");
