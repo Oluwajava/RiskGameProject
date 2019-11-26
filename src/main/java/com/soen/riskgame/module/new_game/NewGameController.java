@@ -55,6 +55,9 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
      * variable for choose map button
      */
     private Button chooseMap;
+    /**
+     * variable for Start Game button
+     */
     private Button startGame;
 
     private List<String> playersList = new ArrayList<>();
