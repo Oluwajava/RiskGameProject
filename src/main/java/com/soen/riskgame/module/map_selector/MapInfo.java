@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * class MapInfo implements the getter methods of map name and name
+ * @author John
+ */
 @Data
 @AllArgsConstructor
 public class MapInfo {

@@ -31,6 +31,10 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Class MapEditorController is a subclass of base view and implements Observer, ShowMapCommand, ValidateCommand, EditMapCommand
+ * @author Mayokun
+ */
 public class MapEditorController extends BaseView implements Observer, ShowMapCommand.ShowMapListener, ValidateCommand.ValidateMapListener, EditMapCommand.EditMapListener {
 
     private final String DASHBOARD = "/view/map_editor.fxml";

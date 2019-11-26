@@ -34,11 +34,30 @@ import java.util.stream.Collectors;
 
 //import com.soen.riskgame.module.map_selector.MapListController;
 
+
+/**
+ * Class represents the start of the new game. Calss implements methods of View(GUI)
+ * and command(player command and load map command) amd also the observer
+ * new start start by calling this class, which selects the players(add and remove) , updates and binds the view
+ * @author Mayokun
+ */
 public class NewGameController implements View, PlayerCommandListener, LoadMapCommand.LoadMapListener, Observer {
 
+    /**
+     * name of the new game
+     */
     private final String NEW_GAME = "/view/new-game.fxml";
+    /**
+     * variable of scene view
+     */
     private final Scene scene;
+    /**
+     * variable for choose map button
+     */
     private Button chooseMap;
+    /**
+     * variable for Start Game button
+     */
     private Button startGame;
 
     private List<String> playersList = new ArrayList<>();

@@ -11,6 +11,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Class to implement the Dashboard view of the GUI
+ * it is first face of user interaction.
+ * @author Mayokun
+ */
 public class DashboardView extends BaseView {
 
     private final String DASHBOARD = "/view/dashboard.fxml";

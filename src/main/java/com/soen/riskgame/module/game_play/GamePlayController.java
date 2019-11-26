@@ -45,6 +45,11 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     private TextArea commandLine;
     private ListView playerListView;
 
+    /**
+     * Constructor of the class
+     * @param mapData map data
+     * @throws IOException
+     */
     public GamePlayController(MapData mapData) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NEW_GAME));
         scene = new Scene(root, 800, 760);
