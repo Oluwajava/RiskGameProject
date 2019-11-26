@@ -55,7 +55,9 @@ public class RoundRobin<E> {
         if (isEmpty()) return null;
         return tail.getElement();
     }
-
+    /**
+     * Rotate the tail
+     */
     public void rotate() {
         if (tail != null)
             tail = tail.getNext();
