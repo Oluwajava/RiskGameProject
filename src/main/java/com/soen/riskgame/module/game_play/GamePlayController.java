@@ -77,7 +77,9 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
             System.out.println();
         });
     }
-
+    /**
+     * method for setup game view
+     */
     private void setupGameView() {
         updateImage(mapData.getFileName());
     }
