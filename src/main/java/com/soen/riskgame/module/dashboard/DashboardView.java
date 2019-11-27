@@ -38,6 +38,9 @@ public class DashboardView extends BaseView {
      * variable for edit map button
      */
     private Button editMapButton;
+    /**
+     * variable of scene view
+     */
     private final Scene scene;
 
     public DashboardView() throws IOException {
