@@ -96,7 +96,10 @@ public class RoundRobin<E> {
         size--;
         return head.getElement();
     }
-
+    /**
+     * method to delete node
+     * @param key
+     */
     public void deleteNode(E key) {
         Node head = getTail();
         if (head == null){}
