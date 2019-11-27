@@ -36,11 +36,29 @@ public class Map {
     public static class Builder {
 
         // Required parameters
+    	   /**
+         * list of countries
+         */
         private final List<CountryDTO> countryDTOList;
+        /**
+         * list of continents
+         */
         private final List<ContinentDTO> continentDTOList;
+        /**
+         * list of Borders
+         */
         private final List<BorderDTO> borderDTOList;
+        /**
+         * Game file
+         */
         private final GameFile gameFile;
-
+        /**
+         * Constructor for the innner class
+         * @param gameFile Game file
+         * @param countryDTOList list of continents
+         * @param continentDTOList list of countries
+         * @param borderDTOList list of Borders
+         */
         public Builder(GameFile gameFile,
                        List<CountryDTO> countryDTOList,
                        List<ContinentDTO> continentDTOList,
@@ -51,7 +69,10 @@ public class Map {
             this.continentDTOList = continentDTOList;
             this.borderDTOList = borderDTOList;
         }
-
+        /**
+         * Methods builds the map
+         * @return processed map data
+         */
         public MapData build() {
             Map map = new Map(this);
             return map.processMapData(map);
