@@ -93,7 +93,9 @@ public class DashboardView extends BaseView {
     public Scene getView() {
         return scene;
     }
-
+    /**
+     * binder method of the view
+     */
     private void bindView() {
         newGameButton = (Button) scene.lookup("#newGame");
         loadGameButton = (Button) scene.lookup("#loadGame");
