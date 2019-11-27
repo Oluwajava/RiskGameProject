@@ -227,16 +227,10 @@ public class MapDataTest {
         boolean valid;
         Country country17 = mapData2.getCountries().get("17");
         Country country18 = mapData2.getCountries().get("18");
-        String country17Owner;
-        String country18Owner;
-
-        do {
-            mapData2.populateCountries();
-            mapData2.placeAll();
-            country17Owner = country17.getPlayer().getPlayerName();
-            country18Owner = country18.getPlayer().getPlayerName();
-        } while (country17Owner.equalsIgnoreCase("John") && country18Owner.equalsIgnoreCase("Jide"));
-
+        mapData2.populateCountries();
+        mapData2.placeAll();
+        country17.setPlayer(john);
+        country18.setPlayer(jide);
         country17.setNoOfArmies(5);
         country18.setNoOfArmies(5);
         RoundRobin<Player> players = mapData2.getPlayers();
