@@ -85,7 +85,10 @@ public class DashboardView extends BaseView {
 
 
     }
-
+    /**
+     * getter method of the view
+     * @return scene
+     */
     @Override
     public Scene getView() {
         return scene;
