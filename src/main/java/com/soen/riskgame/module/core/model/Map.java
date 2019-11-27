@@ -1,28 +1,38 @@
 package com.soen.riskgame.module.core.model;
 
-import lombok.Getter;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.Getter;
 /**
- * Map class contains
+ * Map class contains of countries and continent
+ * @author Mayokun
  */
 public class Map {
-
+    /**
+     * List Data transfer object that holds information
+     */
     @Getter
     private final List<CountryDTO> countryDTOList;
-
+    /**
+     * List Data transfer object that holds information
+     */
     @Getter
     private final List<ContinentDTO> continentDTOList;
-
+    /**
+     * List Data transfer object that holds information
+     */
     @Getter
     private final List<BorderDTO> borderDTOList;
-
+    /**
+     * List Data transfer object that holds information
+     */
     @Getter
     private final GameFile gameFile;
-
+    /**
+     * Builder class for map implementation
+     */
     public static class Builder {
 
         // Required parameters
