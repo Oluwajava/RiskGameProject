@@ -14,6 +14,7 @@ import com.soen.riskgame.module.core.model.MapData;
  *  *   </pre>
  * @see Command
  * @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
+ * @author Mayokun
  */
 
 public class RemovePlayerCommand implements Command {
