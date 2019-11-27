@@ -133,7 +133,10 @@ public class RoundRobin<E> {
         tail = head;
         size--;
     }
-
+    /**
+     * Class represent each element that are base for Round robin function
+     * @param <E>
+     */
     public static class Node<E> {
 
         @Getter
