@@ -131,7 +131,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             updateView();
         }
     }
-
+    /**
+     * method to add neighbour
+     *
+     * @param countryName         name of the country
+     * @param neighborCountryName name of the neighbour country
+     */
     @Override
     public void addNeighbour(String countryName, String neighborCountryName) {
         Country country = MapDataUtil.findCountryByName(countryName, countries);
@@ -142,13 +147,22 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         countries.put(String.valueOf(neighbourCountry.getId()), neighbourCountry);
         updateView();
     }
-
+    /**
+     * method to remove neighbour
+     *
+     * @param countryName          name of the country
+     * @param neighbourCountryName name of the neighbor country
+     */
     @Override
     public void removeNeighbour(String countryName, String neighbourCountryName) {
         updateView();
     }
 
-
+    /**
+     * method to update the Map file
+     *
+     * @return String value mapFileBuilder
+     */
     public String toFile() {
         StringBuilder mapFileBuilder = new StringBuilder();
         mapFileBuilder.append("name " + fileName + MapDelimiters.NEXT_LINE_DELIMETER + MapDelimiters.NEXT_LINE_DELIMETER);
@@ -191,7 +205,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 ", continents=" + continents +
                 '}';
     }
-
+    /**
+     * method to build String of data
+     * @return String value of stringBuilder object
+     */
     public String buildStringData() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("==============================\n");
@@ -223,7 +240,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         });
         return stringBuilder.toString();
     }
-
+    /**
+     * method to add player
+     * @param playerName name of the player
+     * @return player added
+     */
     @Override
     public void addPlayer(String playerName) {
         if (players == null) {
@@ -241,13 +262,18 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         player.setPlayerColor(playerColor);
         players.addFirst(player);
     }
-
+    /**
+     * method to remove player
+     * @param playerName name of the player to be removed
+     */
     @Override
     public void removePlayer(String playerName) {
         Player player = new Player(playerName);
         players.deleteNode(player);
     }
-
+    /**
+     * method to populate countries using command
+     */
     @Override
     public void populateCountries() {
         List<Country> newCountries = new ArrayList<>(countries.values());
@@ -265,7 +291,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         } while (!countryStack.isEmpty());
         updateView();
     }
-
+    /**
+     * method to place army using command for each player
+     * @param countryName name of the country
+     */
     @Override
     public void placeArmy(String countryName) {
         Player player = players.last();
