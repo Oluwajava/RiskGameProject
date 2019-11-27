@@ -34,12 +34,18 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      * list of continents
      */
     private HashMap<String, Continent> continents;
-
+    /**
+     * Constructor for the class
+     */
     public MapData() {
         countries = new HashMap<>();
         continents = new HashMap<>();
     }
-
+    /**
+     * method to addCountries to Continents
+     *
+     * @param country
+     */
     public void addCountryToContinent(Country country) {
         Continent continent = continents.get(country.getContinentId());
         List<Country> countries = continent.getCountries();
@@ -143,7 +149,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      * @param xCoordinate   coordinate of x plane
      * @param yCoordinate   coordinate of y plane
      */
-    @Over
+  
     @Override
     public void addCountry(String countryName, String continentName, String xCoordinate, String yCoordinate) {
         Country country = new Country();
