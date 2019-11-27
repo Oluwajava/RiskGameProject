@@ -51,19 +51,30 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         continents.put(String.valueOf(continent.getId()), continent);
         updateView();
     }
-
+    /**
+     * method to update the map view
+     */
     private void updateView() {
         setChanged();
         notifyObservers(this);
     }
-
+    /**
+     * method to add continent
+     *
+     * @param name         name of the country
+     * @param controlValue value of the country
+     */
     @Override
     public void addContinent(String name, int controlValue) {
         Continent continent = new Continent(name, controlValue, null);
         continents.put(String.valueOf(continents.size() + 1), continent);
         updateView();
     }
-
+    /**
+     * method to remove continent
+     *
+     * @param name name of the country
+     */
     @Override
     public void removeContinent(String name) {
         HashMap<String, Continent> newData = new HashMap<>(continents);
@@ -75,7 +86,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         continents = newData;
         updateView();
     }
-
+    /**
+     * method to edit continent
+     *
+     * @param name         name of the country
+     * @param controlValue value of the country
+     */
     @Override
     public void editContinent(String name, int controlValue) {
         continents.forEach((key, continent) -> {
@@ -87,7 +103,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         });
         updateView();
     }
-
+    /**
+     * method to add country
+     *
+     * @param countryName   name of the Country to be added
+     * @param continentName name of the continent in which the country would be added.
+     */
     @Override
     public void addCountry(String countryName, String continentName) {
         Country country = new Country();
@@ -98,6 +119,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     }
 
+    /**
+     * method to add country to continent
+     *
+     * @param country   name of the Country to be added
+     * @param continent name of the continent in which the country would be added.
+     */
     private void addCountry(Country country, Continent continent) {
         if (continent != null) {
             country.setContinent(continent);
@@ -108,7 +135,15 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             updateView();
         }
     }
-
+    /**
+     * method to add country to continent with coordinates on map
+     *
+     * @param countryName   name of the country
+     * @param continentName name of the continent
+     * @param xCoordinate   coordinate of x plane
+     * @param yCoordinate   coordinate of y plane
+     */
+    @Over
     @Override
     public void addCountry(String countryName, String continentName, String xCoordinate, String yCoordinate) {
         Country country = new Country();
@@ -119,7 +154,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         Continent continent = MapDataUtil.findContinentByName(continentName, continents);
         addCountry(country, continent);
     }
-
+    /**
+     * method to remove country
+     *
+     * @param countryName name of the country
+     */
     @Override
     public void removeCountry(String countryName) {
         Country country = MapDataUtil.findCountryByName(countryName, countries);
