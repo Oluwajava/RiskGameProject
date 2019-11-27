@@ -76,7 +76,10 @@ public class RoundRobin<E> {
         }
         size++;
     }
-
+    /**
+     *Method to addList
+     * @param e
+     */
     public void addList(E e) {
         addFirst(e);
         tail = tail.getNext();
