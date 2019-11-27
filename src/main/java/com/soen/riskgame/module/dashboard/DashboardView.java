@@ -18,6 +18,9 @@ import java.io.IOException;
  */
 public class DashboardView extends BaseView {
 
+    /**
+     * name of the dashboard
+     */
     private final String DASHBOARD = "/view/dashboard.fxml";
     private Button newGameButton;
     private Button loadGameButton;
