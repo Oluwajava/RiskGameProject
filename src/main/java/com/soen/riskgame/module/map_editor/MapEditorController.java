@@ -61,7 +61,13 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
     private TextField addContinentColor;
     private String currentSelectedCountry;
     private String currentSelectedContinent;
+    /**
+     * variable to display currentSelectedneighbour
+     */
     private String currentSelectedNeighbour;
+    /**
+     * variable of Map data
+     */
     private MapData mapData;
     /**
      * Constructor of the class
