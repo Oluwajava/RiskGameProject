@@ -42,7 +42,10 @@ public class DashboardView extends BaseView {
      * variable of scene view
      */
     private final Scene scene;
-
+    /**
+     * method to implement dashboard view
+     * @throws IOException
+     */
     public DashboardView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(DASHBOARD));
         scene = new Scene(root, 1100, 600);
