@@ -7,18 +7,32 @@ import com.soen.riskgame.module.core.utils.RoundRobin;
 import lombok.Data;
 
 import java.util.*;
-
+/**
+ * Map data class contains details of countries,players,army,reinforce and continent
+ *
+ * @author Sai Sukruth
+ */
 @Data
 public class MapData extends Observable implements ContinentAction, CountryAction, PlayerAction, ArmyAction, ReinforceAction, FortificationAction {
-
+    /**
+     * to check of the game has started
+     */
     private boolean gameStarted;
-
+    /**
+     * map file name
+     */
     private String fileName;
-
+    /**
+     * round robin implmentation of players
+     */
     private RoundRobin<Player> players;
-
+    /**
+     * list of countries
+     */
     private HashMap<String, Country> countries;
-
+    /**
+     * list of continents
+     */
     private HashMap<String, Continent> continents;
 
     public MapData() {
@@ -265,7 +279,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
         updateView();
     }
-
+    /**
+     * method to place all armies
+     */
     @Override
     public void placeAll() {
         Player firstPlayer = players.last();
@@ -284,7 +300,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         } while (temp != firstPlayer);
         updateView();
     }
-
+    /**
+     * method to list the map
+     *
+     * @return list of players
+     */
     public List<Player> toList() {
         List<Player> playersList = new ArrayList<>();
         Player firstPlayer = players.last();
@@ -296,7 +316,13 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         } while (temp != firstPlayer);
         return playersList;
     }
-
+    /**
+     * method to fortify country for ech player
+     *
+     * @param fromCountry name of Country
+     * @param toCountry   name of New Country
+     * @param num         number of armies
+     */
     @Override
     public void fortifyCountry(String fromCountry, String toCountry, int num) {
         Country country = MapDataUtil.findCountryByName(fromCountry, countries);
@@ -308,12 +334,20 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         updateView();
     }
 
+    /**
+     * method to fortify none of teh player countries
+     */
     @Override
     public void fortifyNone() {
         players.rotate();
         updateView();
     }
-
+    /**
+     * method to reinforce country
+     *
+     * @param countryName name of the country
+     * @param number      number of armies
+     */
     @Override
     public void reinforceCountry(String countryName, int number) {
         Player player = players.last();
