@@ -84,7 +84,10 @@ public class RoundRobin<E> {
         addFirst(e);
         tail = tail.getNext();
     }
-
+    /**
+     * Method to remove first element from list
+     * @return next element in the list
+     */
     public E removeFirst() {
         if (isEmpty()) return null;
         Node<E> head = tail.getNext();
