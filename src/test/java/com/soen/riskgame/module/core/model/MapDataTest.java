@@ -151,6 +151,8 @@ public class MapDataTest {
         boolean valid;
         Country country17 = mapData2.getCountries().get("17");
         Country country18 = mapData2.getCountries().get("18");
+        mapData2.populateCountries();
+        mapData2.placeAll();
         country17.setPlayer(john);
         country18.setPlayer(jide);
         country17.setNoOfArmies(5);
@@ -186,17 +188,11 @@ public class MapDataTest {
     public void testAttackingNotAdjacentCountries() {
         boolean valid;
         Country country17 = mapData2.getCountries().get("17");
-        Country country35 = mapData2.getCountries().get("35");
-        String country17Owner;
-        String country18Owner;
-
-        do {
-            mapData2.populateCountries();
-            mapData2.placeAll();
-            country17Owner = country17.getPlayer().getPlayerName();
-            country18Owner = country35.getPlayer().getPlayerName();
-        } while (country17Owner.equalsIgnoreCase("John") && country18Owner.equalsIgnoreCase("Jide"));
-
+        Country country35 = mapData2.getCountries().get("35"); //country35 is not adjacent with country17
+        mapData2.populateCountries();
+        mapData2.placeAll();
+        country17.setPlayer(john);
+        country35.setPlayer(jide);
         country17.setNoOfArmies(5);
         country35.setNoOfArmies(5);
         RoundRobin<Player> players = mapData2.getPlayers();
