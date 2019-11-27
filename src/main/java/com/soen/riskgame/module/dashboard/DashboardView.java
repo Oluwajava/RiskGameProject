@@ -34,6 +34,9 @@ public class DashboardView extends BaseView {
      * variable for create map button
      */
     private Button createMapButton;
+    /**
+     * variable for edit map button
+     */
     private Button editMapButton;
     private final Scene scene;
 
