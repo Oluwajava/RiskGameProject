@@ -10,23 +10,23 @@ public interface MapDelimiters {
 
     String CONTINENT_DELIMETER = "[continents]";
 
-    String CONTINENT_DELIMETER_2 = "[Continents]";
-
     String COUNTRY_DELIMETER = "[countries]";
 
     String BORDER_DELIMETER = "[borders]";
-
-    String MAP_DELIMETER = "[Map]";
-
-    String TERRITORIES_DELIMETER = "[Territories]";
 
     String NEXT_LINE_DELIMETER = "\n";
 
     String SPACE_DELIMITER = " ";
 
-    String COMMA_DELIMITER = ",";
-
     String CARRIAGE_DELIMITER = "\r";
 
     String MAP_FILE_EXTENSION = ".map";
+
+    String  CONTINENT_DELIMETER_2= "[continent]";
+
+    String MAP_DELIMETER="";
+
+    String TERRITORIES_DELIMETER="[territories]";
+
+    String COMMA_DELIMITER=",";
 }
