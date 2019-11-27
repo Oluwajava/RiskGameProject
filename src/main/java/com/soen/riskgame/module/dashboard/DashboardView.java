@@ -22,6 +22,9 @@ public class DashboardView extends BaseView {
      * name of the dashboard
      */
     private final String DASHBOARD = "/view/dashboard.fxml";
+    /**
+     * variable for new game button
+     */
     private Button newGameButton;
     private Button loadGameButton;
     private Button createMapButton;
