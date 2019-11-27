@@ -63,7 +63,10 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
     private String currentSelectedContinent;
     private String currentSelectedNeighbour;
     private MapData mapData;
-
+    /**
+     * Constructor of the class
+     * @throws IOException
+     */
     public MapEditorController() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(DASHBOARD));
         scene = new Scene(root, 1290, 765);
@@ -143,7 +146,9 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
             addContinentCommand.execute();
         });
     }
-
+    /**
+     * method to setup countries list
+     */
     private void setupCountriesList() {
         List<String> countriesList = new ArrayList<>();
         mapData.getCountries().entrySet().forEach(v -> countriesList.add(v.getValue().getName()));
@@ -151,7 +156,9 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
                 countriesList);
         countriesListView.setItems(items);
     }
-
+    /**
+     * method to setup continents list
+     */
     private void setupContinentList() {
         List<String> continentList = new ArrayList<>();
         mapData.getContinents().entrySet().forEach(v -> continentList.add(v.getValue().getName()));
@@ -160,7 +167,10 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
         continentListView.setItems(items);
 
     }
-
+    /**
+     * method to setup neighbours to country
+     * @param country country
+     */
     private void setupNeighbours(Country country) {
         List<String> continentList = new ArrayList<>();
         country.getAdjacentCountries().forEach(v -> continentList.add(v.getName()));
@@ -168,7 +178,11 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
                 continentList);
         neigbhoursListView.setItems(items);
     }
-
+    /**
+     * method to load the map data
+     * @param file input file
+     * @throws Exception
+     */
     private void loadMapData(File file) throws Exception {
         FileReader fileReader = new FileReader(file.getAbsolutePath());
         String mapData = fileReader.readData().replaceAll(MapDelimiters.CARRIAGE_DELIMITER, "");
@@ -178,12 +192,17 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
         this.mapData = new Map.Builder(mapParser.getGameFile(), mapParser.getCountries(), mapParser.getContinentDTOS(), mapParser.getBorderDTOS()).build();
         this.mapData.addObserver(this);
     }
-
+    /**
+     * getter method of the view
+     * @return scene
+     */
     @Override
     public Scene getView() {
         return scene;
     }
-
+    /**
+     * binder method of the view to load and view scene
+     */
     private void bindView() {
         loadMap = (Button) scene.lookup("#loadMap");
         countriesListView = (ListView) scene.lookup("#countriesListView");
@@ -206,29 +225,44 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
         addContinentName = (TextField) scene.lookup("#addContinentName");
         addContinentColor = (TextField) scene.lookup("#addContinentColor");
     }
-
+    /**
+     * method to update map data
+     * @param o  Observable
+     * @param arg Object
+     */
     @Override
     public void update(Observable o, Object arg) {
         this.mapData = (MapData) arg;
         updateView();
     }
-
+    /**
+     * method to update the view
+     */
     private void updateView() {
         setupContinentList();
         setupCountriesList();
     }
-
+    /**
+     * method to show map
+     * @param mapData mapdata
+     */
     @Override
     public void showMap(String mapData) {
         commandLine.setText(mapData);
         System.out.println();
     }
-
+    /**
+     * boolean method to print once th map is validated
+     * @param isMapValid boolean varaible
+     */
     @Override
     public void onMapValidated(Boolean isMapValid) {
         commandLine.setText("Map Valid: " + isMapValid);
     }
-
+    /**
+     * method to edit the map
+     * @param mapData mapdata
+     */
     @Override
     public void editMap(MapData mapData) {
         this.mapData = mapData;
