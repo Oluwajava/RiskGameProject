@@ -30,6 +30,9 @@ public class DashboardView extends BaseView {
      * variable for load game button
      */
     private Button loadGameButton;
+    /**
+     * variable for create map button
+     */
     private Button createMapButton;
     private Button editMapButton;
     private final Scene scene;
