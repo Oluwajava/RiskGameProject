@@ -48,7 +48,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
      */
     private final String NEW_GAME = "/view/new-game.fxml";
     /**
-     * variable of scene view
+     * variable of new game scne view
      */
     private final Scene scene;
     /**
