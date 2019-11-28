@@ -1,5 +1,8 @@
 package com.soen.riskgame.module.core.interfaces;
-
+/**
+ * Interface CountryAction  is the interface to provide the basic functionality related to the entity Country
+ * @author Hitansh,Mayokun
+ */
 public interface CountryAction {
 
     void addCountry(String countryName, String continentName);
