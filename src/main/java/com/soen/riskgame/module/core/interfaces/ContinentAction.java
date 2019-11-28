@@ -15,7 +15,11 @@ public interface ContinentAction {
      * @param name name of the continent to be removed.
      */
     void removeContinent(String name);
-
+    /**
+     * Method edit continent is to provide the functionality of editing a particular continent
+     * @param name name of the continent to be edited
+     * @param controlValue control value of the continent to be edited
+     */
     void editContinent(String name, int controlValue);
 
 }
