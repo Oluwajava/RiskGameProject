@@ -11,7 +11,7 @@ public interface PlayerAction {
      * Method to add a player
      * @param playerName name of the player
      */
-    void addPlayer(String playerName);
+    void addPlayer(String playerName, String strategy);
 
     /**
      * method to remove a player

@@ -29,6 +29,8 @@ public class AddPlayerCommand implements Command {
      */
     private String playerName;
 
+    private String strategy;
+
 
     /**
      * Constructor for the MapEditor class Initializes mapIO object.
@@ -37,9 +39,10 @@ public class AddPlayerCommand implements Command {
      * @param playerName The name of the country that should be added
      *
      */
-    public AddPlayerCommand(PlayerCommandListener listener, String playerName) {
+    public AddPlayerCommand(PlayerCommandListener listener, String playerName, String strategy) {
         this.listener = listener;
         this.playerName = playerName;
+        this.strategy = strategy;
     }
 
     /**
@@ -49,6 +52,6 @@ public class AddPlayerCommand implements Command {
      */
     @Override
     public void execute() {
-        listener.addPlayer(playerName);
+        listener.addPlayer(playerName, strategy);
     }
 }

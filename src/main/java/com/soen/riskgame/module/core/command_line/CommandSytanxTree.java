@@ -1,9 +1,11 @@
 package com.soen.riskgame.module.core.command_line;
 
 import com.soen.riskgame.module.core.command.*;
+import com.soen.riskgame.module.core.constants.ActionConstant;
 import com.soen.riskgame.module.core.enums.Phase;
 import com.soen.riskgame.module.core.interfaces.Command;
 import com.soen.riskgame.module.core.interfaces.CommandSytanxProcessor;
+import com.soen.riskgame.module.core.interfaces.GameTypeListener;
 import com.soen.riskgame.module.core.interfaces.PlayerCommandListener;
 import com.soen.riskgame.module.core.model.Country;
 import com.soen.riskgame.module.core.model.MapData;
@@ -68,6 +70,8 @@ public class CommandSytanxTree {
      */
     private CommandSytanxProcessor commandSytanxProcessor;
 
+    private GameTypeListener gameTypeListener;
+
     /**
      * parameterized constructor
      *
@@ -130,6 +134,43 @@ public class CommandSytanxTree {
                         commands.add(removeContinentCommand);
                         i += 1;
                     }
+                } else if (currentCommand == TokenType.TOURNAMENT) {
+                    TournamentCommand tournamentCommand = new TournamentCommand();
+                    List<String> listOfMapFiles = new ArrayList<>();
+                    List<String> listOfPlayersStrategies = new ArrayList<>();
+                    int numberOfGames = 0;
+                    int maxNumberOfGames = 0;
+                    while (i < tokens.size()) {
+                        if((!tokens.get(i).getContent().equals(ActionConstant.MAP_FILES)) &&
+                                !tokens.get(i).getContent().equals(ActionConstant.PLAYER_STRATEGIES) &&
+                                !tokens.get(i).getContent().equals(ActionConstant.NUMBER_OF_GAMES)) {
+                            if (currentTokenType == TokenType.MAP_LIST) {
+                                listOfMapFiles.add(tokens.get(i).getContent());
+                            }
+                            if (currentTokenType == TokenType.PLAYER_STRATEGY) {
+                                listOfPlayersStrategies.add(tokens.get(i).getContent());
+                            }
+                        }
+
+                        if (tokens.get(i).tokenType == TokenType.PLAYER_STRATEGY) {
+                            currentTokenType = TokenType.PLAYER_STRATEGY;
+                        } else if (tokens.get(i).tokenType == TokenType.NUMBER_OF_GAMES) {
+                            currentTokenType = TokenType.NUMBER_OF_GAMES;
+                            numberOfGames = Integer.parseInt(tokens.get(i + 1).getContent());
+                        } else if (tokens.get(i).tokenType == TokenType.MAX_NUMBER_OF_TURNS) {
+                            currentTokenType = TokenType.MAX_NUMBER_OF_TURNS;
+                            maxNumberOfGames = Integer.parseInt(tokens.get(i + 1).getContent());
+                        }
+                        i++;
+                    }
+                    tournamentCommand.setMapData(mapData);
+                    tournamentCommand.setListOfMapFiles(listOfMapFiles);
+                    tournamentCommand.setListOfPlayersStrategies(listOfPlayersStrategies);
+                    tournamentCommand.setNumberOfGames(numberOfGames);
+                    tournamentCommand.setMaxNumberOfGames(maxNumberOfGames);
+                    tournamentCommand.setListener(playerCommandListener);
+                    tournamentCommand.setGameTypeListener(gameTypeListener);
+                    commands.add(tournamentCommand);
                 } else if (currentCommand == TokenType.EDIT_COUNTRY) {
                     if (currentTokenType == TokenType.ADD) {
                         AddCountryCommand addCountryCommand = processTokenToAddCountryCommand(i);
@@ -450,7 +491,8 @@ public class CommandSytanxTree {
      */
     private AddPlayerCommand processTokenAddPlayerCommand(int i) {
         String playerName = tokens.get(i + 1).getContent();
-        AddPlayerCommand addPlayerCommand = new AddPlayerCommand(playerCommandListener, playerName);
+        String strategy = tokens.get(i + 2).getContent();
+        AddPlayerCommand addPlayerCommand = new AddPlayerCommand(playerCommandListener, playerName, strategy);
         return addPlayerCommand;
     }
 

@@ -39,7 +39,13 @@ public class SaveFileCommand implements Command {
      */
     @Override
     public void execute() {
-        FileWriter fileWriter = new FileWriter(mapData.toFile(), fileName);
+        FileWriter fileWriter = new FileWriter(mapData.toFile(), fileName+"_risk");
+        try {
+            fileWriter.save();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        fileWriter = new FileWriter(mapData.toConquestFile(), fileName+"_conquest");
         try {
             fileWriter.save();
         } catch (FileNotFoundException e) {

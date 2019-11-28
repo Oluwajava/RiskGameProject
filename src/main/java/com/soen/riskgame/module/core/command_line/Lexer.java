@@ -98,6 +98,21 @@ public class Lexer {
                     case CommandConstant.EXCHANGE_CARDS:
                         result.add(new Token(TokenType.EXCHANGE_CARDS, CommandConstant.EXCHANGE_CARDS));
                         break;
+                    case CommandConstant.TOURNAMENT:
+                        result.add(new Token(TokenType.TOURNAMENT, CommandConstant.TOURNAMENT));
+                        break;
+                    case ActionConstant.MAP_FILES:
+                        result.add(new Token(TokenType.MAP_LIST, ActionConstant.MAP_FILES));
+                        break;
+                    case ActionConstant.MAX_NUMBER_OF_TURNS:
+                        result.add(new Token(TokenType.MAX_NUMBER_OF_TURNS, ActionConstant.MAX_NUMBER_OF_TURNS));
+                        break;
+                    case ActionConstant.NUMBER_OF_GAMES:
+                        result.add(new Token(TokenType.NUMBER_OF_GAMES, ActionConstant.NUMBER_OF_GAMES));
+                        break;
+                    case ActionConstant.PLAYER_STRATEGIES:
+                        result.add(new Token(TokenType.PLAYER_STRATEGY, ActionConstant.PLAYER_STRATEGIES));
+                        break;
                     default:
                         result.add(new Token(TokenType.ATOM, s));
                         break;

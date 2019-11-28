@@ -9,7 +9,10 @@ public interface PlayerStrategy  {
     void reinforce(MapData mapData);
 
     void attack(MapData mapData);
+    
+    void attackMove(MapData mapData);
 
     void fortify(MapData mapData);
 
+    void exchangeCard(MapData mapData);
 }

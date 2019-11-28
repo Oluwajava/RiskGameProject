@@ -10,7 +10,7 @@ public interface PlayerCommandListener {
      * method to add player
      * @param name name of the player to be added
      */
-    void addPlayer(String name);
+    void addPlayer(String name, String strategy);
 
     /**
      * method to remove a player

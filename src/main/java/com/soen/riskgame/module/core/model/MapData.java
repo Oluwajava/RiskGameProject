@@ -3,12 +3,14 @@ package com.soen.riskgame.module.core.model;
 import com.soen.riskgame.module.core.constants.MapDelimiters;
 import com.soen.riskgame.module.core.enums.Phase;
 import com.soen.riskgame.module.core.interfaces.*;
+import com.soen.riskgame.module.core.strategy.*;
 import com.soen.riskgame.module.core.utils.Dice;
 import com.soen.riskgame.module.core.utils.MapDataUtil;
 import com.soen.riskgame.module.core.utils.RoundRobin;
 import lombok.Data;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Map data class contains details of countries,players,army,reinforce and continent
@@ -62,6 +64,27 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      */
     private boolean conqueredCountry;
 
+    private boolean isTournamentMode;
+
+    private List<String> listOfMapFiles;
+
+    private List<GameCounter> gameCounters;
+
+    private List<String> listOfPlayersStrategies;
+
+    private int numberOfGames;
+
+    private int maxNumberOfTurns;
+
+    private int gameCounter = 0;
+
+    private int turnCounter;
+
+    private boolean newPhase = false;
+
+    private String firstPlayerName;
+
+    private boolean isRisk;
     /**
      * Constructor for the class
      */
@@ -110,6 +133,15 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         updateView();
     }
 
+    public void setGameCounter(List<String> mapFiles) {
+        List<GameCounter> gameCounters = mapFiles.stream().map(v -> {
+            GameCounter gameCounter = new GameCounter();
+            gameCounter.setMapFile(v);
+            gameCounter.setNumberOfGames(numberOfGames);
+            return gameCounter;
+        }).collect(Collectors.toList());
+        this.gameCounters = gameCounters;
+    }
     /**
      * method to remove continent
      *
@@ -280,6 +312,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         return mapFileBuilder.toString();
     }
 
+    public String toConquestFile() {
+        return null;
+    }
+
     @Override
     public String toString() {
         return "MapData{" +
@@ -328,12 +364,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      * @param playerName name of the player
      */
     @Override
-    public void addPlayer(String playerName) {
+    public void addPlayer(String playerName, String strategy) {
         if (players == null) {
             players = new RoundRobin<>();
         }
         if (players.size() < countries.size()) {
-            Player player = new Player(playerName);
+            Player player = new Player(playerName, strategy);
             Random rand = new Random();
             int r = rand.nextInt(255);
             int g = rand.nextInt(255);
@@ -519,8 +555,48 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             Player temp = players.last();
             temp.setPhase(Phase.REINFORCEMENT);
             players.rotate();
+            StringBuilder sim = new StringBuilder();
+            sim.append("\n=====================\n");
+            sim.append("Fortification\n");
+            sim.append("=====================\n");
+            sim.append(temp.getPlayerName()+" fortify none");
+            attackLog += sim.toString();
+            if (isTournamentMode) {
+                turnCounter++;
+                if(turnCounter/players.size() == maxNumberOfTurns) {
+                    if (gameCounters.get(gameCounter).getNumberOfGames() == numberOfGames) {
+                        gameCounter++;
+                        GameCounter gc = gameCounters.get(gameCounter);
+                        MapData md = MapDataUtil.loadMapFromFile(gc.getMapFile());
+                        this.toList().forEach(p -> {
+                            if (p.getPlayerStrategy() instanceof HumanStrategy) {
+                                md.addPlayer(p.getPlayerName(), GameStrategy.HUMAN);
+                            } else if (p.getPlayerStrategy() instanceof AggressiveStrategy) {
+                                md.addPlayer(p.getPlayerName(), GameStrategy.AGGRESSIVE);
+                            } else if (p.getPlayerStrategy() instanceof BenevolentStrategy) {
+                                md.addPlayer(p.getPlayerName(), GameStrategy.BENEVOLENT);
+                            } else if (p.getPlayerStrategy() instanceof CheaterStrategy) {
+                                md.addPlayer(p.getPlayerName(), GameStrategy.CHEATER);
+                            } else if (p.getPlayerStrategy() instanceof RandomStrategy) {
+                                md.addPlayer(p.getPlayerName(), GameStrategy.RANDOM);
+                            }
+                        });
+                        this.setContinents(md.getContinents());
+                        this.setCountries(md.getCountries());
+                        this.setPlayers(md.getPlayers());
+                        this.setFileName(md.getFileName());
+                        this.setRisk(md.isRisk);
+                        turnCounter = 0;
+                        newPhase = true;
+                    }
+                    gameCounters.get(gameCounter).increment();
+                    System.out.println("End of Game");
+                }
+            }
+
             updateView();
         }
+        System.out.println(turnCounter/players.size());
     }
 
     /**
@@ -533,8 +609,6 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     public void reinforceCountry(String countryName, int number) {
         Player player = players.last();
         if (isInPhase(Phase.REINFORCEMENT)) {
-
-
             if (player.doesCountryBelongToPlayer(countryName) && number > 0 && number <= player.getNumOfArmies()) {
                 if (player.getNumOfArmies() > 0) {
                     player.decreaseNumOfArmies(number);
@@ -755,6 +829,12 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         if(isInPhase(Phase.REINFORCEMENT)) {
             Player player = players.last();
             player.exchangeTheCards(num1, num2, num3);
+            StringBuilder sim = new StringBuilder();
+            sim.append("\n=====================\n");
+            sim.append("Card Exchange\n");
+            sim.append("=====================\n");
+            sim.append(player.getPlayerName()+" exchanged Cards for armies");
+            attackLog += sim.toString();
             updateView();
         }
     }
@@ -764,6 +844,19 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      */
     @Override
     public void exchangeNone() {
+        Player player = players.last();
+        StringBuilder sim = new StringBuilder();
+        sim.append("\n=====================\n");
+        sim.append("Card Exchange\n");
+        sim.append("=====================\n");
+        sim.append(player.getPlayerName()+" exchanged none");
+        attackLog += sim.toString();
+    }
 
+    public void setTournament(List<String> listOfMapFiles, List<String> listOfPlayersStrategies, int numberOfGames, int maxNumberOfTurns) {
+        this.listOfMapFiles = listOfMapFiles;
+        this.listOfPlayersStrategies = listOfPlayersStrategies;
+        this.numberOfGames = numberOfGames;
+        this.maxNumberOfTurns = maxNumberOfTurns;
     }
 }

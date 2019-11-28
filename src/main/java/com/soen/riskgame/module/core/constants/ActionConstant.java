@@ -18,5 +18,13 @@ public interface ActionConstant {
 
     String EXCHANGE_NONE = "–none";
 
+    String MAP_FILES = "-M";
+
+    String PLAYER_STRATEGIES = "-P";
+
+    String NUMBER_OF_GAMES = "-G";
+
+    String MAX_NUMBER_OF_TURNS = "-D";
+
 
 }

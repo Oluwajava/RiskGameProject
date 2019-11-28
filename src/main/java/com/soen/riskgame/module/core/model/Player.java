@@ -1,15 +1,18 @@
 package com.soen.riskgame.module.core.model;
 
 import com.soen.riskgame.module.core.enums.Phase;
+import com.soen.riskgame.module.core.strategy.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Class player to implement the game for the each player
- * @author Hitansh,Mayokun
+ *
+ * @author Hitansh, Mayokun
  */
 @Data
 @AllArgsConstructor
@@ -19,7 +22,7 @@ public class Player {
     /**
      * cards that are exchanged
      */
-    private int exchangeCount=0;
+    private int exchangeCount = 0;
     /**
      * name of the player
      */
@@ -53,18 +56,37 @@ public class Player {
      */
     private Phase phase;
 
+
+    private PlayerStrategy playerStrategy;
+
     /**
      * * Constructor for the  class Initializes  object
+     *
      * @param playerName name of the player
      */
     public Player(String playerName) {
         this.playerName = playerName;
         this.countries = new ArrayList<>();
         this.cards = new Card();
+        this.playerStrategy = new HumanStrategy();
+    }
+
+    public Player(String playerName, String gameStrategy) {
+        this(playerName);
+        if (gameStrategy.equals(GameStrategy.AGGRESSIVE)) {
+            this.playerStrategy = new AggressiveStrategy();
+        } else if(gameStrategy.equals(GameStrategy.BENEVOLENT)) {
+            this.playerStrategy = new BenevolentStrategy();
+        } else if(gameStrategy.equals(GameStrategy.CHEATER)) {
+            this.playerStrategy = new CheaterStrategy();
+        } else if (gameStrategy.equals(GameStrategy.RANDOM)) {
+            this.playerStrategy = new RandomStrategy();
+        }
     }
 
     /**
      * setter  method for phase
+     *
      * @param phase game phase
      */
     public void setPhase(Phase phase) {
@@ -77,40 +99,49 @@ public class Player {
     public void resetReinforcementCalculation() {
         this.numOfArmies = getNumberOfReinforcementArmy();
     }
+
     /**
      * method to add country to the player
+     *
      * @param country list of countries
      */
     public void addCountry(Country country) {
         countries.add(country);
         numOfArmies = getNumberOfReinforcementArmy();
     }
+
     /**
      * method to get getNumberOfReinforcementArmy
+     *
      * @return size of reinforced army
      */
     public int getNumberOfReinforcementArmy() {
         return (int) Math.floor(countries.size() / 3);
     }
+
     /**
      * reduce the no of armies to the player
      */
     public void decreaseNumOfArmies() {
         numOfArmies--;
     }
+
     /**
      * reduce the no of armies to the player
+     *
      * @param num number of armies
      */
     public void decreaseNumOfArmies(int num) {
         numOfArmies -= num;
     }
+
     /**
      * method to reset number of armies
      */
     public void resetNumOfArmies() {
         numOfArmies = 0;
     }
+
     /**
      * method to reduce the number of armies
      */
@@ -118,6 +149,7 @@ public class Player {
         placeArmiesNo--;
 
     }
+
     /**
      * method to reduce the number of armies
      */
@@ -126,9 +158,10 @@ public class Player {
     }
 
     /**
-     *   method to validate the country , belongs to player or not
-     *   @param countryName name of the country
-      * @return <b>true or false </b>
+     * method to validate the country , belongs to player or not
+     *
+     * @param countryName name of the country
+     * @return <b>true or false </b>
      */
     public boolean doesCountryBelongToPlayer(String countryName) {
         for (Country country :
@@ -137,8 +170,10 @@ public class Player {
         }
         return false;
     }
+
     /**
      * method to exchange the cards
+     *
      * @param x type of card
      * @param y type of card
      * @param z type of card
@@ -154,6 +189,7 @@ public class Player {
         this.numOfArmies += numberOfArmies;
         return 1;
     }
+
     /**
      * color for each player
      */

@@ -52,6 +52,7 @@ public class MapDataUtil {
         MapData data = null;
         if (mapParser != null) {
             data = new com.soen.riskgame.module.core.model.Map.Builder(mapParser.getGameFile(), mapParser.getCountries(), mapParser.getContinentDTOS(), mapParser.getBorderDTOS()).build();
+            data.setRisk(mapValidator.isRiskMap());
         } else {
             data = new MapData();
         }

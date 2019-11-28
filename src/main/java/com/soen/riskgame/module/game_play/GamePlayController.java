@@ -10,6 +10,7 @@ import com.soen.riskgame.module.core.interfaces.View;
 import com.soen.riskgame.module.core.model.Country;
 import com.soen.riskgame.module.core.model.MapData;
 import com.soen.riskgame.module.core.model.Player;
+import com.soen.riskgame.module.core.strategy.HumanStrategy;
 import com.soen.riskgame.module.core.utils.MapDataUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -117,6 +118,8 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
      */
     private String currentSelectedCountry;
 
+    private List<Node> nodes;
+
     /**
      * Constructor of the class
      *
@@ -145,6 +148,16 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         countriesListView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             setupNeighbours((Country) newValue);
         });
+        autoPopulate(mapData);
+    }
+
+    private void autoPopulate(MapData mapData) {
+        mapData.toList().forEach(v -> {
+            if (!(v.getPlayerStrategy() instanceof HumanStrategy)) {
+                mapData.populateCountries();
+                mapData.placeAll();
+            }
+        });
     }
 
     /**
@@ -158,11 +171,20 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
      * method to update country location
      */
     private void updateCountriesLocation() {
-        List<Node> nodes = mapData.getCountries().values().stream().map(country -> {
+        if (nodes != null) {
+            anchorPane.getChildren().removeAll(nodes);
+        }
+        nodes = mapData.getCountries().values().stream().map(country -> {
             Circle circle = new Circle();
             StackPane stack = new StackPane();
-            stack.setLayoutX(Double.parseDouble(country.getXCoordinate()) - 40);
-            stack.setLayoutY(Double.parseDouble(country.getYCoordinate()) - 30);
+            if (!mapData.isRisk()) {
+                stack.setLayoutX(Double.parseDouble(country.getXCoordinate()) - 40);
+                stack.setLayoutY(Double.parseDouble(country.getYCoordinate()) - 30);
+            } else {
+                stack.setLayoutX(Double.parseDouble(country.getXCoordinate()) + 10);
+                stack.setLayoutY(Double.parseDouble(country.getYCoordinate()) + 10);
+            }
+
             if (country.getPlayer() != null) {
                 Player.PlayerColor playerColor = country.getPlayer().getPlayerColor();
                 circle.setFill(javafx.scene.paint.Color.rgb(playerColor.getRed(), playerColor.getGreen(), playerColor.getBlue()));
@@ -207,7 +229,6 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
                 countries);
         countriesListView.setItems(items);
         setCountryTableView(countriesListView);
-
     }
 
     /**
@@ -308,6 +329,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     @Override
     public void update(Observable o, Object arg) {
         MapData mapTest = (MapData) arg;
+        this.mapData = mapTest;
         System.out.println(mapData);
         Player player = mapTest.getPlayers().last();
         turnText.setText("" + player.getPlayerName() + " Turn!!!");
@@ -316,11 +338,32 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         Long totalArmyCount = player.getCountries().stream().mapToLong(Country::getNoOfArmies).sum();
         totalArmyText.setText("Total Army: " + totalArmyCount);
         gameLog.setText(mapTest.getAttackLog());
-        updateCountriesLocation();
+
+        setupGameView();
         setPhase(player);
         setPlayerList(mapTest);
         setCardView(player);
         setupCountriesList();
+
+        if (!(player.getPlayerStrategy() instanceof HumanStrategy)) {
+            if(player.getPhase() == Phase.ATTACK) {
+                player.getPlayerStrategy().attack(mapData);
+            } else if(player.getPhase() == Phase.ATTACK_MOVE) {
+                player.getPlayerStrategy().attackMove(mapData);
+            } else if (player.getPhase() == Phase.EXCHANGE_CARD) {
+                player.getPlayerStrategy().exchangeCard(mapData);
+            } else if (player.getPhase() == Phase.REINFORCEMENT) {
+                player.getPlayerStrategy().reinforce(mapData);
+            } else if (player.getPhase() == Phase.FORTIFICATION) {
+                player.getPlayerStrategy().fortify(mapData);
+            }
+        }
+
+        if(mapData.isNewPhase()) {
+            mapData.setNewPhase(false);
+            autoPopulate(mapData);
+        }
+        updateCountriesLocation();
     }
 
     /**

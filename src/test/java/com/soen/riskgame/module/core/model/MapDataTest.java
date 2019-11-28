@@ -41,8 +41,8 @@ public class MapDataTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        mapData2.addPlayer("John");
-        mapData2.addPlayer("Jide");
+        mapData2.addPlayer("John", "human");
+        mapData2.addPlayer("Jide", "human");
     }
 
     /**

@@ -5,11 +5,15 @@ import com.soen.riskgame.module.core.command_line.CommandSytanxTree;
 import com.soen.riskgame.module.core.command_line.Lexer;
 import com.soen.riskgame.module.core.command_line.Token;
 import com.soen.riskgame.module.core.constants.MapDelimiters;
+import com.soen.riskgame.module.core.interfaces.GameTypeListener;
 import com.soen.riskgame.module.core.interfaces.PlayerCommandListener;
 import com.soen.riskgame.module.core.interfaces.View;
 import com.soen.riskgame.module.core.model.Map;
 import com.soen.riskgame.module.core.model.MapData;
+import com.soen.riskgame.module.core.model.PlayerDTO;
+import com.soen.riskgame.module.core.strategy.GameStrategy;
 import com.soen.riskgame.module.core.utils.FileReader;
+import com.soen.riskgame.module.core.utils.MapDataUtil;
 import com.soen.riskgame.module.core.utils.MapParser;
 import com.soen.riskgame.module.core.utils.MapValidator;
 import com.soen.riskgame.module.game_play.GamePlayController;
@@ -40,7 +44,7 @@ import java.util.stream.Collectors;
  * new start start by calling this class, which selects the players(add and remove) , updates and binds the view
  * @author Mayokun
  */
-public class NewGameController implements View, PlayerCommandListener, LoadMapCommand.LoadMapListener, Observer {
+public class NewGameController implements View, PlayerCommandListener, LoadMapCommand.LoadMapListener, GameTypeListener, Observer {
 
     /**
      * name of the new game
@@ -61,7 +65,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
     /**
      * list of the players in the game
      */
-    private List<String> playersList = new ArrayList<>();
+    private List<PlayerDTO> playersList = new ArrayList<>();
     /**
      * variable for map preview image
      */
@@ -112,6 +116,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         scene = new Scene(root, 980, 740);
         bindView();
 
+        mapData = new MapData();
         chooseMap.setOnAction(event -> {
             try {
                 MapListController mapListController = new MapListController(name -> {
@@ -140,7 +145,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
 
         startGame.setOnAction(event -> {
             try {
-                playersList.forEach(mapData::addPlayer);
+                playersList.forEach(v -> mapData.addPlayer(v.getPlayerName(), v.getStrategy()));
                 GamePlayController gamePlayController = new GamePlayController(mapData);
                 Stage stage = new Stage();
                 stage.setTitle("My New Stage Title");
@@ -164,7 +169,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         });
 
         addPlayerButton.setOnAction(event -> {
-            addPlayer(playerName.getText());
+            addPlayer(playerName.getText(), GameStrategy.HUMAN);
         });
 
         processCommandButton.setOnAction(event -> {
@@ -173,8 +178,8 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
             CommandSytanxTree commandSytanxTree= new CommandSytanxTree(mapData, tokens);
             commandSytanxTree.setPlayerCommandListener(this);
             commandSytanxTree.setLoadMapListener(this);
+            commandSytanxTree.setGameTypeListener(this);
             commandSytanxTree.processCommand();
-            System.out.println();
         });
 
     }
@@ -194,27 +199,40 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
      * method to setup players list
      */
     private void setupPlayerList() {
+        List<String> list = playersList.stream().map(v -> v.getPlayerName()).collect(Collectors.toList());;
         ObservableList<String> items = FXCollections.observableArrayList(
-                playersList);
+                list);
         playerListView.setItems(items);
     }
 
     /**
      * method to add player to the list
      */
-    public void addPlayer(String playerName) {
-        if (playersList.size() < mapData.getCountries().size()) {
-            playersList.add(playerName);
-            setupPlayerList();
+    public void addPlayer(String playerName, String strategy) {
+        if (mapData.isTournamentMode()) {
+            addPlayerToList(playerName, strategy);
         } else {
-            commandLine.setText("You can't add more players that number of countries available");
+            if (playersList.size() < mapData.getCountries().size()) {
+                addPlayerToList(playerName, strategy);
+            } else {
+                commandLine.setText("You can't add more players that number of countries available");
+            }
         }
     }
+
+    private void addPlayerToList(String playerName, String strategy) {
+        PlayerDTO playerDTO = new PlayerDTO();
+        playerDTO.setPlayerName(playerName);
+        playerDTO.setStrategy(strategy);
+        playersList.add(playerDTO);
+        setupPlayerList();
+    }
+
     /**
      * method to remove player to the list
      */
     public void removePlayer(String playerName) {
-        List<String> newList = playersList.stream().filter(s -> !(s.equalsIgnoreCase(playerName))).collect(Collectors.toList());
+        List<PlayerDTO> newList = playersList.stream().filter(s -> !(s.getPlayerName().equalsIgnoreCase(playerName))).collect(Collectors.toList());
         this.playersList = newList;
         setupPlayerList();
     }
@@ -259,5 +277,35 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
     public void loadMap(MapData mapData) {
         this.mapData = mapData;
         updateImage(mapData.getFileName());
+    }
+
+    @Override
+    public void setListOfMapFiles(List<String> listOfMapFiles) {
+        MapData data = MapDataUtil.loadMapFromFile(listOfMapFiles.get(mapData.getGameCounter()));
+        mapData.setGameCounter(listOfMapFiles);
+        mapData.setCountries(data.getCountries());
+        mapData.setContinents(data.getContinents());
+        mapData.setFileName(data.getFileName());
+        updateImage(listOfMapFiles.get(0));
+    }
+
+    @Override
+    public void setListOfPlayerStrategies(List<String> listOfMapFiles) {
+        mapData.setListOfPlayersStrategies(listOfMapFiles);
+    }
+
+    @Override
+    public void setNumberOfGames(int num) {
+        mapData.setNumberOfGames(num);
+    }
+
+    @Override
+    public void setMaxNumberOfGames(int num) {
+        mapData.setMaxNumberOfTurns(num);
+    }
+
+    @Override
+    public void setIsTournament() {
+        mapData.setTournamentMode(true);
     }
 }
