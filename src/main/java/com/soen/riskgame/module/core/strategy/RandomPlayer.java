@@ -113,6 +113,11 @@ public class RandomPlayer implements PlayerStrategy {
 	}
 
 	@Override
+	public void attackMove(MapData mapData) {
+
+	}
+
+	@Override
 	public void fortify(MapData mapData) {
 		Player currentPlayer=mapData.getPlayers().last();
 		List<Country> eligibleCountries=getFromCountry(currentPlayer);
@@ -128,6 +133,11 @@ public class RandomPlayer implements PlayerStrategy {
 		
 
 		
+	}
+
+	@Override
+	public void exchangeCard(MapData mapData) {
+
 	}
 
 }

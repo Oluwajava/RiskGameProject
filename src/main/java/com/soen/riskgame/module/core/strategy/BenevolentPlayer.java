@@ -26,6 +26,8 @@ public class BenevolentPlayer implements PlayerStrategy {
 
     private Player currentPlayer;
 
+    String countryToCheck;
+
     /**
      * Benevolent Player default Constructor
      */
@@ -33,23 +35,17 @@ public class BenevolentPlayer implements PlayerStrategy {
     }
 
 
-    /**
-     * Constructor method for BenevolentPlayer class.
-     *
-     * @param gamePlayController GameplayControllerobject.
-     */
-    public BenevolentPlayer(GamePlayController gamePlayController) {
-        this.gamePlayController = gamePlayController;
-    }
-
-
     @Override
     public void reinforce(MapData mapData) {
         List<Country> sortedList = sortCountryListByArmyCount((List<Country>) mapData.getCountries());
         if (!sortedList.isEmpty()) {
+
             country = sortedList.get(0);
-            country.setNoOfArmies(country.getNoOfArmies() + currentPlayer.getNumOfArmies());
-            currentPlayer.setNumOfArmies(0);
+            countryToCheck=sortedList.get(0).getName();
+            if(currentPlayer.doesCountryBelongToPlayer(countryToCheck)) {
+                country.setNoOfArmies(country.getNoOfArmies() + currentPlayer.getNumOfArmies());
+                currentPlayer.setNumOfArmies(0);
+            }
         }
     }
 
