@@ -10,7 +10,10 @@ public interface ContinentAction {
      *@param controlValue control value for a component
      */
     void addContinent(String name, int controlValue);
-
+    /**
+     * Method removeContinent is remove a particular continent
+     * @param name name of the continent to be removed.
+     */
     void removeContinent(String name);
 
     void editContinent(String name, int controlValue);
