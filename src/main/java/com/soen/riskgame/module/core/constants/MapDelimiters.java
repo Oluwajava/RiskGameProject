@@ -1,5 +1,8 @@
 package com.soen.riskgame.module.core.constants;
-
+/**
+ * Interface that holds the MapDelimiters
+ * @author john
+ */
 public interface MapDelimiters {
 
     String FILE_DELIMITER = "[files]";
