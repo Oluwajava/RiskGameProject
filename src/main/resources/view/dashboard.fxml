@@ -48,7 +48,7 @@
                   </ImageView>
                   <Label alignment="CENTER" layoutY="115.0" prefHeight="17.0" prefWidth="174.0" text="Load Game" textFill="WHITE">
                      <font>
-                        <Font name="Courier New" size="13.0" />
+                        <Font name="Courier New" size="13.1" />
                      </font>
                   </Label>
                </children>
