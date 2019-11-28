@@ -52,15 +52,24 @@ public class Player {
     public void decreaseNumOfArmies() {
         numOfArmies--;
     }
-
+    /**
+     * reduce the no of armies to the player
+     * @param num number of armies
+     */
     public void decreaseNumOfArmies(int num) {
         numOfArmies -=  num;
     }
-
+    /**
+     * method to reset number of armies
+     */
     public void resetNumOfArmies() {
         numOfArmies = 0;
     }
-
+    /**
+     *   method to validate the country , belongs to player or not
+     *   @param countryName name of the country
+      * @return <b>true or false </b>
+     */
     public boolean doesCountryBelongToPlayer(String countryName) {
         for (Country country:
              countries) {
@@ -68,7 +77,9 @@ public class Player {
         }
         return false;
     }
-
+    /**
+     * color for each player
+     */
     @Data
     public static class PlayerColor {
 
