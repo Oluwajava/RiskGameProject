@@ -124,13 +124,18 @@ public class MapListController implements View {
         });
 
     }
-
+    /**
+     * binder method of the view to load and view scene
+     */
     private void bindView() {
         listView = (ListView) scene.lookup("#mapListView");
         okButton = (Button) scene.lookup("#okButton");
         cancelButton = (Button) scene.lookup("#cancelButton");
     }
-
+    /**
+     * getter method of the map data
+     * @return mapData
+     */
     private List<MapInfo> getMapData() {
         File folder = new File("C:\\Users\\Admin\\APP\\RiskGameProject\\src\\main\\resources\\maps\\preview");
         File[] listOfFiles = folder.listFiles();
@@ -144,7 +149,11 @@ public class MapListController implements View {
         }
         return mapData;
     }
-
+    /**
+     * method to get the view
+     * @return scene
+     * @throws IOException
+     */
     @Override
     public Scene getView() throws IOException {
         return scene;
