@@ -63,7 +63,7 @@
                   </ImageView>
                   <Label alignment="CENTER" layoutY="115.0" prefHeight="17.0" prefWidth="174.0" text="Create Map" textFill="WHITE">
                      <font>
-                        <Font name="Courier New" size="13.0" />
+                        <Font name="Courier New" size="13.2" />
                      </font>
                   </Label>
                </children>
