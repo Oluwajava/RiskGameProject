@@ -44,7 +44,7 @@ import java.util.stream.Collectors;
 public class NewGameController implements View, PlayerCommandListener, LoadMapCommand.LoadMapListener, Observer {
 
     /**
-     * name of the new game
+     * name of the new games
      */
     private final String NEW_GAME = "/view/new-game.fxml";
     /**
