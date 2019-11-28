@@ -362,9 +362,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     /**
      * method to add player
      * @param playerName name of the player
+     * @return the added player
      */
     @Override
-    public void addPlayer(String playerName, String strategy) {
+    public Player addPlayer(String playerName, String strategy) {
         if (players == null) {
             players = new RoundRobin<>();
         }
@@ -380,8 +381,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             playerColor.setBlue(b);
             player.setPlayerColor(playerColor);
             players.addFirst(player);
+            return player;
         }
-
+        else {
+            return null;
+        }
     }
     /**
      * method to remove player
