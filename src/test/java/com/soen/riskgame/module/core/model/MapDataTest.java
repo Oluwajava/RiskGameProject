@@ -195,6 +195,8 @@ public class MapDataTest {
         mapData2.placeAll();
         nigeria.setPlayer(john);
         ghana.setPlayer(jide);
+        nigeria.setNoOfArmies(5);
+        ghana.setNoOfArmies(5);
         RoundRobin<Player> players = mapData2.getPlayers();
         Player currentPlayer = players.last();
         currentPlayer.setPhase(Phase.REINFORCEMENT);
