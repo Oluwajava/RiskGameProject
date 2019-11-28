@@ -4,7 +4,11 @@ package com.soen.riskgame.module.core.interfaces;
  * @author Hitansh,Mayokun
  */
 public interface ContinentAction {
-
+    /**
+     * Method addContinent to add a new continent
+     *@param name name of the continent
+     *@param controlValue control value for a component
+     */
     void addContinent(String name, int controlValue);
 
     void removeContinent(String name);
