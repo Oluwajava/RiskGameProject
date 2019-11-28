@@ -42,17 +42,19 @@ public class MapDataTest {
     @Before
     public void setupContext() {
         mapData = new MapData();
+        
         mapData2 = new MapData();
-        try {
-            FileReader fileReader = new FileReader("/Users/oluwajava/Documents/Software Engineering/Advance Programming Practice/RiskGameProject/src/main/resources/maps/eurasien.map");
-            String mapDataStr = fileReader.readData().replaceAll(MapDelimiters.CARRIAGE_DELIMITER, "");
-            MapParser mapParser = new MapParser(mapDataStr);
-            mapData2 = new Map.Builder(mapParser.getGameFile(), mapParser.getCountries(), mapParser.getContinentDTOS(), mapParser.getBorderDTOS()).build();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        john = mapData2.addPlayer("John");
-        jide = mapData2.addPlayer("Jide");
+        mapData2.addContinent("Africa", 5);
+        mapData2.addContinent("Europe", 4);
+        mapData2.addCountry("Nigeria", "Africa");
+        mapData2.addCountry("Ghana", "Africa");
+        mapData2.addCountry("UK", "Europe");
+        mapData2.addCountry("Sweden", "Europe");
+        mapData2.addNeighbour("Nigeria", "Ghana");
+        mapData2.addNeighbour("Ghana", "UK");
+        mapData2.addNeighbour("UK", "Sweden");
+        john = mapData2.addPlayer("John", "human");
+        jide = mapData2.addPlayer("Jide", "human");
     }
 
     /**
