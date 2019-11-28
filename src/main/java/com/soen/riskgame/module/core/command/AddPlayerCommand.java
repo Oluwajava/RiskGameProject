@@ -15,6 +15,7 @@ import com.soen.riskgame.module.core.model.Player;
  *  *   </pre>
  * @see Command
  * @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
+ * @author sibil
  */
 
 public class AddPlayerCommand implements Command {

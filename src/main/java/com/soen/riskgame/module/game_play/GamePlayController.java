@@ -33,9 +33,17 @@ import java.util.Observer;
 import java.util.stream.Collectors;
 
 public class GamePlayController implements View, Observer, ShowMapCommand.ShowMapListener {
-
+	/**
+     * name of the gameplay
+     */
     private final String NEW_GAME = "/view/game-play.fxml";
+    /**
+     * variable of scene view
+     */
     private final Scene scene;
+    /**
+     * variable of image view
+     */
     private ImageView mapImage;
     private AnchorPane anchorPane;
     private ListView listView;
@@ -69,11 +77,15 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
             System.out.println();
         });
     }
-
+    /**
+     * method for setup game view
+     */
     private void setupGameView() {
         updateImage(mapData.getFileName());
     }
-
+    /**
+     * method to update country location
+     */
     private void updateCountriesLocation() {
         List<Node> nodes = mapData.getCountries().values().stream().map(country -> {
             Circle circle = new Circle();
@@ -94,7 +106,9 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
 
         anchorPane.getChildren().addAll(nodes);
     }
-
+    /**
+     * binder method of the view to load and view scene
+     */
     private void bindView() {
         mapImage = (ImageView) scene.lookup("#mapImage");
         anchorPane = (AnchorPane) scene.lookup("#anchorPane");
@@ -103,7 +117,11 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         commandLine = (TextArea) scene.lookup("#comandLine");
         playerListView = (ListView) scene.lookup("#playerListView");
     }
-
+    /**
+     * method to update image
+     *
+     * @param name input string
+     */
     private void updateImage(String name) {
         InputStream inputStream = (getClass().getResourceAsStream("/maps/" + name + "_pic.jpg"));
         if (inputStream == null) {
@@ -112,7 +130,9 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         Image mapImage = new Image(inputStream);
         this.mapImage.setImage(mapImage);
     }
-
+    /**
+     * method to set players list
+     */
     private void setPlayerList() {
         ObservableList<Player> items = FXCollections.observableArrayList(
                 mapData.toList());
@@ -137,11 +157,22 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
 
     }
 
+    /**
+     * getter method of the view
+     *
+     * @return scene
+     * @throws IOException
+     */
     @Override
     public Scene getView() throws IOException {
         return scene;
     }
-
+    /**
+     * method to update the view
+     *
+     * @param o   oberseravble
+     * @param arg object
+     */
     @Override
     public void update(Observable o, Object arg) {
         MapData mapTest = (MapData) arg;
@@ -150,7 +181,11 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         turnText.setText("" + player.getPlayerName() + " Turn!!!");
         updateCountriesLocation();
     }
-
+    /**
+     * method implementing show map in GUI
+     *
+     * @param mapData
+     */
     @Override
     public void showMap(String mapData) {
         commandLine.setText(mapData);

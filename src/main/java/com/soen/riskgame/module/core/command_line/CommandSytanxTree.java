@@ -8,27 +8,64 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Class CommandSyntaxTree is a class which provides the functionality of processing various commands.
+ *
+ * @author hitansh
+ */
 
 @Data
 public class CommandSytanxTree {
 
-    private List<Token> tokens;
 
-    private List<Command> commands;
 
-    private MapData mapData;
+        /**
+         * list of tokens
+         */
+        private List<Token> tokens;
 
-    private ShowMapCommand.ShowMapListener showMapListener;
+        /**
+         * List of commands
+         */
+        private List<Command> commands;
 
-    private ValidateCommand.ValidateMapListener validateMapListener;
+        /**
+         * object of MapData
+         */
+        private MapData mapData;
 
-    private LoadMapCommand.LoadMapListener loadMapListener;
+        /**
+         * Listener for ShowMapCommand
+         */
+        private ShowMapCommand.ShowMapListener showMapListener;
 
-    private EditMapCommand.EditMapListener editMapListener;
+        /**
+         * Listener for validate Command
+         */
+        private ValidateCommand.ValidateMapListener validateMapListener;
 
-    private PlayerCommandListener playerCommandListener;
+        /**
+         * listener for load map command
+         */
+        private LoadMapCommand.LoadMapListener loadMapListener;
 
-    public CommandSytanxTree(MapData mapData, List<Token> tokens) {
+        /**
+         * listener for edit map commmand
+         */
+        private EditMapCommand.EditMapListener editMapListener;
+
+        /**
+         * Listener for player command
+         */
+        private PlayerCommandListener playerCommandListener;
+
+
+        /**
+         * parameterized constructor
+         *
+         * @param mapData mapdata
+         * @param tokens  list of tokens
+         */public CommandSytanxTree(MapData mapData, List<Token> tokens) {
         this.tokens = tokens;
         this.mapData = mapData;
         commands = new ArrayList<>();
