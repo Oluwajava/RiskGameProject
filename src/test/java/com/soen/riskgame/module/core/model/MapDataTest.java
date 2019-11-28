@@ -199,6 +199,8 @@ public class MapDataTest {
         Player currentPlayer = players.last();
         currentPlayer.setPhase(Phase.ATTACK);
         players.setElement(currentPlayer);
+        mapData2.setPlayers(players);
+        mapData2.attack(nigeria.getName(), uk.getName());
         if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
             nigeria.setNoOfArmies(3);
             uk.setNoOfArmies(0);
