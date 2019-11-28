@@ -6,16 +6,25 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Class player to implement the game for the each player
+ * @author Hitansh,Mayokun
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Player {
-
+	/**
+     * name of the player
+     */
     private String playerName;
-
+    /**
+     * list of countries under player
+     */
     private List<Country> countries;
-
+    /**
+     * color assigned to each player
+     */
     private PlayerColor playerColor;
 
     private int numOfArmies;
