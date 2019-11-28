@@ -4,7 +4,11 @@ package com.soen.riskgame.module.core.interfaces;
  * @author Hitansh,Mayokun
  */
 public interface CountryAction {
-
+	 /**
+     * Method addCountry is to add a Country
+     * @param countryName name of the Country to be added
+     * @param continentName name of the continent in which the country would be added.
+     */
     void addCountry(String countryName, String continentName);
 
     void addCountry(String countryName, String continentName, String xCoordinate, String yCoordinate);
