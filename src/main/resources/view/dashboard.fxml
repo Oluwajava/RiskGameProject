@@ -115,7 +115,7 @@
             </Pane>
             <Text fontSmoothingType="LCD" layoutX="401.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Risk Game">
                <font>
-                  <Font name="Courier New" size="56.0" />
+                  <Font name="Courier New" size="56.1" />
                </font>
             </Text>
             </children>
