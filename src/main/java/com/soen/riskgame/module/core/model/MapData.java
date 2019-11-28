@@ -113,7 +113,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     /**
      * method to update the map view
      */
-    private void updateView() {
+    public void updateView() {
         setChanged();
         notifyObservers(this);
     }

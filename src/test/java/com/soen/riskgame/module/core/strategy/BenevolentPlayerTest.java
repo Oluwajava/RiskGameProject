@@ -31,7 +31,7 @@ public class BenevolentPlayerTest<Benevolent> {
     private Player player;
 
     /** Object for Benevolent class */
-    private BenevolentPlayer benevolent;
+    private BenevolentStrategy benevolent;
 
     /** Object for GamePlayController class */
     private GamePlayController gamePlayController;
@@ -61,7 +61,7 @@ public class BenevolentPlayerTest<Benevolent> {
         adjacentCountries.add(adjCountry1);
         adjacentCountries.add(adjCountry2);
         country.setAdjacentCountries(adjacentCountries);
-        benevolent = new BenevolentPlayer();
+        benevolent = new BenevolentStrategy();
     }
 
     /**
