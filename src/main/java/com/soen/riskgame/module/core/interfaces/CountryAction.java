@@ -23,9 +23,17 @@ public interface CountryAction {
      * @param country name of the country
      */
     void removeCountry(String country);
-
+    /**
+     * Method addNeighbour provides the functionality of adding neighbor of a particular country
+     * @param countryName name of the country
+     * @param neighborCountryName name of the neighbor country
+     */
     void addNeighbour(String countryName, String neighborCountryName);
-
+    /**
+     * Method removeCountry provides the functionality of removing a country
+     * @param countryName name of the country
+     * @param neighbourCountryName name of the neighbor country
+     */
     void removeNeighbour(String countryName, String neighbourCountryName);
 
 }
