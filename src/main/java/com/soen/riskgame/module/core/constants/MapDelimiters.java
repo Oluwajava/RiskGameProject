@@ -24,9 +24,8 @@ public interface MapDelimiters {
 
     String SPACE_DELIMITER = " ";
 
-    String COMMA_DELIMITER = ",";
-
     String CARRIAGE_DELIMITER = "\r";
 
     String MAP_FILE_EXTENSION = ".map";
+    String COMMA_DELIMITER = ",";
 }
