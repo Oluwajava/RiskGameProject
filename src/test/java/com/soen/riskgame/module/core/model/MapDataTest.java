@@ -127,7 +127,7 @@ public class MapDataTest {
         players.setElement(currentPlayer);
         mapData2.setPlayers(players);
         mapData2.attack(nigeria.getName(), ghana.getName());
-        if (mapData2.getAttackFromCountry() != null || mapData2.getAttackToCountry() != null) {
+        if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
             nigeria.setNoOfArmies(3);
             ghana.setNoOfArmies(0);
             currentPlayer.setPhase(Phase.ATTACK_MOVE);
