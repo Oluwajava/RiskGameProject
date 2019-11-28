@@ -28,14 +28,37 @@ import java.util.List;
  * @author Mayokun
  */
 public class MapListController implements View {
-
+	/**
+     * name of the map view
+     */
     private final String MAP_VIEW = "/view/map_selector.fxml";
+    /**
+     * variable of MapPicker class
+     */
     private final MapPicker mapPicker;
+    /**
+     * variable of ;list of map data
+     */
     private final List<MapInfo> mapData;
+    /**
+     * variable of scene view
+     */
     private final Scene scene;
+    /**
+     * variable of list view
+     */
     private ListView listView;
+    /**
+     * variable for cancel button
+     */
     private Button cancelButton;
+    /**
+     * variable for ok button
+     */
     private Button okButton;
+    /**
+     * variable to store name of selected map
+     */
     private String selectedMap;
 
     public MapListController(MapPicker mapPicker) throws IOException {
