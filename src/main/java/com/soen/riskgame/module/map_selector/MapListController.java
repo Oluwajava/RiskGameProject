@@ -60,7 +60,11 @@ public class MapListController implements View {
      * variable to store name of selected map
      */
     private String selectedMap;
-
+    /**
+     * Constructor of the class Initializes mapIO object
+     * @param mapPicker
+     * @throws IOException
+     */
     public MapListController(MapPicker mapPicker) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(MAP_VIEW));
         scene = new Scene(root, 600, 500);
