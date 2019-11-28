@@ -90,14 +90,20 @@ public class MapListController implements View {
             this.selectedMap = ((MapInfo)newValue).getMapName();
         });
     }
-
+    /**
+     * method that sets the map data to the list
+     */
     private void setMapDataToList() {
         ObservableList<MapInfo> items = FXCollections.observableArrayList(
                 mapData);
         listView.setItems(items);
         listView.setCellFactory(param -> new ListCell<MapInfo>() {
             private ImageView imageView = new ImageView();
-
+            /**
+             * method to update the map item
+             * @param item map item
+             * @param empty boolean
+             */
             @Override
             protected void updateItem(MapInfo item, boolean empty) {
                 super.updateItem(item, empty);
