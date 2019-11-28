@@ -251,6 +251,9 @@ public class MapDataTest {
                 valid = false;
             }
         }
+        else {
+            valid = false;
+        }
         assertTrue(valid);
     }
 }
