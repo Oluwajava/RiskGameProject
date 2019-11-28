@@ -38,7 +38,8 @@ public class BenevolentStrategy implements PlayerStrategy {
 
     @Override
     public void reinforce(MapData mapData) {
-        List<Country> sortedList = sortCountryListByArmyCount((List<Country>) mapData.getCountries());
+        currentPlayer=mapData.getPlayers().last();
+        List<Country> sortedList = sortCountryListByArmyCount((List<Country>) currentPlayer.getCountries() );
         if (!sortedList.isEmpty()) {
             country = sortedList.get(0);
             countryToCheck=sortedList.get(0).getName();
@@ -61,7 +62,8 @@ public class BenevolentStrategy implements PlayerStrategy {
 
     @Override
     public void fortify(MapData mapData) {
-        Country weakestCountry = findWeakestIfNoAdjacentCountryToFortify((List<Country>) mapData.getCountries());
+        currentPlayer=mapData.getPlayers().last();
+        Country weakestCountry = findWeakestIfNoAdjacentCountryToFortify((List<Country>) currentPlayer.getCountries());
         if (weakestCountry != null) {
             Country strongestAdjacentCountry = getStrongestAdjacentCountry(weakestCountry);
             if (strongestAdjacentCountry != null) {
