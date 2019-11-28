@@ -38,12 +38,17 @@ public class Player {
         this.playerName = playerName;
         this.countries = new ArrayList<>();
     }
-
+    /**
+     * method to add country to the player
+     * @param country list of countries
+     */
     public void addCountry(Country country) {
         countries.add(country);
         numOfArmies = (int) Math.floor(countries.size()/3);
     }
-
+    /**
+     * reduce the no of armies to the player
+     */
     public void decreaseNumOfArmies() {
         numOfArmies--;
     }
