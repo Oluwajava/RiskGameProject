@@ -26,9 +26,14 @@ public class Player {
      * color assigned to each player
      */
     private PlayerColor playerColor;
-
+    /**
+     * number of armies each player holding
+     */
     private int numOfArmies;
-
+    /**
+     * * Constructor for the  class Initializes  object
+     * @param playerName name of the player
+     */
     public Player(String playerName) {
         this.playerName = playerName;
         this.countries = new ArrayList<>();
