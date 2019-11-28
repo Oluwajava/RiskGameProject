@@ -5,40 +5,67 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.xml.bind.Element;
-
+/**
+ * Round Robin class in to implement round robin function in the game
+ *To Automatically assign the Armies on "PlaceAlL" command this function is used
+ * @param <E>
+ * @author John
+ */
 public class RoundRobin<E> {
 
     @Getter
     private Node<E> tail = null;
-
+    /**
+     * size variable
+     */
     private int size = 0;
-
+    /**
+     * Default Constructor
+     */
     public RoundRobin() {
     }
-
+    /**
+     * Method to return size
+     * @return size
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Method to chcek if the size is empty
+     * @return size as Zero
+     */
     public boolean isEmpty() {
         return size == 0;
     }
-
+    /**
+     *Method to check first element
+     * @return first element in list
+     */
     public E first() {
         if (isEmpty()) return null;
         return tail.getNext().getElement();
     }
-
+    /**
+     * Method to return the last element
+     * @return last element in the list
+     */
     public E last() {
         if (isEmpty()) return null;
         return tail.getElement();
     }
-
+    /**
+     * Rotate the tail
+     */
     public void rotate() {
         if (tail != null)
             tail = tail.getNext();
     }
-
+    /**
+     * Method to add first element
+     * @param e
+     */
     public void addFirst(E e) {
         if (size == 0) {
             tail = new Node<>(e, null);
@@ -49,12 +76,18 @@ public class RoundRobin<E> {
         }
         size++;
     }
-
+    /**
+     *Method to addList
+     * @param e
+     */
     public void addList(E e) {
         addFirst(e);
         tail = tail.getNext();
     }
-
+    /**
+     * Method to remove first element from list
+     * @return next element in the list
+     */
     public E removeFirst() {
         if (isEmpty()) return null;
         Node<E> head = tail.getNext();
@@ -63,7 +96,10 @@ public class RoundRobin<E> {
         size--;
         return head.getElement();
     }
-
+    /**
+     * method to delete node
+     * @param key
+     */
     public void deleteNode(E key) {
         Node head = getTail();
         if (head == null){}
@@ -97,7 +133,10 @@ public class RoundRobin<E> {
         tail = head;
         size--;
     }
-
+    /**
+     * Class represent each element that are base for Round robin function
+     * @param <E>
+     */
     public static class Node<E> {
 
         @Getter

@@ -10,6 +10,7 @@ import com.soen.riskgame.module.core.interfaces.Command;
  *
  * @see com.soen.riskgame.module.core.interfaces.Command
  * @see <a href="https://refactoring.guru/design-patterns/command">HERO-402</a>
+ * @author john
  */
 public class RemoveCountryCommand implements Command {
 

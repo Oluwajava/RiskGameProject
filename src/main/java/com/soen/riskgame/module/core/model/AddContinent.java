@@ -16,9 +16,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddContinent {
-	
+	/**
+	 * Name of the continent
+	 */
 	private String continentName;
-	
+	/**
+	 * value of the continent
+	 */
 	private int controlValue;
 
 }

@@ -13,6 +13,7 @@ import com.soen.riskgame.module.core.model.MapData;
  *  *   </pre>
  * @see com.soen.riskgame.module.core.interfaces.Command
  * @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
+ * @author Sai Sukruth
  */
 
 public class AddCountryCommand implements Command {

@@ -14,6 +14,7 @@ import com.soen.riskgame.module.core.model.MapData;
  * @see com.soen.riskgame.module.core.interfaces.Command
  * @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
  * @since       RiskGameProject1.0
+ * @author Mayokun
  */
 
 public class AddContinentCommand implements Command {

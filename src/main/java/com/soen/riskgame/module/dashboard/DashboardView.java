@@ -18,13 +18,34 @@ import java.io.IOException;
  */
 public class DashboardView extends BaseView {
 
+    /**
+     * name of the dashboard
+     */
     private final String DASHBOARD = "/view/dashboard.fxml";
+    /**
+     * variable for new game button
+     */
     private Button newGameButton;
+    /**
+     * variable for load game button
+     */
     private Button loadGameButton;
+    /**
+     * variable for create map button
+     */
     private Button createMapButton;
+    /**
+     * variable for edit map button
+     */
     private Button editMapButton;
+    /**
+     * variable of scene view
+     */
     private final Scene scene;
-
+    /**
+     * method to implement dashboard view
+     * @throws IOException
+     */
     public DashboardView() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(DASHBOARD));
         scene = new Scene(root, 1100, 600);
@@ -64,12 +85,17 @@ public class DashboardView extends BaseView {
 
 
     }
-
+    /**
+     * getter method of the view
+     * @return scene
+     */
     @Override
     public Scene getView() {
         return scene;
     }
-
+    /**
+     * binder method of the view
+     */
     private void bindView() {
         newGameButton = (Button) scene.lookup("#newGame");
         loadGameButton = (Button) scene.lookup("#loadGame");
