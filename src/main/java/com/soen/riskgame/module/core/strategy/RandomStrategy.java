@@ -35,22 +35,27 @@ public class RandomStrategy implements PlayerStrategy {
 
     @Override
     public void reinforce(MapData mapData) {
-        // TODO Auto-generated method stub
-        Random random = new Random();
-        Player currentPlayer = mapData.getPlayers().last();
-        int noOfArmies = currentPlayer.getNumOfArmies();
-        int loopCount = random.nextInt(noOfArmies);
-        List<Country> countryList = currentPlayer.getCountries();
-        for (int i = 0; i < loopCount; i++) {
-            if (currentPlayer.getNumOfArmies() == 0) {
-                break;
-            }
-            int j = random.nextInt(countryList.size());
-            int reinforcementCount = random.nextInt(currentPlayer.getNumOfArmies());
-            mapData.reinforceCountry(countryList.get(j).getName(), reinforcementCount);
-
-        }
-
+        System.out.println("Random Reinforcement");
+        
+    	Random random=new Random();
+    	//Getting the current player from the mapData
+		Player currentPlayer=mapData.getPlayers().last();
+		
+		//Getting the number of armies for the current player
+		int noOfArmies=currentPlayer.getNumOfArmies();
+		int loopCount=random.nextInt(noOfArmies);
+		List<Country> countryList=currentPlayer.getCountries();
+//		for(int i=0;i<loopCount;i++) {
+//			if(currentPlayer.getNumOfArmies()==0) {
+//				break;
+//			}
+		while(currentPlayer.getNumOfArmies()!=0) {
+		int j=random.nextInt(countryList.size());
+		int reinforcementCount=random.nextInt(currentPlayer.getNumOfArmies());
+		mapData.reinforceCountry(countryList.get(j).getName(), reinforcementCount );
+		}
+		
+		//}
 
     }
 
