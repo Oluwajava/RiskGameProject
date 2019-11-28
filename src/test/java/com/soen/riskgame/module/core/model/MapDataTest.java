@@ -231,6 +231,8 @@ public class MapDataTest {
         Country ghana = mapData2.getCountries().get("2");
         mapData2.populateCountries();
         mapData2.placeAll();
+        nigeria.setPlayer(john);
+        ghana.setPlayer(jide);
         nigeria.setNoOfArmies(5);
         ghana.setNoOfArmies(5);
         RoundRobin<Player> players = mapData2.getPlayers();
