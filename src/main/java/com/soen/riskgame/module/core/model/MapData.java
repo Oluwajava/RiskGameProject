@@ -85,6 +85,8 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     private String firstPlayerName;
 
     private boolean isRisk;
+
+
     /**
      * Constructor for the class
      */
@@ -142,6 +144,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }).collect(Collectors.toList());
         this.gameCounters = gameCounters;
     }
+
     /**
      * method to remove continent
      *
@@ -324,8 +327,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 ", continents=" + continents +
                 '}';
     }
+
     /**
      * method to build String of data
+     *
      * @return String value of stringBuilder object
      */
     public String buildStringData() {
@@ -359,8 +364,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         });
         return stringBuilder.toString();
     }
+
     /**
      * method to add player
+     *
      * @param playerName name of the player
      */
     @Override
@@ -383,8 +390,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
 
     }
+
     /**
      * method to remove player
+     *
      * @param playerName name of the player to be removed
      */
     @Override
@@ -392,6 +401,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         Player player = new Player(playerName);
         players.deleteNode(player);
     }
+
     /**
      * method to populate countries using command
      */
@@ -425,8 +435,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
         updateView();
     }
+
     /**
      * method that return the size of reinforced armies
+     *
      * @param size numbers of players
      * @return <b>size of reinforcements</b> armies
      */
@@ -446,8 +458,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
 
     }
+
     /**
      * method to place army using command for each player
+     *
      * @param countryName name of the country
      */
     @Override
@@ -468,6 +482,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
         updateView();
     }
+
     /**
      * method to place all armies
      */
@@ -537,7 +552,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                     sim.append("\n=====================\n");
                     sim.append("Fortification\n");
                     sim.append("=====================\n");
-                    sim.append(player.getPlayerName()+" fortify from "+country.getName()+" ["+num+"] to"+countryTo.getName());
+                    sim.append(player.getPlayerName() + " fortify from " + country.getName() + " [" + num + "] to" + countryTo.getName());
                     attackLog += sim.toString();
                 }
             }
@@ -559,11 +574,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             sim.append("\n=====================\n");
             sim.append("Fortification\n");
             sim.append("=====================\n");
-            sim.append(temp.getPlayerName()+" fortify none");
+            sim.append(temp.getPlayerName() + " fortify none");
             attackLog += sim.toString();
             if (isTournamentMode) {
                 turnCounter++;
-                if(turnCounter/players.size() == maxNumberOfTurns) {
+                if (turnCounter / players.size() == maxNumberOfTurns) {
                     if (gameCounters.get(gameCounter).getNumberOfGames() == numberOfGames) {
                         gameCounter++;
                         GameCounter gc = gameCounters.get(gameCounter);
@@ -596,7 +611,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
             updateView();
         }
-        System.out.println(turnCounter/players.size());
+        System.out.println(turnCounter / players.size());
     }
 
     /**
@@ -618,7 +633,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                     sim.append("\n=====================\n");
                     sim.append("Reinforcement\n");
                     sim.append("=====================\n");
-                    sim.append(player.getPlayerName()+" reinforce  "+country.getName()+" with ["+number+"]");
+                    sim.append(player.getPlayerName() + " reinforce  " + country.getName() + " with [" + number + "]");
                     attackLog += sim.toString();
                     if (player.getNumOfArmies() <= 0) {
                         player.setPhase(Phase.ATTACK);
@@ -630,16 +645,17 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                     players.setElement(player);
 //                    players.rotate();
                 }
+                updateView();
             }
-            updateView();
         }
     }
 
     /**
      * Method to implement attack
+     *
      * @param fromCountry from country
-     * @param toCountry to country
-     * @param numOfDice numbet of dice rolled
+     * @param toCountry   to country
+     * @param numOfDice   numbet of dice rolled
      */
     @Override
     public void attack(String fromCountry, String toCountry, int numOfDice) {
@@ -653,18 +669,19 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 this.attackNumOfDice = numOfDice;
                 attackLog += "\n==========================\nDefender Move\n==========================\n";
             }
+            updateView();
         }
-        updateView();
     }
 
     /**
      * Method to implement attcak
+     *
      * @param fromCountry from country
-     * @param toCountry to country
+     * @param toCountry   to country
      */
     @Override
     public void attack(String fromCountry, String toCountry) {
-        updateView();
+
         if (isInPhase(Phase.ATTACK)) {
             Country country = MapDataUtil.findCountryByName(fromCountry, countries);
             Country countryTo = MapDataUtil.findCountryByName(toCountry, countries);
@@ -693,6 +710,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     /**
      * method to chck phase
+     *
      * @param phase game phase
      * @return phase of the game
      */
@@ -703,6 +721,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     /**
      * method for attack move\
+     *
      * @param num number of armies
      */
     @Override
@@ -718,10 +737,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                 sim.append("\n=====================\n");
                 sim.append("Attack Move\n");
                 sim.append("=====================\n");
-                sim.append(player.getPlayerName()+" moved army("+num+") from "+attackFromCountry.getName()+" to "+attackToCountry.getName());
+                sim.append(player.getPlayerName() + " moved army(" + num + ") from " + attackFromCountry.getName() + " to " + attackToCountry.getName());
                 attackLog += sim.toString();
+                updateView();
             }
-            updateView();
         }
     }
 
@@ -746,6 +765,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     /**
      * method for defend
+     *
      * @param num no fo dice
      */
     @Override
@@ -793,6 +813,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     /**
      * method to show attack result in view
+     *
      * @param sim
      * @param attackDice
      * @param defendDice
@@ -820,20 +841,21 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     /**
      * method for exchange cards
+     *
      * @param num1 type of card
      * @param num2 type of card
      * @param num3 type of card
      */
     @Override
     public void exchange(int num1, int num2, int num3) {
-        if(isInPhase(Phase.REINFORCEMENT)) {
+        if (isInPhase(Phase.REINFORCEMENT)) {
             Player player = players.last();
             player.exchangeTheCards(num1, num2, num3);
             StringBuilder sim = new StringBuilder();
             sim.append("\n=====================\n");
             sim.append("Card Exchange\n");
             sim.append("=====================\n");
-            sim.append(player.getPlayerName()+" exchanged Cards for armies");
+            sim.append(player.getPlayerName() + " exchanged Cards for armies");
             attackLog += sim.toString();
             updateView();
         }
@@ -849,7 +871,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         sim.append("\n=====================\n");
         sim.append("Card Exchange\n");
         sim.append("=====================\n");
-        sim.append(player.getPlayerName()+" exchanged none");
+        sim.append(player.getPlayerName() + " exchanged none");
         attackLog += sim.toString();
     }
 

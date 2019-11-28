@@ -5,6 +5,7 @@ import com.soen.riskgame.module.core.model.MapData;
 import com.soen.riskgame.module.core.model.Player;
 import com.soen.riskgame.module.game_play.GamePlayController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -42,16 +43,17 @@ public class RandomStrategy implements PlayerStrategy {
 		Player currentPlayer=mapData.getPlayers().last();
 		
 		//Getting the number of armies for the current player
-		int noOfArmies=currentPlayer.getNumOfArmies();
-		int loopCount=random.nextInt(noOfArmies);
+//		int noOfArmies=currentPlayer.getNumOfArmies();
+//		int loopCount=random.nextInt(noOfArmies);
 		List<Country> countryList=currentPlayer.getCountries();
+//		mapData.reinforceCountry(countryList.get(0).getName(), currentPlayer.getNumOfArmies());
 //		for(int i=0;i<loopCount;i++) {
 //			if(currentPlayer.getNumOfArmies()==0) {
 //				break;
 //			}
 		while(currentPlayer.getNumOfArmies()!=0) {
 		int j=random.nextInt(countryList.size());
-		int reinforcementCount=random.nextInt(currentPlayer.getNumOfArmies());
+		int reinforcementCount=random.nextInt(currentPlayer.getNumOfArmies()+1);
 		mapData.reinforceCountry(countryList.get(j).getName(), reinforcementCount );
 		}
 		
@@ -61,9 +63,10 @@ public class RandomStrategy implements PlayerStrategy {
 
     private List<Country> getFromCountry(Player player) {
         List<Country> playerCountries = player.getCountries();
+        List<Country> newList=new ArrayList<>();
         for (Country country : playerCountries) {
-            if (country.getNoOfArmies() == 1) {
-                playerCountries.remove(country);
+            if (country.getNoOfArmies() != 1) {
+                newList.add(country);
             }
 
         }
@@ -80,7 +83,6 @@ public class RandomStrategy implements PlayerStrategy {
 
     @Override
     public void attack(MapData mapData) {
-
         Random random = new Random();
         Player currentPlayer = mapData.getPlayers().last();
         int noOfFromCountry = getFromCountry(currentPlayer).size();
@@ -99,6 +101,7 @@ public class RandomStrategy implements PlayerStrategy {
             mapData.attack(fromCountries.get(x).getName(), toCountries.get(y).getName());
         }
 
+        mapData.attackNone();
 
     }
 
@@ -109,17 +112,18 @@ public class RandomStrategy implements PlayerStrategy {
 
     @Override
     public void fortify(MapData mapData) {
-        Player currentPlayer = mapData.getPlayers().last();
-        List<Country> eligibleCountries = getFromCountry(currentPlayer);
-
-        Random random = new Random();
-        int x = random.nextInt(eligibleCountries.size());
-        List<Country> countries = getToCountry(eligibleCountries.get(x).getAdjacentCountries(), mapData.getPlayers().last());
-        int y = random.nextInt(countries.size());
-        int num = random.nextInt(eligibleCountries.get(x).getNoOfArmies() - 1);
-
-        mapData.fortifyCountry(eligibleCountries.get(x).getName(), countries.get(y).getName(), num);
-
+        System.out.println("Random Fortification");
+//        Player currentPlayer = mapData.getPlayers().last();
+//        List<Country> eligibleCountries = getFromCountry(currentPlayer);
+//
+//        Random random = new Random();
+//        int x = random.nextInt(eligibleCountries.size());
+//        List<Country> countries = getToCountry(eligibleCountries.get(x).getAdjacentCountries(), mapData.getPlayers().last());
+//        int y = random.nextInt(countries.size());
+//        int num = random.nextInt(eligibleCountries.get(x).getNoOfArmies() - 1);
+//
+//        mapData.fortifyCountry(eligibleCountries.get(x).getName(), countries.get(y).getName(), num);
+mapData.fortifyNone();
 
     }
 

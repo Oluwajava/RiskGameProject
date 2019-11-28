@@ -38,7 +38,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
 
-public class GamePlayController implements View, Observer, ShowMapCommand.ShowMapListener, CommandSytanxProcessor {
+public class GamePlayController implements View, Observer, ShowMapCommand.ShowMapListener, CommandSytanxProcessor, PhaseListener {
 
     /**
      * name of the gameplay
@@ -426,5 +426,10 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     @Override
     public void onError(String message) {
         commandLine.setText(message);
+    }
+
+    @Override
+    public void nextPhase() {
+
     }
 }
