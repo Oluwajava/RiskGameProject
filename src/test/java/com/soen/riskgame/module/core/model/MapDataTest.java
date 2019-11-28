@@ -212,6 +212,10 @@ public class MapDataTest {
             else {
                 valid = true;
             }
+        }
+        else {
+            valid = true;
+        }
         assertTrue(valid);
     }
 
