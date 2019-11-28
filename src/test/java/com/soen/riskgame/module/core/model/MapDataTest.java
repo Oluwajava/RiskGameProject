@@ -151,26 +151,26 @@ public class MapDataTest {
     @Test
     public void testAttackWrongPhase() {
         boolean valid;
-        Country country17 = mapData2.getCountries().get("17");
-        Country country18 = mapData2.getCountries().get("18");
+        Country nigeria = mapData2.getCountries().get("1");
+        Country ghana = mapData2.getCountries().get("2");
         mapData2.populateCountries();
         mapData2.placeAll();
-        country17.setPlayer(john);
-        country18.setPlayer(jide);
-        country17.setNoOfArmies(5);
-        country18.setNoOfArmies(5);
+        nigeria.setPlayer(john);
+        ghana.setPlayer(jide);
+        nigeria.setNoOfArmies(5);
+        ghana.setNoOfArmies(5);
         RoundRobin<Player> players = mapData2.getPlayers();
         Player currentPlayer = players.last();
         currentPlayer.setPhase(Phase.REINFORCEMENT);
         players.setElement(currentPlayer);
         mapData2.setPlayers(players);
-        mapData2.attack(country17.getName(), country18.getName());
+        mapData2.attack(nigeria.getName(), ghana.getName());
         if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
-            country17.setNoOfArmies(3);
-            country18.setNoOfArmies(0);
+            nigeria.setNoOfArmies(3);
+            ghana.setNoOfArmies(0);
             currentPlayer.setPhase(Phase.REINFORCEMENT);
             mapData2.attackMove(2);
-            if (country17.getNoOfArmies() == 1 && country18.getNoOfArmies() == 2) {
+            if (nigeria.getNoOfArmies() == 1 && ghana.getNoOfArmies() == 2) {
                 valid = false;
             }
             else {
