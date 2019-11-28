@@ -233,6 +233,10 @@ public class MapDataTest {
         mapData2.placeAll();
         nigeria.setNoOfArmies(5);
         ghana.setNoOfArmies(5);
+        RoundRobin<Player> players = mapData2.getPlayers();
+        Player currentPlayer = players.last();
+        currentPlayer.setPhase(Phase.ATTACK);
+        players.setElement(currentPlayer);
         mapData2.setPlayers(players);
         mapData2.attack(nigeria.getName(), ghana.getName(), 3);
         if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
