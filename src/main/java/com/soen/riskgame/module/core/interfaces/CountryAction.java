@@ -10,9 +10,18 @@ public interface CountryAction {
      * @param continentName name of the continent in which the country would be added.
      */
     void addCountry(String countryName, String continentName);
-
+    /**
+     * Method to add the countries
+     * @param countryName name of the country
+     * @param continentName name of the continent
+     * @param xCoordinate coordinate of x plane
+     * @param yCoordinate coordinate of y plane
+     */
     void addCountry(String countryName, String continentName, String xCoordinate, String yCoordinate);
-
+    /**
+     * Method removeCountry is to remove a particular country from a Map
+     * @param country name of the country
+     */
     void removeCountry(String country);
 
     void addNeighbour(String countryName, String neighborCountryName);
