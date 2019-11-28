@@ -11,19 +11,33 @@ import org.apache.commons.lang3.StringUtils;
 @Data
 @AllArgsConstructor
 public class MapInfo {
-
+	/**
+     * name of the map
+     */
     private String name;
 
-
+    /**
+     * image location details
+     */
     private String imageUrl;
-
+    /**
+     * Constructor of the class
+     * @param imageUrl string name of the image
+     */
     public MapInfo(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-
+    /**
+     * getter method to get map name
+     * @return imageUrl as a substring
+     */
     public String getMapName() {
         return imageUrl.substring(0, imageUrl.length() - 4);
     }
+    /**
+     * getter method for the name of the map
+     * @return name in caps
+     */
     public String getName() {
         return StringUtils.capitalize(imageUrl.substring(0, imageUrl.length() - 4)).replace("_", " ");
     }
