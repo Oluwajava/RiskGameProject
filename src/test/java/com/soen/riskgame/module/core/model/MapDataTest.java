@@ -132,7 +132,7 @@ public class MapDataTest {
             ghana.setNoOfArmies(0);
             currentPlayer.setPhase(Phase.ATTACK_MOVE);
             mapData2.attackMove(2);
-            if (nigeria.getNoOfArmies() == 1 || ghana.getNoOfArmies() == 2) {
+            if (nigeria.getNoOfArmies() == 1 && ghana.getNoOfArmies() == 2) {
                 valid = true;
             }
             else {
