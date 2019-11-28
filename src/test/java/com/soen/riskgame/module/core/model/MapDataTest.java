@@ -193,6 +193,8 @@ public class MapDataTest {
         Country uk = mapData2.getCountries().get("3"); //uk is not adjacent with nigeria
         mapData2.populateCountries();
         mapData2.placeAll();
+        nigeria.setPlayer(john);
+        uk.setPlayer(jide);
         nigeria.setNoOfArmies(5);
         uk.setNoOfArmies(5);
         RoundRobin<Player> players = mapData2.getPlayers();
