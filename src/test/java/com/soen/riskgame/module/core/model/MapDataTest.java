@@ -190,33 +190,24 @@ public class MapDataTest {
     public void testAttackingNotAdjacentCountries() {
         boolean valid;
         Country nigeria = mapData2.getCountries().get("1");
-        Country ghana = mapData2.getCountries().get("2");
-        mapData2.populateCountries();
-        mapData2.placeAll();
-        nigeria.setPlayer(john);
-        ghana.setPlayer(jide);
+        Country uk = mapData2.getCountries().get("3"); //uk is not adjacent with nigeria
         nigeria.setNoOfArmies(5);
-        ghana.setNoOfArmies(5);
+        uk.setNoOfArmies(5);
         RoundRobin<Player> players = mapData2.getPlayers();
         Player currentPlayer = players.last();
-        currentPlayer.setPhase(Phase.REINFORCEMENT);
+        currentPlayer.setPhase(Phase.ATTACK);
         players.setElement(currentPlayer);
-        mapData2.setPlayers(players);
-        mapData2.attack(nigeria.getName(), ghana.getName());
         if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
             nigeria.setNoOfArmies(3);
-            ghana.setNoOfArmies(0);
-            currentPlayer.setPhase(Phase.REINFORCEMENT);
+            uk.setNoOfArmies(0);
+            currentPlayer.setPhase(Phase.ATTACK_MOVE);
             mapData2.attackMove(2);
-            if (nigeria.getNoOfArmies() == 1 && ghana.getNoOfArmies() == 2) {
+            if (nigeria.getNoOfArmies() == 1 && uk.getNoOfArmies() == 2) {
                 valid = false;
             }
             else {
                 valid = true;
             }
-        }
-        else {
-            valid = true;
         }
         assertTrue(valid);
     }
