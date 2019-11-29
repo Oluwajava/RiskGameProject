@@ -67,25 +67,23 @@ public class AggressiveStrategy implements PlayerStrategy {
      *Method for Aggressive class for attack.
      * @param mapData mapData
      */
-        @Override
-        public void attack (MapData mapData) {
-            System.out.println("Aggressive Attack");
+    @Override
+    public void attack(MapData mapData) {
+        System.out.println("Aggressive Attack");
 
-            currentPlayer = mapData.getPlayers().last();
+        currentPlayer = mapData.getPlayers().last();
 
-            List<Country> currentPlayerCountryList = currentPlayer.getCountries();
-            Country strongestCountry = findStrongestCountryForReinforcement(currentPlayerCountryList);
-            List<Country> defendingCountries = strongestCountry.getAdjacentCountries();
-
-            Iterator<Country> defendingCountriesIterator = defendingCountries.iterator();
-            while (defendingCountriesIterator.hasNext()) {
-                if (strongestCountry.getNoOfArmies() > 1) {
-                    System.out.println("Attacking with strongest country " + strongestCountry.getName());
-                    mapData.attack(strongestCountry.getName(), defendingCountriesIterator.next().getName(),3);
-                    break;
-                }
-            }
+        Country storngestCountry = checkAndFindStrongestIfNoAdjacentCountryToAttack(
+                sortCountryListByArmyCount(currentPlayer.getCountries()));
+        List<Country> defendList =getDefendingCountryList(storngestCountry);
+        Iterator<Country> defendingCountriesIterator = defendList.iterator();
+        while (defendingCountriesIterator.hasNext()) {
+            if (storngestCountry.getNoOfArmies() > 1) {
+                mapData.attack(storngestCountry.getName(), defendingCountriesIterator.next().getName(), false);
+            } else
+                break;
         }
+    }
 
 
 
@@ -166,6 +164,27 @@ public class AggressiveStrategy implements PlayerStrategy {
         return defendingCountries;
 
     }
+
+    /**
+     * Method to check and find the strongest country if
+     * no adjacent country to attack.
+     *
+     * @param list List of countries.
+     * @return Country
+     * Strongest country.
+     */
+    public Country checkAndFindStrongestIfNoAdjacentCountryToAttack(List<Country> list) {
+        if (!list.isEmpty()) {
+            for (Country country : list) {
+                if (country != null && country.getNoOfArmies() > 1 && getDefendingCountryList(country).size() > 0) {
+                    return country;
+                }
+            }
+        }
+        return null;
+    }
+
+
 
 
 

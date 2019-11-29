@@ -349,5 +349,40 @@ public class SaveGameBuilder {
 		this.isRisk = isRisk;
 		return this;
 	}
-    
+	/**
+	 * Getter
+	 * @return attackLog
+	 */
+	public String getFileName() {
+		return fileName;
+	}
+	/**
+	 * Getter
+	 * @return attackLog
+	 */
+	public Country getAttackFromCountry() {
+		return attackFromCountry;
+	}
+	/**
+	 * Getter
+	 * @return attackLog
+	 */
+	public Country getAttackToCountry() {
+		return attackToCountry;
+	}
+	/**
+	 * Getter
+	 * @return attackLog
+	 */
+	public int getAttackNumOfDice() {
+		return attackNumOfDice;
+	}
+
+	/**
+	 * Getter
+	 * @return attackLog
+	 */
+	public String getAttackLog() {
+		return attackLog;
+	}
 }
