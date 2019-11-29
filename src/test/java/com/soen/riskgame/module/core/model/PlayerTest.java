@@ -8,11 +8,18 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-
+/**
+ * test class for player test
+ */
 public class PlayerTest {
-
+    /**
+     * object for player
+     */
     private Player player;
 
+    /**
+     * initize the objects
+     */
     @Before
     public void setupContext() {
         player = new Player();
@@ -26,6 +33,9 @@ public class PlayerTest {
         player.setCountries(countries);
     }
 
+    /**
+     * test method for  getNumberOfReinforcementArmy
+     */
     @Test
     public void getNumberOfReinforcementArmy() {
         assertEquals(player.getNumberOfReinforcementArmy(), 2);

@@ -11,10 +11,18 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * test for card
+ */
 public class CardTest {
-
+    /**
+     * object of card
+     */
     private Card card;
 
+    /**
+     * initize the objects
+     */
     @Before
     public void setUp() {
 
@@ -27,6 +35,9 @@ public class CardTest {
 
     }
 
+    /**
+     * method to test get Player Cards
+     */
     @Test
     public void testgetPlayerCards() {
         List<String> cards = new ArrayList<String>();
@@ -37,6 +48,9 @@ public class CardTest {
         assertEquals(cards, card.getPlayerCards());
     }
 
+    /**
+     * method to test getNumberOfCards
+     */
     @Test
     public void getNumberOfCards() {
         List<String> cards = new ArrayList<String>();
@@ -47,7 +61,9 @@ public class CardTest {
         assertEquals(cards.size(), card.getNumberOfCards());
     }
 
-
+    /**
+     * method to testReduceCard
+     */
     @Test
     public void testReduceCard() {
         List<String> cards = new ArrayList<String>();
@@ -62,6 +78,9 @@ public class CardTest {
         int res1 = card.reduceCard(0, 1, 3);
     }
 
+    /**
+     * method to testReduceCard
+     */
     @Test
     public void testReduceCard2() {
         List<String> cards = new ArrayList<String>();
@@ -76,6 +95,9 @@ public class CardTest {
         assertEquals(0, res1);
     }
 
+    /**
+     * method to test get card
+     */
     @Test
     public void testgetCard() {
         List<String> cards = new ArrayList<String>();
@@ -87,7 +109,9 @@ public class CardTest {
 
         assertEquals(1, card.getCard());
     }
-
+    /**
+     * method to test get card
+     */
     @Test
     public void testgetCard2() {
         List<String> cards = new ArrayList<String>();

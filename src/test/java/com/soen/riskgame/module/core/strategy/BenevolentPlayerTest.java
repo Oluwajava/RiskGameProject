@@ -12,6 +12,10 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * method to test BenevolentPlayer
+ * @param <Benevolent>
+ */
 public class BenevolentPlayerTest<Benevolent> {
 
 
@@ -33,9 +37,9 @@ public class BenevolentPlayerTest<Benevolent> {
     /** Object for Benevolent class */
     private BenevolentStrategy benevolent;
 
-    /** Object for GamePlayController class */
-    private GamePlayController gamePlayController;
-
+    /**
+     * list of countries
+     */
     private List<Country> list;
 
     /**

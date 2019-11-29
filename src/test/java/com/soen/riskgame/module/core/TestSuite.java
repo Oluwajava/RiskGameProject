@@ -13,5 +13,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({LexerTest.class, CardTest.class, MapDataTest.class, PlayerTest.class, GraphUtilTest.class, MapValidatorTest.class,
         BenevolentPlayerTest.class})
+/**
+ * test suite
+ */
 public class TestSuite {
 }
