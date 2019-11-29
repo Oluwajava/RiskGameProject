@@ -28,9 +28,22 @@ public class TournamentCommand implements Command {
 
     private int maxNumberOfGames;
 
+    /**
+     * Constructor of TournamentCommand
+     */
     public TournamentCommand() {
     }
 
+    /**
+     * Constructor of TournamentCommand
+     * @param listener Listerner object
+     * @param gameTypeListener gametype object
+     * @param mapData mapdata object
+     * @param listOfMapFiles  list of maps
+     * @param listOfPlayersStrategies list of player strategies
+     * @param numberOfGames number of games
+     * @param maxNumberOfGames max number of games
+     */
     public TournamentCommand(PlayerCommandListener listener, GameTypeListener gameTypeListener, MapData mapData, List<String> listOfMapFiles, List<String> listOfPlayersStrategies, int numberOfGames, int maxNumberOfGames) {
         this.mapData = mapData;
         this.listOfMapFiles = listOfMapFiles;
@@ -40,7 +53,11 @@ public class TournamentCommand implements Command {
         this.listener = listener;
         this.gameTypeListener = gameTypeListener;
     }
-
+    /**
+     * Method is inherited from the @see Command Interface
+     * which is used to abstract the execution of
+     * the Command
+     */
     @Override
     public void execute() {
         gameTypeListener.setIsTournament();
