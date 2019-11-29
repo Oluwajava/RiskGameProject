@@ -14,7 +14,7 @@ public interface View {
     /**
      * method getView to return the view
      * @return object of Scene
-     * @throws IOException
+     * @throws IOException IOException
      */
     Scene getView() throws IOException;
 

@@ -11,6 +11,9 @@ import com.soen.riskgame.module.core.model.ContinentDTO;
  *
  */
 public class ContinentMapper {
+    /**
+     * Constructor for class
+     */
     public ContinentMapper() {
 
     }
@@ -29,6 +32,11 @@ public class ContinentMapper {
         return continentDTO;
     }
 
+    /**
+     *  mapToContienet method is used to split the map file based on Continent and these method uses ContientDTO has call type
+     * @param data String input data from map
+     * @return <b>continentDTO</b> output of data
+     */
     public static ContinentDTO mapConquestToContinent(String data) {
         String[] continentData = data.split("=");
         ContinentDTO continentDTO = new ContinentDTO();

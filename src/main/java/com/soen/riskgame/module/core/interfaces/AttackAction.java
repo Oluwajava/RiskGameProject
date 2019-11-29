@@ -17,6 +17,7 @@ public interface AttackAction {
      *Method to attack
      * @param fromCountry from country
      * @param toCountry to country
+     * @param updateView  updateView
      */
     void attack(String fromCountry, String toCountry, boolean updateView);
 

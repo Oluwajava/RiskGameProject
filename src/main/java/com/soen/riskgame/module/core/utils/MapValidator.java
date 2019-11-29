@@ -18,7 +18,7 @@ public class MapValidator {
     /**
      * constructor for the class
      * @param mapData map data as string
-     * @throws Exception
+     * @throws Exception Exception
      */
     public MapValidator(String mapData) throws Exception {
         if (mapData == null || mapData.length() == 0) {
@@ -28,7 +28,7 @@ public class MapValidator {
     }
     /**
      * validate method to chck all tags
-     * @throws Exception
+     * @throws Exception Exception
      */
     public void validate() throws Exception {
         if (isRiskMap()) {
@@ -65,7 +65,7 @@ public class MapValidator {
 
     /**
      * method to check checkAllConquestTags
-     * @throws Exception
+     * @throws Exception Exception
      */
     public void checkAllConquestTags() throws Exception {
 
@@ -85,7 +85,7 @@ public class MapValidator {
 
     /**
      * method to chcek all tags
-     * @throws Exception
+     * @throws Exception Exception
      */
     public void checkAllTags() throws Exception {
         if (!mapData.contains(MapDelimiters.BORDER_DELIMETER)) {

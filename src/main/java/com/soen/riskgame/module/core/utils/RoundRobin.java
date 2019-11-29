@@ -9,11 +9,13 @@ import java.io.Serializable;
 /**
  * Round Robin class in to implement round robin function in the game
  *To Automatically assign the Armies on "PlaceAlL" command this function is used
- * @param <E>
+ * @param <E> enum
  * @author John
  */
 public class RoundRobin<E> implements Serializable {
-
+    /**
+     * node
+     */
     @Getter
     private Node<E> tail = null;
     /**
@@ -66,7 +68,7 @@ public class RoundRobin<E> implements Serializable {
 
     /**
      * Method to add first element
-     * @param e
+     * @param e element
      */
     public void addFirst(E e) {
         if (size == 0) {
@@ -80,7 +82,7 @@ public class RoundRobin<E> implements Serializable {
     }
     /**
      *Method to addList
-     * @param e
+     * @param e element
      */
     public void addList(E e) {
         addFirst(e);
@@ -110,7 +112,7 @@ public class RoundRobin<E> implements Serializable {
 
     /**
      * method to delete node
-     * @param key
+     * @param key key
      */
     public void deleteNode(E key) {
         Node head = getTail();
@@ -147,13 +149,17 @@ public class RoundRobin<E> implements Serializable {
     }
     /**
      * Class represent each element that are base for Round robin function
-     * @param <E>
+     * @param <E> enum
      */
     public static class Node<E> implements Serializable {
-
+        /**
+         * element
+         */
         @Getter
         private E element;
-
+        /**
+         * node
+         */
         @Getter
         @Setter
         private Node<E> next;

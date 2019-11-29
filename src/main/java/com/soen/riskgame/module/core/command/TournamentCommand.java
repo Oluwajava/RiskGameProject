@@ -7,25 +7,43 @@ import com.soen.riskgame.module.core.model.MapData;
 import lombok.Data;
 
 import java.util.List;
-
+/**
+ * Class uses command pattern to TournamentCommand
+ *  for the Map This class can be called by either the GUI or the command line to perform
+ *  @see com.soen.riskgame.module.core.interfaces.Command
+ *  @see <a href="https://refactoring.guru/design-patterns/command"> Command Pattern Tutorial</a>
+ * @author Mayokun
+ */
 @Data
 public class TournamentCommand implements Command {
 
     /**
-     * Contains the Map Data
+     * object the PlayerCommandListener
      */
     private PlayerCommandListener listener;
-
+    /**
+     * object of GameTypeListener
+     */
     private GameTypeListener gameTypeListener;
-
+    /**
+     * object of map data
+     */
     private MapData mapData;
-
+    /**
+     * object of map list files
+     */
     private List<String> listOfMapFiles;
-
+    /**
+     * lisy of strategy
+     */
     private List<String> listOfPlayersStrategies;
-
+    /**
+     * number Of Games
+     */
     private int numberOfGames;
-
+    /**
+     * max Number Of Games
+     */
     private int maxNumberOfGames;
 
     /**

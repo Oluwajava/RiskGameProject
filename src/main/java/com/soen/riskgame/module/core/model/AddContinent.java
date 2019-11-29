@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  * AddContinent model is used to store the name of the Continent that
  * will be removed from the MapData and will be passed into the
  * RemoveContinentCommand
- * @quthor Sai Sukruth
+ * @author Sai Sukruth
  */
 @Data
 @NoArgsConstructor

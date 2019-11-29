@@ -21,8 +21,8 @@ public class PlaceArmyCommand implements Command {
 
     /**
      * Constructor for the MapEditor class Initializes mapIO object.
-     * @param mapData
-     * @param countryName
+     * @param mapData map data
+     * @param countryName countryName
      */
     public PlaceArmyCommand(MapData mapData, String countryName) {
         this.mapData = mapData;

@@ -16,7 +16,7 @@ import java.util.Optional;
 public class MapDataUtil {
     /**
      * method to load the map from the given file
-     * @param fileName
+     * @param fileName fileName
      * @return map parsed data
      */
     public static MapData loadMapFromFile(String fileName) {

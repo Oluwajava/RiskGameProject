@@ -11,7 +11,7 @@ import com.soen.riskgame.module.core.utils.MapDataUtil;
  * to Game play. This class can be called by either the GUI or the command line to perform
  *
  * @see com.soen.riskgame.module.core.interfaces.Command
- * @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
+ * @see <a href="https://refactoring.guru/design-patterns/command"> Command Pattern Tutorial</a>
  * * @author John
  */
 public class AttackCommand implements Command {

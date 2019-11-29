@@ -12,6 +12,7 @@ public interface PlayerAction {
     /**
      * Method to add a player
      * @param playerName name of the player
+     * @param strategy name of strategy
      * @return the player added
      */
     Player addPlayer(String playerName, String strategy);

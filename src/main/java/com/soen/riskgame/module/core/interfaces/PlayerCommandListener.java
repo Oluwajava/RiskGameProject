@@ -9,6 +9,7 @@ public interface PlayerCommandListener {
     /**
      * method to add player
      * @param name name of the player to be added
+     * @param strategy  strategy
      */
     void addPlayer(String name, String strategy);
 

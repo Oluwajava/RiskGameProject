@@ -47,7 +47,7 @@ public class MapParser implements MapParserAdapter{
      * Constructor intialize the variables
      *
      * @param mapData map data values
-     * @throws Exception
+     * @throws Exception Exception
      */
     public MapParser(String mapData) throws Exception {
         if (mapData == null || mapData.length() == 0) {

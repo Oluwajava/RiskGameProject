@@ -32,9 +32,13 @@ public class AddCountryCommand implements Command {
      * Continent Name that the country that should be added belongs to
      */
     private String continentName;
-
+    /**
+     * xCoordinate on map
+     */
     private String xCoordinate;
-
+    /**
+     * YCoordinate on map
+     */
     private String yCoordinate;
 
     /**

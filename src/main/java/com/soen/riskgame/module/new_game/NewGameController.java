@@ -110,7 +110,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
 
     /**
      * Constructor of the class that initializes objects
-     * @throws IOException
+     * @throws IOException IOException
      */
     public NewGameController() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NEW_GAME));
@@ -178,6 +178,10 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
 
     }
 
+    /**
+     * Starts a new game
+     * @throws IOException IOException
+     */
     private void startGame() throws IOException {
         GamePlayController gamePlayController = new GamePlayController(mapData);
         Stage stage = new Stage();
@@ -266,7 +270,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
     /**
      * getter method of the view
      * @return scene
-     * @throws IOException
+     * @throws IOException IOException
      */
     @Override
     public Scene getView() throws IOException {
@@ -339,6 +343,10 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         mapData.setTournamentMode(true);
     }
 
+    /**
+     * load game
+     * @param ma map data
+     */
     @Override
     public void loadGame(MapData ma) {
         this.mapData = ma;

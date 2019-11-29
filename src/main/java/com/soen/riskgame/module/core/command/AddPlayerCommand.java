@@ -28,7 +28,9 @@ public class AddPlayerCommand implements Command {
      * Country name that should be added to the map data
      */
     private String playerName;
-
+    /**
+     * string for strategy
+     */
     private String strategy;
 
 
@@ -37,6 +39,7 @@ public class AddPlayerCommand implements Command {
      *
      * @param listener Contains all information about the Map.
      * @param playerName The name of the country that should be added
+     * @param strategy     strategy for the player
      *
      */
     public AddPlayerCommand(PlayerCommandListener listener, String playerName, String strategy) {

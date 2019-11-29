@@ -13,7 +13,7 @@ public class BaseView implements View {
     /**
      * Method in view interface. Will not return <code>null</code>.
      * @return returns the scene view
-     * @throws IOException
+     * @throws IOException IOException
      */
     @Override
     public Scene getView() throws IOException {

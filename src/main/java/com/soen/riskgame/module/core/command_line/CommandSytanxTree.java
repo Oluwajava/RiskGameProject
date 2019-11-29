@@ -74,7 +74,9 @@ public class CommandSytanxTree {
      * Listener for Syntax processing
      */
     private CommandSytanxProcessor commandSytanxProcessor;
-
+    /**
+     * object of GameTypeListener
+     */
     private GameTypeListener gameTypeListener;
 
     /**

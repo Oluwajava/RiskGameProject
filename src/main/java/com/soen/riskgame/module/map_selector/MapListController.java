@@ -62,8 +62,8 @@ public class MapListController implements View {
 
     /**
      * Constructor of the class Initializes mapIO object
-     * @param mapPicker
-     * @throws IOException
+     * @param mapPicker mapPicker
+     * @throws IOException IOException
      */
     public MapListController(MapPicker mapPicker) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(MAP_VIEW));
@@ -153,7 +153,7 @@ public class MapListController implements View {
     /**
      * method to get the view
      * @return scene
-     * @throws IOException
+     * @throws IOException IOException
      */
     @Override
     public Scene getView() throws IOException {

@@ -65,7 +65,7 @@ public class AggressiveStrategy implements PlayerStrategy {
 
     /**
      *Method for Aggressive class for attack.
-     * @param mapData
+     * @param mapData mapData
      */
         @Override
         public void attack (MapData mapData) {
@@ -156,7 +156,7 @@ public class AggressiveStrategy implements PlayerStrategy {
 
     /**
      * Method to get defending country
-     * @param attackingCountry
+     * @param attackingCountry attackingCountry
      * @return defending country
      */
     public List<Country> getDefendingCountryList(Country attackingCountry) {

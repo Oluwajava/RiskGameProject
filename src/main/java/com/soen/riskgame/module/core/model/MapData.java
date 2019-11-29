@@ -104,7 +104,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     /**
      * method to addCountries to Continents
      *
-     * @param country
+     * @param country country
      */
     public void addCountryToContinent(Country country) {
         Continent continent = continents.get(country.getContinentId());

@@ -6,7 +6,7 @@ import com.soen.riskgame.module.core.model.MapData;
  *  * Class uses command pattern to abstract Attack command
  *  to Game play. This class can be called by either the GUI or the command line to perform
  *  @see com.soen.riskgame.module.core.interfaces.Command
- *  @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
+ *  @see <a href="https://refactoring.guru/design-patterns/command"> Command Pattern Tutorial</a>
  *  * @author Mayokun
  */
 public class AttackMoveCommand implements Command {

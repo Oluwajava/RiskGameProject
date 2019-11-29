@@ -10,7 +10,7 @@ public interface MapPicker {
     /**
      * Method onMapSelected
      * @param name name of the type String
-     * @throws Exception
+     * @throws Exception Exception
      */
     void onMapSelected(String name) throws Exception;
 

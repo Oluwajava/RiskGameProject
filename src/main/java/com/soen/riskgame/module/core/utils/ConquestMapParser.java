@@ -36,7 +36,7 @@ public class ConquestMapParser implements MapParserAdapter {
     /**
      * Parser for conquest maps
      * @param mapData map data
-     * @throws Exception
+     * @throws Exception Exception
      */
     public ConquestMapParser(String mapData) throws Exception {
         if (mapData == null || mapData.length() == 0) {

@@ -97,6 +97,10 @@ public class Country implements Serializable {
         this.adjacentCountries = new ArrayList<>();
     }
 
+    /**
+     * method to return string
+     * @return string
+     */
     @Override
     public String toString() {
         return "Country{" +
@@ -147,7 +151,7 @@ public class Country implements Serializable {
 
     /**
      * Methid to chcek if the Country is Adjacent
-     * @param countryName
+     * @param countryName countryName
      * @return boolean value either True or False
      */
     public boolean isCountryAdjacent(String countryName) {

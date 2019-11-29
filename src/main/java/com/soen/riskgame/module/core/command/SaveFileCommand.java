@@ -8,9 +8,9 @@ import java.io.FileNotFoundException;
 
 /**
  * * Class uses command pattern to abstract SaveFile Command
- *  * for the Map This class can be called by either the GUI or the command line to perform
- *  * @see com.soen.riskgame.module.core.interfaces.Command
- *  * @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
+ *  for the Map This class can be called by either the GUI or the command line to perform
+ *  @see com.soen.riskgame.module.core.interfaces.Command
+ *  @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
  * @author Mayokun
  */
 public class SaveFileCommand implements Command {

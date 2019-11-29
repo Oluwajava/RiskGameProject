@@ -28,8 +28,8 @@ public class EditMapCommand implements Command {
 
     /**
      * Constructor for the MapEditor class Initializes mapIO object.
-     * @param editMapListener
-     * @param fileName
+     * @param editMapListener editMapListener
+     * @param fileName fileName
      */
     public EditMapCommand(EditMapListener editMapListener, String fileName) {
         this.editMapListener = editMapListener;

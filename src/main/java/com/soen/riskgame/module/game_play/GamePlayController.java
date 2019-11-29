@@ -129,7 +129,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
      * Constructor of the class
      *
      * @param mapData map data
-     * @throws IOException
+     * @throws IOException IOException
      */
     public GamePlayController(MapData mapData) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(NEW_GAME));
@@ -327,7 +327,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
      * getter method of the view
      *
      * @return scene
-     * @throws IOException
+     * @throws IOException IOException
      */
     @Override
     public Scene getView() throws IOException {
@@ -437,7 +437,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     /**
      * method implementing show map in GUI
      *
-     * @param mapData
+     * @param mapData mapData
      */
     @Override
     public void showMap(String mapData) {

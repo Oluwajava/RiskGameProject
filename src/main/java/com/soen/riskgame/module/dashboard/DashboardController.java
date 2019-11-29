@@ -44,7 +44,7 @@ public class DashboardController extends BaseView {
 
     /**
      * method to implement dashboard view
-     * @throws IOException
+     * @throws IOException  IOException
      */
     public DashboardController() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(DASHBOARD));

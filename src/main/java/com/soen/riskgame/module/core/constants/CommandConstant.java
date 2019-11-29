@@ -89,6 +89,12 @@ public interface CommandConstant {
      * String Command tournament
      */
     String TOURNAMENT = "tournament";
+    /**
+     * String SAVE_GAME
+     */
     String SAVE_GAME = "savegame";
+    /**
+     * String LOAD_GAME
+     */
     String LOAD_GAME = "loadgame";
 }

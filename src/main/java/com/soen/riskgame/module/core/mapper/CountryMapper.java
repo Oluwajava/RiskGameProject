@@ -32,6 +32,11 @@ public class CountryMapper {
         return countryDTO;
     }
 
+    /**
+     * method for TerritoryDTO
+     * @param data data
+     * @return TerritoryDTO
+     */
     public static TerritoryDTO mapToTerritory(String data) {
         String[] countryData = data.split(MapDelimiters.COMMA_DELIMITER);
         TerritoryDTO countryDTO = new TerritoryDTO();

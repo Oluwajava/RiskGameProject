@@ -30,7 +30,7 @@ public class FileWriter {
 
     /**
      * This function is used to write the data to the file
-     * @throws FileNotFoundException
+     * @throws FileNotFoundException FileNotFoundException
      */
     public void save() throws FileNotFoundException {
         File file = new File(fileLocation);

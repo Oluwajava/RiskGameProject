@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     /**
      * Main method
-     * @param args
+     * @param args arguments
      */
     public static void main(String[] args) {
         launch(args);
@@ -20,7 +20,7 @@ public class Main extends Application {
     /**
      * game starts here
      * @param primaryStage stage of game
-     * @throws Exception
+     * @throws Exception Exception
      */
     @Override
     public void start(Stage primaryStage) throws Exception {

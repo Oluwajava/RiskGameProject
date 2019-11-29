@@ -28,7 +28,7 @@ public class FileReader {
      * This file is used to read the data from a file
      *
      * @return fileData as String
-     * @throws IOException
+     * @throws IOException IOException
      */
     public String readData() throws IOException {
         String fileData = new String(Files.readAllBytes(Paths.get(fileLocation)));

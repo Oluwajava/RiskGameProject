@@ -12,18 +12,27 @@ import java.util.List;
  * @author Mayo
  */
 public interface MapParserAdapter {
-
-    GameFile getGameFile();
     /**
-     * list of continents
+     * method GameFile
+     * @return GameFile
+     */
+    GameFile getGameFile();
+
+    /**
+     * method getContinentDTOS
+     * @return list
      */
     List<ContinentDTO> getContinentDTOS();
+
     /**
-     * list of countries
+     * method getCountries
+     * @return Country
      */
     List<CountryDTO> getCountries();
+
     /**
-     * list of borders
+     * method getBorderDTOS
+     * @return Border
      */
     List<BorderDTO> getBorderDTOS();
 }

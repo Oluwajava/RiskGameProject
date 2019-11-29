@@ -4,12 +4,12 @@ import com.soen.riskgame.module.core.constants.ActionConstant;
 import com.soen.riskgame.module.core.interfaces.Command;
 import com.soen.riskgame.module.core.model.MapData;
 /**
- *  * Class uses command pattern to abstract Attack command
+ *  Class uses command pattern to abstract Attack command
  *  to Game play. This class can be called by either the GUI or the command line to perform
  *  @see com.soen.riskgame.module.core.interfaces.Command
- *  @see <a href="https://refactoring.guru/design-patterns/command">Command Pattern Tutorial</a>
- *  * @author Hitansh
- *  */
+ *  @see <a href="https://refactoring.guru/design-patterns/command"> Command Pattern Tutorial</a>
+ *  @author Hitansh
+ */
 public class ExchangeCardCommand implements Command {
     /**
      * Contains the Map Data

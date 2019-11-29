@@ -160,6 +160,7 @@ public class Player implements Serializable {
 
     /**
      * method to reduce the number of armies
+     * @param num no of armies
      */
     public void decreasePlaceArmiesNo(int num) {
         placeArmiesNo -= num;
@@ -203,11 +204,17 @@ public class Player implements Serializable {
      */
     @Data
     public static class PlayerColor implements Serializable {
-
+        /**
+         * red color
+         */
         private int red;
-
+        /**
+         * blue color
+         */
         private int blue;
-
+        /**
+         * green color
+         */
         private int green;
     }
 

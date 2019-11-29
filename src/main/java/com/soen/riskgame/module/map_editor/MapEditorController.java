@@ -144,7 +144,7 @@ public class MapEditorController extends BaseView implements Observer, ShowMapCo
 
     /**
      * Constructor of the class
-     * @throws IOException
+     * @throws IOException IOException
      */
     public MapEditorController() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(DASHBOARD));

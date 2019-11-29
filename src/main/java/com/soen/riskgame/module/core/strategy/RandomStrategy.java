@@ -35,6 +35,11 @@ public class RandomStrategy implements PlayerStrategy {
 
     }
 
+    /**
+     *   Method for Random class for reinforcement phase.
+     *    Start and end of the reinforcement phase.
+     * @param mapData hold the map's data
+     */
     @Override
     public void reinforce(MapData mapData) {
         Random random = new Random();
@@ -56,6 +61,11 @@ public class RandomStrategy implements PlayerStrategy {
 
     }
 
+    /**
+     * method to get from country
+     * @param player player
+     * @return country
+     */
     private List<Country> getFromCountry(Player player) {
         List<Country> playerCountries = player.getCountries();
         List<Country> newList = new ArrayList<>();
@@ -68,6 +78,12 @@ public class RandomStrategy implements PlayerStrategy {
         return playerCountries;
     }
 
+    /**
+     * method to get country
+     * @param adjacentCountries adjacentCountries
+     * @param player player
+     * @return adjacentCountries
+     */
     private List<Country> getToCountry(List<Country> adjacentCountries, Player player) {
         for (Country country : player.getCountries()) {
             adjacentCountries.remove(country);
@@ -76,6 +92,11 @@ public class RandomStrategy implements PlayerStrategy {
 
     }
 
+    /**
+     * Method for Random class for attack.
+
+     * @param mapData hold the map's data
+     */
     @Override
     public void attack(MapData mapData) {
         Random random = new Random();
@@ -104,7 +125,11 @@ public class RandomStrategy implements PlayerStrategy {
     }
 
 
-
+    /**
+     * Method for Random class for fortification phase.
+     * Start and end of the fortification phase.
+     * @param mapData hold the map's data
+     */
     @Override
     public void fortify(MapData mapData) {
         System.out.println("Random Fortification by "+ mapData.getPlayers().last().getPlayerName());

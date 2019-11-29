@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  * method to test BenevolentPlayer
- * @param <Benevolent>
+ * @param <Benevolent> player type
  */
 public class BenevolentPlayerTest<Benevolent> {
 
@@ -44,7 +44,7 @@ public class BenevolentPlayerTest<Benevolent> {
 
     /**
      * Set up the initial objects for Benevolent class
-     *
+     * @throws IOException IOException
      */
     @Before
     public void initialize() throws IOException {
