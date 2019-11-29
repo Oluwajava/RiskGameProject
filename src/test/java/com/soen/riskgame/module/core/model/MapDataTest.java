@@ -124,7 +124,7 @@ public class MapDataTest {
         currentPlayer.setPhase(Phase.ATTACK);
         players.setElement(currentPlayer);
         mapData2.setPlayers(players);
-        mapData2.attack(country17.getName(), country18.getName());
+        mapData2.attack(country17.getName(), country18.getName(), true);
         if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
             country17.setNoOfArmies(3);
             country18.setNoOfArmies(0);
@@ -162,7 +162,7 @@ public class MapDataTest {
         currentPlayer.setPhase(Phase.REINFORCEMENT);
         players.setElement(currentPlayer);
         mapData2.setPlayers(players);
-        mapData2.attack(country17.getName(), country18.getName());
+        mapData2.attack(country17.getName(), country18.getName(), true);
         if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
             country17.setNoOfArmies(3);
             country18.setNoOfArmies(0);
@@ -200,7 +200,7 @@ public class MapDataTest {
         currentPlayer.setPhase(Phase.ATTACK);
         players.setElement(currentPlayer);
         mapData2.setPlayers(players);
-        mapData2.attack(country17.getName(), country35.getName());
+        mapData2.attack(country17.getName(), country35.getName(), true);
         if (mapData2.getAttackFromCountry() != null && mapData2.getAttackToCountry() != null) {
             country17.setNoOfArmies(3);
             country35.setNoOfArmies(0);

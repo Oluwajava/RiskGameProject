@@ -36,34 +36,35 @@ public class RandomStrategy implements PlayerStrategy {
 
     @Override
     public void reinforce(MapData mapData) {
-        System.out.println("Random Reinforcement");
-        
-    	Random random=new Random();
-    	//Getting the current player from the mapData
-		Player currentPlayer=mapData.getPlayers().last();
-		
-		//Getting the number of armies for the current player
+
+        Random random = new Random();
+        //Getting the current player from the mapData
+        Player currentPlayer = mapData.getPlayers().last();
+        System.out.println("Reinforce by " + currentPlayer.getPlayerName());
+        //Getting the number of armies for the current player
 //		int noOfArmies=currentPlayer.getNumOfArmies();
 //		int loopCount=random.nextInt(noOfArmies);
-		List<Country> countryList=currentPlayer.getCountries();
+        List<Country> countryList = currentPlayer.getCountries();
 //		mapData.reinforceCountry(countryList.get(0).getName(), currentPlayer.getNumOfArmies());
 //		for(int i=0;i<loopCount;i++) {
 //			if(currentPlayer.getNumOfArmies()==0) {
 //				break;
 //			}
-		while(currentPlayer.getNumOfArmies()!=0) {
-		int j=random.nextInt(countryList.size());
-		int reinforcementCount=random.nextInt(currentPlayer.getNumOfArmies()+1);
-		mapData.reinforceCountry(countryList.get(j).getName(), reinforcementCount );
-		}
-		
-		//}
+        while (mapData.getPlayers().last().getNumOfArmies() != 0) {
+            if (countryList.size() == 0)
+                break;
+            int j = random.nextInt(countryList.size());
+            int reinforcementCount = random.nextInt(currentPlayer.getNumOfArmies() + 1);
+            mapData.reinforceCountry(countryList.get(j).getName(), reinforcementCount);
+        }
+
+        //}
 
     }
 
     private List<Country> getFromCountry(Player player) {
         List<Country> playerCountries = player.getCountries();
-        List<Country> newList=new ArrayList<>();
+        List<Country> newList = new ArrayList<>();
         for (Country country : playerCountries) {
             if (country.getNoOfArmies() != 1) {
                 newList.add(country);
@@ -85,12 +86,15 @@ public class RandomStrategy implements PlayerStrategy {
     public void attack(MapData mapData) {
         Random random = new Random();
         Player currentPlayer = mapData.getPlayers().last();
+        System.out.println("Attack by " + currentPlayer.getPlayerName());
         int noOfFromCountry = getFromCountry(currentPlayer).size();
         int loopCount = random.nextInt(noOfFromCountry);
 
 
         for (int i = 0; i < loopCount; i++) {
             List<Country> fromCountries = getFromCountry(mapData.getPlayers().last());
+            if (fromCountries.size() == 0)
+                break;
             int x = random.nextInt(fromCountries.size());
             List<Country> toCountries = getToCountry(fromCountries.get(x).getAdjacentCountries(), mapData.getPlayers().last());
             if (fromCountries.size() == 0 || toCountries.size() == 0) {
@@ -98,9 +102,9 @@ public class RandomStrategy implements PlayerStrategy {
             }
 
             int y = random.nextInt(toCountries.size());
-            mapData.attack(fromCountries.get(x).getName(), toCountries.get(y).getName());
+            mapData.attack(fromCountries.get(x).getName(), toCountries.get(y).getName(), false);
         }
-
+        System.out.println("CALLED ATTACK NONE");
         mapData.attackNone();
 
     }
@@ -112,7 +116,7 @@ public class RandomStrategy implements PlayerStrategy {
 
     @Override
     public void fortify(MapData mapData) {
-        System.out.println("Random Fortification");
+        System.out.println("Random Fortification by "+ mapData.getPlayers().last().getPlayerName());
 //        Player currentPlayer = mapData.getPlayers().last();
 //        List<Country> eligibleCountries = getFromCountry(currentPlayer);
 //
@@ -123,7 +127,7 @@ public class RandomStrategy implements PlayerStrategy {
 //        int num = random.nextInt(eligibleCountries.get(x).getNoOfArmies() - 1);
 //
 //        mapData.fortifyCountry(eligibleCountries.get(x).getName(), countries.get(y).getName(), num);
-mapData.fortifyNone();
+        mapData.fortifyNone();
 
     }
 

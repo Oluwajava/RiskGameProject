@@ -1,5 +1,6 @@
 package com.soen.riskgame.module.core.strategy;
 
+import com.soen.riskgame.module.core.enums.Phase;
 import com.soen.riskgame.module.core.model.Country;
 import com.soen.riskgame.module.core.model.MapData;
 import com.soen.riskgame.module.core.model.Player;
@@ -15,6 +16,7 @@ import java.util.List;
  * BenevolentPlayer is player strategy
  * Player only reinforces the weakest country
  * Fortifies that weakest country from the strongest neighbour
+ *
  * @author Sai Sukruth
  */
 public class BenevolentStrategy implements PlayerStrategy {
@@ -38,13 +40,15 @@ public class BenevolentStrategy implements PlayerStrategy {
 
     @Override
     public void reinforce(MapData mapData) {
-        List<Country> sortedList = sortCountryListByArmyCount((List<Country>) mapData.getCountries());
+        currentPlayer = mapData.getPlayers().last();
+        List<Country> sortedList = sortCountryListByArmyCount(currentPlayer.getCountries());
         if (!sortedList.isEmpty()) {
             country = sortedList.get(0);
-            countryToCheck=sortedList.get(0).getName();
-            if(currentPlayer.doesCountryBelongToPlayer(countryToCheck)) {
+            countryToCheck = sortedList.get(0).getName();
+            if (currentPlayer.doesCountryBelongToPlayer(countryToCheck)) {
                 country.setNoOfArmies(country.getNoOfArmies() + currentPlayer.getNumOfArmies());
                 currentPlayer.setNumOfArmies(0);
+                currentPlayer.setPhase(Phase.ATTACK);
             }
         }
     }
@@ -61,7 +65,8 @@ public class BenevolentStrategy implements PlayerStrategy {
 
     @Override
     public void fortify(MapData mapData) {
-        Country weakestCountry = findWeakestIfNoAdjacentCountryToFortify((List<Country>) mapData.getCountries());
+        currentPlayer = mapData.getPlayers().last();
+        Country weakestCountry = findWeakestIfNoAdjacentCountryToFortify((List<Country>) currentPlayer.getCountries());
         if (weakestCountry != null) {
             Country strongestAdjacentCountry = getStrongestAdjacentCountry(weakestCountry);
             if (strongestAdjacentCountry != null) {
@@ -83,6 +88,7 @@ public class BenevolentStrategy implements PlayerStrategy {
         Collections.sort(list, Comparator.comparing(obj -> Integer.valueOf(obj.getNoOfArmies())));
         return list;
     }
+
     public Country getStrongestAdjacentCountry(Country country) {
         if (country == null) {
             return null;

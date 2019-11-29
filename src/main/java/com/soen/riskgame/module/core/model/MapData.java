@@ -86,6 +86,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
 
     private boolean isRisk;
 
+    private boolean isTournamentEnd;
+
+    private int totalGameCount;
+
+    private boolean gameOver;
 
     /**
      * Constructor for the class
@@ -143,6 +148,30 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             return gameCounter;
         }).collect(Collectors.toList());
         this.gameCounters = gameCounters;
+    }
+
+    public void setGameIsOver() {
+        List<Player> players = toList();
+        Player winner = null;
+        for(Player player: players) {
+            if (player.getCountries().size() >= countries.size()) {
+                winner = player;
+                this.setGameOver(true);
+                break;
+            }
+        }
+        if (isGameOver()) {
+            addLog("Game Over", winner.getPlayerName()+" is the winner");
+        }
+    }
+
+    public void addLog(String title, String message) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("==============================\n");
+        stringBuilder.append(title+"            \n");
+        stringBuilder.append("==============================\n");
+        stringBuilder.append(message);
+        attackLog += stringBuilder.toString();
     }
 
     /**
@@ -578,40 +607,51 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             attackLog += sim.toString();
             if (isTournamentMode) {
                 turnCounter++;
-                if (turnCounter / players.size() == maxNumberOfTurns) {
-                    if (gameCounters.get(gameCounter).getNumberOfGames() == numberOfGames) {
+                totalGameCount++;
+                if (turnCounter / players.size() >= maxNumberOfTurns) {
+                    if (gameCounters.get(gameCounter).getNumberOfGames() >= numberOfGames) {
                         gameCounter++;
-                        GameCounter gc = gameCounters.get(gameCounter);
-                        MapData md = MapDataUtil.loadMapFromFile(gc.getMapFile());
-                        this.toList().forEach(p -> {
-                            if (p.getPlayerStrategy() instanceof HumanStrategy) {
-                                md.addPlayer(p.getPlayerName(), GameStrategy.HUMAN);
-                            } else if (p.getPlayerStrategy() instanceof AggressiveStrategy) {
-                                md.addPlayer(p.getPlayerName(), GameStrategy.AGGRESSIVE);
-                            } else if (p.getPlayerStrategy() instanceof BenevolentStrategy) {
-                                md.addPlayer(p.getPlayerName(), GameStrategy.BENEVOLENT);
-                            } else if (p.getPlayerStrategy() instanceof CheaterStrategy) {
-                                md.addPlayer(p.getPlayerName(), GameStrategy.CHEATER);
-                            } else if (p.getPlayerStrategy() instanceof RandomStrategy) {
-                                md.addPlayer(p.getPlayerName(), GameStrategy.RANDOM);
-                            }
-                        });
-                        this.setContinents(md.getContinents());
-                        this.setCountries(md.getCountries());
-                        this.setPlayers(md.getPlayers());
-                        this.setFileName(md.getFileName());
-                        this.setRisk(md.isRisk);
+                        if (gameCounter < gameCounters.size()) {
+                            GameCounter gc = gameCounters.get(gameCounter);
+                            MapData md = MapDataUtil.loadMapFromFile(gc.getMapFile());
+                            this.toList().forEach(p -> {
+                                if (p.getPlayerStrategy() instanceof HumanStrategy) {
+                                    md.addPlayer(p.getPlayerName(), GameStrategy.HUMAN);
+                                } else if (p.getPlayerStrategy() instanceof AggressiveStrategy) {
+                                    md.addPlayer(p.getPlayerName(), GameStrategy.AGGRESSIVE);
+                                } else if (p.getPlayerStrategy() instanceof BenevolentStrategy) {
+                                    md.addPlayer(p.getPlayerName(), GameStrategy.BENEVOLENT);
+                                } else if (p.getPlayerStrategy() instanceof CheaterStrategy) {
+                                    md.addPlayer(p.getPlayerName(), GameStrategy.CHEATER);
+                                } else if (p.getPlayerStrategy() instanceof RandomStrategy) {
+                                    md.addPlayer(p.getPlayerName(), GameStrategy.RANDOM);
+                                }
+                            });
+                            this.setContinents(md.getContinents());
+                            this.setCountries(md.getCountries());
+                            this.setPlayers(md.getPlayers());
+                            this.setFileName(md.getFileName());
+                            this.setRisk(md.isRisk);
+                        }
                         turnCounter = 0;
                         newPhase = true;
                     }
-                    gameCounters.get(gameCounter).increment();
+                    if (gameCounter < gameCounters.size()) {
+                        gameCounters.get(gameCounter).increment();
+                    }
                     System.out.println("End of Game");
                 }
             }
 
+            if (totalGameCount >= ((maxNumberOfTurns*numberOfGames))) {
+                isTournamentEnd = true;
+                setGameIsOver();
+                if(!isGameOver()) {
+                    addLog("Game Over", "Game Ended as Draw");
+                }
+            }
             updateView();
         }
-        System.out.println(turnCounter / players.size());
     }
 
     /**
@@ -624,6 +664,9 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     public void reinforceCountry(String countryName, int number) {
         Player player = players.last();
         if (isInPhase(Phase.REINFORCEMENT)) {
+            if (player.getCards().getNumberOfCards() >= 5) {
+                exchange(0, 1, 2);
+            }
             if (player.doesCountryBelongToPlayer(countryName) && number > 0 && number <= player.getNumOfArmies()) {
                 if (player.getNumOfArmies() > 0) {
                     player.decreaseNumOfArmies(number);
@@ -680,7 +723,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      * @param toCountry   to country
      */
     @Override
-    public void attack(String fromCountry, String toCountry) {
+    public void attack(String fromCountry, String toCountry, boolean updateView) {
 
         if (isInPhase(Phase.ATTACK)) {
             Country country = MapDataUtil.findCountryByName(fromCountry, countries);
@@ -701,6 +744,8 @@ public class MapData extends Observable implements ContinentAction, CountryActio
                         this.defendNumDice = 1;
                     }
                     simulateAttack();
+                    if (updateView)
+                        updateView();
                 }
 
             }
@@ -772,6 +817,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     public void defend(int num) {
         this.defendNumDice = num;
         simulateAttack();
+        updateView();
     }
 
     /**
@@ -807,7 +853,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         }
 
         attackLog = attackLog == null ? "" : attackLog + "\n" + sim.toString();
-        updateView();
+
 
     }
 
@@ -836,6 +882,11 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             players.setElement(player);
             attackToCountry.setPlayer(player);
             countries.put(String.valueOf(attackToCountry.getId()), attackToCountry);
+            if (!(player.getPlayerStrategy() instanceof HumanStrategy)) {
+                attackMove(1);
+            }
+            setGameIsOver();
+
         }
     }
 

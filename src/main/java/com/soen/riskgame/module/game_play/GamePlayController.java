@@ -328,9 +328,10 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
      */
     @Override
     public void update(Observable o, Object arg) {
+
         MapData mapTest = (MapData) arg;
         this.mapData = mapTest;
-        System.out.println(mapData);
+//        System.out.println(mapData);
         Player player = mapTest.getPlayers().last();
         turnText.setText("" + player.getPlayerName() + " Turn!!!");
         initialArmyText.setText("Initial Army: " + player.getPlaceArmiesNo());
@@ -345,24 +346,34 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         setCardView(player);
         setupCountriesList();
 
-        if (!(player.getPlayerStrategy() instanceof HumanStrategy)) {
-            if(player.getPhase() == Phase.ATTACK) {
-                player.getPlayerStrategy().attack(mapData);
-            } else if(player.getPhase() == Phase.ATTACK_MOVE) {
-                player.getPlayerStrategy().attackMove(mapData);
-            } else if (player.getPhase() == Phase.EXCHANGE_CARD) {
-                player.getPlayerStrategy().exchangeCard(mapData);
-            } else if (player.getPhase() == Phase.REINFORCEMENT) {
-                player.getPlayerStrategy().reinforce(mapData);
-            } else if (player.getPhase() == Phase.FORTIFICATION) {
-                player.getPlayerStrategy().fortify(mapData);
+        if (mapData.isGameOver()) {
+            setupGameView();
+            setPhase(player);
+            setPlayerList(mapTest);
+            setCardView(player);
+            setupCountriesList();
+            updateCountriesLocation();
+        } else {
+            if (!(player.getPlayerStrategy() instanceof HumanStrategy) && !mapData.isTournamentEnd()) {
+                if (player.getPhase() == Phase.ATTACK) {
+                    player.getPlayerStrategy().attack(mapData);
+                } else if (player.getPhase() == Phase.ATTACK_MOVE) {
+                    player.getPlayerStrategy().attackMove(mapData);
+                } else if (player.getPhase() == Phase.EXCHANGE_CARD) {
+                    player.getPlayerStrategy().exchangeCard(mapData);
+                } else if (player.getPhase() == Phase.REINFORCEMENT) {
+                    player.getPlayerStrategy().reinforce(mapData);
+                } else if (player.getPhase() == Phase.FORTIFICATION) {
+                    player.getPlayerStrategy().fortify(mapData);
+                }
+            }
+
+            if (mapData.isNewPhase() && !mapData.isTournamentEnd()) {
+                mapData.setNewPhase(false);
+                autoPopulate(mapData);
             }
         }
 
-        if(mapData.isNewPhase()) {
-            mapData.setNewPhase(false);
-            autoPopulate(mapData);
-        }
         updateCountriesLocation();
     }
 
