@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -124,7 +125,26 @@ public class Player implements Serializable {
      * @return size of reinforced army
      */
     public int getNumberOfReinforcementArmy() {
-        return (int) Math.floor(countries.size() / 3);
+        int reinforcementArmies = (int) Math.floor(countries.size() / 3);
+        HashSet<Continent> continentsWithMyCountries = new HashSet<>();
+        boolean iControlIt;
+        List<Country> allCountriesInAContinent;
+        for (Country cy : countries) {
+            continentsWithMyCountries.add(cy.getContinent());
+        }
+        for (Continent ct : continentsWithMyCountries) {
+            iControlIt = true;
+            allCountriesInAContinent = ct.getCountries();
+            for (Country cy2 : allCountriesInAContinent) {
+                if (cy2.getPlayer() != this) {
+                    iControlIt = false;
+                }
+            }
+            if (iControlIt) {
+                reinforcementArmies += ct.getControlValue();
+            }
+        }
+        return reinforcementArmies;
     }
 
     /**

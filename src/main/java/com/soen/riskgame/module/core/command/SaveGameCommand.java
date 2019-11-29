@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.soen.riskgame.module.core.interfaces.Command;
 import com.soen.riskgame.module.core.model.MapData;
 import com.soen.riskgame.module.core.utils.MapDataUtil;
+import com.soen.riskgame.module.save_game.SaveGameBuilder;
 
 import java.io.FileOutputStream;
 import java.io.FileWriter;
@@ -48,7 +49,8 @@ public class SaveGameCommand implements Command {
         try {
             FileOutputStream fileOutputStream=new FileOutputStream("C:/Users/Adekunle/RiskGameProject/src/main/resources/savedGames/"+fileName);
             ObjectOutputStream objectOutputStream=new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(mapData);
+            MapData data=new SaveGameBuilder().setContinents(mapData.getContinents()).setCountries(mapData.getCountries()).setFileName(mapData.getFileName()).setPlayers(mapData.getPlayers()).setAttackLog(mapData.getAttackLog()).getMapData();
+            objectOutputStream.writeObject(data);
             objectOutputStream.close();
             fileOutputStream.close();
 
