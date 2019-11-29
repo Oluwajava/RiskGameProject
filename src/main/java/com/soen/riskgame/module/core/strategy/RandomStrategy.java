@@ -36,7 +36,6 @@ public class RandomStrategy implements PlayerStrategy {
 
     @Override
     public void reinforce(MapData mapData) {
-
         Random random = new Random();
         //Getting the current player from the mapData
         Player currentPlayer = mapData.getPlayers().last();
