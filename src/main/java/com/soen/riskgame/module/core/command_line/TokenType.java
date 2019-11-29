@@ -18,7 +18,7 @@ public enum TokenType {
     NONE(0, CommandType.COMMAND), ATTACK(4, CommandType.COMMAND), DEFEND(1, CommandType.COMMAND),
     ATTACK_MOVE(1, CommandType.COMMAND), ALL_OUT(0, CommandType.ACTION), NO_ATTACK(0, CommandType.ACTION),
     EXCHANGE_CARDS(1, CommandType.COMMAND), TOURNAMENT(1, CommandType.COMMAND), MAP_LIST(0, CommandType.ACTION), PLAYER_STRATEGY(0, CommandType.ACTION),
-    NUMBER_OF_GAMES(0, CommandType.ACTION), MAX_NUMBER_OF_TURNS(0, CommandType.ACTION);
+    NUMBER_OF_GAMES(0, CommandType.ACTION), MAX_NUMBER_OF_TURNS(0, CommandType.ACTION), LOAD_GAME(1, CommandType.COMMAND), SAVE_GAME(1, CommandType.COMMAND);
 
     /**
      * number of arguments

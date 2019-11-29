@@ -2,6 +2,7 @@ package com.soen.riskgame.module.core.model;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
  * @author Mayokun,Hitansh
  */
 @Data
-public class Continent {
+public class Continent implements Serializable {
     /**
      * Contains the id of the continent
      */

@@ -44,7 +44,7 @@ public class MapDataTest {
         mapData = new MapData();
         mapData2 = new MapData();
         try {
-            FileReader fileReader = new FileReader("C:\\Users\\Admin\\APP\\RiskGameProject\\src\\main\\resources\\maps\\eurasien.map");
+            FileReader fileReader = new FileReader("C:\\Users\\Adekunle\\RiskGameProject\\src\\main\\resources\\maps\\eurasien.map");
             String mapDataStr = fileReader.readData().replaceAll(MapDelimiters.CARRIAGE_DELIMITER, "");
             MapParser mapParser = new MapParser(mapDataStr);
             mapData2 = new Map.Builder(mapParser.getGameFile(), mapParser.getCountries(), mapParser.getContinentDTOS(), mapParser.getBorderDTOS()).build();

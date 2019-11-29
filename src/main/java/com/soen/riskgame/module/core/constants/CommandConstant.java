@@ -26,4 +26,6 @@ public interface CommandConstant {
     String ATTACK_MOVE = "attackmove";
     String EXCHANGE_CARDS = "exchangecards";
     String TOURNAMENT = "tournament";
+    String SAVE_GAME = "savegame";
+    String LOAD_GAME = "loadgame";
 }

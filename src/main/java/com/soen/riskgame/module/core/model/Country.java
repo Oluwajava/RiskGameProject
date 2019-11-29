@@ -1,5 +1,6 @@
 package com.soen.riskgame.module.core.model;
 
+import java.io.Serializable;
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(exclude = {"continent", "adjacentCountries"})
-public class Country {
+public class Country implements Serializable {
 
     /**
      * contains country name

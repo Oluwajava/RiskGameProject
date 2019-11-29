@@ -3,6 +3,8 @@ package com.soen.riskgame.module.core.utils;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 
 /**
  * Round Robin class in to implement round robin function in the game
@@ -10,7 +12,7 @@ import lombok.Setter;
  * @param <E>
  * @author John
  */
-public class RoundRobin<E> {
+public class RoundRobin<E> implements Serializable {
 
     @Getter
     private Node<E> tail = null;
@@ -143,7 +145,7 @@ public class RoundRobin<E> {
      * Class represent each element that are base for Round robin function
      * @param <E>
      */
-    public static class Node<E> {
+    public static class Node<E> implements Serializable {
 
         @Getter
         private E element;

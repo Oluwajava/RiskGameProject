@@ -1,5 +1,6 @@
 package com.soen.riskgame.module.new_game;
 
+import com.soen.riskgame.module.core.command.LoadGameCommand;
 import com.soen.riskgame.module.core.command.LoadMapCommand;
 import com.soen.riskgame.module.core.command_line.CommandSytanxTree;
 import com.soen.riskgame.module.core.command_line.Lexer;
@@ -44,7 +45,7 @@ import java.util.stream.Collectors;
  * new start start by calling this class, which selects the players(add and remove) , updates and binds the view
  * @author Mayokun
  */
-public class NewGameController implements View, PlayerCommandListener, LoadMapCommand.LoadMapListener, GameTypeListener, Observer {
+public class NewGameController implements View, PlayerCommandListener, LoadMapCommand.LoadMapListener, LoadGameCommand.LoadGameListener, GameTypeListener, Observer {
 
     /**
      * name of the new game
@@ -121,7 +122,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
             try {
                 MapListController mapListController = new MapListController(name -> {
                     System.out.println(name);
-                    FileReader fileReader = new FileReader("C:\\Users\\Admin\\APP\\RiskGameProject\\src\\main\\resources\\maps\\0" + name + ".map");
+                    FileReader fileReader = new FileReader("C:\\Users\\Adekunle\\RiskGameProject\\src\\main\\resources\\maps\\0" + name + ".map");
                     String mapData = fileReader.readData().replaceAll(MapDelimiters.CARRIAGE_DELIMITER, "");
                     MapValidator mapValidator = new MapValidator(mapData);
                     mapValidator.validate();
@@ -146,15 +147,7 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         startGame.setOnAction(event -> {
             try {
                 playersList.forEach(v -> mapData.addPlayer(v.getPlayerName(), v.getStrategy()));
-                GamePlayController gamePlayController = new GamePlayController(mapData);
-                Stage stage = new Stage();
-                stage.setTitle("My New Stage Title");
-                try {
-                    stage.setScene(gamePlayController.getView());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                stage.show();
+                startGame();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -178,11 +171,25 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
             CommandSytanxTree commandSytanxTree= new CommandSytanxTree(mapData, tokens);
             commandSytanxTree.setPlayerCommandListener(this);
             commandSytanxTree.setLoadMapListener(this);
+            commandSytanxTree.setLoadGameListener(this);
             commandSytanxTree.setGameTypeListener(this);
             commandSytanxTree.processCommand();
         });
 
     }
+
+    private void startGame() throws IOException {
+        GamePlayController gamePlayController = new GamePlayController(mapData);
+        Stage stage = new Stage();
+        stage.setTitle("My New Stage Title");
+        try {
+            stage.setScene(gamePlayController.getView());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.show();
+    }
+
     /**
      * method to update the image
      * @param name String name of image
@@ -307,5 +314,16 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
     @Override
     public void setIsTournament() {
         mapData.setTournamentMode(true);
+    }
+
+    @Override
+    public void loadGame(MapData ma) {
+        this.mapData = ma;
+        try {
+            startGame();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Saved game data: "+ma);
     }
 }

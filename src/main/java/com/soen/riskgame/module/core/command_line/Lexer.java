@@ -113,6 +113,12 @@ public class Lexer {
                     case ActionConstant.PLAYER_STRATEGIES:
                         result.add(new Token(TokenType.PLAYER_STRATEGY, ActionConstant.PLAYER_STRATEGIES));
                         break;
+                    case CommandConstant.LOAD_GAME:
+                        result.add(new Token(TokenType.LOAD_GAME, CommandConstant.LOAD_GAME));
+                        break;
+                    case CommandConstant.SAVE_GAME:
+                        result.add(new Token(TokenType.SAVE_GAME, CommandConstant.SAVE_GAME));
+                        break;
                     default:
                         result.add(new Token(TokenType.ATOM, s));
                         break;

@@ -1,5 +1,6 @@
 package com.soen.riskgame.module.core.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,7 +13,7 @@ import com.soen.riskgame.module.core.constants.Cards;
  *
  * @author Hitansh
  */
-public class Card {
+public class Card implements Serializable {
 
 
     /**

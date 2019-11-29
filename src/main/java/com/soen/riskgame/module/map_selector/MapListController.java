@@ -113,7 +113,7 @@ public class MapListController implements View {
                 } else {
                     setText(item.getName());
                     try {
-                        Image image = new Image(new FileInputStream("C:\\Users\\Admin\\APP\\RiskGameProject\\src\\main\\resources\\maps\\preview" + "/" + item.getImageUrl()));
+                        Image image = new Image(new FileInputStream("C:\\Users\\Adekunle\\RiskGameProject\\src\\main\\resources\\maps\\preview" + "/" + item.getImageUrl()));
                         imageView.setImage(image);
                         setGraphic(imageView);
                     } catch (FileNotFoundException e) {
@@ -138,7 +138,7 @@ public class MapListController implements View {
      * @return mapData
      */
     private List<MapInfo> getMapData() {
-        File folder = new File("C:\\Users\\Admin\\APP\\RiskGameProject\\src\\main\\resources\\maps\\preview");
+        File folder = new File("C:\\Users\\Adekunle\\RiskGameProject\\src\\main\\resources\\maps\\preview");
         File[] listOfFiles = folder.listFiles();
         List<MapInfo> mapData = new ArrayList<>();
         for (int i = 0; i < listOfFiles.length; i++) {

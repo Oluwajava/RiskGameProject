@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Player {
+public class Player implements Serializable {
 
     /**
      * cards that are exchanged
@@ -194,7 +195,7 @@ public class Player {
      * color for each player
      */
     @Data
-    public static class PlayerColor {
+    public static class PlayerColor implements Serializable {
 
         private int red;
 
