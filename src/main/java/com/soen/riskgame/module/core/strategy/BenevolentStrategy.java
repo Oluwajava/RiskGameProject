@@ -75,14 +75,7 @@ public class BenevolentStrategy implements PlayerStrategy {
         mapData.attackNone();
     }
 
-    /**
-     * Method for Benevolent class for attack move.
-     * @param mapData Contains map (countries) details
-     */
-    @Override
-    public void attackMove(MapData mapData) {
 
-    }
 
     /**
      * Method for Benevolent class for fortification phase.
@@ -105,10 +98,6 @@ public class BenevolentStrategy implements PlayerStrategy {
         }
     }
 
-    @Override
-    public void exchangeCard(MapData mapData) {
-
-    }
 
     /**
      * Method to sort country list by army count.

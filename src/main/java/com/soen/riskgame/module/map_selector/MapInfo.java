@@ -42,6 +42,10 @@ public class MapInfo {
         return StringUtils.capitalize(imageUrl.substring(0, imageUrl.length() - 4)).replace("_", " ");
     }
 
+    /**
+     * method to return string object
+     * @return string
+     */
     @Override
     public String toString() {
         return name;

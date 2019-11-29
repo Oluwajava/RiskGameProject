@@ -5,7 +5,9 @@ package com.soen.riskgame.module.core.enums;
  * @author Sibil
  */
 public enum Phase {
-
+    /**
+     * Enum in phase
+     */
     REINFORCEMENT, ATTACK, ATTACK_MOVE, FORTIFICATION, EXCHANGE_CARD
 
 }

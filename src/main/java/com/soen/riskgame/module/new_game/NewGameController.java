@@ -36,7 +36,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
 
-//import com.soen.riskgame.module.map_selector.MapListController;
+
 
 /**
  * Class represents the start of the new game. Calss implements methods of View(GUI)
@@ -220,6 +220,11 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         }
     }
 
+    /**
+     * method for add Player To List
+     * @param playerName
+     * @param strategy
+     */
     private void addPlayerToList(String playerName, String strategy) {
         PlayerDTO playerDTO = new PlayerDTO();
         playerDTO.setPlayerName(playerName);
@@ -279,6 +284,10 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         updateImage(mapData.getFileName());
     }
 
+    /**
+     * method for setListOfMapFiles
+     * @param listOfMapFiles list of map files
+     */
     @Override
     public void setListOfMapFiles(List<String> listOfMapFiles) {
         MapData data = MapDataUtil.loadMapFromFile(listOfMapFiles.get(mapData.getGameCounter()));
@@ -288,22 +297,36 @@ public class NewGameController implements View, PlayerCommandListener, LoadMapCo
         mapData.setFileName(data.getFileName());
         updateImage(listOfMapFiles.get(0));
     }
-
+    /**
+     * method for setListOfPlayerStrategies
+     * @param listOfMapFiles list of map files
+     */
     @Override
     public void setListOfPlayerStrategies(List<String> listOfMapFiles) {
         mapData.setListOfPlayersStrategies(listOfMapFiles);
     }
 
+    /**
+     * method for setNumberOfGames
+     * @param num number of games
+     */
     @Override
     public void setNumberOfGames(int num) {
         mapData.setNumberOfGames(num);
     }
 
+    /**
+     * method for setMaxNumberOfGames
+     * @param num number of games
+     */
     @Override
     public void setMaxNumberOfGames(int num) {
         mapData.setMaxNumberOfTurns(num);
     }
 
+    /**
+     * methof for setIsTournament
+     */
     @Override
     public void setIsTournament() {
         mapData.setTournamentMode(true);

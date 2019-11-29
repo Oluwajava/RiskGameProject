@@ -88,10 +88,7 @@ public class CheaterStrategy implements PlayerStrategy {
         mapData.updateView();
     }
 
-    @Override
-    public void attackMove(MapData mapData) {
 
-    }
 
     /**
      * Cheater's fortify method
@@ -125,8 +122,5 @@ public class CheaterStrategy implements PlayerStrategy {
         mapData.updateView();
     }
 
-    @Override
-    public void exchangeCard(MapData mapData) {
 
-    }
 }

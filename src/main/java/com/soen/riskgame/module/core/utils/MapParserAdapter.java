@@ -7,6 +7,10 @@ import com.soen.riskgame.module.core.model.GameFile;
 
 import java.util.List;
 
+/**
+ * interface for MapParserAdapter
+ * @author Mayo
+ */
 public interface MapParserAdapter {
 
     GameFile getGameFile();

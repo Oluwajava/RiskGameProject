@@ -38,6 +38,10 @@ public class MapValidator {
         }
     }
 
+    /**
+     * method to check isRiskMap
+     * @return true or false
+     */
     public boolean isRiskMap() {
         try {
             checkAllTags();
@@ -46,7 +50,10 @@ public class MapValidator {
             return false;
         }
     }
-
+    /**
+     * method to check isConquestMap
+     * @return true or false
+     */
     public boolean isConquestMap() {
         try {
             checkAllConquestTags();
@@ -56,6 +63,10 @@ public class MapValidator {
         }
     }
 
+    /**
+     * method to check checkAllConquestTags
+     * @throws Exception
+     */
     public void checkAllConquestTags() throws Exception {
 
         if (!mapData.contains(MapDelimiters.CONTINENT_DELIMETER_2)) {

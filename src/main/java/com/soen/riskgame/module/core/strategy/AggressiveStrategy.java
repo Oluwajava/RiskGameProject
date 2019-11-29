@@ -6,6 +6,7 @@ import com.soen.riskgame.module.core.model.Player;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 /**
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
  *
  * @author Sai Sukruth
  * @author Hitansh
+ * @author Sibil
  */
 public class AggressiveStrategy implements PlayerStrategy {
     /**
@@ -61,16 +63,31 @@ public class AggressiveStrategy implements PlayerStrategy {
         }
     }
 
+    /**
+     *Method for Aggressive class for attack.
+     * @param mapData
+     */
         @Override
-        public void attack (MapData mapData){
+        public void attack (MapData mapData) {
             System.out.println("Aggressive Attack");
-            mapData.attackNone();
+
+            currentPlayer = mapData.getPlayers().last();
+
+            List<Country> currentPlayerCountryList = currentPlayer.getCountries();
+            Country strongestCountry = findStrongestCountryForReinforcement(currentPlayerCountryList);
+            List<Country> defendingCountries = strongestCountry.getAdjacentCountries();
+
+            Iterator<Country> defendingCountriesIterator = defendingCountries.iterator();
+            while (defendingCountriesIterator.hasNext()) {
+                if (strongestCountry.getNoOfArmies() > 1) {
+                    System.out.println("Attacking with strongest country " + strongestCountry.getName());
+                    mapData.attack(strongestCountry.getName(), defendingCountriesIterator.next().getName(),3);
+                    break;
+                }
+            }
         }
 
-        @Override
-        public void attackMove (MapData mapData){
 
-        }
 
     /**
      * Method for Aggressive class for fortification phase.
@@ -107,14 +124,6 @@ public class AggressiveStrategy implements PlayerStrategy {
             mapData.fortifyNone();
         }
 
-    /**
-     *
-     * @param mapData
-     */
-        @Override
-        public void exchangeCard (MapData mapData){
-
-        }
 
         /**
          * Method to find the strongest country for reinforcement.

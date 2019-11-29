@@ -3,12 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="5010110e-49eb-430a-9b40-0766cc4c03c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/TournamentCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/command/TournamentCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/ActionConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/ActionConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/CommandConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/CommandConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/MapDelimiters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/constants/MapDelimiters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/enums/Phase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/enums/Phase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/GameTypeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/interfaces/GameTypeListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/GameCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/GameCounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/MapData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/PlayerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/PlayerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/TerritoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/model/TerritoryDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/AggressiveStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/AggressiveStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/BenevolentStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/BenevolentStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/CheaterStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/CheaterStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/GameStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/GameStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/HumanStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/HumanStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/PlayerStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/PlayerStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/RandomStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/RandomStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/ConquestMapParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/ConquestMapParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/Dice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/Dice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapParserAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapParserAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/RoundRobin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/RoundRobin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/game_play/GamePlayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/game_play/GamePlayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/game_play/PhaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/game_play/PhaseListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_selector/MapInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/map_selector/MapInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/new_game/NewGameController.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +42,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
@@ -40,7 +57,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestSuite">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.soen.riskgame.Main" />
       <module name="RiskGameApplication" />
@@ -71,8 +88,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestSuite" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.TestSuite" />
       </list>
     </recent_temporary>
   </component>
@@ -86,7 +103,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574996948382</updated>
-      <workItem from="1574996953399" duration="2111000" />
+      <workItem from="1574996953399" duration="5575000" />
     </task>
     <servers />
   </component>

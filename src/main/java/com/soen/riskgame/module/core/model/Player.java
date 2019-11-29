@@ -56,11 +56,13 @@ public class Player {
      */
     private Phase phase;
 
-
+    /**
+     * object of PlayerStrategy
+     */
     private PlayerStrategy playerStrategy;
 
     /**
-     * * Constructor for the  class Initializes  object
+     *  Constructor for the  class Initializes  object
      *
      * @param playerName name of the player
      */
@@ -71,6 +73,11 @@ public class Player {
         this.playerStrategy = new HumanStrategy();
     }
 
+    /**
+     * Constructor for the  class Initializes  object
+     * @param playerName name of the player
+     * @param gameStrategy name of the strategy
+     */
     public Player(String playerName, String gameStrategy) {
         this(playerName);
         if (gameStrategy.equals(GameStrategy.AGGRESSIVE)) {

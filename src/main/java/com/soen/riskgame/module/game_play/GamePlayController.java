@@ -38,6 +38,11 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Collectors;
 
+/**
+ * This class provides all the methods to control various activities during the game play,
+ * implements Observer.
+ * @author Sai
+ */
 public class GamePlayController implements View, Observer, ShowMapCommand.ShowMapListener, CommandSytanxProcessor, PhaseListener {
 
     /**
@@ -151,6 +156,10 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         autoPopulate(mapData);
     }
 
+    /**
+     * method to  autoPopulate map
+     * @param mapData hold map data
+     */
     private void autoPopulate(MapData mapData) {
         mapData.toList().forEach(v -> {
             if (!(v.getPlayerStrategy() instanceof HumanStrategy)) {
@@ -243,6 +252,10 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         setCountryTableView(neigbhoursListView);
     }
 
+    /**
+     * method to set setCountryTableView
+     * @param listView list of view
+     */
     private void setCountryTableView(ListView listView) {
         listView.setCellFactory(param -> new ListCell<Country>() {
             @Override
@@ -357,10 +370,6 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
             if (!(player.getPlayerStrategy() instanceof HumanStrategy) && !mapData.isTournamentEnd()) {
                 if (player.getPhase() == Phase.ATTACK) {
                     player.getPlayerStrategy().attack(mapData);
-                } else if (player.getPhase() == Phase.ATTACK_MOVE) {
-                    player.getPlayerStrategy().attackMove(mapData);
-                } else if (player.getPhase() == Phase.EXCHANGE_CARD) {
-                    player.getPlayerStrategy().exchangeCard(mapData);
                 } else if (player.getPhase() == Phase.REINFORCEMENT) {
                     player.getPlayerStrategy().reinforce(mapData);
                 } else if (player.getPhase() == Phase.FORTIFICATION) {
@@ -439,6 +448,9 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         commandLine.setText(message);
     }
 
+    /**
+     * method for next phase
+     */
     @Override
     public void nextPhase() {
 

@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 
 /**
  * main class of the game
+ * @author Sai
  */
 public class Main extends Application {
     /**

@@ -11,6 +11,10 @@ import java.util.stream.Collectors;
 
 import static com.soen.riskgame.module.core.mapper.CountryMapper.mapToTerritory;
 
+/**
+ * class for ConquestMapParser
+ * @author John
+ */
 public class ConquestMapParser implements MapParserAdapter {
     /**
      * game file data
@@ -20,13 +24,20 @@ public class ConquestMapParser implements MapParserAdapter {
      * list of continents
      */
     private List<ContinentDTO> continentDTOS;
-
+    /**
+     * list of Territory
+     */
     private List<TerritoryDTO> territoryDTOS;
     /**
      * delimeter of the string
      */
     private String currentDelimeter = "";
 
+    /**
+     * Parser for conquest maps
+     * @param mapData map data
+     * @throws Exception
+     */
     public ConquestMapParser(String mapData) throws Exception {
         if (mapData == null || mapData.length() == 0) {
             throw new Exception("Invalid data size");
@@ -37,6 +48,10 @@ public class ConquestMapParser implements MapParserAdapter {
         processData(mapData);
     }
 
+    /**
+     * method to process data
+     * @param mapData has map data
+     */
     private void processData(String mapData) {
         String[] lines = mapData.split(MapDelimiters.NEXT_LINE_DELIMETER);
         for (String line : lines) {
@@ -72,9 +87,8 @@ public class ConquestMapParser implements MapParserAdapter {
     /**
      * This process the country information and set the delimeter to the country
      *
-     * @param currentDelimeter
-     * @param line
-     * @return
+     * @param currentDelimeter currentDelimeter
+     * @param line line
      */
     private void processTerritoryInformation(String currentDelimeter, String line) {
         if (this.currentDelimeter.equals(MapDelimiters.TERRITORIES_DELIMETER)) {
@@ -85,6 +99,12 @@ public class ConquestMapParser implements MapParserAdapter {
         }
     }
 
+    /**
+     * methof for processFileInformation
+     * @param currentDelimeter currentDelimeter
+     * @param line line
+     * @return currentDelimeter
+     */
     private String processFileInformation(String currentDelimeter, String line) {
         if (line.trim().equals(MapDelimiters.FILE_DELIMITER) || this.currentDelimeter.equals(MapDelimiters.FILE_DELIMITER)) {
             this.currentDelimeter = MapDelimiters.FILE_DELIMITER;
@@ -122,16 +142,28 @@ public class ConquestMapParser implements MapParserAdapter {
                 !(line.trim().equals(currentDelimeter));
     }
 
+    /**
+     * method for game file
+     * @return gameFile
+     */
     @Override
     public GameFile getGameFile() {
         return gameFile;
     }
 
+    /**
+     * method for list of continents
+     * @return continentDTOS
+     */
     @Override
     public List<ContinentDTO> getContinentDTOS() {
         return continentDTOS;
     }
 
+    /**
+     * method to  getCountries
+     * @return countryDTO
+     */
     @Override
     public List<CountryDTO> getCountries() {
         List<CountryDTO> countryDTOS = territoryDTOS.stream().map(v -> {
@@ -145,7 +177,10 @@ public class ConquestMapParser implements MapParserAdapter {
         }).collect(Collectors.toList());
         return countryDTOS;
     }
-
+    /**
+     * method to  get Border
+     * @return BorderDTO
+     */
     @Override
     public List<BorderDTO> getBorderDTOS() {
         List<BorderDTO> borderDTOS = territoryDTOS.stream().map(v -> {
@@ -158,7 +193,10 @@ public class ConquestMapParser implements MapParserAdapter {
         return borderDTOS;
     }
 
-
+    /**
+     * method to  get getCountryId
+     * @return id
+     */
     private long getCountryId(String name) {
         for (TerritoryDTO territoryDTO : territoryDTOS) {
             if (territoryDTO.getName().equalsIgnoreCase(name)) {
@@ -167,7 +205,10 @@ public class ConquestMapParser implements MapParserAdapter {
         }
         return -1;
     }
-
+    /**
+     * method to  get getContinentId
+     * @return id
+     */
     private long getContinentId(String name) {
         for(ContinentDTO continentDTO: continentDTOS) {
             if (continentDTO.getName().equalsIgnoreCase(name)) {

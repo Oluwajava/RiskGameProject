@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This class defines the strategy of a cheater
+ *
+ *   @author Hitansh
+ */
 public class RandomStrategy implements PlayerStrategy {
-    /**
-     * Object of GamePlayController
-     * Controls various activities during the gameplay
-     */
-    private GamePlayController gamePLayController;
+
 
     /**
      * object of class Country
@@ -37,18 +38,12 @@ public class RandomStrategy implements PlayerStrategy {
     @Override
     public void reinforce(MapData mapData) {
         Random random = new Random();
-        //Getting the current player from the mapData
+
         Player currentPlayer = mapData.getPlayers().last();
         System.out.println("Reinforce by " + currentPlayer.getPlayerName());
-        //Getting the number of armies for the current player
-//		int noOfArmies=currentPlayer.getNumOfArmies();
-//		int loopCount=random.nextInt(noOfArmies);
+
         List<Country> countryList = currentPlayer.getCountries();
-//		mapData.reinforceCountry(countryList.get(0).getName(), currentPlayer.getNumOfArmies());
-//		for(int i=0;i<loopCount;i++) {
-//			if(currentPlayer.getNumOfArmies()==0) {
-//				break;
-//			}
+
         while (mapData.getPlayers().last().getNumOfArmies() != 0) {
             if (countryList.size() == 0)
                 break;
@@ -57,7 +52,7 @@ public class RandomStrategy implements PlayerStrategy {
             mapData.reinforceCountry(countryList.get(j).getName(), reinforcementCount);
         }
 
-        //}
+
 
     }
 
@@ -108,10 +103,7 @@ public class RandomStrategy implements PlayerStrategy {
 
     }
 
-    @Override
-    public void attackMove(MapData mapData) {
 
-    }
 
     @Override
     public void fortify(MapData mapData) {
@@ -130,9 +122,6 @@ public class RandomStrategy implements PlayerStrategy {
 
     }
 
-    @Override
-    public void exchangeCard(MapData mapData) {
 
-    }
 
 }

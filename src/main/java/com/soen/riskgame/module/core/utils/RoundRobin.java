@@ -98,6 +98,10 @@ public class RoundRobin<E> {
         return head.getElement();
     }
 
+    /**
+     * Method to set element
+     * @param e element
+     */
     public void setElement(E e) {
         tail.element = e;
     }
@@ -152,6 +156,11 @@ public class RoundRobin<E> {
         @Setter
         private Node<E> next;
 
+        /**
+         * method for node
+         * @param e element
+         * @param n node
+         */
         public Node(E e, Node<E> n) {
             element = e;
             next = n;

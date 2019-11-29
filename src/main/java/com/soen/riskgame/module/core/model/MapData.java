@@ -344,10 +344,18 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         return mapFileBuilder.toString();
     }
 
+    /**
+     * methof for conqest map
+     * @return null
+     */
     public String toConquestFile() {
         return null;
     }
 
+    /**
+     * method converts to string
+     * @return string
+     */
     @Override
     public String toString() {
         return "MapData{" +
@@ -860,10 +868,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
     /**
      * method to show attack result in view
      *
-     * @param sim
-     * @param attackDice
-     * @param defendDice
-     * @param index
+     * @param sim string
+     * @param attackDice attackDice
+     * @param defendDice defendDice
+     * @param index index
      */
     private void attackResult(StringBuilder sim, List<Integer> attackDice, List<Integer> defendDice, int index) {
         if (attackDice.get(index) <= defendDice.get(index)) {
@@ -926,6 +934,13 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         attackLog += sim.toString();
     }
 
+    /**
+     * method for  set Tournament
+     * @param listOfMapFiles listOfMapFiles
+     * @param listOfPlayersStrategies listOfPlayersStrategies
+     * @param numberOfGames numberOfGames
+     * @param maxNumberOfTurns maxNumberOfTurns
+     */
     public void setTournament(List<String> listOfMapFiles, List<String> listOfPlayersStrategies, int numberOfGames, int maxNumberOfTurns) {
         this.listOfMapFiles = listOfMapFiles;
         this.listOfPlayersStrategies = listOfPlayersStrategies;

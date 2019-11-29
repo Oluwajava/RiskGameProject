@@ -2,6 +2,7 @@ package com.soen.riskgame.module.core.utils;
 
 /**
  * Class for to roll dice
+ * @author Hitansh
  */
 public class Dice {
     /**
