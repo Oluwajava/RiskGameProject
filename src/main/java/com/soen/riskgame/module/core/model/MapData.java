@@ -9,6 +9,7 @@ import com.soen.riskgame.module.core.utils.MapDataUtil;
 import com.soen.riskgame.module.core.utils.RoundRobin;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
  * @author Sai Sukruth
  */
 @Data
-public class MapData extends Observable implements ContinentAction, CountryAction, PlayerAction, ArmyAction, ReinforceAction, FortificationAction, AttackAction, CardAction {
+public class MapData extends Observable implements ContinentAction, CountryAction, PlayerAction, ArmyAction, ReinforceAction, FortificationAction, AttackAction, CardAction, Serializable {
     /**
      * to check of the game has started
      */
@@ -406,9 +407,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
      * method to add player
      *
      * @param playerName name of the player
+     * @return the player added
      */
     @Override
-    public void addPlayer(String playerName, String strategy) {
+    public Player addPlayer(String playerName, String strategy) {
         if (players == null) {
             players = new RoundRobin<>();
         }
@@ -424,6 +426,10 @@ public class MapData extends Observable implements ContinentAction, CountryActio
             playerColor.setBlue(b);
             player.setPlayerColor(playerColor);
             players.addFirst(player);
+            return player;
+        }
+        else {
+            return null;
         }
 
     }

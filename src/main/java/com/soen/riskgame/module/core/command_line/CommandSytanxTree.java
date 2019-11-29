@@ -57,6 +57,11 @@ public class CommandSytanxTree {
     private LoadMapCommand.LoadMapListener loadMapListener;
 
     /**
+     * listener for load map in load game command
+     */
+    private LoadGameCommand.LoadGameListener loadGameListener;
+
+    /**
      * listener for edit map commmand
      */
     private EditMapCommand.EditMapListener editMapListener;
@@ -202,6 +207,14 @@ public class CommandSytanxTree {
                 } else if (currentCommand == TokenType.LOAD_MAP) {
                     LoadMapCommand loadMapCommand = processTokenLoadMapCommand(i);
                     commands.add(loadMapCommand);
+                    i++;
+                } else if (currentCommand == TokenType.LOAD_GAME) {
+                    LoadGameCommand loadGameCommand = processTokenLoadGameCommand(i);
+                    commands.add(loadGameCommand);
+                    i++;
+                } else if (currentCommand == TokenType.SAVE_GAME) {
+                    SaveGameCommand saveGameCommand = processTokenToSaveGameCommand(i);
+                    commands.add(saveGameCommand);
                     i++;
                 } else if (currentCommand == TokenType.GAME_PLAYER) {
                     if (currentTokenType == TokenType.ADD) {
@@ -606,6 +619,41 @@ public class CommandSytanxTree {
         String countryName = tokens.get(i + 1).getContent();
         String countryNeigbourName = tokens.get(i + 2).getContent();
         return new RemoveNeigbourCommand(mapData, countryName, countryNeigbourName);
+    }
+
+    /**
+     * method to process Save Game Command
+     *
+     * @param i an integer value
+     * @return object of SaveGameCommand
+     */
+    private SaveGameCommand processTokenToSaveGameCommand(int i) {
+        Player player = mapData.getPlayers().last();
+        if (player == null) {
+            commandSytanxProcessor.onError("You're not in Game play");
+            return null;
+        }
+        else if (player.getPhase() != null) {
+            String fileName = tokens.get(i).getContent();
+            SaveGameCommand saveGameCommand = new SaveGameCommand(mapData, fileName);
+            return saveGameCommand;
+        }
+        else {
+            commandSytanxProcessor.onError("You're not in Game play");
+            return null;
+        }
+    }
+
+    /**
+     * method to process LoadGame Command
+     *
+     * @param i an integer value
+     * @return object of LoadGameCommand
+     */
+    private LoadGameCommand processTokenLoadGameCommand(int i) {
+        String fileName = tokens.get(i).getContent();
+        LoadGameCommand loadGameCommand = new LoadGameCommand(fileName, loadGameListener);
+        return loadGameCommand;
     }
 
 

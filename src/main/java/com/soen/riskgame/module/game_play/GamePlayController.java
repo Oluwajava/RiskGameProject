@@ -135,6 +135,7 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
         Parent root = FXMLLoader.load(getClass().getResource(NEW_GAME));
         scene = new Scene(root, 1300, 760);
         bindView();
+        updateView(mapData);
         this.mapData = mapData;
         mapData.addObserver(this);
         mapData.setGameStarted(true);
@@ -343,6 +344,11 @@ public class GamePlayController implements View, Observer, ShowMapCommand.ShowMa
     public void update(Observable o, Object arg) {
 
         MapData mapTest = (MapData) arg;
+        this.mapData = mapTest;
+        updateView(mapTest);
+    }
+
+    private void updateView(MapData mapTest) {
         this.mapData = mapTest;
 //        System.out.println(mapData);
         Player player = mapTest.getPlayers().last();
