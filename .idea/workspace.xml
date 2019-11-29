@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef9fc677-bc28-49c6-ab64-661f695a1b66" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/AggressiveStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/AggressiveStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/BenevolentStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/strategy/BenevolentStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/soen/riskgame/module/core/utils/MapDataUtil.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +66,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574973146724</updated>
-      <workItem from="1574973150537" duration="3131000" />
+      <workItem from="1574973150537" duration="11342000" />
     </task>
     <servers />
   </component>
