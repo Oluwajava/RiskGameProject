@@ -101,6 +101,7 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         continents = new HashMap<>();
     }
 
+    
     /**
      * method to addCountries to Continents
      *
@@ -953,4 +954,40 @@ public class MapData extends Observable implements ContinentAction, CountryActio
         this.numberOfGames = numberOfGames;
         this.maxNumberOfTurns = maxNumberOfTurns;
     }
+
+
+	public MapData(boolean gameStarted, String fileName, RoundRobin<Player> players, HashMap<String, Country> countries,
+			HashMap<String, Continent> continents, Country attackFromCountry, Country attackToCountry,
+			int attackNumOfDice, int defendNumDice, String attackLog, boolean conqueredCountry,
+			boolean isTournamentMode, List<String> listOfMapFiles, List<GameCounter> gameCounters,
+			List<String> listOfPlayersStrategies, int numberOfGames, int maxNumberOfTurns, int gameCounter,
+			int turnCounter, boolean newPhase, String firstPlayerName, boolean isRisk, boolean isTournamentEnd,
+			int totalGameCount, boolean gameOver) {
+		super();
+		this.gameStarted = gameStarted;
+		this.fileName = fileName;
+		this.players = players;
+		this.countries = countries;
+		this.continents = continents;
+		this.attackFromCountry = attackFromCountry;
+		this.attackToCountry = attackToCountry;
+		this.attackNumOfDice = attackNumOfDice;
+		this.defendNumDice = defendNumDice;
+		this.attackLog = attackLog;
+		this.conqueredCountry = conqueredCountry;
+		this.isTournamentMode = isTournamentMode;
+		this.listOfMapFiles = listOfMapFiles;
+		this.gameCounters = gameCounters;
+		this.listOfPlayersStrategies = listOfPlayersStrategies;
+		this.numberOfGames = numberOfGames;
+		this.maxNumberOfTurns = maxNumberOfTurns;
+		this.gameCounter = gameCounter;
+		this.turnCounter = turnCounter;
+		this.newPhase = newPhase;
+		this.firstPlayerName = firstPlayerName;
+		this.isRisk = isRisk;
+		this.isTournamentEnd = isTournamentEnd;
+		this.totalGameCount = totalGameCount;
+		this.gameOver = gameOver;
+	}
 }
