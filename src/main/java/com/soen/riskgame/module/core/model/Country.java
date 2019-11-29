@@ -20,7 +20,7 @@ import lombok.EqualsAndHashCode;
  * @author Sai Sukruth
  */
 @Data
-@EqualsAndHashCode(exclude = {"continent", "adjacentCountries"})
+@EqualsAndHashCode(exclude = {"continent", "adjacentCountries", "player"})
 public class Country implements Serializable {
 
     /**

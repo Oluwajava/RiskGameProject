@@ -273,6 +273,6 @@ public class MapDataTest {
         john.addCountry(uk);
         sweden.setPlayer(jide);
         jide.addCountry(sweden);
-
+        assertTrue(john.getNumberOfReinforcementArmy() == 6);
     }
 }
